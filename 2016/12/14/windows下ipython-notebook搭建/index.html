@@ -7,7 +7,7 @@
 
     
 
-    <title>归档：2016/10 | 一天进步一点</title>
+    <title>windows下ipython notebook搭建 | 一天进步一点</title>
     <meta name="author" content="张岩">
     
     <meta name="description" content="记录生活点滴">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="windows下ipython notebook搭建"/>
     <meta property="og:site_name" content="张岩的博客"/>
 
     
@@ -281,40 +281,101 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper brown darken-1">
-        <span class="breadcrumb">当前位置（归档）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/Python/">Python</a>
+
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>windows下ipython notebook搭建</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="light-green-link-context" datetime="2016-12-14T12:22:20.000Z"><a href="/2016/12/14/windows下ipython-notebook搭建/">2016-12-14</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/Python/" class="chip light-green">Python</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2016
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2016/10/12/质数算法-判断质数-小于n的质数-前n个质数/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-10-12T07:56:09.000Z">2016-10-12</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                质数算法 判断质数 小于n的质数 前n个质数
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
-        
-    </ul>
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <p>IPython notebook&#x76EE;&#x524D;&#x5DF2;&#x7ECF;&#x6210;&#x4E3A;&#x7528;Python&#x505A;&#x6559;&#x5B66;&#x3001;&#x8BA1;&#x7B97;&#x3001;&#x79D1;&#x7814;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x5DE5;&#x5177;&#x3002;&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E86;Windows&#x73AF;&#x5883;&#x4E0B;&#xFF0C;IPython notebook&#x7684;&#x73AF;&#x5883;&#x7684;&#x642D;&#x5EFA;&#x3002;</p>
+<p>1&#xFF0C;&#x9996;&#x5148;&#x5B89;&#x88C5;Python&#x73AF;&#x5883;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://946898963.github.io/2016/12/07/Windows%E5%AE%89%E8%A3%85Python%E7%8E%AF%E5%A2%83/">Windows&#x5B89;&#x88C5;Python&#x73AF;&#x5883;</a><br>2&#xFF0C;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;Setuptools<br>&#x4E0B;&#x8F7D;ez_setup.py&#x5230;&#x67D0;&#x4E2A;&#x76EE;&#x5F55;(&#x5982;:F:\bigdata\python\python2.7\Scripts)&#xFF0C;<a href="https://bootstrap.pypa.io/" target="_blank" rel="external">&#x4E0B;&#x8F7D;&#x5730;&#x5740;</a><br>&#x5B89;&#x88C5;&#xFF1A;&#x8FDB;&#x5165;F:\bigdata\python\python2.7\Scripts&#xFF0C;&#x8FD0;&#x884C;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ez_setup.py</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x8FDE;&#x63A5;&#x7F51;&#x7EDC;&#x4E0B;&#x8F7D;&#x6240;&#x9700;&#x8981;&#x7684;&#x5B89;&#x88C5;&#x5305;&#x5E76;&#x5B8C;&#x6210;&#x5B89;&#x88C5;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;easy_install&#x4E86;&#x3002;<br>3&#xFF0C;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;pip<br>&#x4E0B;&#x8F7D;get-pip.py&#x5230;&#x67D0;&#x4E2A;&#x76EE;&#x5F55;(&#x5982;:F:\bigdata\python\python2.7\Scripts)&#xFF0C;<a href="https://bootstrap.pypa.io/" target="_blank" rel="external">&#x4E0B;&#x8F7D;&#x5730;&#x5740;</a><br>&#x5B89;&#x88C5;&#xFF1A;&#x8FDB;&#x5165;F:\bigdata\python\python2.7\Scripts&#xFF0C;&#x8FD0;&#x884C;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x8FDE;&#x63A5;&#x7F51;&#x7EDC;&#x4E0B;&#x8F7D;&#x6240;&#x9700;&#x8981;&#x7684;&#x5B89;&#x88C5;&#x5305;&#x5E76;&#x5B8C;&#x6210;&#x5B89;&#x88C5;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;easy_install&#x4E86;&#x3002;<br>4&#xFF0C;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;IPthon<br>&#x8FD0;&#x884C;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">easy_install Ipython</span><br></pre></td></tr></table></figure></p>
+<p>&#x7CFB;&#x7EDF;&#x5C31;&#x4F1A;&#x53BB;&#x7F51;&#x4E0A;&#x5BFB;&#x627E;ipython&#x5305;&#xFF0C;&#x8FDB;&#x884C;&#x4E0B;&#x8F7D;&#x53CA;&#x5B89;&#x88C5;&#xFF0C;&#x5E76;&#x4E14;&#x8FD8;&#x628A;pyreadline&#x4E5F;&#x5B89;&#x88C5;&#x4E86;&#x3002;<br>&#x5982;&#x679C;&#x7528;easy_install&#x5B89;&#x88C5;&#x5931;&#x8D25;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x7528;pip&#x6765;&#x5B89;&#x88C5;&#xFF0C;&#x8FD0;&#x884C;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install ipython</span><br></pre></td></tr></table></figure></p>
+<p>&#x672C;&#x4EBA;&#x5728;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x4E2D;&#x7528;easy_install&#x5B89;&#x88C5;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x7528;pip&#x5B89;&#x88C5;&#x6210;&#x529F;&#x4E86;&#x3002;<br>ipython.exe&#x88AB;&#x5B89;&#x88C5;&#x5728;F:\bigdata\python\python2.7\Scripts&#x4E0B;&#x9762;&#xFF0C;&#x56E0;&#x4E3A;&#x524D;&#x9762;&#x6DFB;&#x52A0;&#x8FC7;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x7684;&#x8DEF;&#x5F84;&#x652F;&#x6301;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8F93;&#x5165;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipython</span><br></pre></td></tr></table></figure></p>
+<p>5,&#x4F7F;&#x7528;Notebook&#x7684;&#x8BDD;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x4E0B;&#x8F7D;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x7684;&#x4E1C;&#x897F;&#x3002;<br>1)&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;pyzmq&#xFF0C;pip&#x5BF9;pyzmq&#x652F;&#x6301;&#x4E0D;&#x592A;&#x597D;&#xFF0C;&#x88C5;&#x4E0D;&#x4E0A;&#x3002;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;easy_install<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">easy_install pyzmq</span><br></pre></td></tr></table></figure></p>
+<p>2)&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;jinja2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">easy_install jinja2</span><br></pre></td></tr></table></figure></p>
+<p>3)&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;tornado<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">easy_install tornado</span><br></pre></td></tr></table></figure></p>
+<p>&#x6CE8;&#x610F;&#x5982;&#x679C;&#x5B89;&#x88C5;&#x5931;&#x8D25;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x7528;pip&#x5B89;&#x88C5;&#xFF0C;&#x6211;&#x5C31;&#x662F;&#x7528;easy_install&#x5B89;&#x88C5;&#x5931;&#x8D25;&#xFF0C;&#x4F46;&#x7528;pip&#x5B89;&#x88C5;&#x6210;&#x529F;&#x4E86;&#x3002;<br>&#x597D;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x5C31;&#x53EF;&#x4EE5;&#x628A;Notebook&#x8FDE;&#x8D77;&#x6765;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipython notebook</span><br></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;&#x6267;&#x884C;&#x8BE5;&#x6307;&#x4EE4;&#x51FA;&#x73B0;&#x5982;&#x4E0B;&#x9519;&#x8BEF;&#xFF1A;<br><a href="http://stackoverflow.com/questions/31401890/importerror-no-module-named-notebook-notebookapp" target="_blank" rel="external">ImportError: No module named notebook.notebookapp</a><br>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x6765;&#x89E3;&#x51B3;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure></p>
+<p>6&#xFF0C;&#x5C1D;&#x8BD5;&#x79D1;&#x5B66;&#x8BA1;&#x7B97;&#x7684;&#x753B;&#x56FE;&#x5DE5;&#x5177;matplotlib<br>&#x56E0;&#x4E3A;&#x4E0B;&#x8F7D;&#x7684;python&#x6CA1;&#x6709;&#x81EA;&#x5E26;numpy &#x548C; matplotlib<br>1)&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;nose<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">easy_install.exe nose</span><br></pre></td></tr></table></figure></p>
+<p>2)&#x7531;&#x4E8E;easy_install.exe &#x4E0E; pip&#x90FD;&#x4E0D;&#x80FD;&#x5B89;&#x88C5;numpy&#xFF0C;&#x6240;&#x4EE5;&#x4ECE;&#x8FD9;&#x4E2A;<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">&#x4E0B;&#x8F7D;&#x5730;&#x5740;</a>&#x53EF;&#x4EE5;&#x5F97;&#x5230;<br>numpy-MKL-1.8.2.win32-py2.7.whl<br>&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x662F;python2.7&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x70B9;&#x4E5F;&#x8981;&#x9009;py2.7&#x7684;numpy&#x3002;&#x76F4;&#x63A5;&#x5B89;&#x88C5;&#xFF0C;&#x5B83;&#x4F1A;&#x4F9D;&#x7167;Windows&#x6CE8;&#x518C;&#x8868;&#x91CC;&#x9762;&#x767B;&#x8BB0;&#x7684;pythonInstall&#x6765;&#x786E;&#x5B9A;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x3002;<br>3)&#x6700;&#x540E;&#x5B89;&#x88C5;matplotlib&#xFF0C;&#x4F46;&#x7531;&#x4E8E;easy_install.exe &#x4E0E; pip&#x90FD;&#x4E0D;&#x80FD;&#x5B89;&#x88C5;matplotlib&#xFF0C;&#x6240;&#x4EE5;&#x540C;&#x4E0A;<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">&#x4E0B;&#x8F7D;&#x5730;&#x5740;</a>&#x53EF;&#x5F97;<br>matplotlib-1.3.1.win32-py2.7.whl<br>4)&#x540C;&#x4E0A;<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">&#x4E0B;&#x8F7D;&#x5730;&#x5740;</a>&#x53EF;&#x5F97;<br>scipy&#x2011;0.14.0.win32&#x2011;py2.7.exe<br>&#x597D;&#x4E86;&#xFF0C;&#x8FD9;&#x5C31;&#x5927;&#x529F;&#x544A;&#x6210;&#x4E86;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;<br><a href="http://www.360doc.com/content/14/0902/11/16740871_406476389.shtml" target="_blank" rel="external"> windows&#x4E0B;&#x9762;&#x5B89;&#x88C5;&#x8DDF;&#x4F7F;&#x7528;Python&#xFF0C;Ipython notebook&#xFF08;&#x8BE6;&#x7EC6;&#x6B65;&#x9AA4;&#xFF09;</a><br><a href="http://blog.csdn.net/u012332571/article/details/38563897" target="_blank" rel="external"> windows&#x4E0B;ipython notebook&#x642D;&#x5EFA;</a></p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/12/14/windows下ipython-notebook搭建/" data-title="windows下ipython notebook搭建" data-url="http://946898963.github.io/2016/12/14/windows下ipython-notebook搭建/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: '946898963'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>

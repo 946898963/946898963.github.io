@@ -1,0 +1,698 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>MVP框架模式 | 一天进步一点</title>
+    <meta name="author" content="张岩">
+    
+    <meta name="description" content="记录生活点滴">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="MVP框架模式"/>
+    <meta property="og:site_name" content="张岩的博客"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="brown darken-1">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav brown darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">张岩</p>
+                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav brown darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术/">
+                    技术 <span class="right">45 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android/">
+                    Android <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/框架/">
+                    框架 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Python/">
+                    Python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/算法与数据结构/">
+                    算法与数据结构 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/多线程/">
+                    多线程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/框架/">框架</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>MVP框架模式</h1>
+    
+
+
+            </div>
+            <time class="light-green-link-context" datetime="2016-06-20T03:42:39.000Z"><a href="/2016/06/20/MVP框架模式/">2016-06-20</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/框架/" class="chip light-green">框架</a>
+        
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#简单介绍"><span class="section table-of-contents-text">简单介绍</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#优点："><span class="section table-of-contents-text">优点：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#MVP模式的三个角色"><span class="section table-of-contents-text">MVP模式的三个角色</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Presenter——交互中间人"><span class="section table-of-contents-text">Presenter——交互中间人</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#View——用户界面"><span class="section table-of-contents-text">View——用户界面</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Model——数据的存取"><span class="section table-of-contents-text">Model——数据的存取</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#跟MVC框架模式的区别："><span class="section table-of-contents-text">跟MVC框架模式的区别：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#MVP的简单示例："><span class="section table-of-contents-text">MVP的简单示例：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#MVP与Activity，Fragmnet的生命周期"><span class="section table-of-contents-text">MVP与Activity，Fragmnet的生命周期</span></a></li></ol>
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <h2 id="&#x7B80;&#x5355;&#x4ECB;&#x7ECD;"><a href="#&#x7B80;&#x5355;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x7B80;&#x5355;&#x4ECB;&#x7ECD;"></a>&#x7B80;&#x5355;&#x4ECB;&#x7ECD;</h2><p>MVP(Model-View-Presenter)&#xFF0C;MVC&#x6A21;&#x5F0F;&#x7684;&#x6F14;&#x5316;&#x7248;&#x672C;&#x3002;</p>
+<h3 id="&#x4F18;&#x70B9;&#xFF1A;"><a href="#&#x4F18;&#x70B9;&#xFF1A;" class="headerlink" title="&#x4F18;&#x70B9;&#xFF1A;"></a>&#x4F18;&#x70B9;&#xFF1A;</h3><blockquote>
+<ul>
+<li><p>&#x80FD;&#x6709;&#x6548;&#x964D;&#x4F4E;View&#x7684;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x907F;&#x514D;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x88AB;&#x585E;&#x8FDB;View&#x4E2D;&#xFF0C;&#x4F7F;&#x5F97;View&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x6DF7;&#x4E71;&#x7684;&#x5927;&#x6CE5;&#x5751;&#x3002;</p>
+</li>
+<li><p>MVP&#x6A21;&#x5F0F;&#x4F1A;&#x89E3;&#x9664;View&#x4E0E;Model&#x7684;&#x8026;&#x5408;&#xFF0C;&#x540C;&#x65F6;&#x53C8;&#x5E26;&#x6765;&#x4E86;&#x826F;&#x597D;&#x7684;&#x53EF;&#x6269;&#x5C55;&#x6027;&#xFF0C;&#x53EF;&#x6D4B;&#x8BD5;&#x6027;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;&#x7CFB;&#x7EDF;&#x7684;&#x6574;&#x6D01;&#x6027;&#xFF0C;&#x7075;&#x6D3B;&#x6027;&#x3002;</p>
+</li>
+</ul>
+</blockquote>
+<p>&#x7F3A;&#x70B9;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x7B80;&#x5355;&#x5E94;&#x7528;&#x6765;&#x8BF4;MVP&#x6A21;&#x5F0F;&#x7A0D;&#x663E;&#x9EBB;&#x70E6;&#xFF0C;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x63A5;&#x53E3;&#x4E0E;&#x6982;&#x5FF5;&#x4F7F;&#x5F97;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x5145;&#x65A5;&#x7740;&#x96F6;&#x6563;&#x7684;&#x63A5;&#x53E3;&#x3002;</li>
+</ul>
+</blockquote>
+<p>&#x5BF9;&#x4E8E;&#x590D;&#x6742;&#x7684;&#x5E94;&#x7528;&#x6765;&#x8BF4;&#xFF0C;MVP&#x6A21;&#x5F0F;&#x662F;&#x4E00;&#x79CD;&#x826F;&#x597D;&#x7684;&#x7ED3;&#x6784;&#x6A21;&#x5F0F;&#xFF0C;&#x4ED6;&#x80FD;&#x591F;&#x975E;&#x5E38;&#x597D;&#x7684;&#x7EC4;&#x7EC7;&#x5E94;&#x7528;&#x7ED3;&#x6784;&#xFF0C;&#x4F7F;&#x5F97;&#x5E94;&#x7528;&#x53D8;&#x5F97;&#x7075;&#x6D3B;&#xFF0C;&#x62E5;&#x62B1;&#x53D8;&#x5316;&#x3002;</p>
+<p>MVP&#x53EF;&#x4EE5;&#x5206;&#x79BB;&#x663E;&#x793A;&#x5C42;&#x4E0E;&#x903B;&#x8F91;&#x5C42;&#xFF0C;&#x4ED6;&#x4EEC;&#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;&#x964D;&#x4F4E;&#x8026;&#x5408;&#x5EA6;&#x3002;&#x7406;&#x60F3;&#x7684;MVP&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x540C;&#x4E00;&#x4EFD;&#x903B;&#x8F91;&#x4EE3;&#x7801;&#x642D;&#x914D;&#x4E0D;&#x540C;&#x7684;&#x663E;&#x793A;&#x754C;&#x9762;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x4E4B;&#x95F4;&#x5E76;&#x4E0D;&#x4F9D;&#x8D56;&#x5177;&#x4F53;&#xFF0C;&#x800C;&#x662F;&#x4F9D;&#x8D56;&#x4E8E;&#x62BD;&#x8C61;&#x3002;&#x8FD9;&#x4F7F;&#x5F97;Presenter&#x53EF;&#x4EE5;&#x8FD0;&#x7528;&#x4E8E;&#x4EFB;&#x4F55;&#x5B9E;&#x73B0;&#x4E86;View&#x903B;&#x8F91;&#x63A5;&#x53E3;&#x7684;UI&#xFF0C;&#x4F7F;&#x4E4B;&#x5177;&#x6709;&#x66F4;&#x5E7F;&#x6CDB;&#x7684;&#x9002;&#x7528;&#x6027;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;&#x7075;&#x6D3B;&#x5EA6;&#x3002;</p>
+<p>&#x5728;Android&#x4E2D;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x8DDF;&#x6570;&#x636E;&#x5B58;&#x53D6;&#x662F;&#x7D27;&#x8026;&#x5408;&#x7684;&#xFF0C;&#x5F88;&#x591A;&#x5DE5;&#x7A0B;&#x5E08;&#x4F1A;&#x5C06;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x585E;&#x8FDB;&#x67D0;&#x4E2A;Activity,Fragment&#x6216;&#x8005;&#x81EA;&#x5B9A;&#x4E49;&#x7684;View&#x7C7B;&#x4E2D;&#xFF0C;&#x4F7F;&#x5F97;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x7684;&#x5355;&#x4E2A;&#x7C7B;&#x578B;&#x663E;&#x5F97;&#x81C3;&#x80BF;&#x4E0D;&#x582A;&#xFF0C;&#x5176;&#x4E2D;&#x53C8;&#x542B;&#x6709;&#x4E00;&#x4E9B;&#x5F02;&#x6B65;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x5BFC;&#x81F4;&#x67D0;&#x4E2A;&#x7C7B;&#x8D85;&#x8FC7;&#x5343;&#x884C;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x53EF;&#x6269;&#x5C55;&#xFF0C;&#x7A33;&#x5B9A;&#x7684;&#x5E94;&#x7528;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x5206;&#x79BB;&#x5404;&#x4E2A;&#x5C42;&#xFF0C;&#x4E3B;&#x8981;&#x662F;UI&#x5C42;&#xFF0C;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5C42;&#x548C;&#x6570;&#x636E;&#x5C42;&#xFF0C;&#x6BD5;&#x7ADF;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x4EE5;&#x540E;&#x8FD8;&#x8981;&#x52A0;&#x5165;&#x4EC0;&#x4E48;&#x903B;&#x8F91;&#xFF0C;&#x662F;&#x4ECE;&#x672C;&#x5730;&#x6570;&#x636E;&#x5E93;&#x68C0;&#x7D22;&#x6570;&#x636E;&#xFF1F;&#x8FD8;&#x662F;&#x4ECE;&#x8FDC;&#x7A0B;&#x7684;&#x670D;&#x52A1;&#x4E2D;&#xFF1F;&#x6211;&#x4EEC;&#x7684;UI&#xFF0C;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x662F;&#x5426;&#x4F1A;&#x88AB;&#x66FF;&#x6362;&#xFF1F;&#x4F8B;&#x5982;&#xFF0C;&#x968F;&#x7740;&#x4EA7;&#x54C1;&#x5347;&#x7EA7;&#xFF0C;&#x6211;&#x4EEC;&#x7684;UI&#x53EF;&#x80FD;&#x4F1A;&#x88AB;&#x91CD;&#x65B0;&#x8BBE;&#x8BA1;&#xFF0C;&#x82E5;UI&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#xFF0C;&#x6B64;&#x65F6;&#x7531;&#x4E8E;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x8026;&#x5408;&#x5728;View&#x4E2D;&#xFF0C;UI&#x53D8;&#x5316;&#x5BFC;&#x81F4;&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x65B0;&#x7684;View&#x63A7;&#x4EF6;&#xFF0C;&#x6B64;&#x65F6;&#x4F60;&#x5C31;&#x9700;&#x8981;&#x5230;&#x539F;&#x6765;&#x7684;View&#x4E2D;&#x62BD;&#x79BB;&#x51FA;&#x5177;&#x4F53;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x5C06;&#x662F;&#x4E00;&#x4EF6;&#x975E;&#x5E38;&#x6298;&#x78E8;&#x4EBA;&#x7684;&#x4E5F;&#x6613;&#x4E8E;&#x51FA;&#x9519;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x5230;&#x6700;&#x7EC8;&#x4F60;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x5C06;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x62BD;&#x79BB;&#x51FA;&#x6765;&#x3002;</p>
+<p>MVP&#x6A21;&#x5F0F;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6807;&#x51C6;&#x5316;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x4ED6;&#x6709;&#x5F88;&#x591A;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x6C42;&#x8DDF;&#x81EA;&#x5DF1;&#x8BA4;&#x4E3A;&#x5BF9;&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x4FEE;&#x6B63;MVP&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x4ED6;&#x53EF;&#x4EE5;&#x968F;&#x7740;Presenter&#x7684;&#x590D;&#x6742;&#x7A0B;&#x5EA6;&#x53D8;&#x5316;&#x3002;&#x53EA;&#x8981;&#x4FDD;&#x8BC1;&#x6211;&#x4EEC;&#x662F;&#x901A;&#x8FC7;Presenter&#x5C06;View&#x548C;Model&#x89E3;&#x8026;&#x5408;&#xFF0C;&#x964D;&#x4F4E;&#x7C7B;&#x578B;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x5404;&#x4E2A;&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x6D4B;&#x8BD5;&#xFF0C;&#x72EC;&#x7ACB;&#x53D8;&#x5316;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x6B63;&#x786E;&#x7684;&#x65B9;&#x5411;&#x3002;&#x5728;Android&#x5F00;&#x53D1;&#x4E2D;&#x5927;&#x591A;&#x6570;&#x4EBA;&#x4F1A;&#x628A;Activity&#xFF0C;Fragmengt&#x4F5C;&#x4E3A;View&#x89D2;&#x8272;&#x6765;&#x770B;&#x5F85;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x7684;&#x804C;&#x8D23;&#x662F;&#x52A0;&#x8F7D;&#x5E76;&#x4E14;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x7B80;&#x5355;&#x7684;&#x4E0E;View&#x76F8;&#x5173;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x4ED6;&#x7EC4;&#x7EC7;&#x4E0E;&#x7BA1;&#x7406;View&#x96C6;&#x5408;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x770B;&#x4F5C;&#x7C97;&#x7C92;&#x5EA6;&#x7684;View&#xFF0C;&#x5F53;&#x7136;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x770B;&#x505A;Presenter&#x3002;</p>
+<h2 id="MVP&#x6A21;&#x5F0F;&#x7684;&#x4E09;&#x4E2A;&#x89D2;&#x8272;"><a href="#MVP&#x6A21;&#x5F0F;&#x7684;&#x4E09;&#x4E2A;&#x89D2;&#x8272;" class="headerlink" title="MVP&#x6A21;&#x5F0F;&#x7684;&#x4E09;&#x4E2A;&#x89D2;&#x8272;"></a>MVP&#x6A21;&#x5F0F;&#x7684;&#x4E09;&#x4E2A;&#x89D2;&#x8272;</h2><blockquote>
+<ul>
+<li>Presenter &#x4EA4;&#x4E92;&#x4E2D;&#x95F4;&#x4EBA;</li>
+<li>View      &#x7528;&#x6237;&#x754C;&#x9762;</li>
+<li>Model     &#x6570;&#x636E;&#x7684;&#x5B58;&#x53D6;</li>
+</ul>
+</blockquote>
+<h3 id="Presenter&#x2014;&#x2014;&#x4EA4;&#x4E92;&#x4E2D;&#x95F4;&#x4EBA;"><a href="#Presenter&#x2014;&#x2014;&#x4EA4;&#x4E92;&#x4E2D;&#x95F4;&#x4EBA;" class="headerlink" title="Presenter&#x2014;&#x2014;&#x4EA4;&#x4E92;&#x4E2D;&#x95F4;&#x4EBA;"></a>Presenter&#x2014;&#x2014;&#x4EA4;&#x4E92;&#x4E2D;&#x95F4;&#x4EBA;</h3><p>&#x662F;&#x6C9F;&#x901A;Model&#x8DDF;View&#x7684;&#x6865;&#x6881;&#xFF0C;&#x4ED6;&#x4ECE;Model&#x5C42;&#x68C0;&#x7D22;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED9;View&#x5C42;&#xFF0C;&#x4F7F;&#x5F97;View&#x8DDF;Model&#x4E4B;&#x95F4;&#x6CA1;&#x6709;&#x8026;&#x5408;&#xFF0C;&#x4E5F;&#x5C06;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x4ECE;View&#x89D2;&#x8272;&#x4E0A;&#x62BD;&#x79BB;&#x51FA;&#x6765;&#x3002;</p>
+<h3 id="View&#x2014;&#x2014;&#x7528;&#x6237;&#x754C;&#x9762;"><a href="#View&#x2014;&#x2014;&#x7528;&#x6237;&#x754C;&#x9762;" class="headerlink" title="View&#x2014;&#x2014;&#x7528;&#x6237;&#x754C;&#x9762;"></a>View&#x2014;&#x2014;&#x7528;&#x6237;&#x754C;&#x9762;</h3><p>View&#x901A;&#x5E38;&#x662F;&#x6307;Activity&#xFF0C;Fragment&#x6216;&#x8005;&#x67D0;&#x4E2A;View&#x63A7;&#x4EF6;&#xFF0C;&#x5B83;&#x542B;&#x6709;&#x4E00;&#x4E2A;Presenter&#x6210;&#x5458;&#x53D8;&#x91CF;&#x3002;&#x901A;&#x5E38;View&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x63A5;&#x53E3;&#xFF0C;View&#x4E0A;&#x7684;&#x64CD;&#x4F5C;&#x901A;&#x8FC7;&#x63A5;&#x53E3;&#x8F6C;&#x4EA4;&#x7ED9;Presenter&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#xFF0C;&#x6700;&#x540E;&#xFF0C;Presenter&#x8C03;&#x7528;View&#x903B;&#x8F91;&#x63A5;&#x53E3;&#x5C06;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x7ED9;View&#x5143;&#x7D20;&#x3002;</p>
+<h3 id="Model&#x2014;&#x2014;&#x6570;&#x636E;&#x7684;&#x5B58;&#x53D6;"><a href="#Model&#x2014;&#x2014;&#x6570;&#x636E;&#x7684;&#x5B58;&#x53D6;" class="headerlink" title="Model&#x2014;&#x2014;&#x6570;&#x636E;&#x7684;&#x5B58;&#x53D6;"></a>Model&#x2014;&#x2014;&#x6570;&#x636E;&#x7684;&#x5B58;&#x53D6;</h3><p>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x5316;&#x7684;APP&#x6765;&#x8BF4;&#xFF0C;Model&#x89D2;&#x8272;&#x4E3B;&#x8981;&#x662F;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x7684;&#x5B58;&#x53D6;&#x529F;&#x80FD;&#x3002;Presenter&#x9700;&#x8981;&#x901A;&#x8FC7;Model&#x5C42;&#x5B58;&#x50A8;&#xFF0C;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;Model&#x5C31;&#x50CF;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x3002;&#x66F4;&#x76F4;&#x767D;&#x7684;&#x8BF4;&#xFF0C;Model&#x662F;&#x5C01;&#x88C5;&#x4E86;&#x6570;&#x636E;&#x5E93;DAO&#x6216;&#x8005;&#x7F51;&#x7EDC;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x7684;&#x89D2;&#x8272;&#xFF0C;&#x6216;&#x8005;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x83B7;&#x53D6;&#x65B9;&#x5F0F;&#x7684;&#x96C6;&#x5408;&#x3002;</p>
+<h2 id="&#x8DDF;MVC&#x6846;&#x67B6;&#x6A21;&#x5F0F;&#x7684;&#x533A;&#x522B;&#xFF1A;"><a href="#&#x8DDF;MVC&#x6846;&#x67B6;&#x6A21;&#x5F0F;&#x7684;&#x533A;&#x522B;&#xFF1A;" class="headerlink" title="&#x8DDF;MVC&#x6846;&#x67B6;&#x6A21;&#x5F0F;&#x7684;&#x533A;&#x522B;&#xFF1A;"></a>&#x8DDF;MVC&#x6846;&#x67B6;&#x6A21;&#x5F0F;&#x7684;&#x533A;&#x522B;&#xFF1A;</h2><p>MVC&#x7684;&#x7279;&#x70B9;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5411;View&#x53D1;&#x9001;&#x6307;&#x4EE4;&#xFF0C;&#x518D;&#x7531;View&#x76F4;&#x63A5;&#x8981;&#x6C42;Model&#x6539;&#x53D8;&#x72B6;&#x6001;&#x3002;</li>
+<li>&#x7528;&#x6237;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5411;Controler&#x53D1;&#x9001;&#x6307;&#x4EE4;&#xFF0C;&#x518D;&#x7531;Controler&#x53D1;&#x9001;&#x7ED9;View&#x3002;</li>
+<li>Controler&#x8D77;&#x5230;&#x4E8B;&#x4EF6;&#x8DEF;&#x7531;&#x5668;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x540C;&#x65F6;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x90FD;&#x90E8;&#x7F72;&#x5728;Controler&#x4E2D;&#x3002;</li>
+</ul>
+</blockquote>
+<p>&#x76F8;&#x8F83;&#x4E8E;MVP&#x6A21;&#x5F0F;&#xFF0C;MVC&#x6A21;&#x5F0F;&#x7684;&#x8026;&#x5408;&#x6027;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x9AD8;&#x7684;&#xFF0C;View&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;Model&#xFF0C;&#x5BFC;&#x81F4;&#x4E09;&#x8005;&#x4E4B;&#x95F4;&#x6784;&#x6210;&#x56DE;&#x8DEF;&#x3002;&#x56E0;&#x6B64;&#xFF0C;MVP&#x4E0E;MVC&#x7684;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x662F;&#xFF0C;</p>
+<blockquote>
+<p>MVP&#x4E2D;&#x7684;View&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;Model&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;Presenter&#x53D1;&#x51FA;&#x8BF7;&#x6C42;&#xFF0C;View&#x8DDF;Model&#x4E0D;&#x76F4;&#x63A5;&#x901A;&#x4FE1;&#x3002;</p>
+</blockquote>
+<h2 id="MVP&#x7684;&#x7B80;&#x5355;&#x793A;&#x4F8B;&#xFF1A;"><a href="#MVP&#x7684;&#x7B80;&#x5355;&#x793A;&#x4F8B;&#xFF1A;" class="headerlink" title="MVP&#x7684;&#x7B80;&#x5355;&#x793A;&#x4F8B;&#xFF1A;"></a>MVP&#x7684;&#x7B80;&#x5355;&#x793A;&#x4F8B;&#xFF1A;</h2><p><img src="http://946898963.github.io/2016/06/20/MVP%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%BC%8F/loginUI.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"></p>
+<p>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x767B;&#x5F55;&#x754C;&#x9762;&#xFF08;&#x5B9E;&#x5728;&#x60F3;&#x4E0D;&#x5230;&#x522B;&#x7684;&#x4E86;&#x256E;(&#xFFE3;&#x25BD;&#xFFE3;&#x201D;)&#x256D;&#xFF09;&#xFF0C;&#x70B9;&#x51FB;LOGIN&#x5219;&#x8FDB;&#x884C;&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#x9A8C;&#x8BC1;&#xFF0C;&#x70B9;&#x51FB;CLEAR&#x5219;&#x91CD;&#x7F6E;&#x8F93;&#x5165;&#x3002;</p>
+<p><img src="http://946898963.github.io/2016/06/20/MVP%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%BC%8F/jiegou.png" alt="!\[tupian\](MVP&#x6846;&#x67B6;&#x6A21;&#x5F0F;/jiegou.png)"></p>
+<p>&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x662F;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;&#x7684;&#xFF0C;MVP&#x7684;&#x5206;&#x5C42;&#x8FD8;&#x662F;&#x5F88;&#x6E05;&#x6670;&#x7684;&#x3002;&#x6211;&#x7684;&#x4E60;&#x60EF;&#x662F;&#x5148;&#x6309;&#x6A21;&#x5757;&#x5206;Package&#xFF0C;&#x5728;&#x6A21;&#x5757;&#x4E0B;&#x9762;&#x518D;&#x53BB;&#x521B;&#x5EFA;model&#x3001;view&#x3001;presenter&#x7684;&#x5B50;Package&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;model&#x3001;view&#x3001;presenter&#x4F5C;&#x4E3A;&#x9876;&#x7EA7;&#x7684;Package&#xFF0C;&#x7136;&#x540E;&#x628A;&#x6240;&#x6709;&#x7684;&#x6A21;&#x5757;&#x7684;model&#x3001;view&#x3001;presenter&#x7C7B;&#x90FD;&#x5230;&#x8FD9;&#x4E09;&#x4E2A;&#x9876;&#x7EA7;Package&#x4E2D;&#xFF0C;&#x5C31;&#x597D;&#x50CF;&#x6709;&#x4EBA;&#x559C;&#x6B22;&#x628A;&#x9879;&#x76EE;&#x91CC;&#x6240;&#x6709;&#x7684;Activity&#x3001;Fragment&#x3001;Adapter&#x90FD;&#x653E;&#x5728;&#x4E00;&#x8D77;&#x4E00;&#x6837;&#x3002;</p>
+<p>LoginActivity<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">public class LoginActivity extends ActionBarActivity implements ILoginView, View.OnClickListener {</span><br><span class="line"></span><br><span class="line">    private EditText editUser;</span><br><span class="line">    private EditText editPass;</span><br><span class="line">    private Button   btnLogin;</span><br><span class="line">    private Button   btnClear;</span><br><span class="line">    ILoginPresenter loginPresenter;</span><br><span class="line">    private ProgressBar progressBar;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) {</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        //find view</span><br><span class="line">        editUser = (EditText) this.findViewById(R.id.et_login_username);</span><br><span class="line">        editPass = (EditText) this.findViewById(R.id.et_login_password);</span><br><span class="line">        btnLogin = (Button) this.findViewById(R.id.btn_login_login);</span><br><span class="line">        btnClear = (Button) this.findViewById(R.id.btn_login_clear);</span><br><span class="line">        progressBar = (ProgressBar) this.findViewById(R.id.progress_login);</span><br><span class="line"></span><br><span class="line">        //set listener</span><br><span class="line">        btnLogin.setOnClickListener(this);</span><br><span class="line">        btnClear.setOnClickListener(this);</span><br><span class="line"></span><br><span class="line">        //init</span><br><span class="line">        loginPresenter = new LoginPresenterCompl(this);</span><br><span class="line">        loginPresenter.setProgressBarVisiblity(View.INVISIBLE);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) {</span><br><span class="line">        switch (v.getId()){</span><br><span class="line">            case R.id.btn_login_clear:</span><br><span class="line">                loginPresenter.clear();</span><br><span class="line">                break;</span><br><span class="line">            case R.id.btn_login_login:</span><br><span class="line">                loginPresenter.setProgressBarVisiblity(View.VISIBLE);</span><br><span class="line">                btnLogin.setEnabled(false);</span><br><span class="line">                btnClear.setEnabled(false);</span><br><span class="line">                loginPresenter.doLogin(editUser.getText().toString(), editPass.getText().toString());</span><br><span class="line">                break;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onClearText() {</span><br><span class="line">        editUser.setText(&quot;&quot;);</span><br><span class="line">        editPass.setText(&quot;&quot;);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onLoginResult(Boolean result, int code) {</span><br><span class="line">        loginPresenter.setProgressBarVisiblity(View.INVISIBLE);</span><br><span class="line">        btnLogin.setEnabled(true);</span><br><span class="line">        btnClear.setEnabled(true);</span><br><span class="line">        if (result){</span><br><span class="line">            Toast.makeText(this,&quot;Login Success&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">            startActivity(new Intent(this, HomeActivity.class));</span><br><span class="line">        }</span><br><span class="line">        else</span><br><span class="line">            Toast.makeText(this,&quot;Login Fail, code = &quot; + code,Toast.LENGTH_SHORT).show();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onSetProgressBarVisibility(int visibility) {</span><br><span class="line">        progressBar.setVisibility(visibility);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x4ECE;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x770B;&#x51FA;LoginActivity&#x53EA;&#x505A;&#x4E86;findView&#x4EE5;&#x53CA;setListener&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x800C;&#x4E14;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;ILoginPresenter&#xFF0C;&#x6240;&#x6709;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;ILoginPresenter&#x7684;&#x5177;&#x4F53;&#x63A5;&#x53E3;&#x6765;&#x5B8C;&#x6210;&#x3002;&#x6240;&#x4EE5;LoginActivity&#x7684;&#x4EE3;&#x7801;&#x770B;&#x8D77;&#x6765;&#x5F88;&#x8212;&#x723D;&#xFF0C;&#x751A;&#x81F3;&#x6709;&#x70B9;&#x6109;&#x2642;&#x60A6;&#x5462; (/&#x3C9;&#xFF3C;*)&#x3002;&#x89C6;&#x529B;&#x4E0D;&#x9519;&#x7684;&#x4F60;&#x53EF;&#x80FD;&#x8FD8;&#x770B;&#x5230;&#x4E86;ILoginView&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x61C2;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x5199;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x5F80;&#x4E0B;&#x770B;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x8981;&#x8BB0;&#x4F4F;LoginActivity&#x5B9E;&#x73B0;&#x4E86;ILoginView&#x63A5;&#x53E3;&#x3002;</p>
+<p>&#x518D;&#x6765;&#x770B;&#x770B;ILoginPresenter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface ILoginPresenter {</span><br><span class="line">    void clear();</span><br><span class="line">    void doLogin(String name, String passwd);</span><br><span class="line">    void setProgressBarVisiblity(int visiblity);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class LoginPresenterCompl implements ILoginPresenter {</span><br><span class="line">    ILoginView iLoginView;</span><br><span class="line">    IUser user;</span><br><span class="line">    Handler    handler;</span><br><span class="line"></span><br><span class="line">    public LoginPresenterCompl(ILoginView iLoginView) {</span><br><span class="line">        this.iLoginView = iLoginView;</span><br><span class="line">        initUser();</span><br><span class="line">        handler = new Handler(Looper.getMainLooper());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void clear() {</span><br><span class="line">        iLoginView.onClearText();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void doLogin(String name, String passwd) {</span><br><span class="line">        Boolean isLoginSuccess = true;</span><br><span class="line">        final int code = user.checkUserValidity(name,passwd);</span><br><span class="line">        if (code!=0) isLoginSuccess = false;</span><br><span class="line">        final Boolean result = isLoginSuccess;</span><br><span class="line">        handler.postDelayed(new Runnable() {</span><br><span class="line">            @Override</span><br><span class="line">            public void run() {</span><br><span class="line">                iLoginView.onLoginResult(result, code);</span><br><span class="line">            }</span><br><span class="line">        }, 3000);</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setProgressBarVisiblity(int visiblity){</span><br><span class="line">        iLoginView.onSetProgressBarVisibility(visiblity);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private void initUser(){</span><br><span class="line">        user = new UserModel(&quot;mvp&quot;,&quot;mvp&quot;);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x4ECE;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;LoginPresenterCompl&#x4FDD;&#x7559;&#x4E86;ILoginView&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x56E0;&#x6B64;&#x5728;LoginPresenterCompl&#x91CC;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FDB;&#x884C;UI&#x64CD;&#x4F5C;&#x4E86;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x5728;Activity&#x91CC;&#x5B8C;&#x6210;&#x3002;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86;ILoginView&#x5F15;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;Activity&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x522B;&#x7684;Activity&#x91CC;&#x4E5F;&#x9700;&#x8981;&#x7528;&#x5230;&#x76F8;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x590D;&#x7528;LoginPresenterCompl&#x7C7B;&#x4E86;&#xFF08;&#x4E00;&#x4E2A;Activity&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x4EE5;&#x4E0A;&#x7684;Presenter&#xFF0C;&#x603B;&#x4E4B;&#xFF0C;&#x9700;&#x8981;&#x4EC0;&#x4E48;&#x4E1A;&#x52A1;&#x5C31;new&#x4EC0;&#x4E48;&#x6837;&#x7684;Presenter&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x5F88;&#x7075;&#x6D3B;&#xFF08;&#xFF20;&#xFFE3;&#xFE36;&#xFFE3;&#xFF20;&#xFF09;&#xFF09;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;MVP&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x901A;&#x8FC7;IVIew&#x548C;IPresenter&#xFF0C;&#x628A;Activity&#x7684;UI Logic&#x548C;Business Logic&#x5206;&#x79BB;&#x5F00;&#x6765;&#xFF0C;Activity just does its basic job! &#x81F3;&#x4E8E;Model&#x561B;&#xFF0C;&#x8FD8;&#x662F;&#x539F;&#x6765;MVC&#x91CC;&#x7684;Model&#x3002;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface IUser {</span><br><span class="line">	String getName();</span><br><span class="line"></span><br><span class="line">	String getPasswd();</span><br><span class="line"></span><br><span class="line">	int checkUserValidity(String name, String passwd);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class UserModel implements IUser {</span><br><span class="line">	String name;</span><br><span class="line">	String passwd;</span><br><span class="line"></span><br><span class="line">	public UserModel(String name, String passwd) {</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.passwd = passwd;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String getName() {</span><br><span class="line">		return name;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String getPasswd() {</span><br><span class="line">		return passwd;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public int checkUserValidity(String name, String passwd){</span><br><span class="line">		if (name==null||passwd==null||!name.equals(getName())||!passwd.equals(getPasswd())){</span><br><span class="line">			return -1;</span><br><span class="line">		}</span><br><span class="line">		return 0;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x518D;&#x6765;&#x770B;&#x770B;ILoginView&#xFF0C;&#x81F3;&#x4E8E;ILoginView&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x5462;&#xFF0C;&#x7FFB;&#x5230;&#x4E0A;&#x9762;&#x770B;&#x770B;LoginActivity&#x5427;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface ILoginView {</span><br><span class="line">    public void onClearText();</span><br><span class="line">    public void onLoginResult(Boolean result, int code);</span><br><span class="line">    public void onSetProgressBarVisibility(int visibility);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x4EE3;&#x7801;&#x8FD9;&#x79CD;&#x4E1C;&#x897F;&#x653E;&#x5728;&#x65E5;&#x5FD7;&#x91CC;&#x8BB2;&#x597D;&#x50CF;&#x9664;&#x4E86;&#x628A;&#x6574;&#x4E2A;&#x7248;&#x9762;&#x62C9;&#x957F;&#x6CA1;&#x4EC0;&#x4E48;&#x5375;&#x7528;&#xFF0C;&#x6211;&#x628A;&#x51E0;&#x79CD;&#x81EA;&#x5DF1;&#x5E38;&#x7528;&#x7684;MVP&#x7684;&#x5199;&#x6CD5;&#x5199;&#x6210;&#x4E00;&#x4E2A;Demo&#x9879;&#x76EE;&#xFF0C;&#x6B22;&#x8FCE;&#x56F4;&#x89C2;&#x548C;PullRequest&#xFF1A;<a href="https://github.com/kaedea/Android-MVP-Pattern" target="_blank" rel="external">Android-MVP-Pattern</a>&#x3002;</p>
+<p>&#x8BE5;&#x90E8;&#x5206;&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://segmentfault.com/a/1190000003927200#articleHeader8" target="_blank" rel="external">Android MVP Pattern</a></p>
+<p><a href="https://github.com/hehonghui/the-tech-frontier-app" target="_blank" rel="external">&#x300A;Android&#x6E90;&#x7801;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x89E3;&#x6790;&#x4E0E;&#x5B9E;&#x6218;&#x300B;&#x4E2D;&#x7684;&#x5173;&#x4E8E;MVP&#x6A21;&#x5F0F;&#x7684;&#x4F8B;&#x5B50;</a></p>
+<h2 id="MVP&#x4E0E;Activity&#xFF0C;Fragmnet&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#MVP&#x4E0E;Activity&#xFF0C;Fragmnet&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="MVP&#x4E0E;Activity&#xFF0C;Fragmnet&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>MVP&#x4E0E;Activity&#xFF0C;Fragmnet&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h2><p>MVP&#x6A21;&#x5F0F;&#x5177;&#x6709;&#x5404;&#x79CD;&#x7684;&#x4F18;&#x52BF;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;MVP&#x6A21;&#x5F0F;&#x4E2D;&#x7684;Presenter&#x7ECF;&#x5E38;&#x7684;&#x8FDB;&#x884C;&#x8017;&#x65F6;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;Activity&#x5728;&#x8017;&#x65F6;&#x64CD;&#x4F5C;&#x7ED3;&#x675F;&#x524D;&#x88AB;&#x9500;&#x6BC1;&#x4E86;&#xFF0C;&#x7531;&#x4E8E;Presenter&#x4E2D;&#x6301;&#x6709;&#x5BF9;Activity&#x7684;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x5BFC;&#x81F4;Activity&#x4E0D;&#x80FD;&#x88AB;&#x56DE;&#x6536;&#xFF0C;&#x53D1;&#x751F;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</p>
+<blockquote>
+<p>&#x901A;&#x8FC7;&#x5F31;&#x5F15;&#x7528;&#x548C;Activity&#xFF0C;Fragment&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x6765;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x3002;</p>
+</blockquote>
+<p>&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;Presenter&#x62BD;&#x8C61;BasePresenterm&#xFF0C;&#x4ED6;&#x662F;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x7C7B;&#xFF0C;&#x6CDB;&#x578B;&#x7C7B;&#x578B;&#x4E3A;View&#x89D2;&#x8272;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;&#x7C7B;&#x578B;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public abstract class BasePresenter&lt;T&gt; {</span><br><span class="line">    </span><br><span class="line">    protected Reference&lt;T&gt; mViewRef;</span><br><span class="line">    </span><br><span class="line">    public void attachView(T view){</span><br><span class="line">        mViewRef = new WeakReference&lt;T&gt;(view);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    protected T getView(){</span><br><span class="line">        return mViewRef.get();</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    public boolean isViewAttached(){</span><br><span class="line">        return mViewRef!=null&amp;&amp;mViewRef.get()!=null;</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    </span><br><span class="line">    public void detachView(){</span><br><span class="line">        if(mViewRef!=null){</span><br><span class="line">            mViewRef.clear();</span><br><span class="line">            mViewRef=null;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;MVPBaseActivity&#x57FA;&#x7C7B;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x57FA;&#x7C7B;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x51FD;&#x6570;&#x6765;&#x63A7;&#x5236;&#x5B83;&#x4E0E;Presenter&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public abstract class MVPBaseActivity&lt;V,T extends BasePresenter&lt;V&gt;&gt; extends Activity {</span><br><span class="line"></span><br><span class="line">    protected T mPresenter;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) {</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        mPresenter = createPresenter();</span><br><span class="line">        mPresenter.attachView((V)this);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() {</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        mPresenter.detachView();</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    protected abstract T createPresenter();</span><br><span class="line">    </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x542B;&#x6709;&#x4E24;&#x4E2A;&#x6CDB;&#x578B;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;View&#x63A5;&#x53E3;&#x7C7B;&#x578B;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;Presenter&#x7684;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x6CDB;&#x578B;&#x53C2;&#x6570;&#xFF0C;&#x4F7F;&#x5F97;&#x4E00;&#x4E9B;&#x901A;&#x7528;&#x7684;&#x903B;&#x8F91;&#x88AB;&#x62BD;&#x8C61;&#x5230;MVPBaseActivity&#x4E2D;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;</p>
+<p>&#x300A;Android&#x6E90;&#x7801;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x89E3;&#x6790;&#x4E0E;&#x5B9E;&#x6218;&#x300B;<br><a href="https://segmentfault.com/a/1190000003927200#articleHeader9" target="_blank" rel="external">Android MVP&#x6A21;&#x5F0F; &#x7B80;&#x5355;&#x6613;&#x61C2;&#x7684;&#x4ECB;&#x7ECD;&#x65B9;&#x5F0F; </a><br><a href="http://blog.csdn.net/feiduclear_up/article/details/46374653" target="_blank" rel="external">&#x6846;&#x67B6;&#x6A21;&#x5F0F;MVP&#x5728;Android&#x4E2D;&#x7684;&#x4F7F;&#x7528;</a></p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/06/20/MVP框架模式/" data-title="MVP框架模式" data-url="http://946898963.github.io/2016/06/20/MVP框架模式/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: '946898963'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large light-green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer brown darken-1 darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/946898963" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright light-green-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

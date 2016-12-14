@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>访问者模式 | 一天进步一点</title>
+    <meta name="author" content="张岩">
+    
+    <meta name="description" content="记录生活点滴">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="访问者模式"/>
+    <meta property="og:site_name" content="张岩的博客"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="brown darken-1">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav brown darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">张岩</p>
+                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav brown darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术/">
+                    技术 <span class="right">45 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android/">
+                    Android <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/框架/">
+                    框架 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Python/">
+                    Python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/算法与数据结构/">
+                    算法与数据结构 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/多线程/">
+                    多线程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/设计模式/">设计模式</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>访问者模式</h1>
+    
+
+
+            </div>
+            <time class="light-green-link-context" datetime="2016-06-18T15:53:49.000Z"><a href="/2016/06/18/访问者模式/">2016-06-18</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/设计模式/" class="chip light-green">设计模式</a>
+        
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#介绍"><span class="section table-of-contents-text">介绍</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#使用场景"><span class="section table-of-contents-text">使用场景</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#角色介绍"><span class="section table-of-contents-text">角色介绍</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#简单实现"><span class="section table-of-contents-text">简单实现</span></a></li></ol>
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>23&#x4E2D;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x4E2D;&#x6700;&#x590D;&#x6742;&#x7684;&#x4E00;&#x4E2A;&#xFF0C;&#x4F7F;&#x7528;&#x9891;&#x7387;&#x5E76;&#x4E0D;&#x9AD8;&#x3002;</p>
+<p>&#x57FA;&#x672C;&#x601D;&#x60F3;&#x662F;&#xFF1A;&#x8F6F;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x7531;&#x8BB8;&#x591A;&#x5BF9;&#x8C61;&#x6784;&#x6210;&#x7684;&#xFF0C;&#x6BD4;&#x8F83;&#x7A33;&#x5B9A;&#x7684;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#xFF0C;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x90FD;&#x62E5;&#x6709;&#x4E00;&#x4E2A;accept&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x6765;&#x63A5;&#x53D7;&#x8BBF;&#x95EE;&#x8FD9;&#x5BF9;&#x8C61;&#x7684;&#x8BBF;&#x95EE;&#x3002;&#x8BBF;&#x95EE;&#x8005;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4ED6;&#x62E5;&#x6709;&#x4E00;&#x4E2A;visit&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5BF9;&#x8BBF;&#x95EE;&#x5230;&#x7684;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x4E2D;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x5143;&#x7D20;&#x505A;&#x51FA;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#x3002;&#x5728;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x904D;&#x5386;&#x6574;&#x4E2A;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#xFF0C;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x5B9E;&#x65BD;accept&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;accept&#x65B9;&#x6CD5;&#x4E2D;&#x4F1A;&#x8C03;&#x7528;&#x8BBF;&#x95EE;&#x8005;&#x7684;visit&#x65B9;&#x6CD5;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x8BBF;&#x95EE;&#x8005;&#x5F97;&#x4EE5;&#x5904;&#x7406;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x8BBE;&#x8BA1;&#x4E0D;&#x540C;&#x7684;&#x8BBF;&#x95EE;&#x8005;&#x7C7B;&#x6765;&#x5B8C;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x8FBE;&#x5230;&#x533A;&#x522B;&#x5BF9;&#x5F85;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>&#x4F7F;&#x7528;&#x573A;&#x666F;</h2><blockquote>
+<ul>
+<li><p>&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x6BD4;&#x8F83;&#x7A33;&#x5B9A;&#xFF0C;&#x4F46;&#x662F;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x5728;&#x6B64;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x4E0A;&#x5B9A;&#x4E49;&#x65B0;&#x7684;&#x64CD;&#x4F5C;&#xFF1B;</p>
+</li>
+<li><p>&#x9700;&#x8981;&#x5BF9;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x5F88;&#x591A;&#x4E0D;&#x540C;&#x7684;&#x5E76;&#x4E14;&#x4E0D;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x9700;&#x8981;&#x907F;&#x514D;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x201D;&#x6C61;&#x67D3;&#x201D;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#xFF0C;&#x4E5F;&#x4E0D;&#x5E0C;&#x671B;&#x5728;&#x589E;&#x52A0;&#x65B0;&#x7684;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x7C7B;&#x3002;</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="&#x89D2;&#x8272;&#x4ECB;&#x7ECD;"><a href="#&#x89D2;&#x8272;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x89D2;&#x8272;&#x4ECB;&#x7ECD;"></a>&#x89D2;&#x8272;&#x4ECB;&#x7ECD;</h2><blockquote>
+<ul>
+<li>Visitor&#x3000;            </li>
+<li>ConcreteVisitor&#x3000;</li>
+<li>Element&#x3000;&#x3000;</li>
+<li>ElementA,ElementB&#x3000;</li>
+<li>ObjectStructure</li>
+</ul>
+</blockquote>
+<p>Visitor&#x3000;           &#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;      &#x3000;&#x63A5;&#x53E3;&#x6216;&#x8005;&#x62BD;&#x8C61;&#x7C7B;<br>ConcreteVisitor&#x3000;&#x3000;&#x3000;&#x3000; &#x3000;&#x5177;&#x4F53;&#x7684;&#x8BBF;&#x95EE;&#x8005;<br>Element&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000; &#x3000;&#x5143;&#x7D20;&#x63A5;&#x53E3;&#x6216;&#x8005;&#x62BD;&#x8C61;&#x7C7B;<br>ElementA,ElementB&#x3000;&#x3000;&#x3000;&#x5177;&#x4F53;&#x7684;&#x5143;&#x7D20;&#x7C7B;<br>ObjectStructure&#x3000;&#x3000;&#x3000;&#x3000; &#x3000;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;</p>
+<h2 id="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"><a href="#&#x7B80;&#x5355;&#x5B9E;&#x73B0;" class="headerlink" title="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"></a>&#x7B80;&#x5355;&#x5B9E;&#x73B0;</h2><p>&#x5E74;&#x7EC8;&#x5956;&#x8BC4;&#x5B9A;&#xFF0C;&#x5458;&#x5DE5;&#x5206;&#x4E3A;&#x5DE5;&#x7A0B;&#x5E08;&#x8DDF;&#x7ECF;&#x7406;&#xFF0C;&#x8BC4;&#x5B9A;&#x5458;&#x5DE5;&#x7684;&#x5206;&#x522B;&#x662F;CEO&#x8DDF;CTO&#xFF0C;CTO&#x53EA;&#x5173;&#x6CE8;&#x5DE5;&#x7A0B;&#x5E08;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#xFF0C;&#x7ECF;&#x7406;&#x7684;&#x65B0;&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF0C;&#x800C;CEO&#x5173;&#x6CE8;&#x7684;&#x662F;&#x5DE5;&#x7A0B;&#x5E08;&#x7684;KPI&#x548C;&#x7ECF;&#x7406;&#x7684;KPI&#x4EE5;&#x53CA;&#x65B0;&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#x3002;CEO&#x8DDF;CTO&#x5BF9;&#x4E0D;&#x540C;&#x5458;&#x5DE5;&#x7684;&#x5173;&#x6CE8;&#x70B9;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x8FD9;&#x5C31;&#x9700;&#x8981;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x5458;&#x5DE5;&#x505A;&#x51FA;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BBF;&#x95EE;&#x8005;&#x6A21;&#x5F0F;&#x4E86;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Staff {</span><br><span class="line"></span><br><span class="line">    public String name;</span><br><span class="line"></span><br><span class="line">    public int kpi;</span><br><span class="line"></span><br><span class="line">    public Staff(String name) {</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.kpi = new Random().nextInt(10*10000);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public abstract void accept(Visitor visitor);</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Engineer extends Staff {</span><br><span class="line"></span><br><span class="line">    public Engineer(String name) {</span><br><span class="line">        super(name);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void accept(Visitor visitor) {</span><br><span class="line">        visitor.visit(this);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getCodeLines(){</span><br><span class="line">        return new Random().nextInt(10*10000);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Manager extends Staff {</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public Manager(String name) {</span><br><span class="line">        super(name);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void accept(Visitor visitor) {</span><br><span class="line">        visitor.visit(this);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getProducts(){</span><br><span class="line">        return new Random().nextInt(10);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface Visitor {</span><br><span class="line">    public void visit(Engineer engineer);</span><br><span class="line">    public void visit(Manager manager);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class CEOVisitor implements Visitor {</span><br><span class="line">    @Override</span><br><span class="line">    public void visit(Engineer engineer) {</span><br><span class="line">        System.out.println(&quot;&#x5DE5;&#x7A0B;&#x5E08;:&quot;+engineer.name+&quot;,KPI:&quot;+engineer.kpi);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void visit(Manager manager) {</span><br><span class="line">        System.out.println(&quot;&#x7ECF;&#x7406;:&quot;+manager.name+&quot;,KPI:&quot;+manager.kpi+&quot;,&#x65B0;&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF1A;&quot;+manager.getProducts());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class CTOVisitor implements Visitor {</span><br><span class="line">    @Override</span><br><span class="line">    public void visit(Engineer engineer) {</span><br><span class="line">        System.out.println(&quot;&#x5DE5;&#x7A0B;&#x5E08;:&quot;+engineer.name+&quot;,&#x4EE3;&#x7801;&#x884C;&#x6570;:&quot;+engineer.getCodeLines());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void visit(Manager manager) {</span><br><span class="line">        System.out.println(&quot;&#x7ECF;&#x7406;:&quot;+manager.name+&quot;,&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF1A;&quot;+manager.getProducts());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class BusinessReport {</span><br><span class="line"></span><br><span class="line">    List&lt;Staff&gt; mStaffs = new LinkedList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public BusinessReport(){</span><br><span class="line"></span><br><span class="line">        mStaffs.add(new Manager(&quot;&#x738B;&#x7ECF;&#x7406;&quot;));</span><br><span class="line">        mStaffs.add(new Engineer(&quot;Engineer-&#x5F20;&quot;));</span><br><span class="line">        mStaffs.add(new Engineer(&quot;Engineer-&#x738B;&quot;));</span><br><span class="line">        mStaffs.add(new Engineer(&quot;Engineer-&#x674E;&quot;));</span><br><span class="line">        mStaffs.add(new Engineer(&quot;Engineer-&#x8D75;&quot;));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void showReports(Visitor visitor){</span><br><span class="line"></span><br><span class="line">        for (Staff staff:mStaffs){</span><br><span class="line">            staff.accept(visitor);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Client {</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args){</span><br><span class="line"></span><br><span class="line">        BusinessReport businessReport = new BusinessReport();</span><br><span class="line">        System.out.println(&quot;====&#x7ED9;CEO&#x770B;&#x7684;&#x62A5;&#x8868;====&quot;);</span><br><span class="line">        businessReport.showReports(new CEOVisitor());</span><br><span class="line">        System.out.println(&quot;====&#x7ED9;CTO&#x770B;&#x7684;&#x62A5;&#x8868;====&quot;);</span><br><span class="line">        businessReport.showReports(new CTOVisitor());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">====&#x7ED9;CEO&#x770B;&#x7684;&#x62A5;&#x8868;====</span><br><span class="line">&#x7ECF;&#x7406;:&#x738B;&#x7ECF;&#x7406;,KPI:36916,&#x65B0;&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF1A;6</span><br><span class="line">&#x5DE5;&#x7A0B;&#x5E08;:Engineer-&#x5F20;,KPI:76036</span><br><span class="line">&#x5DE5;&#x7A0B;&#x5E08;:Engineer-&#x738B;,KPI:99138</span><br><span class="line">&#x5DE5;&#x7A0B;&#x5E08;:Engineer-&#x674E;,KPI:96511</span><br><span class="line">&#x5DE5;&#x7A0B;&#x5E08;:Engineer-&#x8D75;,KPI:61203</span><br><span class="line">====&#x7ED9;CTO&#x770B;&#x7684;&#x62A5;&#x8868;====</span><br><span class="line">&#x7ECF;&#x7406;:&#x738B;&#x7ECF;&#x7406;,&#x4EA7;&#x54C1;&#x6570;&#x91CF;&#xFF1A;6</span><br><span class="line">&#x5DE5;&#x7A0B;&#x5E08;:Engineer-&#x5F20;,&#x4EE3;&#x7801;&#x884C;&#x6570;:11714</span><br><span class="line">&#x5DE5;&#x7A0B;&#x5E08;:Engineer-&#x738B;,&#x4EE3;&#x7801;&#x884C;&#x6570;:33446</span><br><span class="line">&#x5DE5;&#x7A0B;&#x5E08;:Engineer-&#x674E;,&#x4EE3;&#x7801;&#x884C;&#x6570;:6967</span><br><span class="line">&#x5DE5;&#x7A0B;&#x5E08;:Engineer-&#x8D75;,&#x4EE3;&#x7801;&#x884C;&#x6570;:82335</span><br></pre></td></tr></table></figure></p>
+<p>&#x8BBF;&#x95EE;&#x8005;&#x6A21;&#x5F0F;&#x6700;&#x5927;&#x7684;&#x4F18;&#x70B9;&#x662F;&#x589E;&#x52A0;&#x8BBF;&#x95EE;&#x8005;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#x8005;&#xFF0C;&#x4F60;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E86;Visitor&#x63A5;&#x53E3;&#x7684;&#x7C7B;&#xFF0C;&#x7136;&#x540E;&#x5B9E;&#x73B0;&#x4E24;&#x4E2A;visit&#x51FD;&#x6570;&#x6765;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x4E0E;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x76F8;&#x5206;&#x79BB;&#x7684;&#x6548;&#x679C;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528;&#x8BBF;&#x95EE;&#x8005;&#x6A21;&#x5F0F;&#xFF0C;&#x800C;&#x53C8;&#x60F3;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;&#x5FC5;&#x5B9A;&#x9700;&#x8981;&#x4F7F;&#x7528;if-else&#x8BED;&#x53E5;&#x548C;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x96BE;&#x4EE5;&#x5347;&#x7EA7;&#x7EF4;&#x62A4;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x8BBF;&#x95EE;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x4F53;&#x73B0;&#x51FA;&#x6765;&#x4E86;&#x3002;</p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/06/18/访问者模式/" data-title="访问者模式" data-url="http://946898963.github.io/2016/06/18/访问者模式/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: '946898963'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large light-green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer brown darken-1 darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/946898963" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright light-green-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

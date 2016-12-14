@@ -1,0 +1,672 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>AsyncTask的基本用法 | 一天进步一点</title>
+    <meta name="author" content="张岩">
+    
+    <meta name="description" content="记录生活点滴">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="AsyncTask的基本用法"/>
+    <meta property="og:site_name" content="张岩的博客"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="brown darken-1">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav brown darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">张岩</p>
+                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav brown darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术/">
+                    技术 <span class="right">45 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android/">
+                    Android <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/框架/">
+                    框架 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Python/">
+                    Python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/算法与数据结构/">
+                    算法与数据结构 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/多线程/">
+                    多线程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/Android/">Android</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>AsyncTask的基本用法</h1>
+    
+
+
+            </div>
+            <time class="light-green-link-context" datetime="2016-05-31T06:36:10.000Z"><a href="/2016/05/31/AsyncTask的基本用法/">2016-05-31</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Android/" class="chip light-green">Android</a>
+        
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x4E2D;&#x66F4;&#x65B0;UI&#xFF0C;Android&#x63D0;&#x4F9B;&#x4E86;AsyncTask&#x3002;&#x4F7F;&#x7528;AsyncTask&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4ECE;&#x5B50;&#x7EBF;&#x7A0B;&#x5207;&#x6362;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x3002;</p>
+<p>AsyncTask&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x8981;&#x4F7F;&#x7528;AsyncTask&#x5FC5;&#x987B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#x81EA;AsyncTaskd&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x5728;&#x7EE7;&#x627F;&#x65F6;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E3A;AsyncTask&#x7C7B;&#x6307;&#x5B9A;&#x4E09;&#x4E2A;&#x6CDB;&#x578B;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x7528;&#x9014;&#x5982;&#x4E0B;&#x3002;</p>
+<blockquote>
+<ul>
+<li><p>1  Params<br>&#x5728;&#x6267;&#x884C; AsyncTask &#x65F6;&#x9700;&#x8981;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x5728;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x4E2D;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+<li><p>2  Progress<br>&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5728;&#x754C;&#x9762;&#x4E0A;&#x663E;&#x793A;&#x5F53;&#x524D;&#x7684;&#x8FDB;&#x5EA6;&#xFF0C;&#x5219;&#x4F7F;&#x7528;&#x8FD9;&#x91CC;&#x6307;&#x5B9A;&#x7684;&#x6CDB;&#x578B;&#x4F5C;&#x4E3A;&#x8FDB;&#x5EA6;&#x5355;&#x4F4D;&#x3002;</p>
+</li>
+<li><p>3  Result<br>&#x5F53;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5BF9;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x8FD4;&#x56DE;&#xFF0C;&#x5219;&#x4F7F;&#x7528;&#x8FD9;&#x91CC;&#x6307;&#x5B9A;&#x7684;&#x6CDB;&#x578B;&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x3002;</p>
+</li>
+</ul>
+</blockquote>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x4E00;&#x4E2A;&#x6700;&#x7B80;&#x5355;&#x7684;&#x81EA;&#x5B9A;&#x4E49; AsyncTask &#x5C31;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class DownloadTask extends AsyncTask&lt;Void, Integer, Boolean&gt; {</span><br><span class="line">    &#x2026;&#x2026;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x628A; AsyncTask &#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E3A; Void&#xFF0C;&#x8868;&#x793A;&#x5728;&#x6267;&#x884C; AsyncTask &#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;&#x8981;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7ED9;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x6CDB;&#x578B;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E3A; Integer&#xFF0C;&#x8868;&#x793A;&#x4F7F;&#x7528;&#x6574;&#x578B;&#x6570;&#x636E;&#x6765;&#x4F5C;&#x4E3A;&#x8FDB;&#x5EA6;&#x663E;&#x793A;&#x5355;&#x4F4D;&#x3002;&#x7B2C;&#x4E09;&#x4E2A;&#x6CDB;&#x578B;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E3A; Boolean&#xFF0C;&#x5219;&#x8868;&#x793A;&#x4F7F;&#x7528;&#x5E03;&#x5C14;&#x578B;&#x6570;&#x636E;&#x6765;&#x53CD;&#x9988;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x76EE;&#x524D;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x7684; DownloadTask &#x8FD8;&#x662F;&#x4E00;&#x4E2A;&#x7A7A;&#x4EFB;&#x52A1;&#xFF0C;&#x5E76;&#x4E0D;&#x80FD;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x53BB;&#x91CD;&#x5199; AsyncTask &#x4E2D;&#x7684;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x624D;&#x80FD;&#x5B8C;&#x6210;&#x5BF9;&#x4EFB;&#x52A1;&#x7684;&#x5B9A;&#x5236;&#x3002;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x53BB;&#x91CD;&#x5199;&#x7684;&#x65B9;&#x6CD5;<br>&#x6709;&#x4EE5;&#x4E0B;&#x56DB;&#x4E2A;&#x3002;</p>
+<blockquote>
+<ul>
+<li><p>onPreExecute()</p>
+</li>
+<li><p>doInBackground(Params&#x2026;)</p>
+</li>
+<li><p>onProgressUpdate(Progress&#x2026;)</p>
+</li>
+<li><p>onPostExecute(Result)</p>
+</li>
+</ul>
+</blockquote>
+<p>1 onPreExecute()</p>
+<p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#xFF0C;&#x7528;&#x4E8E;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x754C;&#x9762;&#x4E0A;&#x7684;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x8FDB;&#x5EA6;&#x6761;&#x5BF9;&#x8BDD;&#x6846;&#x7B49;&#x3002;</p>
+<p>2 doInBackground(Params&#x2026;)</p>
+<p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x4EE3;&#x7801;&#x90FD;&#x4F1A;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5728;&#x8FD9;&#x91CC;&#x53BB;&#x5904;&#x7406;&#x6240;&#x6709;&#x7684;&#x8017;&#x65F6;&#x4EFB;&#x52A1;&#x3002;&#x4EFB;&#x52A1;&#x4E00;&#x65E6;&#x5B8C;&#x6210;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;return&#x8BED;&#x53E5;&#x6765;&#x5C06;&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#xFF0C;&#x5982;&#x679C; AsyncTask &#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x6CDB;&#x578B;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x7684;&#x662F;Void&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4E0D;&#x8FD4;&#x56DE;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x662F;&#x4E0D;&#x53EF;&#x4EE5;&#x8FDB;&#x884C; UI &#x64CD;&#x4F5C;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x66F4;&#x65B0; UI &#x5143;&#x7D20;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x53CD;&#x9988;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x8FDB;&#x5EA6;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;publishProgress(Progress&#x2026;)&#x65B9;&#x6CD5;&#x6765;&#x5B8C;&#x6210;&#x3002;</p>
+<p>3 onProgressUpdate(Progress&#x2026;)</p>
+<p>&#x5F53;&#x5728;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x4E2D;&#x8C03;&#x7528;&#x4E86;publishProgress(Progress&#x2026;)&#x65B9;&#x6CD5;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x4F1A;&#x5F88;&#x5FEB;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x65B9;&#x6CD5;&#x4E2D;&#x643A;&#x5E26;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x5728;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x4E2D;&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x53EF;&#x4EE5;&#x5BF9; UI &#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5229;&#x7528;&#x53C2;&#x6570;&#x4E2D;&#x7684;&#x6570;&#x503C;&#x5C31;&#x53EF;&#x4EE5;&#x5BF9;&#x754C;&#x9762;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x5730;&#x66F4;&#x65B0;&#x3002;</p>
+<p>4 onPostExecute(Result)</p>
+<p>&#x5F53;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x5E76;&#x901A;&#x8FC7;return&#x8BED;&#x53E5;&#x8FDB;&#x884C;&#x8FD4;&#x56DE;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x5F88;&#x5FEB;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x4F1A;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x5230;&#x6B64;&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x6765;&#x8FDB;&#x884C;&#x4E00;&#x4E9B; UI &#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x63D0;&#x9192;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4EE5;&#x53CA;&#x5173;&#x95ED;&#x6389;&#x8FDB;&#x5EA6;&#x6761;&#x5BF9;&#x8BDD;&#x6846;&#x7B49;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x5B8C;&#x6574;&#x7684;&#x81EA;&#x5B9A;&#x4E49; AsyncTask &#x5C31;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class DownloadTask extends AsyncTask&lt;Void, Integer, Boolean&gt; {</span><br><span class="line">       @Override</span><br><span class="line">       protected void onPreExecute() {</span><br><span class="line">           progressDialog.show(); // &#x663E;&#x793A;&#x8FDB;&#x5EA6;&#x5BF9;&#x8BDD;&#x6846;</span><br><span class="line">       }</span><br><span class="line">       @Override</span><br><span class="line">       protected Boolean doInBackground(Void... params) {</span><br><span class="line">           try {</span><br><span class="line">               while (true) {</span><br><span class="line">                   int downloadPercent = doDownload(); // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x865A;&#x6784;&#x7684;&#x65B9;&#x6CD5;</span><br><span class="line">                   publishProgress(downloadPercent);</span><br><span class="line">                   if (downloadPercent &gt;= 100) {</span><br><span class="line">                       break;</span><br><span class="line">                   }</span><br><span class="line">               }</span><br><span class="line">           } catch (Exception e) {</span><br><span class="line">               return false;</span><br><span class="line">           }</span><br><span class="line">           return true;</span><br><span class="line">       }</span><br><span class="line">       @Override</span><br><span class="line">       protected void onProgressUpdate(Integer... values) {</span><br><span class="line">           // &#x5728;&#x8FD9;&#x91CC;&#x66F4;&#x65B0;&#x4E0B;&#x8F7D;&#x8FDB;&#x5EA6;</span><br><span class="line">           progressDialog.setMessage(&quot;Downloaded &quot; + values[0] + &quot;%&quot;);</span><br><span class="line">       }</span><br><span class="line">       @Override</span><br><span class="line">       protected void onPostExecute(Boolean result) {</span><br><span class="line">           progressDialog.dismiss(); // &#x5173;&#x95ED;&#x8FDB;&#x5EA6;&#x5BF9;&#x8BDD;&#x6846;</span><br><span class="line">           // &#x5728;&#x8FD9;&#x91CC;&#x63D0;&#x793A;&#x4E0B;&#x8F7D;&#x7ED3;&#x679C;</span><br><span class="line">           if (result) {</span><br><span class="line">               Toast.makeText(context, &quot;Download succeeded&quot;,</span><br><span class="line">                       Toast.LENGTH_SHORT).show();</span><br><span class="line">           } else {</span><br><span class="line">               Toast.makeText(context, &quot; Download failed&quot;,</span><br><span class="line">                       Toast.LENGTH_SHORT).show();</span><br><span class="line">           }</span><br><span class="line">       }</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x8FD9;&#x4E2A; DownloadTask&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5728;doInBackground()&#x65B9;&#x6CD5;&#x91CC;&#x53BB;&#x6267;&#x884C;&#x5177;&#x4F53;&#x7684;&#x4E0B;&#x8F7D;&#x4EFB;&#x52A1;&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#x90FD;&#x662F;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x56E0;&#x800C;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x8FD0;&#x884C;&#x3002;&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x865A;&#x6784;&#x4E86;&#x4E00;&#x4E2A;doDownload()&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x8BA1;&#x7B97;&#x5F53;&#x524D;&#x7684;&#x4E0B;&#x8F7D;&#x8FDB;&#x5EA6;&#x5E76;&#x8FD4;&#x56DE;&#xFF0C;&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E86;&#x3002;&#x5728;&#x5F97;&#x5230;&#x4E86;&#x5F53;&#x524D;&#x7684;&#x4E0B;&#x8F7D;&#x8FDB;&#x5EA6;&#x540E;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x8BE5;&#x8003;&#x8651;&#x5982;&#x4F55;&#x628A;&#x5B83;&#x663E;&#x793A;&#x5230;&#x754C;&#x9762;&#x4E0A;&#x4E86;&#xFF0C;&#x7531;&#x4E8E;doInBackground()&#x65B9;&#x6CD5;&#x662F;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x80AF;&#x5B9A;&#x4E0D;&#x80FD;&#x8FDB;&#x884C; UI &#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8C03;&#x7528; publishProgress()&#x65B9;&#x6CD5;&#x5E76;&#x5C06;&#x5F53;&#x524D;&#x7684;&#x4E0B;&#x8F7D;&#x8FDB;&#x5EA6;&#x4F20;&#x8FDB;&#x6765;&#xFF0C;&#x8FD9;&#x6837;onProgressUpdate()&#x65B9;&#x6CD5;&#x5C31;&#x4F1A;&#x5F88;&#x5FEB;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C; UI &#x64CD;&#x4F5C;&#x4E86;&#x3002;&#x5F53;&#x4E0B;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C; doInBackground()&#x65B9;&#x6CD5;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x578B;&#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x6837; onPostExecute()&#x65B9;<br>&#x6CD5;&#x5C31;&#x4F1A;&#x5F88;&#x5FEB;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E5F;&#x662F;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x3002;&#x7136;&#x540E;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F1A;&#x6839;&#x636E;&#x4E0B;&#x8F7D;&#x7684;&#x7ED3;&#x679C;&#x6765;&#x5F39;&#x51FA;&#x76F8;&#x5E94;&#x7684; Toast &#x63D0;&#x793A;&#xFF0C;&#x4ECE;&#x800C;&#x5B8C;&#x6210;&#x6574;&#x4E2A; DownloadTask &#x4EFB;&#x52A1;&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x4F7F;&#x7528;AsyncTask&#x7684;&#x8BC0;&#x7A8D;&#x5C31;&#x662F;&#xFF0C;&#x5728;doInBackground()&#x65B9;&#x6CD5;&#x4E2D;&#x53BB;&#x6267;&#x884C;&#x5177;&#x4F53;&#x7684;&#x8017;&#x65F6;&#x4EFB;&#x52A1;&#xFF0C;&#x5728; onProgressUpdate()&#x65B9;&#x6CD5;&#x4E2D;&#x8FDB;&#x884C; UI &#x64CD;&#x4F5C;&#xFF0C;&#x5728; onPostExecute()&#x65B9;&#x6CD5;&#x4E2D;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x4EFB;&#x52A1;&#x7684;&#x6536;&#x5C3E;&#x5DE5;&#x4F5C;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x542F;&#x52A8;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x53EA;&#x9700;&#x7F16;&#x5199;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new DownloadTask().execute();</span><br></pre></td></tr></table></figure></p>
+<p>&#x4EE5;&#x4E0A;&#x5C31;&#x662F; AsyncTask &#x7684;&#x57FA;&#x672C;&#x7528;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x53BB;&#x8003;&#x8651;&#x4EC0;&#x4E48;&#x5F02;&#x6B65;&#x6D88;&#x606F;&#x5904;&#x7406;&#x673A;&#x5236;&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x4E13;&#x95E8;&#x4F7F;&#x7528;&#x4E00;&#x4E2A; Handler &#x6765;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x6D88;&#x606F;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x8C03;&#x7528;&#x4E00;&#x4E0B;publishProgress()&#x65B9;&#x6CD5;&#x5C31;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x5730;&#x4ECE;&#x5B50;&#x7EBF;&#x7A0B;&#x4E86;&#x3002;</p>
+<p>&#x5728;&#x4F7F;&#x7528;AsyncTask&#x7684;&#x65F6;&#x5019;&#x6709;&#x4E9B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>AsyncTask&#x8FD9;&#x4E2A;&#x7C7B;&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x52A0;&#x8F7D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x7B2C;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;AsynaTask&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x4E2D;&#xFF0C;&#x5728;Android4.1&#x6781;&#x5176;&#x4EE5;&#x4E0A;&#x7684;&#x7248;&#x672C;&#x4E2D;&#x5DF2;&#x7ECF;&#x88AB;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5DF2;&#x7ECF;&#x88AB;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#x4E86;&#x3002;&#x5728;</li>
+</ul>
+</blockquote>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/05/31/AsyncTask的基本用法/" data-title="AsyncTask的基本用法" data-url="http://946898963.github.io/2016/05/31/AsyncTask的基本用法/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: '946898963'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large light-green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer brown darken-1 darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/946898963" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright light-green-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

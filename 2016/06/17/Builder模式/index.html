@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Builder模式 | 一天进步一点</title>
+    <meta name="author" content="张岩">
+    
+    <meta name="description" content="记录生活点滴">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Builder模式"/>
+    <meta property="og:site_name" content="张岩的博客"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="brown darken-1">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav brown darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">张岩</p>
+                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav brown darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术/">
+                    技术 <span class="right">45 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android/">
+                    Android <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/框架/">
+                    框架 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Python/">
+                    Python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/算法与数据结构/">
+                    算法与数据结构 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/多线程/">
+                    多线程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/设计模式/">设计模式</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Builder模式</h1>
+    
+
+
+            </div>
+            <time class="light-green-link-context" datetime="2016-06-17T12:06:52.000Z"><a href="/2016/06/17/Builder模式/">2016-06-17</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/设计模式/" class="chip light-green">设计模式</a>
+        
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#介绍"><span class="section table-of-contents-text">介绍</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#使用场景"><span class="section table-of-contents-text">使用场景</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#角色介绍"><span class="section table-of-contents-text">角色介绍</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#简单实现"><span class="section table-of-contents-text">简单实现</span></a></li></ol>
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>Builder&#x6A21;&#x5F0F;&#x662F;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x7684;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#x578B;&#x6A21;&#x5F0F;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5728;&#x4E0D;&#x77E5;&#x9053;&#x5185;&#x90E8;&#x7684;&#x6784;&#x5EFA;&#x7EC6;&#x8282;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x52A0;&#x7CBE;&#x7EC6;&#x7684;&#x63A7;&#x5236;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x6D41;&#x7A0B;&#x3002;&#x8BE5;&#x6A21;&#x5F0F;&#x662F;&#x4E3A;&#x4E86;&#x5C06;&#x6784;&#x5EFA;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7684;&#x8FC7;&#x7A0B;&#x548C;&#x4ED6;&#x7684;&#x90E8;&#x4EF6;&#x89E3;&#x8026;&#xFF0C;&#x4F7F;&#x5F97;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x548C;&#x90E8;&#x4EF6;&#x7684;&#x8868;&#x793A;&#x9694;&#x79BB;&#x5F00;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x6709;&#x5F88;&#x591A;&#x5927;&#x91CF;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#xFF0C;&#x5982;&#x6C7D;&#x8F66;&#xFF0C;&#x6709;&#x8F66;&#x8F6E;&#xFF0C;&#x65B9;&#x5411;&#x76D8;&#xFF0C;&#x53D1;&#x52A8;&#x673A;&#xFF0C;&#x8FD8;&#x6709;&#x5404;&#x79CD;&#x5C0F;&#x96F6;&#x4EF6;&#x7B49;&#xFF0C;&#x5982;&#x4F55;&#x5C06;&#x8FD9;&#x4E9B;&#x90E8;&#x4EF6;&#x88C5;&#x914D;&#x6210;&#x4E00;&#x8F86;&#x6C7D;&#x8F66;&#xFF0C;&#x8FD9;&#x4E2A;&#x88C5;&#x914D;&#x8FC7;&#x7A0B;&#x5F88;&#x6F2B;&#x957F;&#xFF0C;&#x4E5F;&#x5F88;&#x590D;&#x6742;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x4E3A;&#x4E86;&#x5728;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x5916;&#x90E8;&#x9690;&#x85CF;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Builder&#x6A21;&#x5F0F;&#x5C06;&#x90E8;&#x4EF6;&#x8DDF;&#x7EC4;&#x88C5;&#x8FC7;&#x7A0B;&#x5206;&#x79BB;&#xFF0C;&#x4F7F;&#x5F97;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x548C;&#x90E8;&#x4EF6;&#x90FD;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x6269;&#x5C55;&#xFF0C;&#x4E24;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x8026;&#x5408;&#x964D;&#x5230;&#x6700;&#x4F4E;&#x3002;</p>
+<p>&#x5C06;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x5EFA;&#x8DDF;&#x4ED6;&#x7684;&#x8868;&#x793A;&#x5206;&#x79BB;&#xFF0C;&#x4F7F;&#x5F97;&#x540C;&#x6837;&#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E0D;&#x540C;&#x7684;&#x8868;&#x793A;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>&#x4F7F;&#x7528;&#x573A;&#x666F;</h2><blockquote>
+<ul>
+<li>&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#xFF0C;&#x4EA7;&#x751F;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x3002;</li>
+<li>&#x591A;&#x4E2A;&#x90E8;&#x4EF6;&#x6216;&#x8005;&#x96F6;&#x4EF6;&#x90FD;&#x53EF;&#x4EE5;&#x88C5;&#x914D;&#x5230;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x4F46;&#x662F;&#x4EA7;&#x751F;&#x7684;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x53C8;&#x4E0D;&#x540C;&#x3002;</li>
+<li>&#x4EA7;&#x54C1;&#x7C7B;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x6216;&#x8005;&#x4EA7;&#x54C1;&#x7C7B;&#x4E2D;&#x7684;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x4E0D;&#x540C;&#x4EA7;&#x751F;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;&#x975E;&#x5E38;&#x5408;&#x9002;&#x3002;</li>
+<li>&#x5F53;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x5982;&#x53C2;&#x6570;&#x591A;&#xFF0C;&#x4E14;&#x5F88;&#x591A;&#x53C2;&#x6570;&#x90FD;&#x6709;&#x9ED8;&#x8BA4;&#x503C;&#x7684;&#x65F6;&#x5019;&#x3002;</li>
+</ul>
+</blockquote>
+<h2 id="&#x89D2;&#x8272;&#x4ECB;&#x7ECD;"><a href="#&#x89D2;&#x8272;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x89D2;&#x8272;&#x4ECB;&#x7ECD;"></a>&#x89D2;&#x8272;&#x4ECB;&#x7ECD;</h2><blockquote>
+<ul>
+<li>Product&#x4EA7;&#x54C1;&#x7C7B;&#x2014;-&#x4EA7;&#x54C1;&#x7684;&#x62BD;&#x8C61;&#x7C7B;</li>
+<li>Builder&#x2014;-&#x62BD;&#x8C61;Builder&#x7C7B;&#xFF0C;&#x89C4;&#x8303;&#x4EA7;&#x54C1;&#x7EC4;&#x5EFA;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x7531;&#x5B50;&#x7C7B;&#x5B9E;&#x73B0;&#x5177;&#x4F53;&#x7684;&#x7EC4;&#x5EFA;&#x8FC7;&#x7A0B; </li>
+<li>ConcreteBuilder&#x2014;-&#x5177;&#x4F53;&#x7684;Builder&#x7C7B;</li>
+<li>Director&#x2014;&#x7EDF;&#x4E00;&#x7EC4;&#x88C5;&#x8FC7;&#x7A0B;</li>
+</ul>
+</blockquote>
+<h2 id="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"><a href="#&#x7B80;&#x5355;&#x5B9E;&#x73B0;" class="headerlink" title="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"></a>&#x7B80;&#x5355;&#x5B9E;&#x73B0;</h2><p>&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x7EC4;&#x88C5;&#x8FC7;&#x7A0B;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;&#x800C;&#x4E14;&#x987A;&#x5E8F;&#x662F;&#x4E0D;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x7EC4;&#x88C5;&#x8FC7;&#x7A0B;&#x7B80;&#x5316;&#x4E3A;&#xFF0C;&#x6784;&#x5EFA;&#x4E3B;&#x673A;&#xFF0C;&#x8BBE;&#x7F6E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x8BBE;&#x7F6E;&#x663E;&#x793A;&#x5668;&#x4E09;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;Director&#x548C;&#x5177;&#x4F53;&#x7684;Builder&#x6765;&#x6784;&#x5EFA;&#x8BA1;&#x7B97;&#x673A;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x62BD;&#x8C61;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7C7B;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Computer {</span><br><span class="line"></span><br><span class="line">    protected String mBoard;</span><br><span class="line">    protected String mDisplay;</span><br><span class="line">    protected String mOs;</span><br><span class="line"></span><br><span class="line">    protected Computer(){</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setBoard(String board){</span><br><span class="line">        this.mBoard= board;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setDisplay(String display){</span><br><span class="line">        this.mDisplay=display;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public abstract void setOs();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() {</span><br><span class="line">        return &quot;mBoard:&quot;+mBoard+&quot;mDisplay:&quot;+mDisplay+&quot;mOs:&quot;+mOs;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5177;&#x4F53;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7C7B;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class MacComputer extends Computer {</span><br><span class="line"></span><br><span class="line">    protected MacComputer(){</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setOs() {</span><br><span class="line">        mOs=&quot;mac os&quot;;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x62BD;&#x8C61;&#x7684;Builder<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Builder {</span><br><span class="line"></span><br><span class="line">    public abstract void buildBoard(String board);</span><br><span class="line">    public abstract void buildDisplay(String display);</span><br><span class="line">    public abstract void buildOs();</span><br><span class="line">    public abstract Computer create();</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5177;&#x4F53;&#x7684;Builder<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class MacBuilder extends Builder {</span><br><span class="line">    private Computer computer=new MacComputer();</span><br><span class="line">    @Override</span><br><span class="line">    public void buildBoard(String board) {</span><br><span class="line">        computer.setBoard(board);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void buildDisplay(String display) {</span><br><span class="line">        computer.setDisplay(display);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void buildOs() {</span><br><span class="line">        computer.setOs();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Computer create() {</span><br><span class="line">        return computer;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>Director&#x7C7B;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Director {</span><br><span class="line"></span><br><span class="line">    private Builder builder;</span><br><span class="line"></span><br><span class="line">    public Director(Builder builder){</span><br><span class="line">        this.builder=builder;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void construct(String board,String display){</span><br><span class="line">        builder.buildBoard(board);</span><br><span class="line">        builder.buildDisplay(display);</span><br><span class="line">        builder.buildOs();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Builder builder = new MacBuilder();</span><br><span class="line">Director director = new Director(builder);</span><br><span class="line">director.construct(&quot;&#x4E3B;&#x677F;&quot;, &quot;&#x663E;&#x793A;&#x5668;&quot;);</span><br><span class="line">System.out.println(builder.create().toString());</span><br></pre></td></tr></table></figure>
+<p>&#x901A;&#x8FC7;&#x5177;&#x4F53;&#x7684;MacBuilder&#x6784;&#x5EFA;MacBook&#x5BF9;&#x8C61;&#xFF0C;&#x800C;Director&#x5C01;&#x88C5;&#x4E86;&#x6784;&#x5EFA;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x5BF9;&#x5916;&#x9690;&#x85CF;&#x6784;&#x5EFA;&#x7EC6;&#x8282;&#x3002;Builder&#x8DDF;Director&#x4E00;&#x8D77;&#x5C06;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x5EFA;&#x8DDF;&#x8868;&#x793A;&#x5206;&#x79BB;&#xFF0C;&#x4F7F;&#x5F97;&#x540C;&#x6837;&#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5728;&#x73B0;&#x5B9E;&#x7684;&#x5F00;&#x53D1;&#x4E2D;Director&#x7ECF;&#x5E38;&#x88AB;&#x7701;&#x7565;&#x3002;&#x800C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;Builder&#x7C7B;&#x6765;&#x8FDB;&#x884C;&#x5BF9;&#x8C61;&#x7684;&#x7EC4;&#x88C5;&#xFF0C;&#x8FD9;&#x4E2A;Builder&#x901A;&#x5E38;&#x4E3A;&#x94FE;&#x5F0F;&#x8C03;&#x7528;&#xFF0C;&#x4ED6;&#x7684;&#x5173;&#x952E;&#x70B9;&#x662F;&#x6BCF;&#x4E2A;setter&#x65B9;&#x6CD5;&#x90FD;&#x5C06;&#x8FD4;&#x56DE;&#x81EA;&#x8EAB;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4F7F;&#x5F97;setter&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x94FE;&#x5F0F;&#x8C03;&#x7528;&#xFF0C;&#x4EE3;&#x7801;&#x5927;&#x81F4;&#x5982;&#x4E0B;&#xFF1A;<br>new Builder().setA(&#x201C;A&#x201D;).setB(&#x201C;B&#x201D;).setC(&#x201C;C&#x201D;);&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#xFF0C;&#x4E0D;&#x4EC5;&#x53BB;&#x9664;&#x4E86;Director&#x89D2;&#x8272;&#x3002;&#x6574;&#x4E2A;&#x7ED3;&#x6784;&#x4E5F;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#xFF0C;&#x4E5F;&#x80FD;&#x5BF9;Product&#x5BF9;&#x8C61;&#x7684;&#x7EC4;&#x88C5;&#x8FC7;&#x7A0B;&#x6709;&#x66F4;&#x52A0;&#x7CBE;&#x7EC6;&#x7684;&#x63A7;&#x5236;&#x3002;</p>
+<p>&#x7701;&#x7565;Director&#x7684;&#x60C5;&#x51B5;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public abstract class BuilderB {</span><br><span class="line"></span><br><span class="line">    public abstract BuilderB buildBoard(String board);</span><br><span class="line">    public abstract BuilderB buildDisplay(String display);</span><br><span class="line">    public abstract BuilderB buildOs();</span><br><span class="line">    public abstract Computer create();</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class MacBuilderB extends BuilderB {</span><br><span class="line"></span><br><span class="line">    private Computer computer=new MacComputer();</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public BuilderB buildBoard(String board) {</span><br><span class="line">        computer.setBoard(board);</span><br><span class="line">        return this;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public BuilderB buildDisplay(String display) {</span><br><span class="line">        computer.setDisplay(display);</span><br><span class="line">        return this;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public BuilderB buildOs() {</span><br><span class="line">        computer.setOs();</span><br><span class="line">        return this;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Computer create() {</span><br><span class="line">        return computer;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) {</span><br><span class="line">    BuilderB builderB = new MacBuilderB();</span><br><span class="line">	System.out.println(builderB.buildBoard(&quot;&#x4E3B;&#x677F;&quot;).buildDisplay(&quot;&#x663E;&#x793A;&#x5668;&quot;).buildOs().create());</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/06/17/Builder模式/" data-title="Builder模式" data-url="http://946898963.github.io/2016/06/17/Builder模式/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: '946898963'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large light-green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer brown darken-1 darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/946898963" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright light-green-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

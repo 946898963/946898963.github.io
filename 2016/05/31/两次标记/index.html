@@ -1,0 +1,635 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>对象回收前的两次标记 | 一天进步一点</title>
+    <meta name="author" content="张岩">
+    
+    <meta name="description" content="记录生活点滴">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="对象回收前的两次标记"/>
+    <meta property="og:site_name" content="张岩的博客"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="brown darken-1">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav brown darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">张岩</p>
+                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav brown darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术/">
+                    技术 <span class="right">45 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android/">
+                    Android <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/框架/">
+                    框架 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Python/">
+                    Python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/算法与数据结构/">
+                    算法与数据结构 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/多线程/">
+                    多线程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/JVM/">JVM</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>对象回收前的两次标记</h1>
+    
+
+
+            </div>
+            <time class="light-green-link-context" datetime="2016-05-31T14:59:10.000Z"><a href="/2016/05/31/两次标记/">2016-05-31</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/JVM/" class="chip light-green">JVM</a>
+        
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <p>&#x53EF;&#x8FBE;&#x6027;&#x5206;&#x6790;&#x7B97;&#x6CD5;&#x4E2D;&#x4E0D;&#x53EF;&#x8FBE;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x5B9A;&#x4F1A;&#x88AB;&#x56DE;&#x6536;&#x6389;&#xFF0C;&#x4ED6;&#x4EEC;&#x5728;&#x771F;&#x6B63;&#x7684;&#x88AB;&#x56DE;&#x6536;&#x6389;&#x4E4B;&#x524D;&#xFF0C;&#x81F3;&#x5C11;&#x4F1A;&#x7ECF;&#x5386;&#x4E24;&#x6B21;&#x6807;&#x8BB0;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<p>&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x5728;&#x6267;&#x884C;&#x53EF;&#x8FBE;&#x6027;&#x5206;&#x6790;&#x540E;&#x53D1;&#x73B0;&#x6CA1;&#x6709;&#x5F15;&#x7528;&#x94FE;&#x8DDF;GC Roots&#x76F8;&#x8FDE;&#x63A5;&#xFF0C;&#x90A3;&#x4ED6;&#x5C06;&#x4F1A;&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x6807;&#x8BB0;&#xFF0C;&#x5E76;&#x4E14;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x7B5B;&#x9009;&#xFF0C;&#x7B5B;&#x9009;&#x7684;&#x6761;&#x4EF6;&#x662F;&#x6B64;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x6709;&#x5FC5;&#x8981;&#x6267;&#x884C;finalize()&#x65B9;&#x6CD5;&#xFF0C;&#x5F53;&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x8986;&#x76D6;finalize()&#x65B9;&#x6CD5;&#x6216;&#x8005;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x8FC7;&#x4E00;&#x6B21;finalize()&#x65B9;&#x6CD5;&#xFF0C;&#x865A;&#x62DF;&#x673A;&#x90FD;&#x5C06;&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x89C6;&#x4E3A;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x88AB;&#x89C6;&#x4E3A;&#x6709;&#x5FC5;&#x8981;&#x6267;&#x884C;finalize()&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4F1A;&#x88AB;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x53EB;&#x505A;F-Queue&#x7684;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x6807;&#x5728;&#x7A0D;&#x540E;&#x6709;&#x865A;&#x62DF;&#x673A;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x4F4E;&#x4F18;&#x5148;&#x7EA7;&#x7684;Finalizer&#x7EBF;&#x7A0B;&#x4E2D;&#x53BB;&#x6267;&#x884C;&#x5B83;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x6267;&#x884C;&#x662F;&#x6307;&#x865A;&#x62DF;&#x673A;&#x53EA;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5355;&#x5E76;&#x4E0D;&#x4FDD;&#x8BC1;&#x4F1A;&#x7B49;&#x5F85;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x7ED3;&#x675F;&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#x4E0D;&#x662F;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;finalize()&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x7F13;&#x6162;&#xFF0C;&#x6216;&#x8005;&#x53D1;&#x751F;&#x4E86;&#x6B7B;&#x5FAA;&#x73AF;&#xFF0C;&#x5C06;&#x4F1A;&#x5BFC;&#x81F4;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x6C38;&#x4E45;&#x7684;&#x7B49;&#x5F85;&#xFF0C;&#x751A;&#x81F3;&#x5BFC;&#x81F4;&#x6574;&#x4E2A;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002;&#x4E4B;&#x540E;GC&#x5C06;&#x4F1A;&#x8FDB;&#x884C;&#x7B2C;&#x4E8C;&#x6B21;&#x7684;&#x5C0F;&#x89C4;&#x6A21;&#x7684;&#x6807;&#x8BB0;&#xFF0C;&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x5728;finalize()&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x8DDF;&#x5F15;&#x7528;&#x94FE;&#x4E0A;&#x7684;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5EFA;&#x7ACB;&#x4E86;&#x5173;&#x8054;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x6807;&#x8BB0;&#x7684;&#x65F6;&#x5019;&#x4ED6;&#x5C31;&#x4F1A;&#x88AB;&#x79FB;&#x9664;&#x5373;&#x5C06;&#x88AB;&#x56DE;&#x6536;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8DDF;&#x5F15;&#x7528;&#x94FE;&#x4E0A;&#x7684;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5EFA;&#x7ACB;&#x5173;&#x8054;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4ED6;&#x5C31;&#x771F;&#x7684;&#x88AB;&#x56DE;&#x6536;&#x4E86;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * &#x6B64;&#x4EE3;&#x7801;&#x6F14;&#x793A;&#x4E86;&#x4E24;&#x70B9;&#xFF1A; </span><br><span class="line"> * 1.&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x5728;&#x88AB;GC&#x65F6;&#x81EA;&#x6211;&#x62EF;&#x6551;&#x3002; </span><br><span class="line"> * 2.&#x8FD9;&#x79CD;&#x81EA;&#x6551;&#x7684;&#x673A;&#x4F1A;&#x53EA;&#x6709;&#x4E00;&#x6B21;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;finalize()&#x65B9;&#x6CD5;&#x6700;&#x591A;&#x53EA;&#x4F1A;&#x88AB;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x8C03;&#x7528;&#x4E00;&#x6B21;</span><br><span class="line"> * @author zzm</span><br><span class="line"> */</span><br><span class="line">public class FinalizeEscapeGC {</span><br><span class="line"></span><br><span class="line">	public static FinalizeEscapeGC SAVE_HOOK = null;</span><br><span class="line"></span><br><span class="line">	public void isAlive() {</span><br><span class="line">		System.out.println(&quot;yes, i am still alive :)&quot;);</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	protected void finalize() throws Throwable {</span><br><span class="line">		super.finalize();</span><br><span class="line">		System.out.println(&quot;finalize mehtod executed!&quot;);</span><br><span class="line">		FinalizeEscapeGC.SAVE_HOOK = this;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws Throwable {</span><br><span class="line">		SAVE_HOOK = new FinalizeEscapeGC();</span><br><span class="line"></span><br><span class="line">		//&#x5BF9;&#x8C61;&#x7B2C;&#x4E00;&#x6B21;&#x6210;&#x529F;&#x62EF;&#x6551;&#x81EA;&#x5DF1;</span><br><span class="line">		SAVE_HOOK = null;</span><br><span class="line">		System.gc();</span><br><span class="line">		// &#x56E0;&#x4E3A;Finalizer&#x65B9;&#x6CD5;&#x4F18;&#x5148;&#x7EA7;&#x5F88;&#x4F4E;&#xFF0C;&#x6682;&#x505C;0.5&#x79D2;&#xFF0C;&#x4EE5;&#x7B49;&#x5F85;&#x5B83;</span><br><span class="line">		Thread.sleep(500);</span><br><span class="line">		if (SAVE_HOOK != null) {</span><br><span class="line">			SAVE_HOOK.isAlive();</span><br><span class="line">		} else {</span><br><span class="line">			System.out.println(&quot;no, i am dead :(&quot;);</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">		// &#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E0E;&#x4E0A;&#x9762;&#x7684;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6B21;&#x81EA;&#x6551;&#x5374;&#x5931;&#x8D25;&#x4E86;</span><br><span class="line">		SAVE_HOOK = null;</span><br><span class="line">		System.gc();</span><br><span class="line">		// &#x56E0;&#x4E3A;Finalizer&#x65B9;&#x6CD5;&#x4F18;&#x5148;&#x7EA7;&#x5F88;&#x4F4E;&#xFF0C;&#x6682;&#x505C;0.5&#x79D2;&#xFF0C;&#x4EE5;&#x7B49;&#x5F85;&#x5B83;</span><br><span class="line">		Thread.sleep(500);</span><br><span class="line">		if (SAVE_HOOK != null) {</span><br><span class="line">			SAVE_HOOK.isAlive();</span><br><span class="line">		} else {</span><br><span class="line">			System.out.println(&quot;no, i am dead :(&quot;);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x6709;&#x4E00;&#x6B21;&#x62EF;&#x6551;&#x6210;&#x529F;&#x4E86;&#xFF0C;&#x6709;&#x4E00;&#x6B21;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;finalize()&#x65B9;&#x6CD5;&#x53EA;&#x80FD;&#x88AB;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x3002;</p>
+<p>&#x5E76;&#x4E0D;&#x63A8;&#x8350;&#x4F7F;&#x7528;finalize()&#x65B9;&#x6CD5;&#x62EF;&#x6551;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;&#x8BE5;&#x65B9;&#x6CD5;&#x4EE3;&#x4EF7;&#x9AD8;&#x6602;&#xFF0C;&#x4E0D;&#x786E;&#x5B9A;&#x6027;&#x5927;&#xFF0C;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x8C03;&#x7528;&#x7684;&#x987A;&#x5E8F;,&#x800C;&#x4E14;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x7528;try-finally&#x66F4;&#x597D;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/05/31/两次标记/" data-title="对象回收前的两次标记" data-url="http://946898963.github.io/2016/05/31/两次标记/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: '946898963'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large light-green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer brown darken-1 darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/946898963" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright light-green-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

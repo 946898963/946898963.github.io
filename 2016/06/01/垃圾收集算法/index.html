@@ -1,0 +1,663 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>垃圾收集算法 | 一天进步一点</title>
+    <meta name="author" content="张岩">
+    
+    <meta name="description" content="记录生活点滴">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="垃圾收集算法"/>
+    <meta property="og:site_name" content="张岩的博客"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="brown darken-1">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav brown darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">张岩</p>
+                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav brown darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术/">
+                    技术 <span class="right">45 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android/">
+                    Android <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/框架/">
+                    框架 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Python/">
+                    Python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/算法与数据结构/">
+                    算法与数据结构 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Java/">
+                    Java <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/多线程/">
+                    多线程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/JVM/">JVM</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>垃圾收集算法</h1>
+    
+
+
+            </div>
+            <time class="light-green-link-context" datetime="2016-05-31T17:13:10.000Z"><a href="/2016/06/01/垃圾收集算法/">2016-06-01</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/JVM/" class="chip light-green">JVM</a>
+        
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#标记-清除算法"><span class="section table-of-contents-text">标记-清除算法</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#算法描述"><span class="section table-of-contents-text">算法描述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#不足："><span class="section table-of-contents-text">不足：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#复制算法"><span class="section table-of-contents-text">复制算法</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#算法描述："><span class="section table-of-contents-text">算法描述：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#优点："><span class="section table-of-contents-text">优点：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#缺点："><span class="section table-of-contents-text">缺点：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#标记-整理算法"><span class="section table-of-contents-text">标记-整理算法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#分代收集算法"><span class="section table-of-contents-text">分代收集算法</span></a></li></ol>
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <h2 id="&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;"><a href="#&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;" class="headerlink" title="&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;"></a>&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;</h2><h3 id="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;"><a href="#&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;" class="headerlink" title="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;"></a>&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;</h3><p><strong>&#x6700;&#x57FA;&#x7840;</strong>&#x7684;&#x6536;&#x96C6;&#x7B97;&#x6CD5;&#xFF0C;&#x7B97;&#x6CD5;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x6807;&#x8BB0;&#x9636;&#x6BB5;</li>
+<li>&#x6E05;&#x9664;&#x9636;&#x6BB5;</li>
+</ul>
+</blockquote>
+<p>&#x9996;&#x5148;&#x6807;&#x8BB0;&#x88AB;&#x56DE;&#x6536;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x6807;&#x8BB0;&#x5B8C;&#x6210;&#x540E;&#x7EDF;&#x4E00;&#x56DE;&#x6536;&#x88AB;&#x6807;&#x8BB0;&#x7684;&#x5BF9;&#x8C61;&#x3002;<br>&#x6807;&#x8BB0;&#x8FC7;&#x7A0B;&#x53C2;&#x8003;&#x4E4B;&#x524D;&#x7684;&#x535A;&#x5BA2;<a href="http://946898963.github.io/2016/05/31/%E4%B8%A4%E6%AC%A1%E6%A0%87%E8%AE%B0/">&#x4E24;&#x6B21;&#x6807;&#x8BB0;</a></p>
+<p>&#x8FD9;&#x4E2A;&#x7B97;&#x6CD5;&#x662F;&#x6700;&#x57FA;&#x672C;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x540E;&#x7EED;&#x7684;&#x7B97;&#x6CD5;&#x90FD;&#x662F;&#x57FA;&#x4E8E;&#x8FD9;&#x79CD;&#x601D;&#x8DEF;&#xFF0C;&#x5E76;&#x5BF9;&#x5176;&#x4E0D;&#x8DB3;&#x8FDB;&#x884C;&#x6539;&#x8FDB;&#x5F97;&#x5230;&#x7684;&#x3002;</p>
+<h3 id="&#x4E0D;&#x8DB3;&#xFF1A;"><a href="#&#x4E0D;&#x8DB3;&#xFF1A;" class="headerlink" title="&#x4E0D;&#x8DB3;&#xFF1A;"></a>&#x4E0D;&#x8DB3;&#xFF1A;</h3><blockquote>
+<ul>
+<li>&#x6548;&#x7387;&#x95EE;&#x9898;<br>&#x6807;&#x8BB0;&#x8DDF;&#x6E05;&#x9664;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;&#x7684;&#x6548;&#x7387;&#x90FD;&#x4E0D;&#x9AD8;&#xFF1B;</li>
+<li>&#x7A7A;&#x95F4;&#x95EE;&#x9898;<br>&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x5927;&#x91CF;&#x7684;&#x4E0D;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x788E;&#x7247;&#xFF0C;&#x7A7A;&#x95F4;&#x788E;&#x7247;&#x592A;&#x591A;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x4E4B;&#x540E;&#x5206;&#x914D;&#x8F83;&#x5927;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x65E0;&#x6CD5;&#x627E;&#x5230;&#x8F83;&#x5927;&#x7684;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x800C;&#x4E0D;&#x5F97;&#x4E0D;&#x63D0;&#x524D;&#x89E6;&#x53D1;&#x53E6;&#x4E00;&#x6B21;&#x5783;&#x573E;&#x6536;&#x96C6;&#x52A8;&#x4F5C;</li>
+</ul>
+</blockquote>
+<p>&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;<br><img src="/2016/06/01/&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;/biaojiqingchu.png" alt="&#x6807;&#x8BB0;&#x6E05;&#x9664;"></p>
+<h2 id="&#x590D;&#x5236;&#x7B97;&#x6CD5;"><a href="#&#x590D;&#x5236;&#x7B97;&#x6CD5;" class="headerlink" title="&#x590D;&#x5236;&#x7B97;&#x6CD5;"></a>&#x590D;&#x5236;&#x7B97;&#x6CD5;</h2><p>&#x590D;&#x5236;&#x6536;&#x96C6;&#x7B97;&#x6CD5;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x7B97;&#x6CD5;&#x7684;&#x6548;&#x7387;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;&#xFF1A;"><a href="#&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;&#xFF1A;" class="headerlink" title="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;&#xFF1A;"></a>&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;&#xFF1A;</h3><p>&#x4ED6;&#x5C06;&#x53EF;&#x7528;&#x5185;&#x5B58;&#x6309;&#x5BB9;&#x91CF;&#x5212;&#x5206;&#x6210;&#x5927;&#x5C0F;&#x76F8;&#x7B49;&#x7684;&#x4E24;&#x5757;&#xFF0C;&#x6BCF;&#x6B21;&#x53EA;&#x4F7F;&#x7528;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x5757;&#xFF0C;&#x5F53;&#x8FD9;&#x4E00;&#x5757;&#x7684;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x5B8C;&#x4E86;&#xFF0C;&#x5C31;&#x5C06;&#x8FD8;&#x5B58;&#x6D3B;&#x7740;&#x7684;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x4E0A;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E00;&#x6B21;&#x6027;&#x7684;&#x6E05;&#x7406;&#x6389;&#x3002;</p>
+<h3 id="&#x4F18;&#x70B9;&#xFF1A;"><a href="#&#x4F18;&#x70B9;&#xFF1A;" class="headerlink" title="&#x4F18;&#x70B9;&#xFF1A;"></a>&#x4F18;&#x70B9;&#xFF1A;</h3><blockquote>
+<ul>
+<li>&#x8FD9;&#x6837;&#x6BCF;&#x6B21;&#x90FD;&#x662F;&#x5BF9;&#x6574;&#x4E2A;&#x534A;&#x533A;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x56DE;&#x6536;&#xFF0C;&#x8FD0;&#x884C;&#x9AD8;&#x6548;&#xFF1B;</li>
+<li>&#x5185;&#x5B58;&#x5206;&#x914D;&#x65F6;&#xFF0C;&#x4E5F;&#x4E0D;&#x7528;&#x8003;&#x8651;&#x5185;&#x5B58;&#x788E;&#x7247;&#x7B49;&#x95EE;&#x9898;&#xFF1B;</li>
+<li>&#x5185;&#x5B58;&#x975E;&#x914D;&#x65F6;&#xFF0C;&#x53EA;&#x8981;&#x79FB;&#x52A8;&#x5806;&#x9876;&#x90E8;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x6309;&#x987A;&#x5E8F;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5373;&#x53EF;&#xFF0C;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x3002;</li>
+</ul>
+</blockquote>
+<h3 id="&#x7F3A;&#x70B9;&#xFF1A;"><a href="#&#x7F3A;&#x70B9;&#xFF1A;" class="headerlink" title="&#x7F3A;&#x70B9;&#xFF1A;"></a>&#x7F3A;&#x70B9;&#xFF1A;</h3><blockquote>
+<ul>
+<li>&#x53EF;&#x7528;&#x5185;&#x5B58;&#x4E3A;&#x5360;&#x7528;&#x5185;&#x5B58;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x4EE3;&#x4EF7;&#x6BD4;&#x8F83;&#x9AD8;&#x3002;</li>
+</ul>
+</blockquote>
+<p>&#x590D;&#x5236;&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x6240;&#x793A;:<br><img src="/2016/06/01/&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;/fuzhisuanfa.png" alt="&#x590D;&#x5236;&#x8FC7;&#x7A0B;"></p>
+<h2 id="&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;"><a href="#&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;" class="headerlink" title="&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;"></a>&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;</h2><p>&#x590D;&#x5236;&#x7B97;&#x6CD5;&#x6BD4;&#x8F83;&#x9002;&#x5408;&#x4E8E;&#x65B0;&#x751F;&#x4EE3;&#xFF0C;&#x5728;&#x8001;&#x5E74;&#x4EE3;&#x4E2D;&#xFF0C;&#x5BF9;&#x8C61;&#x5B58;&#x6D3B;&#x7387;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x8F83;&#x591A;&#x7684;&#x590D;&#x5236;&#x64CD;&#x4F5C;&#xFF0C;&#x6548;&#x7387;&#x5C06;&#x4F1A;&#x53D8;&#x4F4E;&#xFF0C;&#x6240;&#x4EE5;&#x8001;&#x5E74;&#x4EE3;&#x4E00;&#x822C;&#x4F1A;&#x9009;&#x7528;&#x5176;&#x4ED6;&#x7B97;&#x6CD5;&#xFF0C;&#x5982;&#x6807;&#x8BB0;&#x2014;&#x6574;&#x7406;&#x7B97;&#x6CD5;&#x3002;&#x8BE5;&#x7B97;&#x6CD5;&#x6807;&#x8BB0;&#x7684;&#x8FC7;&#x7A0B;&#x4E0E;&#x6807;&#x8BB0;&#x2014;&#x6E05;&#x9664;&#x7B97;&#x6CD5;&#x4E2D;&#x7684;&#x6807;&#x8BB0;&#x8FC7;&#x7A0B;&#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x5BF9;&#x6807;&#x8BB0;&#x540E;&#x51FA;&#x7684;&#x5783;&#x573E;&#x5BF9;&#x8C61;&#x7684;&#x5904;&#x7406;&#x60C5;&#x51B5;&#x6709;&#x6240;&#x4E0D;&#x540C;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5BF9;&#x53EF;&#x56DE;&#x6536;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x6E05;&#x7406;&#xFF0C;&#x800C;&#x662F;&#x8BA9;&#x6240;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x5411;&#x4E00;&#x7AEF;&#x79FB;&#x52A8;&#xFF0C;&#x7136;&#x540E;&#x76F4;&#x63A5;&#x6E05;&#x7406;&#x6389;&#x7AEF;&#x8FB9;&#x754C;&#x4EE5;&#x5916;&#x7684;&#x5185;&#x5B58;&#x3002;</p>
+<p>&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x6240;&#x793A;:<br><img src="/2016/06/01/&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;/biaojizhenglisuanfa.png" alt="&#x6807;&#x8BB0;&#x6574;&#x7406;&#x8FC7;&#x7A0B;"></p>
+<h2 id="&#x5206;&#x4EE3;&#x6536;&#x96C6;&#x7B97;&#x6CD5;"><a href="#&#x5206;&#x4EE3;&#x6536;&#x96C6;&#x7B97;&#x6CD5;" class="headerlink" title="&#x5206;&#x4EE3;&#x6536;&#x96C6;&#x7B97;&#x6CD5;"></a>&#x5206;&#x4EE3;&#x6536;&#x96C6;&#x7B97;&#x6CD5;</h2><p>&#x5F53;&#x524D;&#x5546;&#x4E1A;&#x865A;&#x62DF;&#x673A;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x90FD;&#x91C7;&#x7528;&#x5206;&#x4EE3;&#x6536;&#x96C6;&#xFF0C;&#x5B83;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x7684;&#x5B58;&#x6D3B;&#x5468;&#x671F;&#x7684;&#x4E0D;&#x540C;&#x5C06;&#x5185;&#x5B58;&#x5212;&#x5206;&#x4E3A;&#x51E0;&#x5757;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x628A;Java&#x5806;&#x5206;&#x4E3A;&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#x3002;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x4E2D;&#xFF0C;&#x6BCF;&#x6B21;&#x5783;&#x573E;&#x6536;&#x96C6;&#x65F6;&#x90FD;&#x4F1A;&#x53D1;&#x73B0;&#x6709;&#x5927;&#x91CF;&#x5BF9;&#x8C61;&#x6B7B;&#x53BB;&#xFF0C;&#x53EA;&#x6709;&#x5C11;&#x91CF;&#x5B58;&#x6D3B;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x9009;&#x7528;&#x590D;&#x5236;&#x7B97;&#x6CD5;&#x6765;&#x5B8C;&#x6210;&#x6536;&#x96C6;&#xFF0C;&#x800C;&#x8001;&#x5E74;&#x4EE3;&#x4E2D;&#x56E0;&#x4E3A;&#x5BF9;&#x8C61;&#x5B58;&#x6D3B;&#x7387;&#x9AD8;&#x3001;&#x6CA1;&#x6709;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x5206;&#x914D;&#x62C5;&#x4FDD;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x6807;&#x8BB0;&#x2014;&#x6E05;&#x9664;&#x7B97;&#x6CD5;&#x6216;&#x6807;&#x8BB0;&#x2014;&#x6574;&#x7406;&#x7B97;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x56DE;&#x6536;&#x3002;</p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/06/01/垃圾收集算法/" data-title="垃圾收集算法" data-url="http://946898963.github.io/2016/06/01/垃圾收集算法/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: '946898963'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large light-green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer brown darken-1 darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m3 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/946898963" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright light-green-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

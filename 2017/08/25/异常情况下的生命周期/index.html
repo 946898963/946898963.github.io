@@ -7,7 +7,7 @@
 
     
 
-    <title>一天进步一点</title>
+    <title>异常情况下的生命周期 | 一天进步一点</title>
     <meta name="author" content="张岩">
     
     <meta name="description" content="记录生活点滴">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="异常情况下的生命周期"/>
     <meta property="og:site_name" content="张岩的博客"/>
 
     
@@ -296,370 +296,102 @@
 
 
     <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
         
 
-<div class="slider">
-    <ul class="slides">
-    
-       <li>
-           <a href="/">
-               <img class="slider-image" src="http://lorempixel.com/580/250/nature/1">
-               <div class="caption center-align">
-                 <h4>This is our big Tagline!</h3>
-                 <h5 class="light grey-text text-lighten-3">Here&#39;s our small slogan.</h5>
-               </div>
-           </a>
-       </li>
-    
-       <li>
-           <a href="javascript:;">
-               <img class="slider-image" src="http://lorempixel.com/580/250/nature/2">
-               <div class="caption left-align">
-                 <h4>Left Aligned Caption</h3>
-                 <h5 class="light grey-text text-lighten-3">Here&#39;s our small slogan.</h5>
-               </div>
-           </a>
-       </li>
-    
-       <li>
-           <a href="javascript:;">
-               <img class="slider-image" src="http://lorempixel.com/580/250/nature/3">
-               <div class="caption right-align">
-                 <h4>Right Aligned Caption</h3>
-                 <h5 class="light grey-text text-lighten-3">Here&#39;s our small slogan.</h5>
-               </div>
-           </a>
-       </li>
-    
-   </ul>
- </div>
-
-
-
-<div id="article-list" class="container main-container">
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2017/08/25/异常情况下的生命周期/">异常情况下的生命周期</a></h1>
-    
-
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2017-08-25T01:31:41.000Z"><a href="/2017/08/25/异常情况下的生命周期/">2017-08-25</a></time>
-
-                
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2017/08/25/Android布局优化-merge/">Android布局优化-merge</a></h1>
-    
-
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2017-08-25T01:22:39.000Z"><a href="/2017/08/25/Android布局优化-merge/">2017-08-25</a></time>
-
-                
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2017/01/05/通过源码方式在Ubuntu安装TensorFlow-CPU版本/">通过源码方式在Ubuntu安装TensorFlow(CPU版本)</a></h1>
-    
-
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2017-01-05T02:35:30.000Z"><a href="/2017/01/05/通过源码方式在Ubuntu安装TensorFlow-CPU版本/">2017-01-05</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Tensorflow/" class="chip light-green">Tensorflow</a>
         
     </div>
+</nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
 
-
+            <div class="article-title">
                 
+    
+        <h1>异常情况下的生命周期</h1>
+    
+
+
             </div>
+            <time class="light-green-link-context" datetime="2017-08-25T01:31:41.000Z"><a href="/2017/08/25/异常情况下的生命周期/">2017-08-25</a></time>
 
             
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <p> <strong>&#x5F53;&#x8D44;&#x6E90;&#x76F8;&#x5173;&#x7684;&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;&#xFF08;&#x6BD4;&#x5982;&#x6A2A;&#x7AD6;&#x5C4F;&#x5207;&#x6362;&#xFF09;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x5BFC;&#x81F4;Activity&#x88AB;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x3002;</strong></p>
+<p>&#x5F53;&#x53D1;&#x751F;&#x6A2A;&#x7AD6;&#x5C4F;&#x5207;&#x6362;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x9500;&#x6BC1;&#x73B0;&#x5728;&#x7684;Activity&#x5E76;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#xFF0C;&#x5728;&#x9500;&#x6BC1;Activity&#x7684;&#x65F6;&#x5019;onSaveInstance&#x65B9;&#x6CD5;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;onSaveInstance&#x65B9;&#x6CD5;&#x4E2D;&#x4FDD;&#x5B58;&#x5F53;&#x524D;Activity&#x7684;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5728;&#x91CD;&#x65B0;&#x521B;&#x5EFA;Activity&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x5728;onCreate&#x65B9;&#x6CD5;&#x6216;&#x8005;onRestoreInstance&#x65B9;&#x6CD5;&#x4E2D;&#x6062;&#x590D;&#x76F8;&#x5173;&#x6570;&#x636E;&#x3002;</p>
+<p>onSaveInstance&#x65B9;&#x6CD5;&#x5728;onStop&#x65B9;&#x6CD5;&#x4E4B;&#x524D;&#x88AB;&#x8C03;&#x7528;&#xFF1B;<br>onRestoreInstance&#x65B9;&#x6CD5;&#x5728;onStart&#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x88AB;&#x8C03;&#x7528;&#xFF1B;</p>
+<p>&#x53EF;&#x4EE5;&#x5728;onCreate&#x65B9;&#x6CD5;&#x6216;&#x8005;&#x5728;onRestoreInstance&#x65B9;&#x6CD5;&#x4E2D;&#x6062;&#x590D;&#x6570;&#x636E;&#xFF0C;&#x4E24;&#x8005;&#x7684;&#x533A;&#x522B;&#x662F;&#xFF0C;&#x4E00;&#x65E6;onRestoreInstance&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#xFF0C;bundle&#x4E00;&#x5B9A;&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x63A8;&#x8350;&#x5728;onRestoreInstance&#x65B9;&#x6CD5;&#x4E2D;&#x6062;&#x590D;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>onSaveInstance&#x65B9;&#x6CD5;&#x5E76;&#x4E0D;&#x4F1A;&#x5728;Activity&#x6BCF;&#x6B21;&#x79BB;&#x5F00;&#x524D;&#x53F0;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x6237;&#x8C03;&#x7528;&#x4E86;finish&#x65B9;&#x6CD5;&#xFF0C;onSaveInstance&#x65B9;&#x6CD5;&#x5219;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</li>
+<li>onSaveInstance&#x65B9;&#x6CD5;&#x548C;onRestoreInstance&#x65B9;&#x6CD5;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x6210;&#x5BF9;&#x51FA;&#x73B0;&#xFF0C;&#x53EA;&#x6709;&#x5F53;Activity&#x786E;&#x5B9E;&#x88AB;&#x5F02;&#x5E38;&#x7EC8;&#x6B62;&#x7684;&#x5E76;&#x6062;&#x590D;&#x7684;&#x65F6;&#x5019;onRestoreInstance&#x65B9;&#x6CD5;&#x624D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</li>
+</ul>
+</blockquote>
+<p>&#x4F1A;&#x5F15;&#x8D77;onSaveInstance&#x65B9;&#x6CD5;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<p><strong>&#x5F53;&#x7CFB;&#x7EDF;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x6740;&#x6B7B;&#x4F4E;&#x4F18;&#x5148;&#x7EA7;&#x7684;Activity</strong></p>
+<p>Activity&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x5206;&#x4E3A;</p>
+<blockquote>
+<ul>
+<li>&#x524D;&#x53F0;Activity</li>
+<li>&#x53EF;&#x89C1;Activity</li>
+<li>&#x540E;&#x53F0;Activity</li>
+</ul>
+</blockquote>
+<p>&#x5F53;&#x7CFB;&#x7EDF;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x6309;&#x4F18;&#x5148;&#x7EA7;&#x56DE;&#x6536;Activity&#xFF0C;&#x5E76;&#x5728;&#x540E;&#x7EED;&#x901A;&#x8FC7;onSaveInstance&#x65B9;&#x6CD5;&#x548C;onRestoreInstace&#x65B9;&#x6CD5;&#x6765;&#x5B58;&#x50A8;&#x548C;&#x6062;&#x590D;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x7CFB;&#x7EDF;&#x9ED8;&#x5B9E;&#x73B0;&#x4E86;&#x63A7;&#x4EF6;&#x7684;&#x7F13;&#x5B58;&#x72B6;&#x6001;&#xFF0C;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x81F3;&#x4E8E;&#x6BCF;&#x79CD;&#x63A7;&#x4EF6;&#x4F1A;&#x7F13;&#x5B58;&#x548C;&#x6062;&#x590D;&#x54EA;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x67E5;&#x770B;&#x6E90;&#x7801;&#x6765;&#x53D1;&#x73B0;&#x3002;</p>
+
+            </div>
         </div>
+    </div>
 </article>
 
-    
-        <article class="simple-article">
+
+
+
+    <section id="comment">
         <div class="card">
             <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2016/12/14/windows下ipython-notebook搭建/">windows下ipython notebook搭建</a></h1>
-    
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2017/08/25/异常情况下的生命周期/" data-title="异常情况下的生命周期" data-url="http://946898963.github.io/2017/08/25/异常情况下的生命周期/"></div>
 
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2016-12-14T12:22:20.000Z"><a href="/2016/12/14/windows下ipython-notebook搭建/">2016-12-14</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Python/" class="chip light-green">Python</a>
-        
-    </div>
-
-
-
-                
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: '946898963'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
             </div>
-
-            
         </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2016/12/07/Windows安装Python环境/">Windows安装Python环境</a></h1>
-    
+    </section>
 
 
-                </div>
-
-                <time class="light-green-link-context" datetime="2016-12-07T12:34:38.000Z"><a href="/2016/12/07/Windows安装Python环境/">2016-12-07</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Python/" class="chip light-green">Python</a>
-        
-    </div>
-
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2016/12/02/MeasureSpec/">MeasureSpec</a></h1>
-    
-
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2016-12-02T06:31:49.000Z"><a href="/2016/12/02/MeasureSpec/">2016-12-02</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip light-green">Android</a>
-        
-            <a href="/tags/绘图机制/" class="chip light-green">绘图机制</a>
-        
-    </div>
-
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2016/10/12/质数算法-判断质数-小于n的质数-前n个质数/">质数算法 判断质数 小于n的质数 前n个质数</a></h1>
-    
-
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2016-10-12T07:56:09.000Z"><a href="/2016/10/12/质数算法-判断质数-小于n的质数-前n个质数/">2016-10-12</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/算法与数据结构/" class="chip light-green">算法与数据结构</a>
-        
-    </div>
-
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2016/06/30/类加载器/">类加载器</a></h1>
-    
-
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2016-06-30T03:06:35.000Z"><a href="/2016/06/30/类加载器/">2016-06-30</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/Java/" class="chip light-green">Java</a>
-        
-    </div>
-
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2016/06/20/细说Java多线程之内存可见性-慕课网视频笔记/">细说Java多线程之内存可见性----慕课网视频笔记</a></h1>
-    
-
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2016-06-20T15:07:58.000Z"><a href="/2016/06/20/细说Java多线程之内存可见性-慕课网视频笔记/">2016-06-20</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/多线程/" class="chip light-green">多线程</a>
-        
-    </div>
-
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-        <article class="simple-article">
-        <div class="card">
-            <div class="card-content">
-                <div class="article-title">
-                    
-    
-        <h1 class="brown-link-context"><a href="/2016/06/20/MVP框架模式/">MVP框架模式</a></h1>
-    
-
-
-                </div>
-
-                <time class="light-green-link-context" datetime="2016-06-20T03:42:39.000Z"><a href="/2016/06/20/MVP框架模式/">2016-06-20</a></time>
-
-                
-    <div class="tags-row">
-        
-            <a href="/tags/框架/" class="chip light-green">框架</a>
-        
-    </div>
-
-
-
-                
-            </div>
-
-            
-        </div>
-</article>
-
-    
-
-    <ul class="pagination center-align">
-    <li class="disabled">
-        <a href="/"><i class="fa fa-angle-left"></i></a>
-    </li>
-    
-    
-        <li class="active light-green"><a href="/">1</a></li>
-    
-        <li class="waves-effect"><a href="/page/2">2</a></li>
-    
-        <li class="waves-effect"><a href="/page/3">3</a></li>
-    
-        <li class="waves-effect"><a href="/page/4">4</a></li>
-    
-        <li class="waves-effect"><a href="/page/5">5</a></li>
-    
-    
-    <li class="">
-        <a href="/page/2/"><i class="fa fa-angle-right"></i></a>
-    </li>
- </ul>
 
 </div>
 

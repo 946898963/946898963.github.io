@@ -106,8 +106,8 @@
                 </div>
                 <div class="info col s8 valign-wrapper no-padding">
                     <div class="valign">
-                        <p class="name">张岩</p>
-                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                        <p class="name">你的大名</p>
+                        <p class="desc">Web前端/iOS/技术宅</p>
                     </div>
                 </div>
             </div>
@@ -180,15 +180,7 @@
 
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Android/">
-                    Android <span class="right">10 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
-                    内存泄露 <span class="right">2 篇</span></a>
+                    Android <span class="right">9 篇</span></a>
                 </a>
             </li>
 
@@ -197,6 +189,14 @@
             <li class="collapse-level-2" collapse-level="2">
                 <a class="no-padding" href="/categories/技术/Android/绘图机制/">
                     绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -229,6 +229,14 @@
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Python/">
                     Python <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android1/">
+                    Android1 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -328,6 +336,11 @@
             </div>
             <time class="light-green-link-context" datetime="2016-06-15T11:11:57.000Z"><a href="/2016/06/15/适配器模式/">2016-06-15</a></time>
 
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
             
     <div class="tags-row">
         
@@ -358,40 +371,30 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VoltAdapter voltAdapter = new VoltAdapter(new Volt220());</span><br><span class="line">System.out.println(voltAdapter.getVolt5());</span><br></pre></td></tr></table></figure>
 <p>&#x5728;&#x5B9E;&#x9645;&#x7684;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;Adapter&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x5E94;&#x7528;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5C31;&#x662F;<code>&#x8F93;&#x5165;&#x6709;&#x65E0;&#x6570;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x4F46;&#x662F;&#x8F93;&#x51FA;&#x7C7B;&#x578B;&#x662F;&#x540C;&#x4E00;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Adapter&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x800C;&#x5177;&#x4F53;&#x7684;&#x8F93;&#x5165;&#x5219;&#x7559;&#x7ED9;&#x7528;&#x6237;&#x53BB;&#x5904;&#x7406;&#xFF0C;&#x5185;&#x90E8;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;&#x8F93;&#x51FA;&#x662F;&#x5426;&#x7B26;&#x5408;&#x8981;&#x6C42;&#x7684;&#x7C7B;&#x578B;&#x5373;&#x53EF;</code>&#x3002;&#x4F8B;&#x5982;ListView&#x7684;Adapter&#xFF0C;&#x7528;&#x6237;Item View&#x5404;&#x5F0F;&#x5404;&#x6837;&#xFF0C;&#x4F46;&#x6700;&#x7EC8;&#x90FD;&#x662F;&#x5C5E;&#x4E8E;View&#x7C7B;&#x578B;&#xFF0C;ListView&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;getVIew&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;View&#x5373;&#x53EF;&#xFF0C;&#x5177;&#x4F53;&#x662F;&#x4EC0;&#x4E48;View&#x7C7B;&#x578B;&#x5E76;&#x4E0D;&#x9700;&#x8981;ListView&#x5173;&#x5FC3;&#x3002;&#x800C;&#x5728;&#x98DF;&#x7528;Adapter&#x6A21;&#x5F0F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5EFA;&#x8BAE;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x5BF9;&#x8C61;&#x9002;&#x914D;&#x5668;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x591A;&#x7528;&#x5408;&#x6210;&#x6216;&#x8005;&#x805A;&#x5408;&#xFF0C;&#x5C11;&#x7528;&#x7EE7;&#x627F;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x5177;&#x4F53;&#x95EE;&#x9898;&#xFF0C;&#x5177;&#x4F53;&#x5206;&#x6790;&#xFF0C;&#x6839;&#x636E;&#x9700;&#x6C42;&#x6765;&#x9009;&#x7528;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x6700;&#x5408;&#x9002;&#x7684;&#x624D;&#x662F;&#x6700;&#x597D;&#x7684;&#x3002;</p>
 
+                
+<p class="light-green-link-context">
+    <a href="/2016/06/15/代理模式/" rel="next" title="代理模式">
+    上一篇：代理模式
+  </a>
+</p>
+
+
+
+<p class="light-green-link-context">
+    <a href="/2016/06/15/观察者模式/" rel="next" title="观察者模式">
+    下一篇：观察者模式
+  </a>
+</p>
+
+
             </div>
+			
         </div>
     </div>
 </article>
 
 
 
-
-    <section id="comment">
-        <div class="card">
-            <div class="card-content">
-                <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2016/06/15/适配器模式/" data-title="适配器模式" data-url="http://946898963.github.io/2016/06/15/适配器模式/"></div>
-
-                <script type="text/javascript">
-                    console.log(document.querySelector('.ds-thread'));
-                    var duoshuoQuery = {
-                        short_name: '946898963'
-                    };
-                    (function() {
-                        var ds = document.createElement('script');
-                        ds.type = 'text/javascript';
-                        ds.async = true;
-                        ds.src = (document.location.protocol == 'https:'
-                            ? 'https:'
-                            : 'http:') + '//static.duoshuo.com/embed.js';
-                        ds.charset = 'UTF-8';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-                    })();
-                </script>
-                <!-- Duoshuo Comment END -->
-            </div>
-        </div>
-    </section>
 
 
 
@@ -403,17 +406,17 @@
     </a>
     <ul>
       <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
-      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
     </ul>
   </div>
 
     </main>
     <footer class="page-footer brown darken-1 darken-1">
     
-    <div class="container">
+    <div class="footer-container container">
         <div class="row">
             
-            <div class="social-group col m3 s12">
+            <div class="social-group col m4 s12">
                 <h5 class="white-text">社交</h5>
                 
                     <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
@@ -424,6 +427,22 @@
                         <i class="fa fa-2x fa-github"></i>
                     </a>
                 
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
             </div>
             
 
@@ -451,7 +470,7 @@
 </div>
 
 
-<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <script src="/js/materialize.min.js"></script>
 
 <script>
@@ -494,6 +513,22 @@
 
             // 文章目录
             $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
             // 修正文章目录的left-border颜色
             var color = $('.table-of-contents-text').css('color');
             $('.table-of-contents-link').css('border-left-color', color);

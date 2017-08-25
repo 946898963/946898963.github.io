@@ -1,0 +1,26 @@
+---
+title: Thread、AsycTask、HandlerThread、IntentService的使用场景与特点
+date: 2016-06-01 16:26:58
+
+categories:
+- 技术
+- Android
+tags:
+- Android
+---
+## 前言：
+Android里面可以扮演线程的角色很多，比如Thread、AsycTask、HandlerThread、IntentService，这里对比分析下他们各自的使用场景跟特点。
+
+## Thread
+Thread,安卓规定不能在主线程中进行耗时的操作，如果需要在执行耗时的操作的话，需要使用Thread创建子线程来执行耗时的操作，但是如果有更新UI的需求的话，需要借助于Handler切换到主线程中去执行更新UI的操作；
+
+## AsycTask
+AsycTask封装了线程池跟Handler，不再需要开发者写Hanler切换线程的代码，方便了开发者在子线程更新UI.但是AsyncTask不适合用来做耗时很长的任务，因为默认的AsyncTask是串行执行的（安卓1.6之前是串行的，1.6-3.0是并行的，3.0以后是串行的），一旦有一个任务耗时太长，后面的任务都将永远不会得到执行。此外执行AsyncTask的线程池都是静态的类变量，而不是成员变量，所以如果出现非常耗时的任务，将是涉及到app中所有的AsyncTask的问题。此外虽然也可以借助于executeOnExecutor(,)方法来并行的执行任务，但是线程池中线程的数目是有限的，如果执行太多耗时的任务，未完成的异步任务较多，会导致线程池满，暴出异常,这也解释了为什么3.0以后将AsyncTask默认改成了串行执行。
+
+## HandlerThread
+HandlerThread继承了Thread，他的run方法里面调用了Looper.prepare()创建了消息队列，调用了Looper.loop()方法开启了消息循环，所以在HandlerThread内部可以创建Handler.Handler里面创建了消息队列，外界可以借助于Handler内部的Looper来创建Handler，然后借助于Handler的消息方式，将任务放在HandlerThread内部的消息队列里，最终任务会在HandlerThread，也就是子线程中执行。HandlerThread最典型的场景是IntentService。HandlerThread的run方法是一个无限循环的方法，不使用的时候，要调用HandlerThread的quit或者quitSafely方法，终止其执行。
+
+## IntentService
+IntentService封装了HandlerThread跟Handler，IntentService用于执行后台的耗时的任务，IntentService的出现跟AsyncTask的出现一样都是为了方便开发者，IntentService继承了Service,服务是运行在主线程中的，在普通的Service里面执行耗时操作的话，需要自己创建线程，当线程执行完毕后，调用StopSelf或者在外部调用StopService方法来终止服务，但是使用了IntentService话的，只需要在onHandlerIntent方法里面执行耗时任务就可以了，不用自己创建线程，任务默认就执行在子线程，执行完后，自动终止服务。
+由于IntentService是服务的原因，这导致他的优先级比单纯的线程高很多，可以用来执行一些高优先级耗时的后台任务，因为他的优先级比较高，不容易被系统杀死。
+由于IntentService是将任务放在消息队列里面排队等待执行的，所以后面的任务在前面的任务结束之前需要一直等待，所以有多个任务的话，效率会比较低。

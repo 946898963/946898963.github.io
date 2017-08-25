@@ -1,0 +1,156 @@
+{
+    "define": {
+	    "readed": "已读",
+        "reading": "在读",
+        "wanted": "想读"
+    },
+    "contents": {
+        "readed": [{
+            "title": "Android 第一行代码",
+            "cover": "https://img3.doubanio.com/lpic/s28351121.jpg",
+            "review": "Android学习入门书籍，可以说是入门最好书籍。",
+            "score": "8.6",
+            "doubanLink": "https://book.douban.com/subject/25942191/"
+        },{
+            "title": "疯狂Android讲义",
+            "cover": "https://img1.doubanio.com/lpic/s6641009.jpg",
+            "review": "Android学习入门书籍，书很厚，可以当本字典类书籍来使用，阅读这本书可以很大地扩充你的Android知识面。",
+            "score": "7.5",
+            "doubanLink": "https://book.douban.com/subject/6515839/"
+        }, 
+		{
+            "title": "Android项目实战",
+            "cover": "https://img3.doubanio.com/lpic/s26591170.jpg",
+            "review": "Android项目实战类图书，全书通过对一款手机安全卫士开发案例的详细解析，讲解了一个完整的Android实际项目的开发过程。",
+            "score": "",
+            "doubanLink": "https://book.douban.com/subject/24380569/"
+        }, {
+            "title": "Android群英传",
+            "cover": "https://img3.doubanio.com/lpic/s28283342.jpg",
+            "review": "Android学习进阶书籍，书很薄，但内容相当实用，对View涉及较多。",
+            "score": "6.7",
+            "doubanLink": "https://book.douban.com/subject/26599539/"
+        },{
+            "title": "Android开发艺术探索",
+            "cover": "https://img3.doubanio.com/lpic/s28283341.jpg",
+            "review": "非常好的一本安卓进阶书籍，安卓进阶必读，而且越早看受益越多！",
+            "score": "8.6",
+            "doubanLink": "https://book.douban.com/subject/26599538/"
+        },{
+            "title": "疯狂Java讲义",
+            "cover": "https://img3.doubanio.com/lpic/s6862076.jpg",
+            "review": "一本很厚的Java书籍，知识点很全面，适合当做字典使用，感觉初学者看此书的话，不太合适，因为这本书的知识点罗列的太详细，初学者不清楚重难点，容易一把抓，初学者理清知识脉络,知道Java重难点后，然后再阅读此书比较合适。",
+            "score": "8.4",
+            "doubanLink": "https://book.douban.com/subject/3246499/"
+        },{
+            "title": "Java核心技术·卷1：基础知识（原书第9版） ",
+            "cover": "https://img3.doubanio.com/lpic/s27123141.jpg",
+            "review": "感觉也不太适合初学者，知识点讲的相对深入些，没有基础的话看起来比来可能比较困难，但是有过一定基础的人，看过此书应该会有不错的感悟。",
+            "score": "8.3",
+            "doubanLink": "https://book.douban.com/subject/25762168/"
+        },{
+            "title": "图解HTTP",
+            "cover": "https://img3.doubanio.com/lpic/s27283822.jpg",
+            "review": "非常好的一本HTTP入门书籍，结合大量的插图讲解知识点，浅显易懂。",
+            "score": "8.1",
+            "doubanLink": "https://book.douban.com/subject/25863515/"
+        }],
+		
+		"reading": [{
+            "title": "Android 源码设计模式解析与实战 ",
+            "cover": "https://img3.doubanio.com/lpic/s28320163.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/26644935/"
+        },
+		{
+            "title": "Android应用性能优化",
+            "cover": "https://img3.doubanio.com/lpic/s22718876.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/19976838/"
+        },
+		{
+            "title": "Android框架揭秘",
+            "cover": "https://img1.doubanio.com/lpic/s26553749.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/10570841/"
+        },
+		{
+            "title": "App研发录：架构设计、Crash分析和竞品技术分析",
+            "cover": "https://img3.doubanio.com/lpic/s28333166.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/26649050/"
+        },
+		{
+            "title": "深入理解Java虚拟机（第2版）",
+            "cover": "https://img3.doubanio.com/lpic/s27458236.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/24722612/"
+        },
+		{
+            "title": "数据结构与算法分析（Java语言描述）",
+            "cover": "https://img3.doubanio.com/lpic/s28318872.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/3351237/"
+        },
+		{
+            "title": "算法（第四版）",
+            "cover": "https://img1.doubanio.com/lpic/s8938479.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/10432347/"
+        },
+		{
+            "title": "剑指Offer",
+            "cover": "https://img3.doubanio.com/lpic/s27991506.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/25910559/"
+        },
+		{
+            "title": "编程之美",
+            "cover": "http://img11.360buyimg.com/n1/jfs/t439/182/524308375/585126/4a054567/5423e6ccN1cf68e97.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/3004255/"
+        },
+		{
+            "title": "图解TCP/IP",
+            "cover": "https://img1.doubanio.com/lpic/s26676928.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/24737674/"
+        }],
+
+        "wanted": [{
+            "title": "Android系统源代码情景分析 ",
+            "cover": "https://img3.doubanio.com/lpic/s27280265.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/19986441/"
+        },{
+            "title": "Java编程思想",
+            "cover": "https://img1.doubanio.com/lpic/s1320039.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/1313042/"
+        },{
+            "title": "编程珠玑",
+            "cover": "https://img3.doubanio.com/lpic/s2170174.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/1910326/"
+        },{
+            "title": "大话数据结构",
+            "cover": "https://img3.doubanio.com/lpic/s6382631.jpg",
+            "review": "",
+            "score": null,
+            "doubanLink": "https://book.douban.com/subject/6424904/"
+        }]
+    }
+}

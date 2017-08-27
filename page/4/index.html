@@ -1,968 +1,1986 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-    
 
-    <title>第 4 页 | 一天进步一点</title>
-    <meta name="author" content="张岩">
-    
-    <meta name="description" content="记录生活点滴">
-    
-    
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
-    <meta property="og:site_name" content="张岩的博客"/>
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    
-    <meta property="og:image" content="undefined"/>
-    
 
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/lib/materialize.min.css">
-    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
     
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="记录生活点滴">
+<meta property="og:type" content="website">
+<meta property="og:title" content="张岩的博客">
+<meta property="og:url" content="http://thinkerzhangyan.github.io/page/4/index.html">
+<meta property="og:site_name" content="张岩的博客">
+<meta property="og:description" content="记录生活点滴">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="张岩的博客">
+<meta name="twitter:description" content="记录生活点滴">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Penulis'
+    }
+  };
+</script>
+
+  <title> 张岩的博客 </title>
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-<body>
-    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+  
 
-    <nav class="brown darken-1">
-    <div class="nav-wrapper">
-        <a href="#" data-activates="main-menu" class="button-collapse">
-            <i class="fa fa-navicon"></i>
-        </a>
-        <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
-            <ul class="right hide-on-med-and-down">
-                
-                    <li>
-                        <a class="menu-home " href="/" >
-                            <i class="fa fa-home "></i>
-                            
-                            首页
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-archive " href="/archives" >
-                            <i class="fa fa-archive "></i>
-                            
-                            归档
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
-                            <i class="fa fa-bookmark "></i>
-                            
-                            分类
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-book "></i>
-                            
-                            读书
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-about " href="/about" >
-                            <i class="fa fa-user "></i>
-                            
-                            关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-search modal-trigger " href="#search" >
-                            <i class="fa fa-search "></i>
-                            
-                            搜索
-                        </a>
-                    </li>
-                
-            </ul>
-            <div>
-    <ul class="side-nav brown darken-1" id="main-menu">
-        
-        <li class="side-user">
-            <div class="row">
-                <div class="col s4 no-padding">
-                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
-                </div>
-                <div class="info col s8 valign-wrapper no-padding">
-                    <div class="valign">
-                        <p class="name">张岩</p>
-                        <p class="desc">Android/单片机(曾经)/技术宅</p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        
 
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-home " href="/" >
-                    <i class="fa fa-home "></i>
-                    
-                    首页
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-archive " href="/archives" >
-                    <i class="fa fa-archive "></i>
-                    
-                    归档
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
-                    <i class="fa fa-bookmark "></i>
-                    
-                    分类
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-book "></i>
-                    
-                    读书
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-about " href="/about" >
-                    <i class="fa fa-user "></i>
-                    
-                    关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-search modal-trigger " href="#search" >
-                    <i class="fa fa-search "></i>
-                    
-                    搜索
-                </a>
-            </li>
-        
-    </ul>
 
-    <ul class="side-nav brown darken-1" id="category-menu">
+
+
+
+
+
+
+
+  
+  
     
+  
 
-            
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
 
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/技术/">
-                    技术 <span class="right">51 篇</span></a>
-                </a>
-            </li>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
 
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/Android/">
-                    Android <span class="right">10 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
-                    内存泄露 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
-                    绘图机制 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/设计模式/">
-                    设计模式 <span class="right">22 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/JVM/">
-                    JVM <span class="right">9 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/框架/">
-                    框架 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/Python/">
-                    Python <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/算法与数据结构/">
-                    算法与数据结构 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/Java/">
-                    Java <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/多线程/">
-                    多线程 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/机器学习/">
-                    机器学习 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/机器学习/Tensorflow/">
-                    Tensorflow <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-    </ul>
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张岩的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一天进步一点</p>
 </div>
 
-        </div>
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Beranda
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Arsip
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Pencarian
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
     </div>
+  
 </nav>
 
-<div id="search" class="modal search-modal">
-    <div class="row">
-        <div class="input-field col s12">
-              <input id="search-input" type="text">
-              <label for="search-input">搜索</label>
-        </div>
-
-    </div>
-    <div id="search-result" class="search-result col s12">
-
-    </div>
-</div>
-
-
-    <main>
-        
-
-<div class="slider">
-    <ul class="slides">
-    
-       <li>
-           <a href="/">
-               <img class="slider-image" src="http://lorempixel.com/580/250/nature/1">
-               <div class="caption center-align">
-                 <h4>This is our big Tagline!</h3>
-                 <h5 class="light grey-text text-lighten-3">Here&#39;s our small slogan.</h5>
-               </div>
-           </a>
-       </li>
-    
-       <li>
-           <a href="javascript:;">
-               <img class="slider-image" src="http://lorempixel.com/580/250/nature/2">
-               <div class="caption left-align">
-                 <h4>Left Aligned Caption</h3>
-                 <h5 class="light grey-text text-lighten-3">Here&#39;s our small slogan.</h5>
-               </div>
-           </a>
-       </li>
-    
-       <li>
-           <a href="javascript:;">
-               <img class="slider-image" src="http://lorempixel.com/580/250/nature/3">
-               <div class="caption right-align">
-                 <h4>Right Aligned Caption</h3>
-                 <h5 class="light grey-text text-lighten-3">Here&#39;s our small slogan.</h5>
-               </div>
-           </a>
-       </li>
-    
-   </ul>
  </div>
+    </header>
 
-
-
-<div id="article-list" class="container main-container">
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
     
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/15/适配器模式/">适配器模式</a></h1>
-    
-
-
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-15T11:11:57.000Z"><a href="/2016/06/15/适配器模式/">2016-06-15</a></time>
-
+                <a class="post-title-link" href="/2016/06/15/适配器模式/" itemprop="url">
+                  适配器模式
+                </a>
+              
             
-    <div class="tags-row">
+          </h1>
         
-            <a href="/tags/设计模式/" class="chip light-green">设计模式</a>
-        
-    </div>
 
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-15T19:11:57+08:00" content="2016-06-15">
+              2016-06-15
+            </time>
+          </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
 
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/15/观察者模式/">观察者模式</a></h1>
-    
-
-
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-15T08:28:03.000Z"><a href="/2016/06/15/观察者模式/">2016-06-15</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/设计模式/" class="chip light-green">设计模式</a>
-        
-    </div>
-
-
-
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/15/工厂模式/">工厂模式</a></h1>
-    
-
-
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-15T07:31:47.000Z"><a href="/2016/06/15/工厂模式/">2016-06-15</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/设计模式/" class="chip light-green">设计模式</a>
-        
-    </div>
-
-
-
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
+                  , 
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/14/单例模式/">单例模式</a></h1>
-    
 
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
 
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-14T09:31:36.000Z"><a href="/2016/06/14/单例模式/">2016-06-14</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/设计模式/" class="chip light-green">设计模式</a>
-        
-    </div>
-
-
-
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/14/面向对象的六大原则/">面向对象的六大原则</a></h1>
-    
-
-
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-14T09:11:20.000Z"><a href="/2016/06/14/面向对象的六大原则/">2016-06-14</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/设计模式/" class="chip light-green">设计模式</a>
-        
-    </div>
-
-
-
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/05/AsyncTask内存泄露-1/">AsyncTask内存泄露</a></h1>
-    
 
+              
+            </span>
+          
 
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-05T09:50:11.000Z"><a href="/2016/06/05/AsyncTask内存泄露-1/">2016-06-05</a></time>
-
+          
             
+          
 
+          
 
-            
+          
+          
+
+          
         </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>&#x4F7F;&#x7528;&#x9891;&#x7387;&#x5F88;&#x9AD8;&#xFF0C;&#x901A;&#x8FC7;&#x5728;Android&#x4E2D;&#x968F;&#x5904;&#x53EF;&#x89C1;&#x7684;Adapter&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5F97;&#x51FA;&#x3002;&#x9002;&#x914D;&#x5668;&#x662F;&#x5C06;&#x4E24;&#x4E2A;&#x4E0D;&#x517C;&#x5BB9;&#x7684;&#x7C7B;&#x878D;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x7ECF;&#x5E38;&#x78B0;&#x5230;&#x8981;&#x5728;&#x4E24;&#x4E2A;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x7CFB;&#x7684;&#x7C7B;&#x578B;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F;&#x4FEE;&#x6539;&#x5404;&#x81EA;&#x7684;&#x7C7B;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x6E90;&#x7801;&#x6216;&#x8005;&#x4E0D;&#x613F;&#x610F;&#x4E3A;&#x4E86;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x4FEE;&#x6539;&#x6211;&#x4EEC;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5F80;&#x5F80;&#x4F1A;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;Adapter,&#x5728;&#x8FD9;&#x4E24;&#x79CD;&#x501F;&#x53E3;&#x4E4B;&#x95F4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6DF7;&#x8840;&#x513F;&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x4E2A;Adapter&#x4F1A;&#x5C06;&#x4E24;&#x79CD;&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x517C;&#x5BB9;&#xFF0C;&#x5728;&#x4E0D;&#x4FEE;&#x6539;&#x539F;&#x6709;&#x4EE3;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3002;</p>
+<p>&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;&#x628A;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x53D8;&#x6210;&#x5BA2;&#x6237;&#x7AEF;&#x6240;&#x671F;&#x5F85;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x539F;&#x672C;&#x56E0;&#x63A5;&#x53E3;&#x4E0D;&#x5339;&#x914D;&#x800C;&#x65E0;&#x6CD5;&#x5DE5;&#x4F5C;&#x5728;&#x4E00;&#x8D77;&#x7684;&#x4E24;&#x4E2A;&#x7C7B;&#x80FD;&#x591F;&#x5728;&#x4E00;&#x8D77;&#x5DE5;&#x4F5C;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>&#x4F7F;&#x7528;&#x573A;&#x666F;</h2><p>&#x63A5;&#x53E3;&#x4E0D;&#x517C;&#x5BB9;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x73B0;&#x6709;&#x7684;&#x7C7B;&#xFF0C;&#x800C;&#x7C7B;&#x7684;&#x63A5;&#x53E3;&#x4E0D;&#x7B26;&#x5408;&#x7CFB;&#x7EDF;&#x7684;&#x9700;&#x8981;&#x3002;</p>
+<h2 id="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"><a href="#&#x7B80;&#x5355;&#x5B9E;&#x73B0;" class="headerlink" title="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"></a>&#x7B80;&#x5355;&#x5B9E;&#x73B0;</h2><p>&#x7528;&#x7535;&#x6E90;&#x63A5;&#x53E3;&#x505A;&#x4F8B;&#x5B50;&#xFF0C;&#x7B14;&#x8BB0;&#x672C;&#x7535;&#x8111;&#x4E00;&#x822C;&#x9700;&#x8981;5V&#x7684;&#x7535;&#x538B;&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x7535;&#x7EBF;&#x7684;&#x7535;&#x538B;&#x4E00;&#x822C;&#x662F;220V&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x51FA;&#x73B0;&#x4E86;&#x4E0D;&#x5339;&#x914D;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5728;&#x8F6F;&#x4EF6;&#x5F00;&#x53D1;&#x4E2D;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;&#x63A5;&#x53E3;&#x4E0D;&#x517C;&#x5BB9;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x9002;&#x914D;&#x5668;&#x6765;&#x8FDB;&#x884C;&#x63A5;&#x53E3;&#x7684;&#x8F6C;&#x6362;&#x3002;&#x5728;&#x8F6F;&#x4EF6;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x6709;&#x8FD9;&#x4E48;&#x4E00;&#x53E5;&#x8BDD;&#xFF0C;&#x4EFB;&#x4F55;&#x95EE;&#x9898;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x52A0;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x5C42;&#x6765;&#x89E3;&#x51B3;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;Adapter&#x5C31;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x4E2D;&#x95F4;&#x5C42;&#x3002;</p>
+<p>Target&#x63A5;&#x53E3; 5v&#x7535;&#x538B;<br>Adaptee&#x63A5;&#x53E3; 220V&#x7535;&#x538B;<br>Adapter&#x5C06;&#x7535;&#x538B;&#x4ECE;220V&#x8F6C;&#x5230;5V</p>
+<h3 id="&#x7C7B;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;"><a href="#&#x7C7B;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;" class="headerlink" title="&#x7C7B;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;"></a>&#x7C7B;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//Target&#x89D2;&#x8272;</span><br><span class="line">public interface FiveVolt {</span><br><span class="line">    public int getVolt5();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//Adaptee&#x89D2;&#x8272;</span><br><span class="line">public class Volt220 {</span><br><span class="line">    </span><br><span class="line">    public int getVolt220(){</span><br><span class="line">        return 220;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//Adapter&#x89D2;&#x8272;&#xFF0C;&#x5C06;220V&#x7535;&#x538B;&#x8F6C;&#x6362;&#x6210;5V&#x7535;&#x538B;&#x3002;</span><br><span class="line">public class VoltAdapter extends Volt220 implements FiveVolt {</span><br><span class="line">    @Override</span><br><span class="line">    public int getVolt5() {</span><br><span class="line">        return 5;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>Target&#x89D2;&#x8272;&#x7ED9;&#x51FA;&#x4E86;&#x9700;&#x8981;&#x7684;&#x76EE;&#x6807;&#x63A5;&#x53E3;&#xFF0C;&#x800C;Adaptee&#x5219;&#x662F;&#x9700;&#x8981;&#x8F6C;&#x6362;&#x7684;&#x5BF9;&#x8C61;&#x3002;Adapter&#x7C7B;&#x5219;&#x662F;&#x5C06;Volt220&#x8F6C;&#x6362;&#x6210;Target&#x63A5;&#x53E3;&#x3002;&#x5BF9;&#x5E94;&#x7684;Target&#x76EE;&#x6807;&#x662F;&#x8981;&#x83B7;&#x53D6;5V&#x7684;&#x7535;&#x538B;&#xFF0C;&#x800C;Adaptee&#x6B63;&#x5E38;&#x8F93;&#x51FA;220V&#x7535;&#x538B;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x7535;&#x6E90;&#x9002;&#x914D;&#x5668;&#x5C06;220V&#x7535;&#x538B;&#x8F6C;&#x6362;&#x6210;5V&#x7535;&#x538B;&#xFF0C;&#x89E3;&#x51B3;&#x63A5;&#x53E3;&#x4E0D;&#x517C;&#x5BB9;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VoltAdapter voltAdapter = new VoltAdapter();</span><br><span class="line">System.out.println(voltAdapter.getVolt5());</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5BF9;&#x8C61;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;"><a href="#&#x5BF9;&#x8C61;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;" class="headerlink" title="&#x5BF9;&#x8C61;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;"></a>&#x5BF9;&#x8C61;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//Target&#x89D2;&#x8272;</span><br><span class="line">public interface FiveVolt {</span><br><span class="line">    public int getVolt5();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//Adaptee&#x89D2;&#x8272;</span><br><span class="line">public class Volt220 {</span><br><span class="line">    </span><br><span class="line">    public int getVolt220(){</span><br><span class="line">        return 220;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class VoltAdapter  implements FiveVolt {</span><br><span class="line">    </span><br><span class="line">    Volt220 volt220 ;</span><br><span class="line">    </span><br><span class="line">    public VoltAdapter(Volt220 volt220){</span><br><span class="line">        this.volt220=volt220;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public int getVolt5() {</span><br><span class="line">        return 5;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getVolt220(){</span><br><span class="line">        return volt220.getVolt220();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VoltAdapter voltAdapter = new VoltAdapter(new Volt220());</span><br><span class="line">System.out.println(voltAdapter.getVolt5());</span><br></pre></td></tr></table></figure>
+<p>&#x5728;&#x5B9E;&#x9645;&#x7684;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;Adapter&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x5E94;&#x7528;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5C31;&#x662F;<code>&#x8F93;&#x5165;&#x6709;&#x65E0;&#x6570;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x4F46;&#x662F;&#x8F93;&#x51FA;&#x7C7B;&#x578B;&#x662F;&#x540C;&#x4E00;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Adapter&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x800C;&#x5177;&#x4F53;&#x7684;&#x8F93;&#x5165;&#x5219;&#x7559;&#x7ED9;&#x7528;&#x6237;&#x53BB;&#x5904;&#x7406;&#xFF0C;&#x5185;&#x90E8;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;&#x8F93;&#x51FA;&#x662F;&#x5426;&#x7B26;&#x5408;&#x8981;&#x6C42;&#x7684;&#x7C7B;&#x578B;&#x5373;&#x53EF;</code>&#x3002;&#x4F8B;&#x5982;ListView&#x7684;Adapter&#xFF0C;&#x7528;&#x6237;Item View&#x5404;&#x5F0F;&#x5404;&#x6837;&#xFF0C;&#x4F46;&#x6700;&#x7EC8;&#x90FD;&#x662F;&#x5C5E;&#x4E8E;View&#x7C7B;&#x578B;&#xFF0C;ListView&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;getVIew&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;View&#x5373;&#x53EF;&#xFF0C;&#x5177;&#x4F53;&#x662F;&#x4EC0;&#x4E48;View&#x7C7B;&#x578B;&#x5E76;&#x4E0D;&#x9700;&#x8981;ListView&#x5173;&#x5FC3;&#x3002;&#x800C;&#x5728;&#x98DF;&#x7528;Adapter&#x6A21;&#x5F0F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5EFA;&#x8BAE;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x5BF9;&#x8C61;&#x9002;&#x914D;&#x5668;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x591A;&#x7528;&#x5408;&#x6210;&#x6216;&#x8005;&#x805A;&#x5408;&#xFF0C;&#x5C11;&#x7528;&#x7EE7;&#x627F;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x5177;&#x4F53;&#x95EE;&#x9898;&#xFF0C;&#x5177;&#x4F53;&#x5206;&#x6790;&#xFF0C;&#x6839;&#x636E;&#x9700;&#x6C42;&#x6765;&#x9009;&#x7528;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x6700;&#x5408;&#x9002;&#x7684;&#x624D;&#x662F;&#x6700;&#x597D;&#x7684;&#x3002;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
 
         
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/05/AsyncTask内存泄露/">AsyncTask内存泄露</a></h1>
-    
-
-
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-05T09:48:40.000Z"><a href="/2016/06/05/AsyncTask内存泄露/">2016-06-05</a></time>
-
+                <a class="post-title-link" href="/2016/06/15/观察者模式/" itemprop="url">
+                  观察者模式
+                </a>
+              
             
-    <div class="tags-row">
+          </h1>
         
-            <a href="/tags/Android/" class="chip light-green">Android</a>
-        
-            <a href="/tags/内存泄露/" class="chip light-green">内存泄露</a>
-        
-    </div>
 
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-15T16:28:03+08:00" content="2016-06-15">
+              2016-06-15
+            </time>
+          </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
 
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/05/内存泄露之Thread/">内存泄露之Thread</a></h1>
-    
-
-
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-05T09:39:43.000Z"><a href="/2016/06/05/内存泄露之Thread/">2016-06-05</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip light-green">Android</a>
-        
-            <a href="/tags/内存泄露/" class="chip light-green">内存泄露</a>
-        
-    </div>
-
-
-
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/04/Java虚拟机的垃圾收集器/">Java虚拟机的垃圾收集器</a></h1>
-    
-
-
-            </div>
-
-            <time class="light-green-link-context" datetime="2016-06-04T09:36:44.000Z"><a href="/2016/06/04/Java虚拟机的垃圾收集器/">2016-06-04</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/JVM/" class="chip light-green">JVM</a>
-        
-    </div>
-
-
-
-            
-        </div>
-
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
+                  , 
                 
-    
-        <h1 class="brown-link-context"><a href="/2016/06/01/怎么保证Service不被杀死/">怎么保证Service不被杀死</a></h1>
-    
 
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
 
-            </div>
+                
+                
 
-            <time class="light-green-link-context" datetime="2016-06-01T09:09:21.000Z"><a href="/2016/06/01/怎么保证Service不被杀死/">2016-06-01</a></time>
+              
+            </span>
+          
 
+          
             
-    <div class="tags-row">
-        
-            <a href="/tags/Android/" class="chip light-green">Android</a>
-        
-    </div>
+          
 
+          
 
+          
+          
 
-            
+          
         </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>&#x4F7F;&#x7528;&#x9891;&#x7387;&#x975E;&#x5E38;&#x9AD8;&#x7684;&#x4E00;&#x4E2A;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x6700;&#x5E38;&#x7528;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x662F;&#x53D1;&#x5E03;&#x7CFB;&#x7EDF;&#x7684;&#x8BA2;&#x9605;&#x529F;&#x80FD;&#x3002;&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x89E3;&#x8026;&#xFF0C;&#x5C06;&#x89C2;&#x5BDF;&#x8005;&#x8DDF;&#x88AB;&#x89C2;&#x5BDF;&#x8005;&#x7684;&#x4F9D;&#x8D56;&#x6027;&#x964D;&#x5230;&#x6700;&#x5C0F;&#xFF0C;&#x751A;&#x81F3;&#x6BEB;&#x65E0;&#x4F9D;&#x8D56;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>&#x4F7F;&#x7528;&#x573A;&#x666F;</h2><p>&#x6D88;&#x606F;&#x8BA2;&#x9605;&#x7B49;</p>
+<h2 id="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"><a href="#&#x7B80;&#x5355;&#x5B9E;&#x73B0;" class="headerlink" title="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"></a>&#x7B80;&#x5355;&#x5B9E;&#x73B0;</h2><p>&#x7A0B;&#x5E8F;&#x5458;&#x8BA2;&#x9605;&#x5F00;&#x53D1;&#x8005;&#x7F51;&#x7AD9;&#xFF0C;&#x5F53;&#x7F51;&#x7AD9;&#x6709;&#x5185;&#x5BB9;&#x66F4;&#x65B0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x901A;&#x77E5;&#x6240;&#x6709;&#x8BA2;&#x9605;&#x4E86;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x3002;</p>
+<p>&#x7A0B;&#x5E8F;&#x5458;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Coder implements Observer {</span><br><span class="line">    </span><br><span class="line">    public  String name;</span><br><span class="line">    </span><br><span class="line">    public Coder(String name){</span><br><span class="line">        this.name=name;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void update(Observable observable, Object o) {</span><br><span class="line">          System.out.println(&quot;Hi,&quot;+name+&quot;,DevWebSite &#x66F4;&#x65B0;&#x4E86;&#xFF0C;&#x5185;&#x5BB9;&#xFF1A;&quot;+o);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public String toString(){</span><br><span class="line">        return &quot;&#x7801;&#x519C;&#xFF1A;&quot;+name;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>Coder&#x4EE3;&#x8868;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;Observer&#x63A5;&#x53E3;&#xFF0C;&#x662F;&#x5177;&#x4F53;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x800C;Observer&#x662F;&#x62BD;&#x8C61;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#x3002;Observer&#x662F;JDK&#x7684;&#x5185;&#x7F6E;&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x7F51;&#x7AD9;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class DevWebSite extends Observable {</span><br><span class="line"></span><br><span class="line">    public void postNewPublication(String content){</span><br><span class="line">        //&#x8868;&#x793A;&#x5185;&#x5BB9;&#x6216;&#x8005;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x6539;&#x53D8;</span><br><span class="line">        setChanged();</span><br><span class="line">        //&#x901A;&#x77E5;&#x6240;&#x6709;&#x7684;&#x89C2;&#x5BDF;&#x8005;</span><br><span class="line">        notifyObservers(content);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>DevWebSite&#x662F;&#x5177;&#x4F53;&#x7684;&#x4E3B;&#x9898;&#x89D2;&#x8272;&#xFF0C;Observable&#x662F;&#x62BD;&#x8C61;&#x7684;&#x4E3B;&#x4F53;&#x89D2;&#x8272;&#x3002;Observable&#x662F;JDK&#x7684;&#x5185;&#x7F6E;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Test {</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args){</span><br><span class="line"></span><br><span class="line">        DevWebSite devWebSite = new DevWebSite();</span><br><span class="line"></span><br><span class="line">        Coder codeA = new Coder(&quot;A&quot;);</span><br><span class="line">        Coder codeB = new Coder(&quot;B&quot;);</span><br><span class="line">        Coder codeC = new Coder(&quot;C&quot;);</span><br><span class="line">        Coder codeD = new Coder(&quot;D&quot;);</span><br><span class="line"></span><br><span class="line">        devWebSite.addObserver(codeA);</span><br><span class="line">        devWebSite.addObserver(codeB);</span><br><span class="line">        devWebSite.addObserver(codeC);</span><br><span class="line">        devWebSite.addObserver(codeD);</span><br><span class="line"></span><br><span class="line">        devWebSite.postNewPublication(&quot;&#x4F60;&#x62FF;&#x5230;offer&#x4E86;.&quot;);</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x6253;&#x5370;&#x5185;&#x5BB9;&#xFF1A;<br>Hi,D,DevWebSite &#x66F4;&#x65B0;&#x4E86;&#xFF0C;&#x5185;&#x5BB9;&#xFF1A;&#x4F60;&#x62FF;&#x5230;offer&#x4E86;.<br>Hi,C,DevWebSite &#x66F4;&#x65B0;&#x4E86;&#xFF0C;&#x5185;&#x5BB9;&#xFF1A;&#x4F60;&#x62FF;&#x5230;offer&#x4E86;.<br>Hi,B,DevWebSite &#x66F4;&#x65B0;&#x4E86;&#xFF0C;&#x5185;&#x5BB9;&#xFF1A;&#x4F60;&#x62FF;&#x5230;offer&#x4E86;.<br>Hi,A,DevWebSite &#x66F4;&#x65B0;&#x4E86;&#xFF0C;&#x5185;&#x5BB9;&#xFF1A;&#x4F60;&#x62FF;&#x5230;offer&#x4E86;.</p>
+<p>Coder&#x662F;&#x5177;&#x4F53;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x4ED6;&#x8BA2;&#x9605;&#x4E86;DevWebSite&#x8FD9;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x53EF;&#x89C2;&#x5BDF;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5F53;&#x5185;&#x5BB9;&#x6709;&#x66F4;&#x65B0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x7136;&#x540E;&#x7ED9;&#x8FD9;&#x4E9B;&#x89C2;&#x5BDF;&#x8005;&#x53D1;&#x5E03;&#x4E00;&#x4E2A;&#x66F4;&#x65B0;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x5373;&#x8C03;&#x7528;Coder&#x7684;update&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x8FBE;&#x5230;&#x4E86;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x901A;&#x77E5;&#x7684;&#x529F;&#x80FD;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#x90FD;&#x662F;&#x4F9D;&#x8D56;&#x4E8E;Observer&#x548C;Observable&#x8FD9;&#x4E9B;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x4E8E;Coder&#x8DDF;DevWebSite&#x5B8C;&#x5168;&#x6CA1;&#x6709;&#x8026;&#x5408;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;&#x8BA2;&#x9605;&#x7CFB;&#x7EDF;&#x7684;&#x7075;&#x6D3B;&#x6027;&#x8DDF;&#x53EF;&#x9760;&#x6027;&#x3002;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
 
         
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/15/工厂模式/" itemprop="url">
+                  工厂模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-15T15:31:47+08:00" content="2016-06-15">
+              2016-06-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>&#x521B;&#x5EFA;&#x578B;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;&#x975E;&#x5E38;&#x5E7F;&#x6CDB;&#x3002;&#x4F8B;&#x5982;Activity&#x91CC;&#x9762;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x65B9;&#x6CD5;&#x90FD;&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x662F;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x3002;</p>
+<p><a href="http://www.cnblogs.com/wing011203/archive/2013/04/14/3021245.html" target="_blank" rel="external">&#x521B;&#x5EFA;&#x578B;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x53C2;&#x8003;&#x94FE;&#x63A5;&#x4E00;</a><br><a href="http://blog.csdn.net/lovelion/article/details/7426015" target="_blank" rel="external">&#x521B;&#x5EFA;&#x578B;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x53C2;&#x8003;&#x94FE;&#x63A5;&#x4E8C;</a></p>
+<h2 id="&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>&#x4F7F;&#x7528;&#x573A;&#x666F;</h2><p>&#x5728;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x65B9;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x4EC0;&#x4E48;&#x662F;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#xFF1F;<br>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x662F;&#x6307;&#x90A3;&#x4E9B;&#x5305;&#x542B;&#x591A;&#x4E2A;&#x6210;&#x5458;&#x5C5E;&#x6027;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E9B;&#x6210;&#x5458;&#x5C5E;&#x6027;&#x4E5F;&#x79F0;&#x4E3A;&#x90E8;&#x4EF6;&#x6216;&#x96F6;&#x4EF6;&#xFF0C;&#x5982;&#x6C7D;&#x8F66;&#x5305;&#x62EC;&#x65B9;&#x5411;&#x76D8;&#x3001;&#x53D1;&#x52A8;&#x673A;&#x3001;&#x8F6E;&#x80CE;&#x7B49;&#x90E8;&#x4EF6;&#xFF0C;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x5305;&#x62EC;&#x53D1;&#x4EF6;&#x4EBA;&#x3001;&#x6536;&#x4EF6;&#x4EBA;&#x3001;&#x4E3B;&#x9898;&#x3001;&#x5185;&#x5BB9;&#x3001;&#x9644;&#x4EF6;&#x7B49;&#x90E8;&#x4EF6;&#xFF0C;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7C7B;&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Product  {</span><br><span class="line">       private  String partA; //&#x5B9A;&#x4E49;&#x90E8;&#x4EF6;&#xFF0C;&#x90E8;&#x4EF6;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#xFF0C;&#x5305;&#x62EC;&#x503C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;</span><br><span class="line">       private  String partB;</span><br><span class="line">       private  String partC;</span><br><span class="line">       //partA&#x7684;Getter&#x65B9;&#x6CD5;&#x548C;Setter&#x65B9;&#x6CD5;&#x7701;&#x7565;</span><br><span class="line">       //partB&#x7684;Getter&#x65B9;&#x6CD5;&#x548C;Setter&#x65B9;&#x6CD5;&#x7701;&#x7565;</span><br><span class="line">       //partC&#x7684;Getter&#x65B9;&#x6CD5;&#x548C;Setter&#x65B9;&#x6CD5;&#x7701;&#x7565;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://blog.csdn.net/lovelion/article/details/7426015" target="_blank" rel="external">&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x53C2;&#x8003;&#x94FE;&#x63A5;</a></p>
+<h2 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;"><a href="#&#x4EE3;&#x7801;&#x5B9E;&#x73B0;" class="headerlink" title="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;"></a>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h2><p>&#x62BD;&#x8C61;&#x4EA7;&#x54C1;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Product {</span><br><span class="line"></span><br><span class="line">    public abstract void method();</span><br><span class="line">    </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5177;&#x4F53;&#x4EA7;&#x54C1;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class ProductA extends Product {</span><br><span class="line">    @Override</span><br><span class="line">    public void method() {</span><br><span class="line">     System.out.println(&quot;&#x6211;&#x662F;&#x4EA7;&#x54C1;A&quot;);    </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">public class ProductB extends Product {</span><br><span class="line">    @Override</span><br><span class="line">    public void method() {</span><br><span class="line">     System.out.println(&quot;&#x6211;&#x662F;&#x4EA7;&#x54C1;B&quot;);    </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x62BD;&#x8C61;&#x5DE5;&#x5382;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public abstract  class Factory{</span><br><span class="line"></span><br><span class="line">    public abstract Product createProduct();</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5177;&#x4F53;&#x5DE5;&#x5382;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class FactoryA extends Factory{</span><br><span class="line">    @Override</span><br><span class="line">    public Product createProduct() {</span><br><span class="line">        return new ProductA();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Client {</span><br><span class="line"></span><br><span class="line">    public void main(String[] args){</span><br><span class="line"></span><br><span class="line">        Factory factory = new FactoryA();</span><br><span class="line">        Product productA = factory.createProduct();</span><br><span class="line">        productA.method();</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x4E3B;&#x8981;&#x5206;&#x4E3A;&#x56DB;&#x5927;&#x6A21;&#x5757;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x62BD;&#x8C61;&#x4EA7;&#x54C1;</li>
+<li>&#x5177;&#x4F53;&#x4EA7;&#x54C1;</li>
+<li>&#x62BD;&#x8C61;&#x5DE5;&#x5382;</li>
+<li>&#x5177;&#x4F53;&#x5DE5;&#x5382;</li>
+</ul>
+</blockquote>
+<p>&#x6709;&#x65F6;&#x5019;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x53CD;&#x5C04;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x66F4;&#x7B80;&#x6D01;&#x7684;&#x751F;&#x6210;&#x5177;&#x4F53;&#x7684;&#x4EA7;&#x54C1;&#x5BF9;&#x8C61;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public abstract  class Factory{</span><br><span class="line"></span><br><span class="line">    public abstract &lt;T extends Product&gt; T createProduct(Class&lt;T&gt; clz);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class CreateFactory extends Factory{</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public &lt;T extends Product&gt; T createProduct(Class&lt;T&gt; clz) {</span><br><span class="line"></span><br><span class="line">        Product p = null;</span><br><span class="line"></span><br><span class="line">        try {</span><br><span class="line">            p = (Product) Class.forName(clz.getName()).newInstance();</span><br><span class="line">        } catch (Exception e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return (T) p;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Client {</span><br><span class="line"></span><br><span class="line">    public void main(String[] args){</span><br><span class="line"></span><br><span class="line">        Factory factory = new CreateFactory();</span><br><span class="line">        Product productA = factory.createProduct(ProductA.class);</span><br><span class="line">        productA.method();</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7B80;&#x6D01;&#xFF0C;&#x52A8;&#x6001;&#x3002;&#x5F53;&#x7136;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A;&#x4EA7;&#x54C1;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5DE5;&#x5382;&#xFF0C;&#x8FD9;&#x88AB;&#x79F0;&#x4E3A;&#x591A;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x3002;</p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x5DE5;&#x5382;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x7701;&#x7565;&#x6389;&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#xFF0C;&#x76F4;&#x63A5;&#x521B;&#x5EFA;&#x5177;&#x4F53;&#x5DE5;&#x5382;&#xFF0C;&#x8FD9;&#x79F0;&#x4E3A;&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x3002;</p>
+
+          
+        
+      
     </div>
-</article>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
+      
 
-    <ul class="pagination center-align">
-    <li class="">
-        <a href="/page/3/"><i class="fa fa-angle-left"></i></a>
-    </li>
-    
-    
-        <li class="waves-effect"><a href="/">1</a></li>
-    
-        <li class="waves-effect"><a href="/page/2">2</a></li>
-    
-        <li class="waves-effect"><a href="/page/3">3</a></li>
-    
-        <li class="active light-green"><a href="/page/4">4</a></li>
-    
-        <li class="waves-effect"><a href="/page/5">5</a></li>
-    
-        <li class="waves-effect"><a href="/page/6">6</a></li>
-    
-    
-    <li class="">
-        <a href="/page/5/"><i class="fa fa-angle-right"></i></a>
-    </li>
- </ul>
+  
+  
 
-</div>
+  
+  
+  
 
-        <div class="fixed-action-btn float-sitemap">
-    <a class="btn-floating btn-large light-green">
-      <i class="fa fa-caret-square-o-up"></i>
-    </a>
-    <ul>
-      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
-      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
-    </ul>
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/14/单例模式/" itemprop="url">
+                  单例模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-14T17:31:36+08:00" content="2016-06-14">
+              2016-06-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>&#x8BB8;&#x591A;&#x65F6;&#x5019;&#x7CFB;&#x7EDF;&#x53EA;&#x5141;&#x8BB8;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;ImageLoader&#xFF0C;&#x91CC;&#x9762;&#x53C8;&#x542B;&#x6709;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x7F13;&#x5B58;&#x7CFB;&#x7EDF;&#xFF0C;&#x8BBF;&#x95EE;&#x7F51;&#x7EDC;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x7B49;&#x7B49;&#xFF0C;&#x6BD4;&#x8F83;&#x6D88;&#x8017;&#x8D44;&#x6E90;&#xFF0C;&#x56E0;&#x6B64;&#x6CA1;&#x6709;&#x7406;&#x7531;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FD9;&#x79CD;&#x4E0D;&#x80FD;&#x81EA;&#x7531;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5C31;&#x662F;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x666F;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>&#x4F7F;&#x7528;&#x573A;&#x666F;</h2><p>&#x786E;&#x4FDD;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x907F;&#x514D;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x5BF9;&#x8C61;&#x9020;&#x6210;&#x8FC7;&#x591A;&#x7684;&#x5185;&#x5B58;&#x6D88;&#x8017;&#x7684;&#x60C5;&#x666F;&#xFF0C;&#x6216;&#x8005;&#x67D0;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x53EA;&#x5E94;&#x8BE5;&#x6709;&#x4E14;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x3002;&#x4F8B;&#x5982;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6D88;&#x8017;&#x7684;&#x8D44;&#x6E90;&#x8FC7;&#x591A;&#xFF0C;&#x5982;&#x679C;&#x8BBF;&#x95EE;IO&#x548C;&#x6570;&#x636E;&#x5E93;&#x8D44;&#x6E90;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x5E94;&#x8BE5;&#x8003;&#x8651;&#x4F7F;&#x7528;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x3002;</p>
+<h2 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;"><a href="#&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;" class="headerlink" title="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;"></a>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</h2><h3 id="&#x997F;&#x6C49;&#x6A21;&#x5F0F;&#xFF1A;"><a href="#&#x997F;&#x6C49;&#x6A21;&#x5F0F;&#xFF1A;" class="headerlink" title="&#x997F;&#x6C49;&#x6A21;&#x5F0F;&#xFF1A;"></a>&#x997F;&#x6C49;&#x6A21;&#x5F0F;&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton {</span><br><span class="line"></span><br><span class="line">    private static Singleton singleton = new Singleton();</span><br><span class="line">    </span><br><span class="line">    private Singleton(){</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    public static Singleton getInstance(){</span><br><span class="line">        return singleton;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x5B8C;&#x6210;&#x4E86;singleton&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#xFF0C;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x7684;&#x5229;&#x7528;&#x7387;&#x4E0D;&#x9AD8;&#x3002;</p>
+<h3 id="&#x61D2;&#x6C49;&#x6A21;&#x5F0F;"><a href="#&#x61D2;&#x6C49;&#x6A21;&#x5F0F;" class="headerlink" title="&#x61D2;&#x6C49;&#x6A21;&#x5F0F;"></a>&#x61D2;&#x6C49;&#x6A21;&#x5F0F;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton {</span><br><span class="line"></span><br><span class="line">    private static Singleton singleton ;</span><br><span class="line"></span><br><span class="line">    private Singleton(){</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static synchronized  Singleton getInstance(){</span><br><span class="line">        if(singleton==null){</span><br><span class="line">            singleton = new Singleton();</span><br><span class="line">        }</span><br><span class="line">        return singleton;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x8981;&#x8FDB;&#x884C;&#x540C;&#x6B65;&#x5904;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x6548;&#x7387;&#x6BD4;&#x8F83;&#x4F4E;&#x3002;</p>
+<h3 id="&#x53CC;&#x68C0;&#x9501;&#xFF08;DCL-double-check-lock&#xFF09;"><a href="#&#x53CC;&#x68C0;&#x9501;&#xFF08;DCL-double-check-lock&#xFF09;" class="headerlink" title="&#x53CC;&#x68C0;&#x9501;&#xFF08;DCL double check lock&#xFF09;"></a>&#x53CC;&#x68C0;&#x9501;&#xFF08;DCL double check lock&#xFF09;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton {</span><br><span class="line"></span><br><span class="line">    private static Singleton singleton ;</span><br><span class="line"></span><br><span class="line">    private Singleton(){</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static  Singleton getInstance(){</span><br><span class="line">        if(singleton==null){</span><br><span class="line">            </span><br><span class="line">            synchronized (Singleton.class){</span><br><span class="line">                if(singleton==null){</span><br><span class="line">                    singleton = new Singleton();</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">           </span><br><span class="line">        }</span><br><span class="line">        return singleton;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x4FDD;&#x8BC1;&#x4E86;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x540C;&#x65F6;&#x53EA;&#x4F1A;&#x5728;&#x4E00;&#x6B21;&#x7684;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x540C;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x6548;&#x7387;&#x6BD4;&#x8F83;&#x9AD8;&#x3002;</p>
+<p>&#x7B2C;&#x4E00;&#x5C42;&#x5224;&#x65AD;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x5728;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x540C;&#x6B65;&#xFF0C;&#x7B2C;&#x4E8C;&#x5C42;&#x5224;&#x65AD;&#x662F;&#x4E3A;&#x4E86;&#x5728;null&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x521B;&#x5EFA;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x6709;&#x65F6;&#x5019;&#x4F1A;&#x51FA;&#x73B0;DCL&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;&#x3002;<br>singleton = new Singleton()&#x88AB;&#x7F16;&#x8BD1;&#x6210;&#x591A;&#x6761;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x5927;&#x81F4;&#x505A;&#x4E86;&#x4E09;&#x4EF6;&#x4E8B;&#x60C5;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x5206;&#x914D;&#x5185;&#x5B58;</li>
+<li>&#x6267;&#x884C;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x6210;&#x5458;&#x53D8;&#x91CF;</li>
+<li>&#x5C06;singleton&#x6307;&#x5411;&#x65B0;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;</li>
+</ul>
+</blockquote>
+<p>java&#x7F16;&#x8BD1;&#x5668;&#x5141;&#x8BB8;&#x4E71;&#x5E8F;&#x6267;&#x884C;&#xFF0C;&#x540C;&#x65F6;&#x7531;&#x4E8E;&#x5728;JDK 1.5 &#x4E4B;&#x524D;JVM&#x4E2D;Cache,&#x5BC4;&#x5B58;&#x5668;&#x5230;&#x4E3B;&#x5185;&#x5B58;&#x56DE;&#x5199;&#x987A;&#x5E8F;&#x7684;&#x89C4;&#x5B9A;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x7B2C;&#x4E8C;&#x6B65;&#x8DDF;&#x7B2C;&#x4E09;&#x6B65;&#x7684;&#x987A;&#x5E8F;&#x662F;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#xFF0C;&#x7B2C;&#x4E09;&#x6B65;&#x5148;&#x6267;&#x884C;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B65;&#x540E;&#x6267;&#x884C;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5F53;A&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x4E86;&#x7B2C;&#x4E09;&#x6B65;&#xFF0C;&#x5207;&#x6362;&#x5230;B&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#xFF0C;&#x6B64;&#x65F6;singleton&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x8FD4;&#x56DE;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;singleton&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x51FA;&#x9519;&#x3002;&#x8FD9;&#x5C31;&#x662F;DCL&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;"><a href="#&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;" class="headerlink" title="&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;"></a>&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton {</span><br><span class="line"></span><br><span class="line">    private Singleton(){</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private static class SingletonHolder{</span><br><span class="line">        private static final Singleton singleton = new Singleton();</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    public static  Singleton getInstance(){</span><br><span class="line">        return SingletonHolder.singleton;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x5B9E;&#x73B0;&#x4E86;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#xFF0C;&#x4E5F;&#x4FEE;&#x590D;&#x4E86;&#x53CC;&#x68C0;&#x9501;&#x6A21;&#x5F0F;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="&#x679A;&#x4E3E;&#x5355;&#x4F8B;"><a href="#&#x679A;&#x4E3E;&#x5355;&#x4F8B;" class="headerlink" title="&#x679A;&#x4E3E;&#x5355;&#x4F8B;"></a>&#x679A;&#x4E3E;&#x5355;&#x4F8B;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public enum  Singleton {</span><br><span class="line"></span><br><span class="line">    SINGLETON;</span><br><span class="line"></span><br><span class="line">    public void doSometing(){</span><br><span class="line">        System.out.println(&quot;wo shi mei ju lei!!!!&quot;);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x679A;&#x4E3E;&#x7C7B;&#xFF0C;&#x5199;&#x6CD5;&#x7B80;&#x5355;&#xFF0C;&#x800C;&#x4E14;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x4E0B;&#x4ED6;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x3002;</p>
+<p>&#x4E0A;&#x8FF0;&#x7684;&#x51E0;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;&#x5728;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x4F46;&#x662F;&#x679A;&#x4E3E;&#x7C7B;&#x7684;&#x5199;&#x6CD5;&#x5374;&#x4E0D;&#x4F1A;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x5B9E;&#x73B0;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;"><a href="#&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x5B9E;&#x73B0;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;" class="headerlink" title="&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x5B9E;&#x73B0;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;"></a>&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x5B9E;&#x73B0;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class  SingletonManager {</span><br><span class="line"></span><br><span class="line">    private static Map&lt;String,Object&gt; map = new Hashtable&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    private SingletonManager(){</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    public static void registerService(String key,Object instance){</span><br><span class="line">        if(!map.containsKey(key)){</span><br><span class="line">            map.put(key,instance);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static Object getService(String key){</span><br><span class="line">        return map.get(key);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x5728;&#x7A0B;&#x5E8F;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C06;&#x5404;&#x79CD;&#x5355;&#x4F8B;&#x7C7B;&#x653E;&#x8FDB;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x4E2A;&#x7684;&#x7BA1;&#x7406;&#x7C7B;&#x4E2D;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x901A;&#x8FC7;key&#x53D6;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x5355;&#x4F8B;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x4F7F;&#x6211;&#x4EEC;&#x7BA1;&#x7406;&#x591A;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x5355;&#x4F8B;&#x3002;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x7684;&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x964D;&#x4F4E;&#x4E86;&#x7528;&#x6237;&#x7684;&#x4F7F;&#x7528;&#x7684;&#x6210;&#x672C;&#xFF0C;&#x540C;&#x65F6;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x9690;&#x85CF;&#x4E86;&#x5185;&#x90E8;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x964D;&#x4F4E;&#x4E86;&#x8026;&#x5408;&#x6027;&#x3002;</p>
+<h2 id="&#x603B;&#x7ED3;&#xFF1A;"><a href="#&#x603B;&#x7ED3;&#xFF1A;" class="headerlink" title="&#x603B;&#x7ED3;&#xFF1A;"></a>&#x603B;&#x7ED3;&#xFF1A;</h2><p>&#x4E0D;&#x8BBA;&#x7528;&#x90A3;&#x79CD;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#x5355;&#x4F8B;&#xFF0C;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x90FD;&#x662F;&#x5C06;&#x6784;&#x9020;&#x51FD;&#x6570;&#x79C1;&#x6709;&#x5316;&#xFF0C;&#x540C;&#x65F6;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x83B7;&#x53D6;&#x552F;&#x4E00;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;&#x5728;&#x83B7;&#x53D6;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x9632;&#x6B62;&#x5728;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x91CD;&#x65B0;&#x751F;&#x6210;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/14/面向对象的六大原则/" itemprop="url">
+                  面向对象的六大原则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-14T17:11:20+08:00" content="2016-06-14">
+              2016-06-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="&#x5355;&#x4E00;&#x804C;&#x8D23;"><a href="#&#x5355;&#x4E00;&#x804C;&#x8D23;" class="headerlink" title="&#x5355;&#x4E00;&#x804C;&#x8D23;"></a>&#x5355;&#x4E00;&#x804C;&#x8D23;</h2><h3 id="&#x5B9A;&#x4E49;&#xFF1A;"><a href="#&#x5B9A;&#x4E49;&#xFF1A;" class="headerlink" title="&#x5B9A;&#x4E49;&#xFF1A;"></a>&#x5B9A;&#x4E49;&#xFF1A;</h3><p>&#x4E00;&#x4E2A;&#x7C7B;&#x53EA;&#x5E72;&#x4E00;&#x4E2A;&#x4E8B;&#x60C5;&#xFF0C;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x3002;</p>
+<h3 id="&#x4F5C;&#x7528;&#xFF1A;"><a href="#&#x4F5C;&#x7528;&#xFF1A;" class="headerlink" title="&#x4F5C;&#x7528;&#xFF1A;"></a>&#x4F5C;&#x7528;&#xFF1A;</h3><p>&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x8BA9;&#x7C7B;&#x4E0D;&#x90A3;&#x4E48;&#x81C3;&#x80BF;&#xFF0C;&#x540C;&#x65F6;&#x63D0;&#x9AD8;&#x4E86;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#xFF0C;&#x540C;&#x65F6;&#x964D;&#x4F4E;&#x4E86;&#x8026;&#x5408;&#x6027;&#x3002;</p>
+<h3 id="&#x6CE8;&#x610F;&#xFF1A;"><a href="#&#x6CE8;&#x610F;&#xFF1A;" class="headerlink" title="&#x6CE8;&#x610F;&#xFF1A;"></a>&#x6CE8;&#x610F;&#xFF1A;</h3><p>&#x5173;&#x4E8E;&#x600E;&#x4E48;&#x5212;&#x5206;&#x201C;&#x804C;&#x8D23;&#x201D;&#xFF0C;&#x6CA1;&#x6709;&#x56FA;&#x5B9A;&#x7684;&#x6807;&#x51C6;&#xFF0C;&#x89C6;&#x5177;&#x4F53;&#x7684;&#x60C5;&#x51B5;&#x800C;&#x5B9A;&#x3002;&#x4F46;&#x662F;&#x4E5F;&#x6709;&#x4E00;&#x4E9B;&#x6307;&#x5BFC;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x6BD4;&#x5982;&#x4E24;&#x4E2A;&#x4E0D;&#x76F8;&#x5E72;&#x7684;&#x529F;&#x80FD;&#x4E0D;&#x80FD;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x7C7B;&#x91CC;&#x9762;&#xFF0C;&#x4E00;&#x4E2A;&#x7C7B;&#x91CC;&#x9762;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x6027;&#x9AD8;&#x5EA6;&#x76F8;&#x5173;&#x7684;&#x51FD;&#x6570;&#x8DDF;&#x6570;&#x636E;&#x3002;</p>
+<h2 id="&#x5F00;&#x95ED;&#x539F;&#x5219;"><a href="#&#x5F00;&#x95ED;&#x539F;&#x5219;" class="headerlink" title="&#x5F00;&#x95ED;&#x539F;&#x5219;"></a>&#x5F00;&#x95ED;&#x539F;&#x5219;</h2><h3 id="&#x5B9A;&#x4E49;&#xFF1A;-1"><a href="#&#x5B9A;&#x4E49;&#xFF1A;-1" class="headerlink" title="&#x5B9A;&#x4E49;&#xFF1A;"></a>&#x5B9A;&#x4E49;&#xFF1A;</h3><p>&#x7A0B;&#x5E8F;&#x5BF9;&#x4E8E;&#x4FEE;&#x6539;&#x662F;&#x5C01;&#x95ED;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x6269;&#x5C55;&#x662F;&#x5F00;&#x653E;&#x7684;&#x3002;&#x53EA;&#x6709;&#x4F46;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x624D;&#x56DE;&#x53BB;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x5F53;&#x65B0;&#x589E;&#x52A0;&#x7279;&#x6027;&#x6216;&#x8005;&#x529F;&#x80FD;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x8FC7;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x65B0;&#x5EFA;&#x7684;&#x7C7B;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7EE7;&#x627F;&#x539F;&#x6709;&#x7684;&#x7C7B;&#x6765;&#x5177;&#x6709;&#x539F;&#x6765;&#x7684;&#x7C7B;&#x7684;&#x884C;&#x4E3A;&#x8DDF;&#x5C5E;&#x6027;&#x3002;</p>
+<h3 id="&#x4F5C;&#x7528;&#xFF1A;-1"><a href="#&#x4F5C;&#x7528;&#xFF1A;-1" class="headerlink" title="&#x4F5C;&#x7528;&#xFF1A;"></a>&#x4F5C;&#x7528;&#xFF1A;</h3><p>&#x5F00;&#x95ED;&#x539F;&#x5219;&#x4E3B;&#x8981;&#x662F;&#x9488;&#x5BF9;&#x8F6F;&#x4EF6;&#x8FED;&#x4EE3;&#x5347;&#x7EA7;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x4FEE;&#x6539;&#x539F;&#x6765;&#x7684;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x4F1A;&#x5C06;&#x67D0;&#x4E9B;&#x65B0;&#x7684;&#x9519;&#x8BEF;&#x52A0;&#x5165;&#x5230;&#x5DF2;&#x7ECF;&#x7ECF;&#x8FC7;&#x6D4B;&#x8BD5;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x7834;&#x574F;&#x539F;&#x6765;&#x7CFB;&#x7EDF;&#x7684;&#x7A33;&#x5B9A;&#x6027;&#xFF0C;&#x901A;&#x8FC7;&#x6269;&#x5C55;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x8FED;&#x4EE3;&#x5347;&#x7EA7;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x8FD9;&#x53EA;&#x662F;&#x6700;&#x7406;&#x60F3;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x662F;&#x5C06;&#x4FEE;&#x6539;&#x8DDF;&#x6269;&#x5C55;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#x5B9E;&#x73B0;&#x8F6F;&#x4EF6;&#x7684;&#x8FED;&#x4EE3;&#x5347;&#x7EA7;&#x3002;</p>
+<h3 id="&#x6CE8;&#x610F;&#xFF1A;-1"><a href="#&#x6CE8;&#x610F;&#xFF1A;-1" class="headerlink" title="&#x6CE8;&#x610F;&#xFF1A;"></a>&#x6CE8;&#x610F;&#xFF1A;</h3><p>&#x5E76;&#x4E0D;&#x662F;&#x5B8C;&#x5168;&#x4E0D;&#x80FD;&#x5C3D;&#x5174;&#x4FEE;&#x6539;&#xFF0C;&#x5F53;&#x539F;&#x6709;&#x7684;&#x6846;&#x67B6;&#x8DDF;&#x4EE3;&#x7801;&#x90FD;&#x4E0D;&#x80FD;&#x9002;&#x5E94;&#x65B0;&#x7684;&#x9700;&#x6C42;&#x73AF;&#x5883;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8981;&#x53CA;&#x65F6;&#x8FDB;&#x884C;&#x91CD;&#x6784;&#xFF0C;&#x81F3;&#x4E8E;&#x9009;&#x62E9;&#x4FEE;&#x6539;&#x8FD8;&#x662F;&#x6269;&#x5C55;&#x7684;&#x65B9;&#x5F0F;&#x89C6;&#x5177;&#x4F53;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#x800C;&#x5B9A;&#x3002;</p>
+<h2 id="&#x91CC;&#x6C0F;&#x66FF;&#x6362;"><a href="#&#x91CC;&#x6C0F;&#x66FF;&#x6362;" class="headerlink" title="&#x91CC;&#x6C0F;&#x66FF;&#x6362;"></a>&#x91CC;&#x6C0F;&#x66FF;&#x6362;</h2><h3 id="&#x5B9A;&#x4E49;&#xFF1A;-2"><a href="#&#x5B9A;&#x4E49;&#xFF1A;-2" class="headerlink" title="&#x5B9A;&#x4E49;&#xFF1A;"></a>&#x5B9A;&#x4E49;&#xFF1A;</h3><p>&#x80FD;&#x4F7F;&#x7236;&#x7C7B;&#x7684;&#x5730;&#x65B9;&#x80AF;&#x5B9A;&#x80FD;&#x4F7F;&#x7528;&#x5B50;&#x7C7B;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;</p>
+<h3 id="&#x505A;&#x7528;&#xFF1A;"><a href="#&#x505A;&#x7528;&#xFF1A;" class="headerlink" title="&#x505A;&#x7528;&#xFF1A;"></a>&#x505A;&#x7528;&#xFF1A;</h3><p>&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x8DDF;&#x540E;&#x9762;&#x7684;&#x4F9D;&#x8D56;&#x5012;&#x7F6E;&#x539F;&#x5219;&#x90FD;&#x63D0;&#x9AD8;&#x4E86;&#x4EE3;&#x7801;&#x7684;&#x6269;&#x5C55;&#x6027;&#x3002;</p>
+<h2 id="&#x4F9D;&#x8D56;&#x5012;&#x7F6E;"><a href="#&#x4F9D;&#x8D56;&#x5012;&#x7F6E;" class="headerlink" title="&#x4F9D;&#x8D56;&#x5012;&#x7F6E;"></a>&#x4F9D;&#x8D56;&#x5012;&#x7F6E;</h2><h3 id="&#x5B9A;&#x4E49;&#xFF1A;-3"><a href="#&#x5B9A;&#x4E49;&#xFF1A;-3" class="headerlink" title="&#x5B9A;&#x4E49;&#xFF1A;"></a>&#x5B9A;&#x4E49;&#xFF1A;</h3><p>&#x4F9D;&#x8D56;&#x5012;&#x7F6E;&#x539F;&#x5219;&#x6307;&#x4EE3;&#x4E86;&#x4E00;&#x79CD;&#x89E3;&#x8026;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x9AD8;&#x5C42;&#x6B21;&#x7684;&#x6A21;&#x5757;&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;&#x4F4E;&#x5C42;&#x6B21;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x4F9D;&#x8D56;&#x5012;&#x7F6E;&#x539F;&#x5219;&#x7684;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x9AD8;&#x5C42;&#x6B21;&#x7684;&#x6A21;&#x5757;&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;&#x4F4E;&#x5C42;&#x6B21;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E24;&#x8005;&#x90FD;&#x4F9D;&#x8D56;&#x4E8E;&#x62BD;&#x8C61;&#xFF1B;</li>
+<li>&#x62BD;&#x8C61;&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;&#x7EC6;&#x8282;&#xFF1B;</li>
+<li>&#x7EC6;&#x8282;&#x4F9D;&#x8D56;&#x4E8E;&#x62BD;&#x8C61;&#xFF1B;</li>
+</ul>
+</blockquote>
+<p>Java&#x91CC;&#x7684;&#x62BD;&#x8C61;&#x6307;&#x7684;&#x662F;&#x62BD;&#x8C61;&#x7C7B;&#x8DDF;&#x63A5;&#x53E3;&#xFF0C;&#x7EC6;&#x8282;&#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x4E86;&#x63A5;&#x53E3;&#x6216;&#x8005;&#x7EE7;&#x627F;&#x4E86;&#x62BD;&#x8C61;&#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#x3002;&#x9AD8;&#x5C42;&#x6B21;&#x7684;&#x6A21;&#x5757;&#x5C31;&#x662F;&#x6307;&#x8C03;&#x7528;&#x8005;&#xFF0C;&#x5E95;&#x5C42;&#x6B21;&#x7684;&#x6A21;&#x5757;&#x5C31;&#x662F;&#x6307;&#x5404;&#x79CD;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x70B9;&#x8BF4;&#xFF0C;&#x4F9D;&#x8D56;&#x5BFC;&#x81F4;&#x539F;&#x5219;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6307;&#x9762;&#x5411;&#x63A5;&#x53E3;&#x7F16;&#x7A0B;&#x3002;</p>
+<h3 id="&#x4F5C;&#x7528;&#xFF1A;-2"><a href="#&#x4F5C;&#x7528;&#xFF1A;-2" class="headerlink" title="&#x4F5C;&#x7528;&#xFF1A;"></a>&#x4F5C;&#x7528;&#xFF1A;</h3><p>&#x4F9D;&#x8D56;&#x5012;&#x7F6E;&#x539F;&#x5219;&#xFF0C;&#x63D0;&#x9AD8;&#x4E86;&#x4EE3;&#x7801;&#x7684;&#x6269;&#x5C55;&#x6027;&#x3002;</p>
+<h3 id="&#x4F8B;&#x5B50;"><a href="#&#x4F8B;&#x5B50;" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h3><p>&#x81EA;&#x5B9A;&#x4E49;ImageLoader&#x7684;set&#x65B9;&#x6CD5;&#xFF0C;&#x8BBE;&#x7F6E;&#x7F13;&#x5B58;&#x65B9;&#x5F0F;&#xFF1B;</p>
+<h2 id="&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;"><a href="#&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;" class="headerlink" title="&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;"></a>&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;</h2><h3 id="&#x5B9A;&#x4E49;&#xFF1A;-4"><a href="#&#x5B9A;&#x4E49;&#xFF1A;-4" class="headerlink" title="&#x5B9A;&#x4E49;&#xFF1A;"></a>&#x5B9A;&#x4E49;&#xFF1A;</h3><p>&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;&#x4E00;&#x4E2A;&#x5B9A;&#x4E49;&#x662F;&#x6307;&#x5BA2;&#x6237;&#x7AEF;&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;&#x4E0D;&#x76F8;&#x5173;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x5B9A;&#x4E49;&#x4F9D;&#x8D56;&#x5EFA;&#x7ACB;&#x5728;&#x6700;&#x5C0F;&#x7684;&#x63A5;&#x53E3;&#x4E0A;&#x3002;<br>&#x6211;&#x53EA;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x6211;&#x9700;&#x8981;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x5176;&#x4ED6;&#x7684;&#x5185;&#x5BB9;&#x6211;&#x4E0D;&#x5173;&#x5FC3;&#xFF0C;&#x4F60;&#x4E5F;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x63D0;&#x4F9B;&#x7ED9;&#x6211;,&#x8FD9;&#x8DDF;&#x540E;&#x9762;&#x7684;&#x8FEA;&#x7C73;&#x7279;&#x539F;&#x5219;&#x7684;&#x601D;&#x60F3;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;<br>&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6307;&#x63A5;&#x53E3;&#x7684;&#x6700;&#x5C0F;&#x5316;&#xFF0C;&#x5C06;&#x5927;&#x7684;&#x81C3;&#x80BF;&#x7684;&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x7EC6;&#x5206;&#xFF0C;&#x62C6;&#x5206;&#x6210;&#x66F4;&#x5C0F;&#x66F4;&#x5177;&#x4F53;&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
+<h3 id="&#x4F5C;&#x7528;&#xFF1A;-3"><a href="#&#x4F5C;&#x7528;&#xFF1A;-3" class="headerlink" title="&#x4F5C;&#x7528;&#xFF1A;"></a>&#x4F5C;&#x7528;&#xFF1A;</h3><p>&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x7406;&#x964D;&#x4F4E;&#x4E86;&#x7CFB;&#x7EDF;&#x7684;&#x8026;&#x5408;&#x6027;&#xFF0C;&#x662F;&#x7CFB;&#x7EDF;&#x66F4;&#x5BB9;&#x6613;&#x91CD;&#x6784;&#x66F4;&#x6539;&#x8DDF;&#x90E8;&#x7F72;&#x3002;</p>
+<p><code>&#x524D;&#x9762;&#x7684;&#x4E94;&#x4E2A;&#x539F;&#x5219;&#x662F;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x7684;&#x4E94;&#x5927;&#x57FA;&#x672C;&#x539F;&#x5219;&#xFF0C;&#x4E5F;&#x6210;&#x4E3A;SOLID&#x539F;&#x5219;&#x3002;</code></p>
+<h2 id="&#x8FEA;&#x7C73;&#x7279;&#x539F;&#x5219;"><a href="#&#x8FEA;&#x7C73;&#x7279;&#x539F;&#x5219;" class="headerlink" title="&#x8FEA;&#x7C73;&#x7279;&#x539F;&#x5219;"></a>&#x8FEA;&#x7C73;&#x7279;&#x539F;&#x5219;</h2><h3 id="&#x5B9A;&#x4E49;&#xFF1A;-5"><a href="#&#x5B9A;&#x4E49;&#xFF1A;-5" class="headerlink" title="&#x5B9A;&#x4E49;&#xFF1A;"></a>&#x5B9A;&#x4E49;&#xFF1A;</h3><p>&#x6700;&#x5C0F;&#x77E5;&#x8BC6;&#x539F;&#x5219;&#xFF0C;&#x4E00;&#x4E2A;&#x7C7B;&#x5BF9;&#x4E8E;&#x4ED6;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x6216;&#x8005;&#x8C03;&#x7528;&#x7684;&#x7C7B;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;&#x4ED6;&#x6240;&#x9700;&#x8981;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x81F3;&#x4E8E;&#x5185;&#x90E8;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x5219;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#x4E5F;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x77E5;&#x9053;&#x3002;&#x4E24;&#x4E2A;&#x7C7B;&#x7684;&#x5173;&#x7CFB;&#x8D8A;&#x5BC6;&#x5207;&#xFF0C;&#x8026;&#x5408;&#x8D8A;&#x5927;&#xFF0C;&#x4E00;&#x4E2A;&#x7C7B;&#x4EA7;&#x751F;&#x53D8;&#x5316;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5BF9;&#x53E6;&#x4E00;&#x4E2A;&#x7C7B;&#x4EA7;&#x751F;&#x7684;&#x5F71;&#x54CD;&#x5C31;&#x8D8A;&#x5927;&#x3002;</p>
+<p>&#x8FEA;&#x7C73;&#x7279;&#x539F;&#x5219;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x89E3;&#x91CA;&#x662F;&#x53EA;&#x4E0E;&#x76F4;&#x63A5;&#x7684;&#x670B;&#x53CB;&#x901A;&#x4FE1;&#x3002;&#x4EC0;&#x4E48;&#x662F;&#x76F4;&#x63A5;&#x7684;&#x670B;&#x53CB;&#xFF1F;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x5FC5;&#x7136;&#x8DDF;&#x5176;&#x4ED6;&#x7684;&#x5BF9;&#x8C61;&#x6709;&#x8026;&#x5408;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x8026;&#x5408;&#x5C31;&#x4EA7;&#x751F;&#x670B;&#x53CB;&#x5173;&#x7CFB;&#x3002;</p>
+<h3 id="&#x4F5C;&#x7528;&#xFF1A;-4"><a href="#&#x4F5C;&#x7528;&#xFF1A;-4" class="headerlink" title="&#x4F5C;&#x7528;&#xFF1A;"></a>&#x4F5C;&#x7528;&#xFF1A;</h3><p>&#x964D;&#x4F4E;&#x4E86;&#x4EE3;&#x7801;&#x7684;&#x8026;&#x5408;&#x6027;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5BF9;&#x5176;&#x4ED6;&#x7C7B;&#x7684;&#x5F71;&#x54CD;&#x964D;&#x5230;&#x4E86;&#x6700;&#x4F4E;&#x3002;</p>
+<h3 id="&#x4F8B;&#x5B50;-1"><a href="#&#x4F8B;&#x5B50;-1" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h3><p>&#x79DF;&#x6237;&#xFF0C;&#x623F;&#x6E90;&#x4FE1;&#x606F;&#xFF0C;&#x4E2D;&#x4ECB;&#x3002;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/05/AsyncTask内存泄露-1/" itemprop="url">
+                  AsyncTask内存泄露
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-05T17:50:11+08:00" content="2016-06-05">
+              2016-06-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/05/AsyncTask内存泄露/" itemprop="url">
+                  AsyncTask内存泄露
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-05T17:48:40+08:00" content="2016-06-05">
+              2016-06-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/Android/内存泄露/" itemprop="url" rel="index">
+                    <span itemprop="name">内存泄露</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>AsyncTask&#x5728;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x884C;&#x4ECB;&#x7ECD;</p>
+<p>AsyncTask&#x7684;&#x7528;&#x6CD5;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x770B;&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private TextView mTv;</span><br><span class="line"></span><br><span class="line">new AsyncTask&lt;...&gt; {</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line"></span><br><span class="line">    protected void onPostExecute(Objecto) {</span><br><span class="line"></span><br><span class="line">        mTv.setText(&quot;text&quot;);</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}.execute();</span><br></pre></td></tr></table></figure>
+<p>&#x4E4D;&#x4E00;&#x770B;&#x597D;&#x50CF;&#x6CA1;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4F1A;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#xFF0C;&#x7EBF;&#x7A0B;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x8D85;&#x51FA;&#x5F53;&#x524D;Activity&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E4B;&#x540E;&#x4ECD;&#x7136;&#x5728;run&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x4E0D;&#x53D7;&#x63A7;&#x5236;&#x4E86;&#x3002;Activity&#x751F;&#x547D;&#x5468;&#x671F;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#xFF0C;&#x9700;&#x8981;&#x88AB;&#x7CFB;&#x7EDF;&#x56DE;&#x6536;&#x6389;&#xFF0C;&#x4F46;&#x662F;AsyncTask&#x8FD8;&#x5728;&#x6301;&#x6709;TextView&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5BFC;&#x81F4;&#x4E86;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x3002;</p>
+<p>&#x4FEE;&#x6539;&#x4EE3;&#x7801;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private TextView mTv;</span><br><span class="line"></span><br><span class="line">new AsyncTask&lt;...&gt; {</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line"></span><br><span class="line">    protected void onPostExecute(Objecto) {</span><br><span class="line"></span><br><span class="line">        //mTv.setText(&quot;text&quot;);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">}.execute();</span><br></pre></td></tr></table></figure>
+<p>&#x76F4;&#x63A5;&#x6CE8;&#x91CA;&#x6389;&#xFF0C;&#x4E0D;&#x505A;UI&#x64CD;&#x4F5C;&#x4E86;&#xFF0C;&#x867D;&#x7136;&#x8868;&#x9762;&#x770B;&#x4E0D;&#x4F1A;&#x5B58;&#x5728;&#x95EE;&#x9898;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#x8FD8;&#x5B58;&#x5728;&#x7740;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;AsyncTask&#x662F;&#x4E2A;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x7531;&#x4E8E;Java&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x7279;&#x70B9;&#xFF0C;AsyncTask&#x5185;&#x90E8;&#x7C7B;&#x4F1A;&#x6301;&#x6709;&#x5916;&#x90E8;&#x7C7B;&#x7684;&#x9690;&#x5F0F;&#x5F15;&#x7528;&#x3002;&#x5373;&#x4F7F;&#x4ECE;&#x4EE3;&#x7801;&#x4E0A;&#x770B;&#x6211;&#x5728;AsyncTask&#x91CC;&#x6CA1;&#x6709;&#x6301;&#x6709;&#x5916;&#x90E8;&#x7684;&#x4EFB;&#x4F55;&#x5F15;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x5199;&#x5728;Activity&#x91CC;&#xFF0C;&#x5BF9;context&#x4ECD;&#x7136;&#x4F1A;&#x6709;&#x4E2A;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x8FD9;&#x6837;&#x5982;&#x679C;&#x7EBF;&#x7A0B;&#x8D85;&#x8FC7;Activity&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;Activity&#x8FD8;&#x662F;&#x65E0;&#x6CD5;&#x56DE;&#x6536;&#x9020;&#x6210;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x3002;<br>&#x90A3;&#x95EE;&#x9898;&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x5462;&#xFF0C;&#x6709;&#x4E24;&#x79CD;&#x529E;&#x6CD5;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x7B2C;&#x4E00;&#xFF0C;&#x5728;Activity&#x751F;&#x547D;&#x5468;&#x671F;&#x7ED3;&#x675F;&#x524D;&#xFF0C;&#x53BB;cancel AsyncTask&#xFF0C;&#x56E0;&#x4E3A;Activity&#x90FD;&#x8981;&#x9500;&#x6BC1;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x518D;&#x8DD1;&#x7EBF;&#x7A0B;&#xFF0C;&#x7ED8;UI&#x663E;&#x7136;&#x5DF2;&#x7ECF;&#x6CA1;&#x4EC0;&#x4E48;&#x610F;&#x4E49;&#x4E86;&#x3002;</li>
+<li>&#x7B2C;&#x4E8C;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x5B9A;&#x8981;&#x5199;&#x6210;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5199;&#x6210;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x540C;&#x65F6;&#x5BF9;context&#x91C7;&#x7528;WeakRefrence,&#x5728;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#x3002;</li>
+</ul>
+</blockquote>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">public abstract static class WeakAsyncTask&lt;Params, Progress, Result, WeakTarget&gt; extends AsyncTask&lt;Params, Progress, Result&gt; {</span><br><span class="line">		protected WeakReference&lt;WeakTarget&gt; mTarget;</span><br><span class="line"></span><br><span class="line">        public WeakAsyncTask(WeakTarget target) {</span><br><span class="line">            mTarget = new WeakReference&lt;WeakTarget&gt;(target);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        protected final void onPreExecute() {</span><br><span class="line">            final WeakTarget target = mTarget.get();</span><br><span class="line">            if (target != null) {</span><br><span class="line">                this.onPreExecute(target);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        protected final Result doInBackground(Params... params) {</span><br><span class="line">            final WeakTarget target = mTarget.get();</span><br><span class="line">            if (target != null) {</span><br><span class="line">                return this.doInBackground(target, params);</span><br><span class="line">            } else {</span><br><span class="line">                return null;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        protected final void onPostExecute(Result result) {</span><br><span class="line">            final WeakTarget target = mTarget.get();</span><br><span class="line">            if (target != null) {</span><br><span class="line">                this.onPostExecute(target, result);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        protected void onProgressUpdate(Progress... values) {</span><br><span class="line">            </span><br><span class="line">            final WeakTarget target = mTarget.get();</span><br><span class="line">            if (target != null) {</span><br><span class="line">                this.onProgressUpdate(target,values);</span><br><span class="line">            }</span><br><span class="line">            </span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        protected abstract void onPreExecute(WeakTarget target);</span><br><span class="line">        </span><br><span class="line">        protected abstract Result doInBackground(WeakTarget target,</span><br><span class="line">                                                 Params... params);</span><br><span class="line"></span><br><span class="line">        protected abstract void onPostExecute(WeakTarget target, Result result);</span><br><span class="line"></span><br><span class="line">        protected abstract void onProgressUpdate(WeakTarget target,Progress... values);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    new WeakAsyncTask&lt;String,String,String,Context&gt;(this) {</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            protected void onPreExecute(Context context) {</span><br><span class="line"></span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            protected String doInBackground(Context context, String... params) {</span><br><span class="line">                return null;</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            protected void onPostExecute(Context context, String s) {</span><br><span class="line"></span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            protected void onProgressUpdate(Context context, String... values) {</span><br><span class="line"></span><br><span class="line">            }</span><br><span class="line">        }.execute();</span><br></pre></td></tr></table></figure></p>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;<a href="http://946898963.github.io/2016/06/05/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E4%B9%8BThread/" target="_blank" rel="external">&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x4E4B;Thread</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/05/内存泄露之Thread/" itemprop="url">
+                  内存泄露之Thread
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-05T17:39:43+08:00" content="2016-06-05">
+              2016-06-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/Android/内存泄露/" itemprop="url" rel="index">
+                    <span itemprop="name">内存泄露</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Thread &#x5185;&#x5B58;&#x6CC4;&#x9732;</p>
+<p>&#x7EBF;&#x7A0B;&#x4E5F;&#x662F;&#x9020;&#x6210;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x6E90;&#x5934;&#x3002;&#x7EBF;&#x7A0B;&#x4EA7;&#x751F;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x4E3B;&#x8981;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#x7EBF;&#x7A0B;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x4E0D;&#x53EF;&#x63A7;&#x3002;</p>
+<p>1.&#x770B;&#x4E00;&#x4E0B;&#x4E0B;&#x9762;&#x662F;&#x5426;&#x5B58;&#x5728;&#x95EE;&#x9898;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadActivity extends Activity {</span><br><span class="line">		public void onCreate(Bundle savedInstanceState) {</span><br><span class="line">			super.onCreate(savedInstanceState);</span><br><span class="line">			setContentView(R.layout.activity_main);</span><br><span class="line">			new MyThread().start();</span><br><span class="line">		}</span><br><span class="line">	</span><br><span class="line">		private class MyThread extends Thread {</span><br><span class="line">			@Override</span><br><span class="line">			public void run() {</span><br><span class="line">				super.run();</span><br><span class="line">				dosomthing();</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		private void dosomthing(){</span><br><span class="line">		</span><br><span class="line">		}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5F88;&#x5E73;&#x5E38;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x662F;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x5F62;&#x5F0F;&#x3002; </p>
+<p>&#x771F;&#x7684;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x5417;<br>&#x6211;&#x4EEC;&#x601D;&#x8003;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x5047;&#x8BBE;MyThread&#x7684;run&#x51FD;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x8D39;&#x65F6;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5F00;&#x542F;&#x8BE5;&#x7EBF;&#x7A0B;&#x540E;&#xFF0C;&#x5C06;&#x8BBE;&#x5907;&#x7684;&#x6A2A;&#x5C4F;&#x53D8;&#x4E3A;&#x4E86;&#x7AD6;&#x5C4F;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x5F53;&#x5C4F;&#x5E55;&#x8F6C;&#x6362;&#x65F6;&#x4F1A;&#x91CD;&#x65B0;&#x521B;&#x5EFA;Activity&#xFF0C;&#x6309;&#x7167;&#x6211;&#x4EEC;&#x7684;&#x60F3;&#x6CD5;&#xFF0C;&#x8001;&#x7684;Activity&#x5E94;&#x8BE5;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#x624D;&#x5BF9;&#xFF0C;&#x7136;&#x800C;&#x4E8B;&#x5B9E;&#x4E0A;&#x5E76;&#x975E;&#x5982;&#x6B64;&#x3002;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x7EBF;&#x7A0B;&#x662F;Activity&#x7684;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;MyThread&#x4E2D;&#x4FDD;&#x5B58;&#x4E86;Activity&#x7684;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#xFF0C;&#x5F53;MyThread&#x7684;run&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;MyThread&#x662F;&#x4E0D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x6240;&#x5F15;&#x7528;&#x7684;&#x8001;&#x7684;Activity&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x51FA;&#x73B0;&#x4E86;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x95EE;&#x9898;&#x3002;   </p>
+<p>2.&#x8FD9;&#x79CD;&#x7EBF;&#x7A0B;&#x5BFC;&#x81F4;&#x7684;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x95EE;&#x9898;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x5462;&#xFF1F;</p>
+<blockquote>
+<ul>
+<li><p>&#x7B2C;&#x4E00;&#x3001;&#x5C06;&#x7EBF;&#x7A0B;&#x7684;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x6539;&#x4E3A;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;&#x3002;</p>
+</li>
+<li><p>&#x7B2C;&#x4E8C;&#x3001;&#x5728;&#x7EBF;&#x7A0B;&#x5185;&#x90E8;&#x91C7;&#x7528;&#x5F31;&#x5F15;&#x7528;&#x4FDD;&#x5B58;Context&#x5F15;&#x7528;&#x3002; &#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadAvoidActivity extends Activity {</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			public void onCreate(Bundle savedInstanceState) {</span><br><span class="line">				super.onCreate(savedInstanceState);</span><br><span class="line">				setContentView(R.layout.activity_main);</span><br><span class="line">				new MyThread(this).start();</span><br><span class="line">			}</span><br><span class="line">		</span><br><span class="line">			private void dosomthing() {</span><br><span class="line">		</span><br><span class="line">			}</span><br><span class="line">		</span><br><span class="line">			private static class MyThread extends Thread {</span><br><span class="line">				WeakReference&lt;ThreadAvoidActivity&gt; mThreadActivityRef;</span><br><span class="line">		</span><br><span class="line">				public MyThread(ThreadAvoidActivity activity) {</span><br><span class="line">					mThreadActivityRef = new WeakReference&lt;ThreadAvoidActivity&gt;(</span><br><span class="line">							activity);</span><br><span class="line">				}</span><br><span class="line">		</span><br><span class="line">				@Override</span><br><span class="line">				public void run() {</span><br><span class="line">					super.run();</span><br><span class="line">					if (mThreadActivityRef == null)</span><br><span class="line">						return;</span><br><span class="line">					if (mThreadActivityRef.get() != null)</span><br><span class="line">						mThreadActivityRef.get().dosomthing();</span><br><span class="line">					// dosomthing</span><br><span class="line">				}</span><br><span class="line">			}</span><br><span class="line">		}</span><br></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4E24;&#x4E2A;&#x6B65;&#x9AA4;&#x5176;&#x5B9E;&#x662F;&#x5207;&#x6362;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x53CC;&#x5411;&#x5F3A;&#x5F15;&#x7528;&#x94FE;&#x63A5;<br>1.&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;&#xFF1A;&#x5207;&#x65AD;Activity &#x5BF9;&#x4E8E; MyThread&#x7684;&#x5F3A;&#x5F15;&#x7528;&#x3002;<br>2.&#x5F31;&#x5F15;&#x7528;&#xFF1A; &#x5207;&#x65AD;MyThread&#x5BF9;&#x4E8E;Activity &#x7684;&#x5F3A;&#x5F15;&#x7528;&#x3002;</p>
+<p>3.AsynTask &#x5185;&#x90E8;&#x7C7B;&#x4F1A;&#x5982;&#x4F55;&#x5462;&#xFF1F;</p>
+<p>&#x6709;&#x4E9B;&#x4EBA;&#x559C;&#x6B22;&#x7528;Android&#x63D0;&#x4F9B;&#x7684;AsyncTask&#xFF0C;&#x4F46;&#x4E8B;&#x5B9E;&#x4E0A;AsyncTask&#x7684;&#x95EE;&#x9898;&#x66F4;&#x52A0;&#x4E25;&#x91CD;&#xFF0C;Thread&#x53EA;&#x6709;&#x5728;run&#x51FD;&#x6570;&#x4E0D;&#x7ED3;&#x675F;&#x65F6;&#x624D;&#x51FA;&#x73B0;&#x8FD9;&#x79CD;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x800C;AsyncTask&#x5185;&#x90E8;&#x7684;&#x5B9E;&#x73B0;&#x673A;&#x5236;&#x662F;&#x8FD0;&#x7528;&#x4E86;ThreadPoolExcutor,&#x8BE5;&#x7C7B;&#x4EA7;&#x751F;&#x7684;Thread&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x65E0;&#x6CD5;&#x63A7;&#x5236;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5982;&#x679C;AsyncTask&#x4F5C;&#x4E3A;Activity&#x7684;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x5C31;&#x66F4;&#x5BB9;&#x6613;&#x51FA;&#x73B0;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public abstract class WeakAsyncTask&lt;Params, Progress, Result, WeakTarget&gt;</span><br><span class="line">    extends AsyncTask&lt;Params, Progress, Result&gt; {</span><br><span class="line">protected WeakReference&lt;WeakTarget&gt; mTarget;</span><br><span class="line"></span><br><span class="line">public WeakAsyncTask(WeakTarget target) {</span><br><span class="line">    mTarget = new WeakReference&lt;WeakTarget&gt;(target);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected final void onPreExecute() {</span><br><span class="line">    final WeakTarget target = mTarget.get();</span><br><span class="line">    if (target != null) {</span><br><span class="line">        this.onPreExecute(target);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected final Result doInBackground(Params... params) {</span><br><span class="line">    final WeakTarget target = mTarget.get();</span><br><span class="line">    if (target != null) {</span><br><span class="line">        return this.doInBackground(target, params);</span><br><span class="line">    } else {</span><br><span class="line">        return null;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected final void onPostExecute(Result result) {</span><br><span class="line">    final WeakTarget target = mTarget.get();</span><br><span class="line">    if (target != null) {</span><br><span class="line">        this.onPostExecute(target, result);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">protected void onPreExecute(WeakTarget target) {</span><br><span class="line">    // Nodefaultaction</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">protected abstract Result doInBackground(WeakTarget target,</span><br><span class="line">        Params... params);</span><br><span class="line"></span><br><span class="line">protected void onPostExecute(WeakTarget target, Result result) {</span><br><span class="line">    // Nodefaultaction</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;<a href="http://blog.csdn.net/zhuanglonghai/article/details/37909553" target="_blank" rel="external">Android App &#x5185;&#x5B58;&#x6CC4;&#x9732;&#x4E4B;Thread</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/04/Java虚拟机的垃圾收集器/" itemprop="url">
+                  Java虚拟机的垃圾收集器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-04T17:36:44+08:00" content="2016-06-04">
+              2016-06-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x662F;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x6240;&#x8C13;&#x7684;&#x6700;&#x597D;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x53EA;&#x6709;&#x6700;&#x5408;&#x9002;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x5728;&#x4F60;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x5E94;&#x7528;&#x7684;&#x573A;&#x666F;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x3002;</p>
+<h2 id="&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;"><a href="#&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;" class="headerlink" title="&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;"></a>&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;</h2><blockquote>
+<ul>
+<li>Serial&#x6536;&#x96C6;&#x5668;</li>
+<li>ParNew&#x6536;&#x96C6;&#x5668;</li>
+<li>Parallel Scavenge&#x6536;&#x96C6;&#x5668;</li>
+<li>Serial Old&#x6536;&#x96C6;&#x5668;</li>
+<li>Parallel Old&#x6536;&#x96C6;&#x5668;</li>
+<li>CMS&#x6536;&#x96C6;&#x5668;</li>
+<li>G1&#x6536;&#x96C6;&#x5668;</li>
+</ul>
+</blockquote>
+<p>&#x6CE8;&#xFF1A;&#x4EE5;&#x4E0A;&#x5217;&#x51FA;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x662F;&#x57FA;&#x4E8E;JDK 1.7 Update 14&#x4E4B;&#x540E;&#x7684;HotSpot&#x865A;&#x62DF;&#x673A;&#x3002;</p>
+<h3 id="Serial&#x6536;&#x96C6;&#x5668;"><a href="#Serial&#x6536;&#x96C6;&#x5668;" class="headerlink" title="Serial&#x6536;&#x96C6;&#x5668;"></a>Serial&#x6536;&#x96C6;&#x5668;</h3><h4 id="&#x5DE5;&#x4F5C;&#x7279;&#x70B9;&#xFF1A;"><a href="#&#x5DE5;&#x4F5C;&#x7279;&#x70B9;&#xFF1A;" class="headerlink" title="&#x5DE5;&#x4F5C;&#x7279;&#x70B9;&#xFF1A;"></a>&#x5DE5;&#x4F5C;&#x7279;&#x70B9;&#xFF1A;</h4><p>Serial&#x6536;&#x96C6;&#x5668;&#x662F;&#x6700;&#x57FA;&#x672C;&#x53D1;&#x5C55;&#x6700;&#x60A0;&#x4E45;&#x7684;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x4ED6;&#x5728;&#x5DE5;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x662F;&#x7528;&#x4E00;&#x4E2A;CPU&#x6216;&#x8005;&#x4E00;&#x6761;&#x7EBF;&#x7A0B;&#x53BB;&#x5B8C;&#x6210;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5DE5;&#x4F5C;&#xFF0C;&#x800C;&#x4E14;&#x4ED6;&#x5728;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x7684;&#x65F6;&#x5019;&#x5FC5;&#x987B;&#x6682;&#x505C;&#x6240;&#x6709;&#x7684;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x76F4;&#x81F3;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7ED3;&#x675F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5728;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x90FD;&#x4F1A;&#x88AB;&#x505C;&#x6B62;&#x3002;</p>
+<h4 id="&#x7F3A;&#x70B9;&#xFF1A;"><a href="#&#x7F3A;&#x70B9;&#xFF1A;" class="headerlink" title="&#x7F3A;&#x70B9;&#xFF1A;"></a>&#x7F3A;&#x70B9;&#xFF1A;</h4><blockquote>
+<ul>
+<li>&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x505C;&#x6B62;&#x6240;&#x6709;&#x7684;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#xFF0C;&#x5F71;&#x54CD;&#x7528;&#x6237;&#x7684;&#x4F53;&#x9A8C;;</li>
+</ul>
+</blockquote>
+<p>&#x73B0;&#x5728;&#x6240;&#x6709;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5728;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x4F1A;&#x6682;&#x505C;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x968F;&#x7740;&#x6536;&#x96C6;&#x5668;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x505C;&#x987F;&#x7684;&#x65F6;&#x95F4;&#x8D8A;&#x6765;&#x8D8A;&#x5C11;&#x3002;</p>
+<h4 id="&#x4F18;&#x52BF;&#xFF1A;"><a href="#&#x4F18;&#x52BF;&#xFF1A;" class="headerlink" title="&#x4F18;&#x52BF;&#xFF1A;"></a>&#x4F18;&#x52BF;&#xFF1A;</h4><blockquote>
+<ul>
+<li>&#x7B80;&#x5355;&#x800C;&#x9AD8;&#x6548;(&#x4E0E;&#x5176;&#x4ED6;&#x6536;&#x96C6;&#x5668;&#x7684;&#x5355;&#x7EBF;&#x7A0B;&#x76F8;&#x6BD4;);</li>
+</ul>
+</blockquote>
+<p>&#x5BF9;&#x4E8E;&#x9650;&#x5B9A;&#x5355;&#x4E2A;CPU&#x7684;&#x73AF;&#x5883;&#x6765;&#x8BF4;&#xFF0C;Serial&#x6536;&#x96C6;&#x5668;&#x6CA1;&#x6709;&#x7EBF;&#x7A0B;&#x4EA4;&#x4E92;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x53EF;&#x4EE5;&#x4E13;&#x5FC3;&#x7684;&#x505A;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5DE5;&#x4F5C;&#xFF0C;&#x56E0;&#x800C;&#x5177;&#x6709;&#x66F4;&#x9AD8;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<h4 id="&#x9002;&#x7528;&#x573A;&#x666F;"><a href="#&#x9002;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x9002;&#x7528;&#x573A;&#x666F;"></a>&#x9002;&#x7528;&#x573A;&#x666F;</h4><p>&#x684C;&#x9762;&#x5E94;&#x7528;&#x573A;&#x666F;</p>
+<p>&#x6CE8;&#xFF1A;<br>&#x867D;&#x7136;Serial&#x6536;&#x96C6;&#x5668;&#x662F;&#x662F;&#x6700;&#x53E4;&#x8001;&#x7684;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x76F8;&#x6BD4;&#x5176;&#x4ED6;&#x6536;&#x96C6;&#x5668;&#x7684;&#x6027;&#x80FD;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#xFF0C;&#x4F46;&#x662F;Serial&#x6536;&#x96C6;&#x5668;&#x8BA9;&#x7136;&#x662F;Client&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x9ED8;&#x8BA4;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x3002;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/01/怎么保证Service不被杀死/" itemprop="url">
+                  怎么保证Service不被杀死
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Diposting di</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T17:09:21+08:00" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">Di</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x907F;&#x514D;&#x670D;&#x52A1;&#x88AB;&#x56DE;&#x6536;&#xFF0C;&#x5373;&#x4F7F;&#x5F97;&#x670D;&#x52A1;&#x5E38;&#x9A7B;&#x5185;&#x5B58;&#xFF0C;&#x65B9;&#x6CD5;&#x5F88;&#x591A;&#xFF0C;&#x5982;&#x4E0B;</p>
+<blockquote>
+<ul>
+<li>&#x5C06;&#x540E;&#x53F0;&#x670D;&#x52A1;&#x7684;&#x5185;&#x5B58;&#x4F18;&#x5316;&#x7684;&#x975E;&#x5E38;&#x5C0F;&#xFF0C;&#x907F;&#x514D;&#x88AB;&#x56DE;&#x6536;&#x7684;&#x51E0;&#x7387;&#xFF1B;</li>
+<li>&#x901A;&#x8FC7;&#x5546;&#x52A1;&#x624B;&#x6BB5;&#x5C06;&#x5E94;&#x7528;&#x52A0;&#x5165;&#x5404;&#x5927;&#x5E73;&#x53F0;&#x7684;&#x767D;&#x540D;&#x5355;&#x4E2D;&#xFF1B;</li>
+<li>&#x901A;&#x8FC7; startForeground&#x5C06;&#x8FDB;&#x7A0B;&#x8BBE;&#x7F6E;&#x4E3A;&#x524D;&#x53F0;&#x8FDB;&#x7A0B;&#xFF0C;&#x505A;&#x524D;&#x53F0;&#x670D;&#x52A1;&#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x548C;&#x524D;&#x53F0;&#x5E94;&#x7528;&#x4E00;&#x4E2A;&#x7EA7;&#x522B;&#xFF0C;&#x9664;&#x975E;&#x5728;&#x7CFB;&#x7EDF;&#x5185;&#x5B58;&#x975E;&#x5E38;&#x7F3A;&#xFF0C;&#x5426;&#x5219;&#x6B64;&#x8FDB;&#x7A0B;&#x4E0D;&#x4F1A;&#x88AB; kill&#xFF1B;</li>
+<li>&#x817E;&#x8BAF;&#x9ED1;&#x79D1;&#x6280;&#xFF0C;QQ&#x7684;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x5E38;&#x9A7B;&#x6CD5;&#xFF1A;&#x5728;&#x5E94;&#x7528;&#x9000;&#x5230;&#x540E;&#x53F0;&#x540E;&#xFF0C;&#x53E6;&#x8D77;&#x4E00;&#x4E2A;&#x53EA;&#x6709; 1 &#x50CF;&#x7D20;&#x7684;&#x9875;&#x9762;&#x505C;&#x7559;&#x5728;&#x684C;&#x9762;&#x4E0A;&#xFF0C;&#x8BA9;&#x81EA;&#x5DF1;&#x4FDD;&#x6301;&#x524D;&#x53F0;&#x72B6;&#x6001;&#xFF0C;&#x4FDD;&#x62A4;&#x81EA;&#x5DF1;&#x4E0D;&#x88AB;&#x540E;&#x53F0;&#x6E05;&#x7406;&#x5DE5;&#x5177;&#x6740;&#x6B7B;&#xFF1B;</li>
+<li>&#x53CC;&#x8FDB;&#x7A0B;Service&#xFF1A;&#x8BA9;2&#x4E2A;&#x8FDB;&#x7A0B;&#x4E92;&#x76F8;&#x4FDD;&#x62A4;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;Service&#x88AB;&#x6E05;&#x7406;&#x540E;&#xFF0C;&#x53E6;&#x5916;&#x6CA1;&#x88AB;&#x6E05;&#x7406;&#x7684;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x91CD;&#x542F;&#x8FDB;&#x7A0B;&#xFF1B;</li>
+<li>&#x53C2;&#x8003;&#xFF1A;<a href="http://www.jb51.net/article/74560.htm" target="_blank" rel="external">Android Service &#x670D;&#x52A1;&#x4E0D;&#x88AB;&#x6740;&#x6B7B;&#x7684;&#x5999;&#x62DB;</a>&#xFF1B;<br>  &#x53C2;&#x8003;&#xFF1A;<a href="http://www.tuicool.com/articles/iu22QnF" target="_blank" rel="external">Service&#x670D;&#x52A1;&#x8BE6;&#x89E3;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x4F7F;service&#x670D;&#x52A1;&#x4E0D;&#x88AB;&#x6740;&#x6B7B;</a></li>
+<li>&#x5F00;&#x542F;&#x6BD4;&#x5982;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#xFF1B;<br>&#x53C2;&#x8003;&#xFF1A;<a href="http://blog.csdn.net/f2006116/article/details/50908855" target="_blank" rel="external">&#x901A;&#x8FC7;JNI&#x5B9E;&#x73B0;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#xFF0C;&#x4F7F;Service&#x670D;&#x52A1;&#x4E0D;&#x88AB;&#x6740;&#x6B7B; </a></li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
   </div>
 
-    </main>
-    <footer class="page-footer brown darken-1 darken-1">
-    
-    <div class="footer-container container">
-        <div class="row">
-            
-            <div class="social-group col m4 s12">
-                <h5 class="white-text">社交</h5>
-                
-                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
-                        <i class="fa fa-2x fa-weibo"></i>
-                    </a>
-                
-                    <a class="social-link" href="https://github.com/thinkerzhangyan" target="_blank">
-                        <i class="fa fa-2x fa-github"></i>
-                    </a>
-                
-                
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
-    <div class="site-visitors-container white-text">
-        <span>
-            <i class="fa fa-user"></i>
-            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-        </span>
-        <span>&nbsp;|&nbsp;</span>
-        <span>
-            <i class="fa fa-eye"></i>
-            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-        </span>
-    </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
 
+      
 
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="张岩" />
+          <p class="site-author-name" itemprop="name">张岩</p>
+          <p class="site-description motion-element" itemprop="description">记录生活点滴</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-name">posting</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">kategori</span>
+              
             </div>
-            
+          
 
-            
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
         </div>
-    </div>
-    
 
-    <div class="footer-copyright light-green-link-context">
-        <div class="container">
-            © 2016 example.com, All rights reserved.
-            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
-        </div>
+        
+        
+
+        
+        
+
+      </section>
+
+      
+
     </div>
-</footer>
+  </aside>
 
 
-    <noscript>
-    <div class="noscript">
-        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
-    </div>
-</noscript>
-<div class="noscript">
-    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张岩</span>
 </div>
 
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/materialize.min.js"></script>
+<div class="theme-info">
+  Tema -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
 
-<script>
-    (function($) {
-        $(document).ready(function() {
-            // 隐藏禁用javascript（针对微信内置浏览器）的提示
-            $('.noscript').hide();
+        
 
-            // 图片缩放效果
-            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+        
+      </div>
+    </footer>
 
-            // 给图片加上点击放大效果（materialbox插件）
-            $imgs.addClass('materialboxed').each(function(i, el) {
-                $(this).attr('data-caption', $(this).attr('alt') || ' ');
-            }).materialbox();
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
 
-            // 优化表格的显示
-            $('table').each(function() {
-                var $table = $(this);
-                // 除去多行代码的情况
-                if ($table.find('pre').length == 0) {
-                    $table.addClass('responsive-table striped bordered');
-                }
-            });
+  
 
-            // 首页幻灯片
-            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
-            $(".button-collapse").sideNav();
-            $(".category-menu").sideNav();
 
-            // 针对gallery post
-            $('.carousel').carousel({full_width: true});
-            $('.carousel-control.prev').click(function() {
-                $('.carousel').carousel('prev');
-            });
-            $('.carousel-control.next').click(function() {
-                $('.carousel').carousel('next');
-            });
 
-            // 文章目录
-            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
 
-            // 目录随屏幕滚动（防止目录过长越过footer）
-            var $toc = $('.toc');
-            var scrollTargetTop = 0;
-            $(window).scroll(function() {
-                var $activeLink = $toc.find('a.active.section');
-                if ($(window).scrollTop() < 100) {
-                    scrollTargetTop = 0;
-                } else {
-                    if ($activeLink[0]) {
-                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
-                    }
-                }
-                $toc.css('top', '-' + scrollTargetTop + 'px');
-            });
 
-            // 修正文章目录的left-border颜色
-            var color = $('.table-of-contents-text').css('color');
-            $('.table-of-contents-link').css('border-left-color', color);
 
-            // 针对移动端做的优化：FAB按钮点击一下收回
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                $('.fixed-action-btn').addClass('click-to-toggle');
-            }
-            // 回到顶部
-            $('.btn-return-top').click(function() {
-                $('body, html').animate({
-                    scrollTop: 0
-                }, 500);
-            });
 
-            // 重置读书页面的Tab标签页的颜色
-            $('li.tab a').hover(function() {
-                $(this).toggleClass('text-lighten-4');
-            });
-            $('.indicator').addClass('light-green lighten-2');
 
-            
-            // 添加new标签
-            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
-            
 
-            // 搜索功能
-            $('.modal-trigger').leanModal({
-                // 打开搜索框时自动聚焦
-                ready: function() {
-                    if ($('#search').is(":visible")) {
-                        $('#search-input').focus();
-                    }
-                }
-            });
-            var searchXml = "search.xml";
-            if (searchXml.length == 0) {
-             	searchXml = "search.xml";
-            }
-            var searchPath = "/" + searchXml;
-            initSearch(searchPath, 'search-input', 'search-result');
-        });
+  
 
-        // 初始化搜索与匹配函数
-        var initSearch = function(path, search_id, content_id) {
-            'use strict';
-            $.ajax({
-                url: path,
-                dataType: "xml",
-                success: function(xmlResponse) {
-                    // get the contents from search data
-                    var datas = $("entry", xmlResponse).map(function() {
-                        return {
-                            title: $("title", this).text(),
-                            content: $("content", this).text(),
-                            url: $("url", this).text()
-                        };
-                    }).get();
-                    var $input = document.getElementById(search_id);
-                    var $resultContent = document.getElementById(content_id);
-                    $input.addEventListener('input', function() {
-                        var str = '<ul class=\"search-result-list\">';
-                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                        $resultContent.innerHTML = "";
-                        if (this.value.trim().length <= 0) {
-                            return;
-                        }
-                        // perform local searching
-                        datas.forEach(function(data) {
-                            var isMatch = true;
-                            var content_index = [];
-                            var data_title = data.title.trim().toLowerCase();
-                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                            var data_url = data.url;
-                            var index_title = -1;
-                            var index_content = -1;
-                            var first_occur = -1;
-                            // only match artiles with not empty titles and contents
-                            if (data_title != '' && data_content != '') {
-                                keywords.forEach(function(keyword, i) {
-                                    index_title = data_title.indexOf(keyword);
-                                    index_content = data_content.indexOf(keyword);
-                                    if (index_title < 0 && index_content < 0) {
-                                        isMatch = false;
-                                    } else {
-                                        if (index_content < 0) {
-                                            index_content = 0;
-                                        }
-                                        if (i == 0) {
-                                            first_occur = index_content;
-                                        }
-                                    }
-                                });
-                            }
-                            // show search results
-                            if (isMatch) {
-                                keywords.forEach(function(keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
-                                });
 
-                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                                var content = data.content.trim().replace(/<[^>]+>/g, "");
-                                if (first_occur >= 0) {
-                                    // cut out 100 characters
-                                    var start = first_occur - 20;
-                                    var end = first_occur + 80;
-                                    if (start < 0) {
-                                        start = 0;
-                                    }
-                                    if (start == 0) {
-                                        end = 100;
-                                    }
-                                    if (end > content.length) {
-                                        end = content.length;
-                                    }
-                                    var match_content = content.substring(start, end);
-                                    // highlight all keywords
-                                    keywords.forEach(function(keyword) {
-                                        var regS = new RegExp(keyword, "gi");
-                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
-                                    });
 
-                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
                                 }
-                                str += "</li>";
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
                             }
                         });
-                        str += "</ul>";
-                        $resultContent.innerHTML = str;
-                    });
-                }
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
             });
+            proceedsearch();
         }
-    })(jQuery);
-</script>
+    });}
 
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
 
-<script src="/js/prettify.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("pre").addClass("prettyprint");
-        prettyPrint();
     });
-</script>
 
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
 
+  
 
+  
 
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async
-  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
+  
 
 </body>
 </html>

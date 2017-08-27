@@ -7,7 +7,7 @@
 
     
 
-    <title>Java虚拟机的垃圾收集器 | 一天进步一点</title>
+    <title>shishikanba | 一天进步一点</title>
     <meta name="author" content="张岩">
     
     <meta name="description" content="记录生活点滴">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Java虚拟机的垃圾收集器"/>
+    <meta property="og:title" content="shishikanba"/>
     <meta property="og:site_name" content="张岩的博客"/>
 
     
@@ -302,10 +302,6 @@
         <span class="breadcrumb">当前位置（分类目录）</span>
         
             
-    
-    
-    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/JVM/">JVM</a>
-
 
         
 
@@ -321,12 +317,12 @@
             <div class="article-title">
                 
     
-        <h1>Java虚拟机的垃圾收集器</h1>
+        <h1>shishikanba</h1>
     
 
 
             </div>
-            <time class="light-green-link-context" datetime="2016-06-04T09:36:44.000Z"><a href="/2016/06/04/Java虚拟机的垃圾收集器/">2016-06-04</a></time>
+            <time class="light-green-link-context" datetime="2017-08-27T10:37:10.000Z"><a href="/2017/08/27/shishikanba/">2017-08-27</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -334,60 +330,20 @@
 </span>
 
             
-    <div class="tags-row">
-        
-            <a href="/tags/JVM/" class="chip light-green">JVM</a>
-        
-    </div>
-
 
             <div class="toc light-green-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#前言"><span class="section table-of-contents-text">前言</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#垃圾收集器"><span class="section table-of-contents-text">垃圾收集器</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Serial收集器"><span class="section table-of-contents-text">Serial收集器</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#工作特点："><span class="section table-of-contents-text">工作特点：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#缺点："><span class="section table-of-contents-text">缺点：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#优势："><span class="section table-of-contents-text">优势：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#适用场景"><span class="section table-of-contents-text">适用场景</span></a></li></ol></li></ol></li></ol>
+    
 </div>
 
 
             <div class="entry light-green-link-context">
-                <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x662F;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x6240;&#x8C13;&#x7684;&#x6700;&#x597D;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x53EA;&#x6709;&#x6700;&#x5408;&#x9002;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x5728;&#x4F60;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x5E94;&#x7528;&#x7684;&#x573A;&#x666F;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x3002;</p>
-<h2 id="&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;"><a href="#&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;" class="headerlink" title="&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;"></a>&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;</h2><blockquote>
-<ul>
-<li>Serial&#x6536;&#x96C6;&#x5668;</li>
-<li>ParNew&#x6536;&#x96C6;&#x5668;</li>
-<li>Parallel Scavenge&#x6536;&#x96C6;&#x5668;</li>
-<li>Serial Old&#x6536;&#x96C6;&#x5668;</li>
-<li>Parallel Old&#x6536;&#x96C6;&#x5668;</li>
-<li>CMS&#x6536;&#x96C6;&#x5668;</li>
-<li>G1&#x6536;&#x96C6;&#x5668;</li>
-</ul>
-</blockquote>
-<p>&#x6CE8;&#xFF1A;&#x4EE5;&#x4E0A;&#x5217;&#x51FA;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x662F;&#x57FA;&#x4E8E;JDK 1.7 Update 14&#x4E4B;&#x540E;&#x7684;HotSpot&#x865A;&#x62DF;&#x673A;&#x3002;</p>
-<h3 id="Serial&#x6536;&#x96C6;&#x5668;"><a href="#Serial&#x6536;&#x96C6;&#x5668;" class="headerlink" title="Serial&#x6536;&#x96C6;&#x5668;"></a>Serial&#x6536;&#x96C6;&#x5668;</h3><h4 id="&#x5DE5;&#x4F5C;&#x7279;&#x70B9;&#xFF1A;"><a href="#&#x5DE5;&#x4F5C;&#x7279;&#x70B9;&#xFF1A;" class="headerlink" title="&#x5DE5;&#x4F5C;&#x7279;&#x70B9;&#xFF1A;"></a>&#x5DE5;&#x4F5C;&#x7279;&#x70B9;&#xFF1A;</h4><p>Serial&#x6536;&#x96C6;&#x5668;&#x662F;&#x6700;&#x57FA;&#x672C;&#x53D1;&#x5C55;&#x6700;&#x60A0;&#x4E45;&#x7684;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x4ED6;&#x5728;&#x5DE5;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x662F;&#x7528;&#x4E00;&#x4E2A;CPU&#x6216;&#x8005;&#x4E00;&#x6761;&#x7EBF;&#x7A0B;&#x53BB;&#x5B8C;&#x6210;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5DE5;&#x4F5C;&#xFF0C;&#x800C;&#x4E14;&#x4ED6;&#x5728;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x7684;&#x65F6;&#x5019;&#x5FC5;&#x987B;&#x6682;&#x505C;&#x6240;&#x6709;&#x7684;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x76F4;&#x81F3;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7ED3;&#x675F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5728;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x90FD;&#x4F1A;&#x88AB;&#x505C;&#x6B62;&#x3002;</p>
-<h4 id="&#x7F3A;&#x70B9;&#xFF1A;"><a href="#&#x7F3A;&#x70B9;&#xFF1A;" class="headerlink" title="&#x7F3A;&#x70B9;&#xFF1A;"></a>&#x7F3A;&#x70B9;&#xFF1A;</h4><blockquote>
-<ul>
-<li>&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x505C;&#x6B62;&#x6240;&#x6709;&#x7684;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#xFF0C;&#x5F71;&#x54CD;&#x7528;&#x6237;&#x7684;&#x4F53;&#x9A8C;;</li>
-</ul>
-</blockquote>
-<p>&#x73B0;&#x5728;&#x6240;&#x6709;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5728;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x4F1A;&#x6682;&#x505C;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x968F;&#x7740;&#x6536;&#x96C6;&#x5668;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x505C;&#x987F;&#x7684;&#x65F6;&#x95F4;&#x8D8A;&#x6765;&#x8D8A;&#x5C11;&#x3002;</p>
-<h4 id="&#x4F18;&#x52BF;&#xFF1A;"><a href="#&#x4F18;&#x52BF;&#xFF1A;" class="headerlink" title="&#x4F18;&#x52BF;&#xFF1A;"></a>&#x4F18;&#x52BF;&#xFF1A;</h4><blockquote>
-<ul>
-<li>&#x7B80;&#x5355;&#x800C;&#x9AD8;&#x6548;(&#x4E0E;&#x5176;&#x4ED6;&#x6536;&#x96C6;&#x5668;&#x7684;&#x5355;&#x7EBF;&#x7A0B;&#x76F8;&#x6BD4;);</li>
-</ul>
-</blockquote>
-<p>&#x5BF9;&#x4E8E;&#x9650;&#x5B9A;&#x5355;&#x4E2A;CPU&#x7684;&#x73AF;&#x5883;&#x6765;&#x8BF4;&#xFF0C;Serial&#x6536;&#x96C6;&#x5668;&#x6CA1;&#x6709;&#x7EBF;&#x7A0B;&#x4EA4;&#x4E92;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x53EF;&#x4EE5;&#x4E13;&#x5FC3;&#x7684;&#x505A;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5DE5;&#x4F5C;&#xFF0C;&#x56E0;&#x800C;&#x5177;&#x6709;&#x66F4;&#x9AD8;&#x7684;&#x6548;&#x7387;&#x3002;</p>
-<h4 id="&#x9002;&#x7528;&#x573A;&#x666F;"><a href="#&#x9002;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x9002;&#x7528;&#x573A;&#x666F;"></a>&#x9002;&#x7528;&#x573A;&#x666F;</h4><p>&#x684C;&#x9762;&#x5E94;&#x7528;&#x573A;&#x666F;</p>
-<p>&#x6CE8;&#xFF1A;<br>&#x867D;&#x7136;Serial&#x6536;&#x96C6;&#x5668;&#x662F;&#x662F;&#x6700;&#x53E4;&#x8001;&#x7684;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x76F8;&#x6BD4;&#x5176;&#x4ED6;&#x6536;&#x96C6;&#x5668;&#x7684;&#x6027;&#x80FD;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#xFF0C;&#x4F46;&#x662F;Serial&#x6536;&#x96C6;&#x5668;&#x8BA9;&#x7136;&#x662F;Client&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x9ED8;&#x8BA4;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x3002;</p>
-
                 
-<p class="light-green-link-context">
-    <a href="/2016/06/05/内存泄露之Thread/" rel="next" title="内存泄露之Thread">
-    上一篇：内存泄露之Thread
-  </a>
-</p>
-
+                
 
 
 <p class="light-green-link-context">
-    <a href="/2016/06/01/怎么保证Service不被杀死/" rel="next" title="怎么保证Service不被杀死">
-    下一篇：怎么保证Service不被杀死
+    <a href="/2017/08/27/shishi/" rel="next" title="shishi">
+    下一篇：shishi
   </a>
 </p>
 

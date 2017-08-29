@@ -1,0 +1,813 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Java并发编程：Callable、Future和FutureTask的使用 | 一天进步一点</title>
+    <meta name="author" content="张岩">
+    
+    <meta name="description" content="记录生活点滴">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Java并发编程：Callable、Future和FutureTask的使用"/>
+    <meta property="og:site_name" content="张岩的博客"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="brown darken-1">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav brown darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">张岩</p>
+                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav brown darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术/">
+                    技术 <span class="right">54 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android/">
+                    Android <span class="right">11 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Java/">
+                    Java <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Java/多线程/">
+                    多线程 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/框架/">
+                    框架 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Python/">
+                    Python <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/算法与数据结构/">
+                    算法与数据结构 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/多线程/">
+                    多线程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/机器学习/">
+                    机器学习 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/机器学习/Tensorflow/">
+                    Tensorflow <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/Java/">Java</a><a class="breadcrumb" href="/categories/技术/Java/多线程/">多线程</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card"> 
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Java并发编程：Callable、Future和FutureTask的使用</h1>
+    
+
+
+            </div>
+            <time class="light-green-link-context" datetime="2017-08-29T06:29:48.000Z"><a href="/2017/08/29/Java并发编程：Callable、Future和FutureTask的使用/">2017-08-29</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Java/" class="chip light-green">Java</a>
+        
+            <a href="/tags/多线程/" class="chip light-green">多线程</a>
+        
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Callable与Runnable"><span class="section table-of-contents-text">Callable与Runnable</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Future"><span class="section table-of-contents-text">Future</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#FutureTask"><span class="section table-of-contents-text">FutureTask</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#使用示例"><span class="section table-of-contents-text">使用示例</span></a></li></ol>
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <p>&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;2&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x76F4;&#x63A5;&#x7EE7;&#x627F;Thread&#xFF0C;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x5C31;&#x662F;&#x5B9E;&#x73B0;Runnable&#x63A5;&#x53E3;&#x3002;&#x8FD9;2&#x79CD;&#x65B9;&#x5F0F;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x7F3A;&#x9677;&#x5C31;&#x662F;&#xFF1A;&#x5728;&#x6267;&#x884C;&#x5B8C;&#x4EFB;&#x52A1;&#x4E4B;&#x540E;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x5171;&#x4EAB;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B;&#x901A;&#x4FE1;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8FBE;&#x5230;&#x6548;&#x679C;&#xFF0C;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x5C31;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x3002;&#x800C;&#x81EA;&#x4ECE;Java 1.5&#x5F00;&#x59CB;&#xFF0C;&#x5C31;&#x63D0;&#x4F9B;&#x4E86;Callable&#x548C;Future&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#x5F97;&#x5230;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;Callable&#x3001;Future&#x548C;FutureTask&#x4E09;&#x4E2A;&#x7C7B;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3002;&#x672C;&#x6587;&#x7684;&#x76EE;&#x5F55;&#x5927;&#x7EB2;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>Callable&#x4E0E;Runnable</li>
+<li>Future</li>
+<li>FutureTask</li>
+<li>&#x4F7F;&#x7528;&#x793A;&#x4F8B;</li>
+</ul>
+</blockquote>
+<h2 id="Callable&#x4E0E;Runnable"><a href="#Callable&#x4E0E;Runnable" class="headerlink" title="Callable&#x4E0E;Runnable"></a>Callable&#x4E0E;Runnable</h2><p>java.lang.Runnable&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x63A5;&#x53E3;&#x4E2D;&#x53EA;&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;run()&#x65B9;&#x6CD5;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;interface&#xA0;Runnable {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;abstract&#xA0;void&#xA0;run();</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x7531;&#x4E8E;run()&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;void&#x7C7B;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x6267;&#x884C;&#x5B8C;&#x4EFB;&#x52A1;&#x4E4B;&#x540E;&#x65E0;&#x6CD5;&#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x7ED3;&#x679C;&#x3002;<br>Callable&#x4F4D;&#x4E8E;java.util.concurrent&#x5305;&#x4E0B;&#xFF0C;&#x5B83;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5728;&#x5B83;&#x91CC;&#x9762;&#x4E5F;&#x53EA;&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x53EB;&#x505A;call()&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;interface&#xA0;Callable&lt;V&gt; {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;/**</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;* Computes a result, or throws an exception if unable to do so.</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;* @return computed result</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;* @throws Exception if unable to compute a result</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;V call()&#xA0;throws&#xA0;Exception;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x63A5;&#x53E3;&#xFF0C;call()&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x7C7B;&#x578B;&#x5C31;&#x662F;&#x4F20;&#x9012;&#x8FDB;&#x6765;&#x7684;V&#x7C7B;&#x578B;&#x3002;&#x90A3;&#x4E48;&#x600E;&#x4E48;&#x4F7F;&#x7528;Callable&#x5462;&#xFF1F;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x914D;&#x5408;ExecutorService&#x6765;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x5728;ExecutorService&#x63A5;&#x53E3;&#x4E2D;&#x58F0;&#x660E;&#x4E86;&#x82E5;&#x5E72;&#x4E2A;submit&#x65B9;&#x6CD5;&#x7684;&#x91CD;&#x8F7D;&#x7248;&#x672C;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task);</span><br><span class="line">&lt;T&gt; Future&lt;T&gt; submit(Runnable task, T result);</span><br><span class="line">    Future&lt;?&gt; submit(Runnable task);</span><br></pre></td></tr></table></figure></p>
+<p>&#x7B2C;&#x4E00;&#x4E2A;submit&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x5C31;&#x662F;Callable&#x3002;&#x6682;&#x65F6;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;Callable&#x4E00;&#x822C;&#x662F;&#x548C;ExecutorService&#x914D;&#x5408;&#x6765;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x8BB2;&#x5728;&#x540E;&#x9762;&#x8BB2;&#x8FF0;&#x3002;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;submit&#x65B9;&#x6CD5;&#x548C;&#x7B2C;&#x4E09;&#x4E2A;submit&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;submit&#x65B9;&#x6CD5;&#x5F88;&#x5C11;&#x4F7F;&#x7528;&#x3002;</p>
+<h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>Future&#x5C31;&#x662F;&#x5BF9;&#x4E8E;&#x5177;&#x4F53;&#x7684;Runnable&#x6216;&#x8005;Callable&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x53D6;&#x6D88;&#x3001;&#x67E5;&#x8BE2;&#x662F;&#x5426;&#x5B8C;&#x6210;&#x3001;&#x83B7;&#x53D6;&#x7ED3;&#x679C;&#x3002;&#x5FC5;&#x8981;&#x65F6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;get&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x963B;&#x585E;&#x76F4;&#x5230;&#x4EFB;&#x52A1;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x3002;<br>Future&#x7C7B;&#x4F4D;&#x4E8E;java.util.concurrent&#x5305;&#x4E0B;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;interface&#xA0;Future&lt;V&gt; {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;boolean&#xA0;cancel(boolean&#xA0;mayInterruptIfRunning);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;boolean&#xA0;isCancelled();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;boolean&#xA0;isDone();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;V get()&#xA0;throws&#xA0;InterruptedException, ExecutionException;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;V get(long&#xA0;timeout, TimeUnit unit)</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throws&#xA0;InterruptedException, ExecutionException, TimeoutException;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;Future&#x63A5;&#x53E3;&#x4E2D;&#x58F0;&#x660E;&#x4E86;5&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x4F9D;&#x6B21;&#x89E3;&#x91CA;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>cancel&#x65B9;&#x6CD5;&#x7528;&#x6765;&#x53D6;&#x6D88;&#x4EFB;&#x52A1;&#xFF0C;&#x5982;&#x679C;&#x53D6;&#x6D88;&#x4EFB;&#x52A1;&#x6210;&#x529F;&#x5219;&#x8FD4;&#x56DE;true&#xFF0C;&#x5982;&#x679C;&#x53D6;&#x6D88;&#x4EFB;&#x52A1;&#x5931;&#x8D25;&#x5219;&#x8FD4;&#x56DE;false&#x3002;&#x53C2;&#x6570;mayInterruptIfRunning&#x8868;&#x793A;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x53D6;&#x6D88;&#x6B63;&#x5728;&#x6267;&#x884C;&#x5374;&#x6CA1;&#x6709;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;true&#xFF0C;&#x5219;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x53D6;&#x6D88;&#x6B63;&#x5728;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x3002;&#x5982;&#x679C;&#x4EFB;&#x52A1;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#xFF0C;&#x5219;&#x65E0;&#x8BBA;mayInterruptIfRunning&#x4E3A;true&#x8FD8;&#x662F;false&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x80AF;&#x5B9A;&#x8FD4;&#x56DE;false&#xFF0C;&#x5373;&#x5982;&#x679C;&#x53D6;&#x6D88;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x8FD4;&#x56DE;false&#xFF1B;&#x5982;&#x679C;&#x4EFB;&#x52A1;&#x6B63;&#x5728;&#x6267;&#x884C;&#xFF0C;&#x82E5;mayInterruptIfRunning&#x8BBE;&#x7F6E;&#x4E3A;true&#xFF0C;&#x5219;&#x8FD4;&#x56DE;true&#xFF0C;&#x82E5;mayInterruptIfRunning&#x8BBE;&#x7F6E;&#x4E3A;false&#xFF0C;&#x5219;&#x8FD4;&#x56DE;false&#xFF1B;&#x5982;&#x679C;&#x4EFB;&#x52A1;&#x8FD8;&#x6CA1;&#x6709;&#x6267;&#x884C;&#xFF0C;&#x5219;&#x65E0;&#x8BBA;mayInterruptIfRunning&#x4E3A;true&#x8FD8;&#x662F;false&#xFF0C;&#x80AF;&#x5B9A;&#x8FD4;&#x56DE;true&#x3002;</li>
+<li>isCancelled&#x65B9;&#x6CD5;&#x8868;&#x793A;&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x88AB;&#x53D6;&#x6D88;&#x6210;&#x529F;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x4EFB;&#x52A1;&#x6B63;&#x5E38;&#x5B8C;&#x6210;&#x524D;&#x88AB;&#x53D6;&#x6D88;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x8FD4;&#x56DE; true&#x3002;</li>
+<li>isDone&#x65B9;&#x6CD5;&#x8868;&#x793A;&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#xFF0C;&#x82E5;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;true&#xFF1B;</li>
+<li>get()&#x65B9;&#x6CD5;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x4EA7;&#x751F;&#x963B;&#x585E;&#xFF0C;&#x4F1A;&#x4E00;&#x76F4;&#x7B49;&#x5230;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x624D;&#x8FD4;&#x56DE;&#xFF1B;</li>
+<li>get(long timeout, TimeUnit unit)&#x7528;&#x6765;&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#xFF0C;&#x8FD8;&#x6CA1;&#x83B7;&#x53D6;&#x5230;&#x7ED3;&#x679C;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;null&#x3002;</li>
+</ul>
+</blockquote>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;Future&#x63D0;&#x4F9B;&#x4E86;&#x4E09;&#x79CD;&#x529F;&#x80FD;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x5224;&#x65AD;&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x5B8C;&#x6210;&#xFF1B;</li>
+<li>&#x80FD;&#x591F;&#x4E2D;&#x65AD;&#x4EFB;&#x52A1;&#xFF1B;</li>
+<li>&#x80FD;&#x591F;&#x83B7;&#x53D6;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x3002;</li>
+</ul>
+</blockquote>
+<p>&#x56E0;&#x4E3A;Future&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x7528;&#x6765;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x6709;&#x4E86;&#x4E0B;&#x9762;&#x7684;FutureTask&#x3002;</p>
+<h2 id="FutureTask"><a href="#FutureTask" class="headerlink" title="FutureTask"></a>FutureTask</h2><p>&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E0B;FutureTask&#x7684;&#x5B9E;&#x73B0;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;class&#xA0;FutureTask&lt;V&gt;&#xA0;implements&#xA0;RunnableFuture&lt;V&gt;</span><br></pre></td></tr></table></figure></p>
+<p>FutureTask&#x7C7B;&#x5B9E;&#x73B0;&#x4E86;RunnableFuture&#x63A5;&#x53E3;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;RunnableFuture&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;interface&#xA0;RunnableFuture&lt;V&gt;&#xA0;extends&#xA0;Runnable, Future&lt;V&gt; {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;void&#xA0;run();</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;RunnableFuture&#x7EE7;&#x627F;&#x4E86;Runnable&#x63A5;&#x53E3;&#x548C;Future&#x63A5;&#x53E3;&#xFF0C;&#x800C;FutureTask&#x5B9E;&#x73B0;&#x4E86;RunnableFuture&#x63A5;&#x53E3;&#x3002;&#x6240;&#x4EE5;&#x5B83;&#x65E2;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;Runnable&#x88AB;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#xFF0C;&#x53C8;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;Future&#x5F97;&#x5230;Callable&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+<p>FutureTask&#x63D0;&#x4F9B;&#x4E86;2&#x4E2A;&#x6784;&#x9020;&#x5668;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;FutureTask(Callable&lt;V&gt; callable) {</span><br><span class="line">}</span><br><span class="line">public&#xA0;FutureTask(Runnable runnable, V result) {</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;FutureTask&#x662F;Future&#x63A5;&#x53E3;&#x7684;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x793A;&#x4F8B;"><a href="#&#x4F7F;&#x7528;&#x793A;&#x4F8B;" class="headerlink" title="&#x4F7F;&#x7528;&#x793A;&#x4F8B;"></a>&#x4F7F;&#x7528;&#x793A;&#x4F8B;</h2><p>1.&#x4F7F;&#x7528;Callable+Future&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;class&#xA0;Test {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;static&#xA0;void&#xA0;main(String[] args) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Task task =&#xA0;new&#xA0;Task();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Future&lt;Integer&gt; result = executor.submit(task);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;executor.shutdown();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Thread.sleep(1000);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(InterruptedException e1) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e1.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x4E3B;&#x7EBF;&#x7A0B;&#x5728;&#x6267;&#x884C;&#x4EFB;&#x52A1;&quot;);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;task&#x8FD0;&#x884C;&#x7ED3;&#x679C;&quot;+result.get());</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(InterruptedException e) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(ExecutionException e) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&quot;);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">}</span><br><span class="line">class&#xA0;Task&#xA0;implements&#xA0;Callable&lt;Integer&gt;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;@Override</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;Integer call()&#xA0;throws&#xA0;Exception {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x5B50;&#x7EBF;&#x7A0B;&#x5728;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&quot;);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Thread.sleep(3000);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;int&#xA0;sum =&#xA0;0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;for(int&#xA0;i=0;i&lt;100;i++)</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;sum += i;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;sum;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">}</span><br><span class="line">&#xA0;&#x3000;&#x3000;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</span><br></pre></td></tr></table></figure></p>
+<p>2.&#x4F7F;&#x7528;Callable+FutureTask&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;class&#xA0;Test {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;static&#xA0;void&#xA0;main(String[] args) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Task task =&#xA0;new&#xA0;Task();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;FutureTask&lt;Integer&gt; futureTask =&#xA0;new&#xA0;FutureTask&lt;Integer&gt;(task);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;executor.submit(futureTask);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;executor.shutdown();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x6CE8;&#x610F;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x548C;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x6548;&#x679C;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x7684;&#x662F;ExecutorService&#xFF0C;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x7684;&#x662F;Thread</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;/*Task task = new Task();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;FutureTask&lt;Integer&gt; futureTask = new FutureTask&lt;Integer&gt;(task);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Thread thread = new Thread(futureTask);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;thread.start();*/</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Thread.sleep(1000);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(InterruptedException e1) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e1.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x4E3B;&#x7EBF;&#x7A0B;&#x5728;&#x6267;&#x884C;&#x4EFB;&#x52A1;&quot;);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;task&#x8FD0;&#x884C;&#x7ED3;&#x679C;&quot;+futureTask.get());</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(InterruptedException e) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(ExecutionException e) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&quot;);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">}</span><br><span class="line">class&#xA0;Task&#xA0;implements&#xA0;Callable&lt;Integer&gt;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;@Override</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;Integer call()&#xA0;throws&#xA0;Exception {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x5B50;&#x7EBF;&#x7A0B;&#x5728;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&quot;);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Thread.sleep(3000);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;int&#xA0;sum =&#xA0;0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;for(int&#xA0;i=0;i&lt;100;i++)</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;sum += i;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;sum;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;&#x4E3A;&#x4E86;&#x53EF;&#x53D6;&#x6D88;&#x6027;&#x800C;&#x4F7F;&#x7528; Future &#x4F46;&#x53C8;&#x4E0D;&#x63D0;&#x4F9B;&#x53EF;&#x7528;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x58F0;&#x660E; <strong>Future&lt; ? &gt;</strong> &#x5F62;&#x5F0F;&#x7C7B;&#x578B;&#x3001;&#x5E76;&#x8FD4;&#x56DE; null &#x4F5C;&#x4E3A;&#x5E95;&#x5C42;&#x4EFB;&#x52A1;&#x7684;&#x7ED3;&#x679C;&#x3002;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;class&#xA0;Test&#xA0;{</span><br><span class="line"></span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;static&#xA0;void&#xA0;main(String[]&#xA0;args)&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;ExecutorService&#xA0;executor&#xA0;=&#xA0;Executors.newCachedThreadPool();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Task&#xA0;task&#xA0;=&#xA0;new&#xA0;Task();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Future&lt;?&gt;&#xA0;result&#xA0;=&#xA0;executor.submit(task);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;executor.shutdown();</span><br><span class="line"></span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Thread.sleep(1000);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(InterruptedException&#xA0;e1)&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e1.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line"></span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x4E3B;&#x7EBF;&#x7A0B;&#x5728;&#x6267;&#x884C;&#x4EFB;&#x52A1;&quot;);</span><br><span class="line"></span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;task&#x8FD0;&#x884C;&#x7ED3;&#x679C;&quot;+result.get());</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(InterruptedException&#xA0;e)&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(ExecutionException&#xA0;e)&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;e.printStackTrace();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line"></span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&quot;);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;}</span><br><span class="line">}</span><br><span class="line">class&#xA0;Task&#xA0;implements&#xA0;Callable&lt;Integer&gt;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;@Override</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;Integer&#xA0;call()&#xA0;throws&#xA0;Exception&#xA0;{</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;System.out.println(&quot;&#x5B50;&#x7EBF;&#x7A0B;&#x5728;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&quot;);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Thread.sleep(3000);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;int&#xA0;sum&#xA0;=&#xA0;0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;for(int&#xA0;i=0;i&lt;100;i++)</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;sum&#xA0;+=&#xA0;i;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;null;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+
+                
+
+
+<p class="light-green-link-context">
+    <a href="/2017/08/29/线程未捕获的异常的处理/" rel="next" title="线程未捕获的异常的处理">
+    下一篇：线程未捕获的异常的处理
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+<!-- Donate Module -->
+<div id="donate_module">
+    <style type="text/css">
+        .hidden {
+            display: none;
+        }
+        .donate_bar a.btn_donate {
+            display: inline-block;
+            width: 82px;
+            height: 82px;
+            background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+            _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+
+            -webkit-transition: background 0s;
+            -moz-transition: background 0s;
+            -o-transition: background 0s;
+            -ms-transition: background 0s;
+            transition: background 0s;
+        }
+        .donate_bar a.btn_donate:hover {
+            background-position: 0 -82px;
+        }
+        .donate_bar .donate_txt {
+            display: block;
+            color: #9d9d9d;
+            font: 14px/2 "Microsoft Yahei";
+        }
+        .bold {
+            font-weight: bold;
+        }
+
+        img.qrcode {
+            width: 90%;
+            margin-bottom: 10px;
+        }
+        @media only screen and (min-width: 1025px) {
+            img.qrcode {
+                width: 40%;
+                margin-right: 10px;
+            }
+        }
+
+    </style>
+
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">能看到这的都是真爱，打个赏呗=。=</span>
+    </div>
+    <!-- /btn_donate & tips -->
+
+    <!-- donate guide -->
+    <div id="donate_guide" class="donate_bar center hidden">
+        
+        <img class="qrcode" src="http://ogts8rw5s.bkt.clouddn.com/weixinzhifu.png" title="打赏"/>
+        
+        <img class="qrcode" src="http://ogts8rw5s.bkt.clouddn.com/zhifubaozhifu2.jpg" title="打赏"/>
+        
+    </div>
+    <!-- /donate guide -->
+
+    <!-- donate script -->
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+            $('#donate_board').addClass('hidden');
+            $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web() {
+            $('#donate').submit();
+        }
+    </script>
+    <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+
+
+
+
+    <section id="comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDQ0My82OTk3">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+    </section>
+
+
+    
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large light-green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer brown darken-1 darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/thinkerzhangyan" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright light-green-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

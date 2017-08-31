@@ -172,7 +172,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术/">
-                    技术 <span class="right">55 篇</span></a>
+                    技术 <span class="right">56 篇</span></a>
                 </a>
             </li>
 
@@ -180,7 +180,15 @@
 
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Android/">
-                    Android <span class="right">11 篇</span></a>
+                    Android <span class="right">12 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -195,8 +203,16 @@
         
 
             <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
-                    内存泄露 <span class="right">2 篇</span></a>
+                <a class="no-padding" href="/categories/技术/Android/多线程/">
+                    多线程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
                 </a>
             </li>
 
@@ -213,14 +229,6 @@
             <li class="collapse-level-2" collapse-level="2">
                 <a class="no-padding" href="/categories/技术/Java/多线程/">
                     多线程 <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/设计模式/">
-                    设计模式 <span class="right">22 篇</span></a>
                 </a>
             </li>
 
@@ -344,9 +352,9 @@
             
     <div class="tags-row">
         
-            <a href="/tags/Java/" class="chip light-green">Java</a>
-        
             <a href="/tags/多线程/" class="chip light-green">多线程</a>
+        
+            <a href="/tags/Java/" class="chip light-green">Java</a>
         
     </div>
 
@@ -391,6 +399,12 @@
 <p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;RejectedExecutionHandler&#x63A5;&#x53E3;&#x6765;&#x7F16;&#x5199;&#x81EA;&#x5DF1;&#x7684;&#x7B56;&#x7565;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ThreadPoolExecutor executor = new ThreadPoolExecutor(3, 6, 1, TimeUnit.SECONDS, queue,</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; new RejectedExecutionHandler() {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; System.out.println(String.format(&quot;Task %d rejected.&quot;, r.hashCode()));</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; }</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; }</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 
                 
+<p class="light-green-link-context">
+    <a href="/2017/08/31/AsyncTask源码分析/" rel="next" title="AsyncTask源码分析">
+    上一篇：AsyncTask源码分析
+  </a>
+</p>
+
 
 
 <p class="light-green-link-context">

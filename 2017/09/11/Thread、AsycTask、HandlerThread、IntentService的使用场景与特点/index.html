@@ -172,7 +172,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术/">
-                    技术 <span class="right">66 篇</span></a>
+                    技术 <span class="right">68 篇</span></a>
                 </a>
             </li>
 
@@ -180,7 +180,7 @@
 
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Android/">
-                    Android <span class="right">22 篇</span></a>
+                    Android <span class="right">24 篇</span></a>
                 </a>
             </li>
 
@@ -188,15 +188,7 @@
 
             <li class="collapse-level-2" collapse-level="2">
                 <a class="no-padding" href="/categories/技术/Android/多线程/">
-                    多线程 <span class="right">12 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
-                    绘图机制 <span class="right">1 篇</span></a>
+                    多线程 <span class="right">13 篇</span></a>
                 </a>
             </li>
 
@@ -210,17 +202,17 @@
 
         
 
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/设计模式/">
-                    设计模式 <span class="right">22 篇</span></a>
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/技术/JVM/">
-                    JVM <span class="right">9 篇</span></a>
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
                 </a>
             </li>
 
@@ -237,6 +229,14 @@
             <li class="collapse-level-2" collapse-level="2">
                 <a class="no-padding" href="/categories/技术/Java/多线程/">
                     多线程 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
                 </a>
             </li>
 
@@ -364,6 +364,12 @@
 <h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><p>IntentService&#x5C01;&#x88C5;&#x4E86;HandlerThread&#x8DDF;Handler&#xFF0C;IntentService&#x7528;&#x4E8E;&#x6267;&#x884C;&#x540E;&#x53F0;&#x7684;&#x8017;&#x65F6;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;IntentService&#x7684;&#x51FA;&#x73B0;&#x8DDF;AsyncTask&#x7684;&#x51FA;&#x73B0;&#x4E00;&#x6837;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x5F00;&#x53D1;&#x8005;&#xFF0C;IntentService&#x7EE7;&#x627F;&#x4E86;Service,&#x670D;&#x52A1;&#x662F;&#x8FD0;&#x884C;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x7684;&#xFF0C;&#x5728;&#x666E;&#x901A;&#x7684;Service&#x91CC;&#x9762;&#x6267;&#x884C;&#x8017;&#x65F6;&#x64CD;&#x4F5C;&#x7684;&#x8BDD;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#xFF0C;&#x5F53;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x8C03;&#x7528;StopSelf&#x6216;&#x8005;&#x5728;&#x5916;&#x90E8;&#x8C03;&#x7528;StopService&#x65B9;&#x6CD5;&#x6765;&#x7EC8;&#x6B62;&#x670D;&#x52A1;&#xFF0C;&#x4F46;&#x662F;&#x4F7F;&#x7528;&#x4E86;IntentService&#x8BDD;&#x7684;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;onHandlerIntent&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x6267;&#x884C;&#x8017;&#x65F6;&#x4EFB;&#x52A1;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x4E0D;&#x7528;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#xFF0C;&#x4EFB;&#x52A1;&#x9ED8;&#x8BA4;&#x5C31;&#x6267;&#x884C;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#xFF0C;&#x6267;&#x884C;&#x5B8C;&#x540E;&#xFF0C;&#x81EA;&#x52A8;&#x7EC8;&#x6B62;&#x670D;&#x52A1;&#x3002;<br>&#x7531;&#x4E8E;IntentService&#x662F;&#x670D;&#x52A1;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x8FD9;&#x5BFC;&#x81F4;&#x4ED6;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x6BD4;&#x5355;&#x7EAF;&#x7684;&#x7EBF;&#x7A0B;&#x9AD8;&#x5F88;&#x591A;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x8017;&#x65F6;&#x7684;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x4E0D;&#x5BB9;&#x6613;&#x88AB;&#x7CFB;&#x7EDF;&#x6740;&#x6B7B;&#x3002;<br>&#x7531;&#x4E8E;IntentService&#x662F;&#x5C06;&#x4EFB;&#x52A1;&#x653E;&#x5728;&#x6D88;&#x606F;&#x961F;&#x5217;&#x91CC;&#x9762;&#x6392;&#x961F;&#x7B49;&#x5F85;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x9762;&#x7684;&#x4EFB;&#x52A1;&#x5728;&#x524D;&#x9762;&#x7684;&#x4EFB;&#x52A1;&#x7ED3;&#x675F;&#x4E4B;&#x524D;&#x9700;&#x8981;&#x4E00;&#x76F4;&#x7B49;&#x5F85;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#x7684;&#x8BDD;&#xFF0C;&#x6548;&#x7387;&#x4F1A;&#x6BD4;&#x8F83;&#x4F4E;&#x3002;</p>
 
                 
+<p class="light-green-link-context">
+    <a href="/2017/09/11/Android-LayoutInflater原理分析/" rel="next" title="Android LayoutInflater原理分析 ">
+    上一篇：Android LayoutInflater原理分析 
+  </a>
+</p>
+
 
 
 <p class="light-green-link-context">

@@ -7,7 +7,7 @@
 
     
 
-    <title>性能优化 | 一天进步一点</title>
+    <title>绘制优化，响应速度优化，线程优化 | 一天进步一点</title>
     <meta name="author" content="张岩">
     
     <meta name="description" content="记录生活点滴">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="绘制优化，响应速度优化，线程优化"/>
     <meta property="og:site_name" content="张岩的博客"/>
 
     
@@ -289,42 +289,195 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper brown darken-1">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/Android/">Android</a><a class="breadcrumb" href="/categories/技术/Android/性能优化/">性能优化</a>
+
 
         
-            <a class="breadcrumb" href="/tags/性能优化/">性能优化</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card"> 
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>绘制优化，响应速度优化，线程优化</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="light-green-link-context" datetime="2017-09-13T07:27:23.000Z"><a href="/2017/09/13/绘制优化，响应速度优化，线程优化/">2017-09-13</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/09/13/绘制优化，响应速度优化，线程优化/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-09-13T07:27:23.000Z">2017-09-13</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                绘制优化，响应速度优化，线程优化
-            </a>
+            <a href="/tags/Android/" class="chip light-green">Android</a>
         
-            <a href="/2017/09/13/内存泄漏优化/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-09-13T04:47:58.000Z">2017-09-13</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                内存泄漏优化
-            </a>
-        
-            <a href="/2017/09/11/布局优化/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-09-11T10:18:07.000Z">2017-09-11</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                布局优化
-            </a>
+            <a href="/tags/性能优化/" class="chip light-green">性能优化</a>
         
     </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#绘制优化"><span class="section table-of-contents-text">绘制优化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#响应速度优化"><span class="section table-of-contents-text">响应速度优化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#线程优化"><span class="section table-of-contents-text">线程优化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一些性能优化的建议"><span class="section table-of-contents-text">一些性能优化的建议</span></a></li></ol>
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <h2 id="&#x7ED8;&#x5236;&#x4F18;&#x5316;"><a href="#&#x7ED8;&#x5236;&#x4F18;&#x5316;" class="headerlink" title="&#x7ED8;&#x5236;&#x4F18;&#x5316;"></a>&#x7ED8;&#x5236;&#x4F18;&#x5316;</h2><p>&#x7ED8;&#x5236;&#x4F18;&#x5316;&#x6307;&#x7684;&#x662F;<strong>&#x907F;&#x514D;&#x5728;View&#x7684;onDraw&#x65B9;&#x6CD5;&#x4E2D;&#x8FDB;&#x884C;&#x5927;&#x91CF;&#x7684;&#x64CD;&#x4F5C;</strong>&#x3002;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
+<p><strong>&#x9996;&#x5148;</strong>&#xFF0C;&#x907F;&#x514D;&#x5728;onDraw&#x65B9;&#x6CD5;&#x4E2D;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5C40;&#x90E8;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;onDraw&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x4F1A;&#x9891;&#x7E41;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5728;&#x4E00;&#x77AC;&#x95F4;&#x4EA7;&#x751F;&#x5927;&#x91CF;&#x7684;&#x4E34;&#x65F6;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E0D;&#x4EC5;&#x4F1A;&#x5360;&#x7528;&#x8FC7;&#x591A;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x8FD8;&#x4F1A;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x9891;&#x7E41;&#x7684;&#x8FDB;&#x884C;GC&#xFF0C;&#x5F71;&#x54CD;&#x7A0B;&#x5E8F;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<p><strong>&#x5176;&#x6B21;</strong>&#xFF0C;&#x4E0D;&#x8981;&#x5728;onDraw&#x65B9;&#x6CD5;&#x4E2D;&#x8FDB;&#x884C;&#x8017;&#x65F6;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x4E0D;&#x8981;&#x6709;&#x5927;&#x7684;&#x5FAA;&#x73AF;&#xFF0C;&#x56E0;&#x4E3A;&#x8017;&#x65F6;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x50CF;&#x662F;&#x5927;&#x91CF;&#x7684;&#x5FAA;&#x73AF;&#xFF0C;&#x5341;&#x5206;&#x62A2;&#x5360;CPU&#x7684;&#x65F6;&#x95F4;&#x7247;&#xFF0C;&#x5BFC;&#x81F4;&#x7ED8;&#x5236;&#x8FC7;&#x7A0B;&#x4E0D;&#x6D41;&#x7545;&#x3002;</p>
+<p>&#x8C37;&#x6B4C;&#x5B98;&#x65B9;&#x6570;&#x636E;&#xFF0C;View&#x7684;&#x7ED8;&#x5236;&#x5E27;&#x7387;&#x4FDD;&#x8BC1;60fps&#x662F;&#x6700;&#x597D;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6BCF;&#x4E00;&#x5E27;&#x7684;&#x7ED8;&#x5236;&#x65F6;&#x95F4;&#x4E0D;&#x5E94;&#x8BE5;&#x9AD8;&#x4E8E;16ms(1000ms/60=16ms)&#x3002;</p>
+<h2 id="&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x4F18;&#x5316;"><a href="#&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x4F18;&#x5316;" class="headerlink" title="&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x4F18;&#x5316;"></a>&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x4F18;&#x5316;</h2><p>&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x4F18;&#x5316;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x5C31;&#x662F;&#x907F;&#x514D;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x8FDB;&#x884C;&#x8017;&#x65F6;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x8017;&#x65F6;&#x64CD;&#x4F5C;&#x5C06;&#x8017;&#x65F6;&#x7684;&#x64CD;&#x4F5C;&#x653E;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x66F4;&#x591A;&#x7684;&#x4F53;&#x73B0;&#x5728;Activity&#x7684;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x4E0A;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x4E86;&#x8FC7;&#x591A;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;Activity&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x51FA;&#x73B0;&#x9ED1;&#x5C4F;&#x73B0;&#x8C61;&#xFF0C;&#x751A;&#x81F3;&#x51FA;&#x73B0;ANR&#x3002;</p>
+<p>Android&#x89C4;&#x5B9A;&#xFF0C;&#x5982;&#x679C;Activity&#x5728;5s&#x5185;&#x65E0;&#x6CD5;&#x54CD;&#x5E94;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x6216;&#x8005;&#x8F93;&#x5165;&#x4E8B;&#x4EF6;&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;ANR&#x5F02;&#x5E38;&#xFF1B;BroadCastaReceiver&#x5982;&#x679C;&#x5728;10s&#x5185;&#x65E0;&#x6CD5;&#x6267;&#x884C;&#x5B8C;&#x76F8;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;ANR&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x53D1;&#x751F;ANR&#x4EE5;&#x540E;&#x7CFB;&#x7EDF;&#x4F1A;&#x5728;/data/anr&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;traces.txt&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x6790;&#x8BE5;&#x6587;&#x4EF6;&#x5C31;&#x80FD;&#x5B9A;&#x4F4D;&#x51FA;ANR&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<h2 id="&#x7EBF;&#x7A0B;&#x4F18;&#x5316;"><a href="#&#x7EBF;&#x7A0B;&#x4F18;&#x5316;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x4F18;&#x5316;"></a>&#x7EBF;&#x7A0B;&#x4F18;&#x5316;</h2><p>&#x7EBF;&#x7A0B;&#x4F18;&#x5316;&#x7684;&#x601D;&#x60F3;&#x5C31;&#x662F;&#x91C7;&#x7528;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x7EBF;&#x7A0B;&#x6C60;&#x53EF;&#x4EE5;&#x91CD;&#x7528;&#x5185;&#x90E8;&#x7684;&#x7EBF;&#x7A0B;&#x3002;&#x91C7;&#x7528;&#x7EBF;&#x7A0B;&#x6C60;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x9891;&#x7E41;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x7EBF;&#x7A0B;&#x6240;&#x5E26;&#x6765;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x7EBF;&#x7A0B;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x907F;&#x514D;&#x8FC7;&#x591A;&#x7684;&#x7EBF;&#x7A0B;&#x62A2;&#x5360;&#x8D44;&#x6E90;&#x5F15;&#x8D77;&#x7684;&#x963B;&#x585E;&#x3002;&#x56E0;&#x6B64;&#x5728;&#x5B9E;&#x9645;&#x7684;&#x5F00;&#x53D1;&#x4E2D;&#x6211;&#x4EEC;&#x8981;&#x5C3D;&#x91CF;&#x7684;&#x91C7;&#x7528;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6BCF;&#x6B21;&#x90FD;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Thread&#x3002;&#x5173;&#x4E8E;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x5EFA;&#x8BAE;&#x9605;&#x8BFB;&#xFF1A;<a href="http://116.196.91.16/2017/09/11/ThreadPoolExecutor/" target="_blank" rel="external">ThreadPoolExecutor</a></p>
+<h2 id="&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x7684;&#x5EFA;&#x8BAE;"><a href="#&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x7684;&#x5EFA;&#x8BAE;" class="headerlink" title="&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x7684;&#x5EFA;&#x8BAE;"></a>&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x7684;&#x5EFA;&#x8BAE;</h2><blockquote>
+<ul>
+<li>&#x907F;&#x514D;&#x521B;&#x5EFA;&#x8FC7;&#x591A;&#x7684;&#x5BF9;&#x8C61;</li>
+<li>&#x4E0D;&#x8981;&#x8FC7;&#x591A;&#x7684;&#x4F7F;&#x7528;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#xFF0C;&#x56E0;&#x4E3A;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x6BD4;&#x6574;&#x578B;&#x8981;&#x5927;(&#x679A;&#x4E3E;&#x662F;&#x7528;&#x6765;&#x6784;&#x5EFA;&#x5E38;&#x91CF;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x6A21;&#x7248;)</li>
+<li>&#x5E38;&#x91CF;&#x8BF7;&#x4F7F;&#x7528;static final&#x6765;&#x4FEE;&#x9970;</li>
+<li>&#x4F7F;&#x7528;Android&#x7279;&#x6709;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x6BD4;&#x5982;SparseArray&#x548C;Pair&#x7B49;&#xFF0C;&#x4ED6;&#x4EEC;&#x90FD;&#x5177;&#x6709;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;</li>
+<li>&#x9002;&#x5F53;&#x7684;&#x4F7F;&#x7528;&#x8F6F;&#x996E;&#x7528;&#x548C;&#x5F31;&#x5F15;&#x7528;</li>
+<li>&#x6070;&#x5F53;&#x7684;&#x4F7F;&#x7528;&#x78C1;&#x76D8;&#x7F13;&#x5B58;&#x548C;&#x5185;&#x5B58;&#x7F13;&#x5B58;</li>
+<li>&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x6F5C;&#x5728;&#x7684;&#x7531;&#x4E8E;&#x5185;&#x90E8;&#x7C7B;&#x5BFC;&#x81F4;&#x7684;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;</li>
+</ul>
+</blockquote>
+<p>&#x6458;&#x81EA;&#xFF1A;<a href="https://book.douban.com/subject/26599538/" target="_blank" rel="external">&#x300A;Android&#x5F00;&#x53D1;&#x827A;&#x672F;&#x63A2;&#x7D22;&#x300B;</a></p>
+
+                
+
+
+<p class="light-green-link-context">
+    <a href="/2017/09/13/内存泄漏优化/" rel="next" title="内存泄漏优化">
+    下一篇：内存泄漏优化
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+<!-- Donate Module -->
+<div id="donate_module">
+    <style type="text/css">
+        .hidden {
+            display: none;
+        }
+        .donate_bar a.btn_donate {
+            display: inline-block;
+            width: 82px;
+            height: 82px;
+            background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+            _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+
+            -webkit-transition: background 0s;
+            -moz-transition: background 0s;
+            -o-transition: background 0s;
+            -ms-transition: background 0s;
+            transition: background 0s;
+        }
+        .donate_bar a.btn_donate:hover {
+            background-position: 0 -82px;
+        }
+        .donate_bar .donate_txt {
+            display: block;
+            color: #9d9d9d;
+            font: 14px/2 "Microsoft Yahei";
+        }
+        .bold {
+            font-weight: bold;
+        }
+
+        img.qrcode {
+            width: 90%;
+            margin-bottom: 10px;
+        }
+        @media only screen and (min-width: 1025px) {
+            img.qrcode {
+                width: 40%;
+                margin-right: 10px;
+            }
+        }
+
+    </style>
+
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">能看到这的都是真爱，打个赏呗=。=</span>
+    </div>
+    <!-- /btn_donate & tips -->
+
+    <!-- donate guide -->
+    <div id="donate_guide" class="donate_bar center hidden">
+        
+        <img class="qrcode" src="http://ogts8rw5s.bkt.clouddn.com/weixinzhifu.png" title="打赏"/>
+        
+        <img class="qrcode" src="http://ogts8rw5s.bkt.clouddn.com/zhifubaozhifu2.jpg" title="打赏"/>
+        
+    </div>
+    <!-- /donate guide -->
+
+    <!-- donate script -->
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+            $('#donate_board').addClass('hidden');
+            $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web() {
+            $('#donate').submit();
+        }
+    </script>
+    <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+
+
+
+
+    <section id="comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDQ0My82OTk3">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+    </section>
+
+
+    
 
 
 </div>

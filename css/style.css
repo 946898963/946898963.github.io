@@ -411,7 +411,7 @@ article .card-content .entry {
 }
 article .card-content .entry p {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 1em;
   text-align: justify;
   text-justify: inter-ideograph;
   word-break: initial;
@@ -437,7 +437,7 @@ article .card-content .entry h4,
 article .card-content .entry h5,
 article .card-content .entry h6 {
   margin-top: 0;
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 article .card-content .entry h1 {
   font-size: 1.6em;

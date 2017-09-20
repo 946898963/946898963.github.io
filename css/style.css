@@ -411,7 +411,7 @@ article .card-content .entry {
 }
 article .card-content .entry p {
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: 0;
   text-align: justify;
   text-justify: inter-ideograph;
   word-break: initial;
@@ -811,7 +811,7 @@ article pre {
 article p code,
 article li code {
   margin: 0 3px;
-  padding: 0 0px;
+  padding: 0 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #e0e0e0;

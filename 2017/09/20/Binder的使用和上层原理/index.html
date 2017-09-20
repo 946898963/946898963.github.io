@@ -7,7 +7,7 @@
 
     
 
-    <title>垃圾收集算法 | 一天进步一点</title>
+    <title>Binder的使用和上层原理 | 一天进步一点</title>
     <meta name="author" content="张岩">
     
     <meta name="description" content="记录生活点滴">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="垃圾收集算法"/>
+    <meta property="og:title" content="Binder的使用和上层原理"/>
     <meta property="og:site_name" content="张岩的博客"/>
 
     
@@ -312,7 +312,7 @@
             
     
     
-    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/JVM/">JVM</a>
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/Android/">Android</a><a class="breadcrumb" href="/categories/技术/Android/多进程/">多进程</a>
 
 
         
@@ -329,12 +329,12 @@
             <div class="article-title">
                 
     
-        <h1>垃圾收集算法</h1>
+        <h1>Binder的使用和上层原理</h1>
     
 
 
             </div>
-            <time class="light-green-link-context" datetime="2016-05-31T17:13:10.000Z"><a href="/2016/06/01/垃圾收集算法/">2016-06-01</a></time>
+            <time class="light-green-link-context" datetime="2017-09-20T09:34:30.000Z"><a href="/2017/09/20/Binder的使用和上层原理/">2017-09-20</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -344,64 +344,69 @@
             
     <div class="tags-row">
         
-            <a href="/tags/JVM/" class="chip light-green">JVM</a>
+            <a href="/tags/Android/" class="chip light-green">Android</a>
+        
+            <a href="/tags/多进程/" class="chip light-green">多进程</a>
         
     </div>
 
 
             <div class="toc light-green-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#标记-清除算法"><span class="section table-of-contents-text">标记-清除算法</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#算法描述"><span class="section table-of-contents-text">算法描述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#不足："><span class="section table-of-contents-text">不足：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#复制算法"><span class="section table-of-contents-text">复制算法</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#算法描述："><span class="section table-of-contents-text">算法描述：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#优点："><span class="section table-of-contents-text">优点：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#缺点："><span class="section table-of-contents-text">缺点：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#标记-整理算法"><span class="section table-of-contents-text">标记-整理算法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#分代收集算法"><span class="section table-of-contents-text">分代收集算法</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#简单介绍"><span class="section table-of-contents-text">简单介绍</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#由系统根据AIDL文件自动生成-java文件"><span class="section table-of-contents-text">由系统根据AIDL文件自动生成.java文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Stub和Proxy类的内部方法和定义"><span class="section table-of-contents-text">Stub和Proxy类的内部方法和定义</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#给Binder设置一个死亡代理"><span class="section table-of-contents-text">给Binder设置一个死亡代理</span></a></li></ol>
 </div>
 
 
             <div class="entry light-green-link-context">
-                <h2 id="&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;"><a href="#&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;" class="headerlink" title="&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;"></a>&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;</h2><h3 id="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;"><a href="#&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;" class="headerlink" title="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;"></a>&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;</h3><p><strong>&#x6700;&#x57FA;&#x7840;</strong>&#x7684;&#x6536;&#x96C6;&#x7B97;&#x6CD5;&#xFF0C;&#x7B97;&#x6CD5;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;</p>
-<blockquote>
-<ul>
-<li>&#x6807;&#x8BB0;&#x9636;&#x6BB5;</li>
-<li>&#x6E05;&#x9664;&#x9636;&#x6BB5;</li>
+                <h2 id="&#x7B80;&#x5355;&#x4ECB;&#x7ECD;"><a href="#&#x7B80;&#x5355;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x7B80;&#x5355;&#x4ECB;&#x7ECD;"></a>&#x7B80;&#x5355;&#x4ECB;&#x7ECD;</h2><p>Binder&#x662F;Android&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;IBinder&#x63A5;&#x53E3;&#x3002;&#x4ECE;IPC&#x89D2;&#x5EA6;&#x8BF4;&#xFF0C;Binder&#x662F;Andoird&#x7684;&#x4E00;&#x79CD;&#x8DE8;&#x8FDB;&#x7A0B;&#x901A;&#x8BAF;&#x65B9;&#x5F0F;&#x3002;&#x4ECE;Android Framework&#x89D2;&#x5EA6;&#x6765;&#x8BF4;&#xFF0C;Binder&#x662F;ServiceManager&#x8FDE;&#x63A5;&#x5404;&#x79CD;Manager(ActivityManager&#xB7;&#x3001;WindowManager)&#x548C;&#x76F8;&#x5E94;ManagerService&#x7684;&#x6865;&#x6881;&#x3002;&#x4ECE;Android&#x5E94;&#x7528;&#x5C42;&#x6765;&#x8BF4;&#xFF0C;Binder&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x7AEF;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x7684;&#x5A92;&#x4ECB;&#xFF0C;&#x5F53;bindService&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x670D;&#x52A1;&#x7AEF;&#x4E1A;&#x52A1;&#x8C03;&#x7528;&#x7684;Binder&#x5BF9;&#x8C61;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;Binder&#x5BF9;&#x8C61;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x6216;&#x8005;&#x6570;&#x636E;&#xFF08;&#x5305;&#x62EC;&#x666E;&#x901A;&#x670D;&#x52A1;&#x548C;&#x57FA;&#x4E8E;AIDL&#x7684;&#x670D;&#x52A1;&#xFF09;&#x3002;</p>
+<p>Android&#x4E2D;Binder&#x4E3B;&#x8981;&#x7528;&#x4E8E;Service&#xFF0C;&#x5305;&#x62EC;AIDL&#x548C;Messenger&#x3002;&#x666E;&#x901A;Service&#x7684;Binder&#x4E0D;&#x6D89;&#x53CA;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF0C;Messenger&#x7684;&#x5E95;&#x5C42;&#x5176;&#x5B9E;&#x662F;AIDL&#xFF0C;&#x6240;&#x4EE5;&#x4E0B;&#x9762;&#x901A;&#x8FC7;AIDL&#x5206;&#x6790;Binder&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#x3002;</p>
+<h2 id="&#x7531;&#x7CFB;&#x7EDF;&#x6839;&#x636E;AIDL&#x6587;&#x4EF6;&#x81EA;&#x52A8;&#x751F;&#x6210;-java&#x6587;&#x4EF6;"><a href="#&#x7531;&#x7CFB;&#x7EDF;&#x6839;&#x636E;AIDL&#x6587;&#x4EF6;&#x81EA;&#x52A8;&#x751F;&#x6210;-java&#x6587;&#x4EF6;" class="headerlink" title="&#x7531;&#x7CFB;&#x7EDF;&#x6839;&#x636E;AIDL&#x6587;&#x4EF6;&#x81EA;&#x52A8;&#x751F;&#x6210;.java&#x6587;&#x4EF6;"></a>&#x7531;&#x7CFB;&#x7EDF;&#x6839;&#x636E;AIDL&#x6587;&#x4EF6;&#x81EA;&#x52A8;&#x751F;&#x6210;.java&#x6587;&#x4EF6;</h2><ul>
+<li><a href="https://gist.github.com/thinkerzhangyan/96ff60c19fb5a6f6dfef2f5ec8dd8012" target="_blank" rel="external">Book.java</a><br>&#x8868;&#x793A;&#x56FE;&#x4E66;&#x4FE1;&#x606F;&#x7684;&#x5B9E;&#x4F53;&#x7C7B;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;Parcelable&#x63A5;&#x53E3;&#x3002;</li>
+<li><p>Book.aidl<br>Book&#x7C7B;&#x5728;AIDL&#x4E2D;&#x7684;&#x58F0;&#x660E;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">package tk.thinkerzhangyan.ipcapplication;</span><br><span class="line">parcelable Book;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IBookManager.aidl </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package tk.thinkerzhangyan.ipcapplication;</span><br><span class="line">import tk.thinkerzhangyan.ipcapplication.Book;</span><br><span class="line"></span><br><span class="line">interface IBookManager {</span><br><span class="line">     List&lt;Book&gt; getBookList();</span><br><span class="line">     void addBook(in Book book);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-</blockquote>
-<p>&#x9996;&#x5148;&#x6807;&#x8BB0;&#x88AB;&#x56DE;&#x6536;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x6807;&#x8BB0;&#x5B8C;&#x6210;&#x540E;&#x7EDF;&#x4E00;&#x56DE;&#x6536;&#x88AB;&#x6807;&#x8BB0;&#x7684;&#x5BF9;&#x8C61;&#x3002;<br>&#x6807;&#x8BB0;&#x8FC7;&#x7A0B;&#x53C2;&#x8003;&#x4E4B;&#x524D;&#x7684;&#x535A;&#x5BA2;<a href="http://946898963.github.io/2016/05/31/%E4%B8%A4%E6%AC%A1%E6%A0%87%E8%AE%B0/" target="_blank" rel="external">&#x4E24;&#x6B21;&#x6807;&#x8BB0;</a></p>
-<p>&#x8FD9;&#x4E2A;&#x7B97;&#x6CD5;&#x662F;&#x6700;&#x57FA;&#x672C;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x540E;&#x7EED;&#x7684;&#x7B97;&#x6CD5;&#x90FD;&#x662F;&#x57FA;&#x4E8E;&#x8FD9;&#x79CD;&#x601D;&#x8DEF;&#xFF0C;&#x5E76;&#x5BF9;&#x5176;&#x4E0D;&#x8DB3;&#x8FDB;&#x884C;&#x6539;&#x8FDB;&#x5F97;&#x5230;&#x7684;&#x3002;</p>
-<h3 id="&#x4E0D;&#x8DB3;&#xFF1A;"><a href="#&#x4E0D;&#x8DB3;&#xFF1A;" class="headerlink" title="&#x4E0D;&#x8DB3;&#xFF1A;"></a>&#x4E0D;&#x8DB3;&#xFF1A;</h3><blockquote>
+<p>&#x5B9A;&#x4E49;&#x7684;&#x7BA1;&#x7406;Book&#x5B9E;&#x4F53;&#x7684;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5305;&#x542B;getBookList&#x548C;addBook&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x7CFB;&#x7EDF;&#x4E3A;IBookManager.aidl&#x751F;&#x4EA7;&#x7684;Binder&#x7C7B;&#xFF0C;&#x5728;gen&#x76EE;&#x5F55;&#x4E0B;&#x7684;<strong><a href="https://gist.github.com/anonymous/cd95532d38ca1bb30860e81f200dd967" target="_blank" rel="external">IBookManager.java</a></strong>&#x7C7B;&#x3002;</p>
+<p>IBookManager&#x7EE7;&#x627F;&#x4E86;<code>IInterface</code>&#x63A5;&#x53E3;&#xFF0C;<strong>&#x6240;&#x6709;&#x5728;Binder&#x4E2D;&#x4F20;&#x8F93;&#x7684;&#x63A5;&#x53E3;&#x90FD;&#x9700;&#x8981;&#x7EE7;&#x627F;IInterface&#x63A5;&#x53E3;</strong>&#x3002;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>&#x58F0;&#x660E;&#x4E86;<code>getBookList</code>&#x548C;<code>addBook</code>&#x65B9;&#x6CD5;&#xFF0C;&#x8FD8;&#x58F0;&#x660E;&#x4E86;&#x4E24;&#x4E2A;&#x6574;&#x578B;id&#x5206;&#x522B;&#x6807;&#x8BC6;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x5728;transact&#x8FC7;&#x7A0B;&#x4E2D;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x5230;&#x5E95;&#x662F;&#x54EA;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x7C7B;<code>Stub</code>&#xFF0C;&#x8FD9;&#x4E2A;<code>Stub</code>&#x5C31;&#x662F;&#x4E00;&#x4E2A;Binder&#x7C7B;&#xFF0C;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x7AEF;&#x4F4D;&#x4E8E;&#x540C;&#x4E00;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x4E0D;&#x4F1A;&#x8D70;&#x8DE8;&#x8FDB;&#x7A0B;&#x7684;<code>transact</code>&#x3002;&#x5F53;&#x4E8C;&#x8005;&#x4F4D;&#x4E8E;&#x4E0D;&#x540C;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x9700;&#x8981;&#x8D70;<code>transact</code>&#x8FC7;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#x6709;<code>Stub</code>&#x7684;&#x5185;&#x90E8;&#x4EE3;&#x7406;&#x7C7B;<code>Proxy</code>&#x6765;&#x5B8C;&#x6210;&#x3002;</li>
+<li>&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x6838;&#x5FC3;&#x5B9E;&#x73B0;&#x5C31;&#x662F;&#x5B83;&#x7684;<code>&#x5185;&#x90E8;&#x7C7B;Stub</code>&#x548C;<code>Stub&#x7684;&#x5185;&#x90E8;&#x4EE3;&#x7406;&#x7C7B;Proxy</code>&#x3002;</li>
+</ol>
+<h2 id="Stub&#x548C;Proxy&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x65B9;&#x6CD5;&#x548C;&#x5B9A;&#x4E49;"><a href="#Stub&#x548C;Proxy&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x65B9;&#x6CD5;&#x548C;&#x5B9A;&#x4E49;" class="headerlink" title="Stub&#x548C;Proxy&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x65B9;&#x6CD5;&#x548C;&#x5B9A;&#x4E49;"></a>Stub&#x548C;Proxy&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x65B9;&#x6CD5;&#x548C;&#x5B9A;&#x4E49;</h2><ol>
+<li><strong>DESCRIPTOR</strong><br>Binder&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#xFF0C;&#x4E00;&#x822C;&#x7528;Binder&#x7684;&#x7C7B;&#x540D;&#x8868;&#x793A;&#x3002;</li>
+<li><strong>asInterface(android.os.IBinder obj)</strong><br>&#x5C06;&#x670D;&#x52A1;&#x7AEF;&#x7684;Binder&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x6240;&#x9700;&#x7684;AIDL&#x63A5;&#x53E3;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;C/S&#x4F4D;&#x4E8E;&#x540C;&#x4E00;&#x8FDB;&#x7A0B;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x5C31;&#x662F;&#x670D;&#x52A1;&#x7AEF;&#x7684;Stub&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;&#x7684;&#x5C31;&#x662F;&#x7CFB;&#x7EDF;&#x5C01;&#x88C5;&#x540E;&#x7684;Stub.proxy&#x5BF9;&#x8C61;&#x3002;</li>
+<li><strong>asBinder</strong><br>&#x8FD4;&#x56DE;&#x5F53;&#x524D;Binder&#x5BF9;&#x8C61;&#x3002;</li>
+<li><strong>onTransact</strong><br>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8FD0;&#x884C;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x7684;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#xFF0C;&#x7531;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x8D77;&#x8DE8;&#x8FDB;&#x7A0B;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x8FDC;&#x7A0B;&#x8BF7;&#x6C42;&#x4F1A;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x5E95;&#x5C42;&#x5C01;&#x88C5;&#x540E;&#x4EA4;&#x7531;&#x6B64;&#x65B9;&#x6CD5;&#x6765;&#x5904;&#x7406;&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x539F;&#x578B;&#x662F;<br><code>java public Boolean onTransact(int code,Parcelable data,Parcelable reply,int flags)</code><br>&#x2160;&#xB7; &#x670D;&#x52A1;&#x7AEF;&#x901A;&#x8FC7;code&#x786E;&#x5B9A;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x76EE;&#x6807;&#x65B9;&#x6CD5;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;<br>&#x2161;&#xB7; &#x63A5;&#x7740;&#x4ECE;data&#x53D6;&#x51FA;&#x76EE;&#x6807;&#x65B9;&#x6CD5;&#x6240;&#x9700;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x76EE;&#x6807;&#x65B9;&#x6CD5;&#x3002;<br>&#x2162;&#xB7;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#x5411;reply&#x5199;&#x5165;&#x8FD4;&#x56DE;&#x503C;&#xFF08;&#x5982;&#x679C;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF09;&#x3002;<br>&#x2163;&#xB7;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;false&#xFF0C;&#x90A3;&#x4E48;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;&#x4F1A;&#x5931;&#x8D25;&#xFF0C;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6765;&#x505A;&#x6743;&#x9650;&#x9A8C;&#x8BC1;&#xFF0C;&#x6BD5;&#x7ADF;&#x6211;&#x4EEC;&#x4E0D;&#x5E0C;&#x671B;&#x6BCF;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x90FD;&#x80FD;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x6211;&#x4EEC;&#x7684;&#x670D;&#x52A1;&#x3002;</li>
+<li><strong>Proxy#getBookList&#x548C;Proxy#addBook</strong><br>&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x8FD0;&#x884C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;<br>&#x2160;&#xB7;  &#x9996;&#x5148;&#x521B;&#x5EFA;&#x8BE5;&#x65B9;&#x6CD5;&#x6240;&#x9700;&#x8981;&#x7684;&#x8F93;&#x5165;&#x578B;&#x5BF9;&#x8C61;Parcel&#x5BF9;&#x8C61;_data&#xFF0C;&#x8F93;&#x51FA;&#x578B;Parcel&#x5BF9;&#x8C61;_reply&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x5BF9;&#x8C61;List&#x3002;<br>&#x2161;&#xB7;  &#x7136;&#x540E;&#x628A;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x4FE1;&#x606F;&#x5199;&#x5165;_data&#xFF08;&#x5982;&#x679C;&#x6709;&#x53C2;&#x6570;&#xFF09;<br>&#x2162;&#xB7; &#x63A5;&#x7740;&#x8C03;&#x7528;transact&#x65B9;&#x6CD5;&#x53D1;&#x8D77;RPC&#xFF08;&#x8FDC;&#x7A0B;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;&#xFF09;&#xFF0C;&#x540C;&#x65F6;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x6302;&#x8D77;&#xFF0C;<br>&#x2163;&#xB7; &#x7136;&#x540E;&#x670D;&#x52A1;&#x7AEF;&#x7684;onTransact&#x65B9;&#x6CD5;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x76F4;&#x5230;PC&#x8FC7;&#x7A0B;&#x8FD4;&#x56DE;&#x540E;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x4ECE;_reply&#x4E2D;&#x53D6;&#x51FA;RPC&#x8FC7;&#x7A0B;&#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x6700;&#x540E;&#x8FD4;&#x56DE;_reply&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002;</li>
+</ol>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x63D0;&#x4F9B;AIDL&#x6587;&#x4EF6;&#xFF0C;&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x7CFB;&#x7EDF;&#x4E3A;&#x6211;&#x4EEC;&#x751F;&#x6210;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;Binder,AIDL&#x7684;&#x672C;&#x8D28;&#xFF0C;&#x662F;&#x7CFB;&#x7EDF;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5FEB;&#x901F;&#x751F;&#x6210;Binder&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x4E24;&#x70B9;&#xFF1A;</strong></p>
 <ul>
-<li>&#x6548;&#x7387;&#x95EE;&#x9898;<br>&#x6807;&#x8BB0;&#x8DDF;&#x6E05;&#x9664;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;&#x7684;&#x6548;&#x7387;&#x90FD;&#x4E0D;&#x9AD8;&#xFF1B;</li>
-<li>&#x7A7A;&#x95F4;&#x95EE;&#x9898;<br>&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x5927;&#x91CF;&#x7684;&#x4E0D;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x788E;&#x7247;&#xFF0C;&#x7A7A;&#x95F4;&#x788E;&#x7247;&#x592A;&#x591A;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x4E4B;&#x540E;&#x5206;&#x914D;&#x8F83;&#x5927;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x65E0;&#x6CD5;&#x627E;&#x5230;&#x8F83;&#x5927;&#x7684;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x800C;&#x4E0D;&#x5F97;&#x4E0D;&#x63D0;&#x524D;&#x89E6;&#x53D1;&#x53E6;&#x4E00;&#x6B21;&#x5783;&#x573E;&#x6536;&#x96C6;&#x52A8;&#x4F5C;</li>
+<li>&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x8D77;&#x8FDC;&#x7A0B;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F53;&#x524D;&#x7684;&#x7EBF;&#x7A0B;&#x4F1A;&#x88AB;&#x6302;&#x8D77;&#xFF0C;&#x76F4;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x8FDC;&#x7A0B;&#x8FDB;&#x7A0B;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x8FDC;&#x7A0B;&#x65B9;&#x6CD5;&#x6BD4;&#x8F83;&#x8017;&#x65F6;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x4E0D;&#x80FD;&#x5728;UI&#x7EBF;&#x7A0B;&#x4E2D;&#x53D1;&#x8D77;&#x6B64;&#x8FDC;&#x7A0B;&#x8BF7;&#x6C42;&#x3002;</li>
+<li>&#x7531;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;Binder&#x65B9;&#x6CD5;&#x8FD0;&#x884C;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;Binder&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;Binder&#x65B9;&#x6CD5;&#x4E0D;&#x7BA1;&#x662F;&#x5426;&#x8017;&#x65F6;&#xFF0C;&#x90FD;&#x5E94;&#x8BE5;&#x91C7;&#x7528;&#x540C;&#x6B65;&#x7684;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x6709;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x5728;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x4E86;&#x3002;</li>
 </ul>
-</blockquote>
-<p>&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;<br><img src="/2016/06/01/&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;/biaojiqingchu.png" alt="&#x6807;&#x8BB0;&#x6E05;&#x9664;"></p>
-<h2 id="&#x590D;&#x5236;&#x7B97;&#x6CD5;"><a href="#&#x590D;&#x5236;&#x7B97;&#x6CD5;" class="headerlink" title="&#x590D;&#x5236;&#x7B97;&#x6CD5;"></a>&#x590D;&#x5236;&#x7B97;&#x6CD5;</h2><p>&#x590D;&#x5236;&#x6536;&#x96C6;&#x7B97;&#x6CD5;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x7B97;&#x6CD5;&#x7684;&#x6548;&#x7387;&#x95EE;&#x9898;&#x3002;</p>
-<h3 id="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;&#xFF1A;"><a href="#&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;&#xFF1A;" class="headerlink" title="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;&#xFF1A;"></a>&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;&#xFF1A;</h3><p>&#x4ED6;&#x5C06;&#x53EF;&#x7528;&#x5185;&#x5B58;&#x6309;&#x5BB9;&#x91CF;&#x5212;&#x5206;&#x6210;&#x5927;&#x5C0F;&#x76F8;&#x7B49;&#x7684;&#x4E24;&#x5757;&#xFF0C;&#x6BCF;&#x6B21;&#x53EA;&#x4F7F;&#x7528;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x5757;&#xFF0C;&#x5F53;&#x8FD9;&#x4E00;&#x5757;&#x7684;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x5B8C;&#x4E86;&#xFF0C;&#x5C31;&#x5C06;&#x8FD8;&#x5B58;&#x6D3B;&#x7740;&#x7684;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x4E0A;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x5DF2;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E00;&#x6B21;&#x6027;&#x7684;&#x6E05;&#x7406;&#x6389;&#x3002;</p>
-<h3 id="&#x4F18;&#x70B9;&#xFF1A;"><a href="#&#x4F18;&#x70B9;&#xFF1A;" class="headerlink" title="&#x4F18;&#x70B9;&#xFF1A;"></a>&#x4F18;&#x70B9;&#xFF1A;</h3><blockquote>
-<ul>
-<li>&#x8FD9;&#x6837;&#x6BCF;&#x6B21;&#x90FD;&#x662F;&#x5BF9;&#x6574;&#x4E2A;&#x534A;&#x533A;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x56DE;&#x6536;&#xFF0C;&#x8FD0;&#x884C;&#x9AD8;&#x6548;&#xFF1B;</li>
-<li>&#x5185;&#x5B58;&#x5206;&#x914D;&#x65F6;&#xFF0C;&#x4E5F;&#x4E0D;&#x7528;&#x8003;&#x8651;&#x5185;&#x5B58;&#x788E;&#x7247;&#x7B49;&#x95EE;&#x9898;&#xFF1B;</li>
-<li>&#x5185;&#x5B58;&#x975E;&#x914D;&#x65F6;&#xFF0C;&#x53EA;&#x8981;&#x79FB;&#x52A8;&#x5806;&#x9876;&#x90E8;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x6309;&#x987A;&#x5E8F;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5373;&#x53EF;&#xFF0C;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x3002;</li>
-</ul>
-</blockquote>
-<h3 id="&#x7F3A;&#x70B9;&#xFF1A;"><a href="#&#x7F3A;&#x70B9;&#xFF1A;" class="headerlink" title="&#x7F3A;&#x70B9;&#xFF1A;"></a>&#x7F3A;&#x70B9;&#xFF1A;</h3><blockquote>
-<ul>
-<li>&#x53EF;&#x7528;&#x5185;&#x5B58;&#x4E3A;&#x5360;&#x7528;&#x5185;&#x5B58;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x4EE3;&#x4EF7;&#x6BD4;&#x8F83;&#x9AD8;&#x3002;</li>
-</ul>
-</blockquote>
-<p>&#x590D;&#x5236;&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x6240;&#x793A;:<br><img src="/2016/06/01/&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;/fuzhisuanfa.png" alt="&#x590D;&#x5236;&#x8FC7;&#x7A0B;"></p>
-<h2 id="&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;"><a href="#&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;" class="headerlink" title="&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;"></a>&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;</h2><p>&#x590D;&#x5236;&#x7B97;&#x6CD5;&#x6BD4;&#x8F83;&#x9002;&#x5408;&#x4E8E;&#x65B0;&#x751F;&#x4EE3;&#xFF0C;&#x5728;&#x8001;&#x5E74;&#x4EE3;&#x4E2D;&#xFF0C;&#x5BF9;&#x8C61;&#x5B58;&#x6D3B;&#x7387;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x8F83;&#x591A;&#x7684;&#x590D;&#x5236;&#x64CD;&#x4F5C;&#xFF0C;&#x6548;&#x7387;&#x5C06;&#x4F1A;&#x53D8;&#x4F4E;&#xFF0C;&#x6240;&#x4EE5;&#x8001;&#x5E74;&#x4EE3;&#x4E00;&#x822C;&#x4F1A;&#x9009;&#x7528;&#x5176;&#x4ED6;&#x7B97;&#x6CD5;&#xFF0C;&#x5982;&#x6807;&#x8BB0;&#x2014;&#x6574;&#x7406;&#x7B97;&#x6CD5;&#x3002;&#x8BE5;&#x7B97;&#x6CD5;&#x6807;&#x8BB0;&#x7684;&#x8FC7;&#x7A0B;&#x4E0E;&#x6807;&#x8BB0;&#x2014;&#x6E05;&#x9664;&#x7B97;&#x6CD5;&#x4E2D;&#x7684;&#x6807;&#x8BB0;&#x8FC7;&#x7A0B;&#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x5BF9;&#x6807;&#x8BB0;&#x540E;&#x51FA;&#x7684;&#x5783;&#x573E;&#x5BF9;&#x8C61;&#x7684;&#x5904;&#x7406;&#x60C5;&#x51B5;&#x6709;&#x6240;&#x4E0D;&#x540C;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5BF9;&#x53EF;&#x56DE;&#x6536;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x6E05;&#x7406;&#xFF0C;&#x800C;&#x662F;&#x8BA9;&#x6240;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x5411;&#x4E00;&#x7AEF;&#x79FB;&#x52A8;&#xFF0C;&#x7136;&#x540E;&#x76F4;&#x63A5;&#x6E05;&#x7406;&#x6389;&#x7AEF;&#x8FB9;&#x754C;&#x4EE5;&#x5916;&#x7684;&#x5185;&#x5B58;&#x3002;</p>
-<p>&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x6240;&#x793A;:<br><img src="/2016/06/01/&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;/biaojizhenglisuanfa.png" alt="&#x6807;&#x8BB0;&#x6574;&#x7406;&#x8FC7;&#x7A0B;"></p>
-<h2 id="&#x5206;&#x4EE3;&#x6536;&#x96C6;&#x7B97;&#x6CD5;"><a href="#&#x5206;&#x4EE3;&#x6536;&#x96C6;&#x7B97;&#x6CD5;" class="headerlink" title="&#x5206;&#x4EE3;&#x6536;&#x96C6;&#x7B97;&#x6CD5;"></a>&#x5206;&#x4EE3;&#x6536;&#x96C6;&#x7B97;&#x6CD5;</h2><p>&#x5F53;&#x524D;&#x5546;&#x4E1A;&#x865A;&#x62DF;&#x673A;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x90FD;&#x91C7;&#x7528;&#x5206;&#x4EE3;&#x6536;&#x96C6;&#xFF0C;&#x5B83;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x7684;&#x5B58;&#x6D3B;&#x5468;&#x671F;&#x7684;&#x4E0D;&#x540C;&#x5C06;&#x5185;&#x5B58;&#x5212;&#x5206;&#x4E3A;&#x51E0;&#x5757;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x628A;Java&#x5806;&#x5206;&#x4E3A;&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#x3002;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x4E2D;&#xFF0C;&#x6BCF;&#x6B21;&#x5783;&#x573E;&#x6536;&#x96C6;&#x65F6;&#x90FD;&#x4F1A;&#x53D1;&#x73B0;&#x6709;&#x5927;&#x91CF;&#x5BF9;&#x8C61;&#x6B7B;&#x53BB;&#xFF0C;&#x53EA;&#x6709;&#x5C11;&#x91CF;&#x5B58;&#x6D3B;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x9009;&#x7528;&#x590D;&#x5236;&#x7B97;&#x6CD5;&#x6765;&#x5B8C;&#x6210;&#x6536;&#x96C6;&#xFF0C;&#x800C;&#x8001;&#x5E74;&#x4EE3;&#x4E2D;&#x56E0;&#x4E3A;&#x5BF9;&#x8C61;&#x5B58;&#x6D3B;&#x7387;&#x9AD8;&#x3001;&#x6CA1;&#x6709;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x5206;&#x914D;&#x62C5;&#x4FDD;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x6807;&#x8BB0;&#x2014;&#x6E05;&#x9664;&#x7B97;&#x6CD5;&#x6216;&#x6807;&#x8BB0;&#x2014;&#x6574;&#x7406;&#x7B97;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x56DE;&#x6536;&#x3002;</p>
+<h2 id="&#x7ED9;Binder&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6B7B;&#x4EA1;&#x4EE3;&#x7406;"><a href="#&#x7ED9;Binder&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6B7B;&#x4EA1;&#x4EE3;&#x7406;" class="headerlink" title="&#x7ED9;Binder&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6B7B;&#x4EA1;&#x4EE3;&#x7406;"></a>&#x7ED9;Binder&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6B7B;&#x4EA1;&#x4EE3;&#x7406;</h2><p>Binder&#x8FD0;&#x884C;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x8FDB;&#x7A0B;&#x7531;&#x4E8E;&#x67D0;&#x4E9B;&#x539F;&#x56E0;&#x5F02;&#x5E38;&#x7EC8;&#x6B62;&#xFF0C;&#x6211;&#x4EEC;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;Binder&#x94FE;&#x63A5;&#x65AD;&#x88C2;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x8FDE;&#x63A5;&#x65AD;&#x5F00;&#xFF0C;&#x90A3;&#x4E48;&#x7531;&#x4E8E;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x5931;&#x8D25;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x529F;&#x80FD;&#x5C06;&#x4F1A;&#x53D7;&#x5230;&#x5F71;&#x54CD;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7ED9;Binder&#x8BBE;&#x7F6E;&#x6B7B;&#x4EA1;&#x4EE3;&#x7406;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li><p>&#x58F0;&#x660E;&#x4E00;&#x4E2A;DeathRecipient&#x5BF9;&#x8C61;&#x3002;DeathRecipient&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;binderDied&#xFF0C;&#x5F53;Binder&#x6B7B;&#x4EA1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C31;&#x4F1A;&#x56DE;&#x8C03;DeathRecipient&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x53D1;&#x8D77;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;&#x4ECE;&#x800C;&#x6062;&#x590D;&#x8FDE;&#x63A5;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient(){</span><br><span class="line">    @Override</span><br><span class="line">    public void binderDied(){</span><br><span class="line">        if(mBookManager == null){</span><br><span class="line">            return;</span><br><span class="line">        }</span><br><span class="line">        mBookManager.asBinder().unlinkToDeath(mDeathRecipient,0);</span><br><span class="line">        mBookManager = null;</span><br><span class="line">        // TODO&#xFF1A;&#x63A5;&#x4E0B;&#x6765;&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;&#x8FDC;&#x7A0B;Service</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Binder&#x6709;&#x4E24;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x65B9;&#x6CD5;linkToDeath&#x548C;unlinkToDeath&#x3002;&#x901A;&#x8FC7;linkToDeath&#x4E3A;Binder&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6B7B;&#x4EA1;&#x4EE3;&#x7406;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mService = IBookManager.Stub.asInterface(binder);</span><br><span class="line">binder.linkToDeath(mDeathRecipient,0);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Binder&#x7684;isBinderAlive&#x5224;&#x65AD;Binder&#x662F;&#x5426;&#x6B7B;&#x4EA1;&#x3002;</p>
+<p>&#x603B;&#x7ED3;&#x81EA;&#xFF1A;<a href="https://book.douban.com/subject/26599538/" target="_blank" rel="external">&#x300A;Android&#x5F00;&#x53D1;&#x827A;&#x672F;&#x63A2;&#x7D22;&#x300B;</a></p>
 
                 
-<p class="light-green-link-context">
-    <a href="/2016/06/01/怎么保证Service不被杀死/" rel="next" title="怎么保证Service不被杀死">
-    上一篇：怎么保证Service不被杀死
-  </a>
-</p>
-
 
 
 <p class="light-green-link-context">
-    <a href="/2016/05/31/回收方法区/" rel="next" title="回收方法区">
-    下一篇：回收方法区
+    <a href="/2017/09/20/Android序列化/" rel="next" title="Android序列化">
+    下一篇：Android序列化
   </a>
 </p>
 

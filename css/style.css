@@ -422,7 +422,7 @@ article .card-content .entry p:last-child {
 }
 article .card-content .entry ul,
 article .card-content .entry ol {
-  margin-bottom: 0;
+  margin-bottom: 1em;
 }
 article .card-content .entry ul ul,
 article .card-content .entry ol ul,
@@ -810,8 +810,8 @@ article pre {
 }
 article p code,
 article li code {
-  margin: 0 0;
-  padding: 0 0;
+  margin: 0 3px;
+  padding: 0 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #e0e0e0;

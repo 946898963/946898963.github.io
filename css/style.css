@@ -422,7 +422,7 @@ article .card-content .entry p:last-child {
 }
 article .card-content .entry ul,
 article .card-content .entry ol {
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
 article .card-content .entry ul ul,
 article .card-content .entry ol ul,
@@ -437,7 +437,7 @@ article .card-content .entry h4,
 article .card-content .entry h5,
 article .card-content .entry h6 {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
 }
 article .card-content .entry h1 {
   font-size: 1.6em;

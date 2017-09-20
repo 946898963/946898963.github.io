@@ -810,7 +810,7 @@ article pre {
 }
 article p code,
 article li code {
-  margin: 0 3px;
+  margin: 0 0px;
   padding: 0 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;

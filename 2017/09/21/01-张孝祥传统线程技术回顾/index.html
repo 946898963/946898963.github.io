@@ -7,7 +7,7 @@
 
     
 
-    <title>JVM | 一天进步一点</title>
+    <title>01-张孝祥传统线程技术回顾 | 一天进步一点</title>
     <meta name="author" content="张岩">
     
     <meta name="description" content="记录生活点滴">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="01-张孝祥传统线程技术回顾"/>
     <meta property="og:site_name" content="张岩的博客"/>
 
     
@@ -313,84 +313,181 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper brown darken-1">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/Java/">Java</a><a class="breadcrumb" href="/categories/技术/Java/多线程/">多线程</a><a class="breadcrumb" href="/categories/技术/Java/多线程/张孝祥视频笔记/">张孝祥视频笔记</a>
+
 
         
-            <a class="breadcrumb" href="/tags/JVM/">JVM</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card"> 
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>01-张孝祥传统线程技术回顾</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="light-green-link-context" datetime="2017-09-21T09:19:27.000Z"><a href="/2017/09/21/01-张孝祥传统线程技术回顾/">2017-09-21</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2016/06/04/Java虚拟机的垃圾收集器/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-06-04T09:36:44.000Z">2016-06-04</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                Java虚拟机的垃圾收集器
-            </a>
+            <a href="/tags/Java/" class="chip light-green">Java</a>
         
-            <a href="/2016/06/01/垃圾收集算法/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T17:13:10.000Z">2016-06-01</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                垃圾收集算法
-            </a>
+            <a href="/tags/多线程/" class="chip light-green">多线程</a>
         
-            <a href="/2016/05/31/回收方法区/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T15:31:32.000Z">2016-05-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                回收方法区
-            </a>
-        
-            <a href="/2016/05/31/两次标记/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T14:59:10.000Z">2016-05-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                对象回收前的两次标记
-            </a>
-        
-            <a href="/2016/05/31/ja四种引用/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T14:36:16.000Z">2016-05-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                四种引用
-            </a>
-        
-            <a href="/2016/05/31/ja-va虚拟机的垃圾回收器怎么判断对象“已死”/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T13:45:26.000Z">2016-05-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                java虚拟机的垃圾回收器怎么判断对象“已死” 
-            </a>
-        
-            <a href="/2016/05/31/Java虚拟机中对象的访问定位/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T10:48:23.000Z">2016-05-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                Java虚拟机中对象的访问定位
-            </a>
-        
-            <a href="/2016/05/31/Java虚拟机中对象的内存布局/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T10:13:55.000Z">2016-05-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                Java虚拟机中对象的内存布局
-            </a>
-        
-            <a href="/2016/05/31/Java虚拟机中对象的创建过程/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T09:48:21.000Z">2016-05-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                Java虚拟机中对象的创建过程
-            </a>
-        
-            <a href="/2016/05/31/Java虚拟机的内存模型及分区/" class="collection-item grey-text text-darken-1">
-                <time datetime="2016-05-31T09:05:16.000Z">2016-05-31</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                Java虚拟机的内存模型及分区
-            </a>
+            <a href="/tags/张孝祥视频笔记/" class="chip light-green">张孝祥视频笔记</a>
         
     </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <p><strong>&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</strong><br>1,&#x521B;&#x5EFA;Thread&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x91CD;&#x5199;run&#x65B9;&#x6CD5;<br>2,&#x7ED9;Thread&#x7C7B;&#x4F20;&#x5165;Runnable&#x63A5;&#x53E3;</p>
+<p><strong>&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x533A;&#x522B;&#xFF1A;</strong><br>&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF0C;&#x800C;&#x4E14;&#x66F4;&#x503E;&#x5411;&#x4E8E;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x7F16;&#x7A0B;&#x601D;&#x60F3;&#x3002;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x91C7;&#x7528;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>new Thread().start();<br>&#x8C03;&#x7528;&#x4E86;start&#x65B9;&#x6CD5;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x8FD0;&#x884C;Thread&#x7C7B;&#x7684;run&#x65B9;&#x6CD5;,&#x5982;&#x4E0B;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void run(){</span><br><span class="line">&#xA0; &#xA0; if(target!=null){</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0;targe.run();</span><br><span class="line">&#xA0; &#xA0; }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;target&#x4E3A;&#x7A7A;&#xFF0C;&#x5C31;&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#xA0;</span><br><span class="line"></span><br><span class="line">new Thread(</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; new Runnable(){</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;public void run() { //1</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;&#xA0;}&#xA0;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0;}</span><br><span class="line">&#xA0; ){&#xA0;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0;public void run() { //2</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0;} &#xA0;&#xA0;</span><br><span class="line">}.start();</span><br></pre></td></tr></table></figure></p>
+<p>&#x6267;&#x884C;&#x7684;&#x662F;2run&#x65B9;&#x6CD5;<br>&#x6267;&#x884C;&#x7684;&#x6B65;&#x9AA4;&#xFF1A;<br>&#x5148;&#x8FD0;&#x884C;&#x5B50;&#x7C7B;&#x7684;run&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x91CD;&#x5199;run&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x53BB;&#x8FD0;&#x884C;&#x7236;&#x7C7B;&#x7684;run&#x65B9;&#x6CD5;&#xFF0C;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D;&#x5B50;&#x7C7B;&#x91CD;&#x5199;&#x4E86;run&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;Runnable&#x4E2D;&#x7684;run&#x65B9;&#x6CD5;&#x3002;</p>
+
+                
+
+
+<p class="light-green-link-context">
+    <a href="/2017/09/21/Android跨进程通信的方式/" rel="next" title="Android跨进程通信的方式">
+    下一篇：Android跨进程通信的方式
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+<!-- Donate Module -->
+<div id="donate_module">
+    <style type="text/css">
+        .hidden {
+            display: none;
+        }
+        .donate_bar a.btn_donate {
+            display: inline-block;
+            width: 82px;
+            height: 82px;
+            background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+            _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+
+            -webkit-transition: background 0s;
+            -moz-transition: background 0s;
+            -o-transition: background 0s;
+            -ms-transition: background 0s;
+            transition: background 0s;
+        }
+        .donate_bar a.btn_donate:hover {
+            background-position: 0 -82px;
+        }
+        .donate_bar .donate_txt {
+            display: block;
+            color: #9d9d9d;
+            font: 14px/2 "Microsoft Yahei";
+        }
+        .bold {
+            font-weight: bold;
+        }
+
+        img.qrcode {
+            width: 90%;
+            margin-bottom: 10px;
+        }
+        @media only screen and (min-width: 1025px) {
+            img.qrcode {
+                width: 40%;
+                margin-right: 10px;
+            }
+        }
+
+    </style>
+
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">能看到这的都是真爱，打个赏呗=。=</span>
+    </div>
+    <!-- /btn_donate & tips -->
+
+    <!-- donate guide -->
+    <div id="donate_guide" class="donate_bar center hidden">
+        
+        <img class="qrcode" src="http://ogts8rw5s.bkt.clouddn.com/weixinzhifu.png" title="打赏"/>
+        
+        <img class="qrcode" src="http://ogts8rw5s.bkt.clouddn.com/zhifubaozhifu2.jpg" title="打赏"/>
+        
+    </div>
+    <!-- /donate guide -->
+
+    <!-- donate script -->
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+            $('#donate_board').addClass('hidden');
+            $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web() {
+            $('#donate').submit();
+        }
+    </script>
+    <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+
+
+
+
+    <section id="comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDQ0My82OTk3">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+    </section>
+
+
+    
 
 
 </div>

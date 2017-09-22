@@ -172,7 +172,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术/">
-                    技术 <span class="right">85 篇</span></a>
+                    技术 <span class="right">86 篇</span></a>
                 </a>
             </li>
 
@@ -187,8 +187,8 @@
         
 
             <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
-                    内存泄露 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/技术/Android/多进程/">
+                    多进程 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -203,8 +203,8 @@
         
 
             <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/多进程/">
-                    多进程 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -236,7 +236,7 @@
 
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Java/">
-                    Java <span class="right">14 篇</span></a>
+                    Java <span class="right">15 篇</span></a>
                 </a>
             </li>
 
@@ -417,6 +417,12 @@
 <p>&#x5F53;&#x6570;&#x7EC4;&#x5C5E;&#x6027;&#x6709;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x65F6;&#xFF0C;arrayAttr={1,2,3}&#xFF0C;&#x5F53;&#x6570;&#x7EC4;&#x5C5E;&#x6027;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x65F6;&#xFF0C;arrayAttr=1 &#x6216;&#x8005;arrayAttr={1}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class AnnotationTest {</span><br><span class="line"></span><br><span class="line">&#xA0;@SuppressWarnings(&quot;deprecation&quot;) //&#x4E0D;&#x63D0;&#x793A;&#x65B9;&#x6CD5;&#x8FC7;&#x65F6;&#x8B66;&#x544A;</span><br><span class="line">&#xA0;@ItcastAnnotation(&quot;xyz&quot;) &#xA0;//&#x5F53;&#x53EA;&#x9700;&#x8981;&#x7ED9;value&#x5C5E;&#x6027;&#x8D4B;&#x503C;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7701;&#x7565;&#x6389;&#x201C;=&#x201D;</span><br><span class="line">&#xA0;public static void main(String[] args) throws Exception{</span><br><span class="line"></span><br><span class="line">&#xA0; &#xA0; &#xA0; System.runFinalizersOnExit(true);</span><br><span class="line">&#xA0; &#xA0; &#xA0; if(AnnotationTest.class.isAnnotationPresent(ItcastAnnotation.class)){</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;ItcastAnnotation annotation = (ItcastAnnotation)AnnotationTest.class.getAnnotation(ItcastAnnotation.class);</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;System.out.println(annotation.color());</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;System.out.println(annotation.value());</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;System.out.println(annotation.arrayAttr().length);</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;System.out.println(annotation.lamp().nextLamp().name());</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0;System.out.println(annotation.annotationAttr().value());</span><br><span class="line">&#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0;</span><br><span class="line">&#xA0; &#xA0; &#xA0; Method mainMethod = AnnotationTest.class.getMethod(&quot;main&quot;, String[].class);</span><br><span class="line">&#xA0; &#xA0; &#xA0; ItcastAnnotation annotation2 = (ItcastAnnotation)mainMethod.getAnnotation(ItcastAnnotation.class);</span><br><span class="line">&#xA0; &#xA0; &#xA0; System.out.println(annotation2.value());</span><br><span class="line">&#xA0;}</span><br><span class="line"></span><br><span class="line">&#xA0; &#xA0; &#xA0;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 
                 
+<p class="light-green-link-context">
+    <a href="/2017/09/22/代理（张孝祥Java视频笔记）/" rel="next" title="代理（张孝祥Java视频笔记）">
+    上一篇：代理（张孝祥Java视频笔记）
+  </a>
+</p>
+
 
 
 <p class="light-green-link-context">

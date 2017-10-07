@@ -172,7 +172,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术/">
-                    技术 <span class="right">86 篇</span></a>
+                    技术 <span class="right">84 篇</span></a>
                 </a>
             </li>
 
@@ -181,14 +181,6 @@
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Android/">
                     Android <span class="right">35 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
-                    内存泄露 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -205,6 +197,14 @@
             <li class="collapse-level-2" collapse-level="2">
                 <a class="no-padding" href="/categories/技术/Android/多进程/">
                     多进程 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -236,7 +236,7 @@
 
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Java/">
-                    Java <span class="right">15 篇</span></a>
+                    Java <span class="right">13 篇</span></a>
                 </a>
             </li>
 
@@ -244,7 +244,7 @@
 
             <li class="collapse-level-2" collapse-level="2">
                 <a class="no-padding" href="/categories/技术/Java/多线程/">
-                    多线程 <span class="right">10 篇</span></a>
+                    多线程 <span class="right">8 篇</span></a>
                 </a>
             </li>
 
@@ -437,12 +437,6 @@
 <p><strong>&#x6CDB;&#x578B;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x65E0;&#x6548;</strong></p>
 <p>&#x4E0D;&#x80FD;&#x5728;&#x9759;&#x6001;&#x57DF;&#x6216;&#x65B9;&#x6CD5;&#x4E2D;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4E0B;&#x5217;&#x9AD8;&#x62DB;&#x5C06;&#x65E0;&#x6CD5;&#x65BD;&#x5C55;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static Singleton&lt;T&gt;{</span><br><span class="line">&#xA0; &#xA0; private static T singleInstance;//Error</span><br><span class="line">&#xA0; &#xA0; pubclic static T getSingleInstance(){////Error</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; if(singleInstance==null){</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; //construct new instance of T &#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; return singleInstance;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <p>&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x80FD;&#x591F;&#x8FD0;&#x884C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x58F0;&#x660E;&#x4E00;&#x4E2A;Singleton<random>&#x5171;&#x4EAB;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x58F0;&#x660E;&#x4E00; &#x4E2A;Singleton<jfilechooser>&#x5171;&#x4EAB;&#x6587;&#x4EF6;&#x9009;&#x62E9;&#x5668;&#x5BF9;&#x8BDD;&#x6846;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x65E0;&#x6CD5;&#x5DE5;&#x4F5C;&#x3002;&#x7C7B;&#x578B;&#x64E6;&#x9664;&#x4E4B;&#x540E;&#xFF0C; &#x53EA;&#x5269;&#x4E0B;Singleton&#x7C7B;&#xFF0C;&#x5B83;&#x53EA;&#x5305;&#x542B;&#x4E00;&#x4E2A;singleInstance&#x57DF;&#x3002;<strong>&#x56E0;&#x6B64;&#xFF0C;&#x7981;&#x6B62;&#x4F7F;&#x7528;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x9759;&#x6001;&#x57DF;&#x548C;&#x65B9;&#x6CD5;&#x3002;</strong></jfilechooser></random></p>
-<p>&#x6CE8;&#x610F;&#x64E6;&#x9664;&#x540E;&#x7684;&#x51B2;&#x7A81;   ????????</p>
-<p>  &#x7C7B;&#x578B;&#x63A8;&#x65AD;</p>
-<p>  method(List list) &#x6B66;&#x8B66;&#x9AD8;</p>
-<p>  &#x68C0;&#x67E5;&#x89C6;&#x56FE;&#x4E0D;&#x8D77;&#x4F5C;&#x7528;</p>
-<p>  &#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x7B26;</p>
-<p>  &#x7C7B;&#x578B;&#x901A;&#x914D;&#x7B26;&#x548C;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x533A;&#x522B;</p>
 
                 
 <p class="light-green-link-context">

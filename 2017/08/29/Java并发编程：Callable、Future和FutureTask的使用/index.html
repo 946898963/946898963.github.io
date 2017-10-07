@@ -172,7 +172,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术/">
-                    技术 <span class="right">86 篇</span></a>
+                    技术 <span class="right">84 篇</span></a>
                 </a>
             </li>
 
@@ -181,14 +181,6 @@
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Android/">
                     Android <span class="right">35 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-2" collapse-level="2">
-                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
-                    内存泄露 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -205,6 +197,14 @@
             <li class="collapse-level-2" collapse-level="2">
                 <a class="no-padding" href="/categories/技术/Android/多进程/">
                     多进程 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -236,7 +236,7 @@
 
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/Java/">
-                    Java <span class="right">15 篇</span></a>
+                    Java <span class="right">13 篇</span></a>
                 </a>
             </li>
 
@@ -244,7 +244,7 @@
 
             <li class="collapse-level-2" collapse-level="2">
                 <a class="no-padding" href="/categories/技术/Java/多线程/">
-                    多线程 <span class="right">10 篇</span></a>
+                    多线程 <span class="right">8 篇</span></a>
                 </a>
             </li>
 
@@ -344,9 +344,9 @@
             
     <div class="tags-row">
         
-            <a href="/tags/Java/" class="chip light-green">Java</a>
-        
             <a href="/tags/多线程/" class="chip light-green">多线程</a>
+        
+            <a href="/tags/Java/" class="chip light-green">Java</a>
         
     </div>
 
@@ -369,7 +369,7 @@
 <h2 id="Callable&#x4E0E;Runnable"><a href="#Callable&#x4E0E;Runnable" class="headerlink" title="Callable&#x4E0E;Runnable"></a>Callable&#x4E0E;Runnable</h2><p>java.lang.Runnable&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x63A5;&#x53E3;&#x4E2D;&#x53EA;&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;run()&#x65B9;&#x6CD5;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;interface&#xA0;Runnable {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;abstract&#xA0;void&#xA0;run();</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <p>&#x7531;&#x4E8E;run()&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;void&#x7C7B;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x6267;&#x884C;&#x5B8C;&#x4EFB;&#x52A1;&#x4E4B;&#x540E;&#x65E0;&#x6CD5;&#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x7ED3;&#x679C;&#x3002;<br>Callable&#x4F4D;&#x4E8E;java.util.concurrent&#x5305;&#x4E0B;&#xFF0C;&#x5B83;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5728;&#x5B83;&#x91CC;&#x9762;&#x4E5F;&#x53EA;&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x53EB;&#x505A;call()&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;interface&#xA0;Callable&lt;V&gt; {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;/**</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;* Computes a result, or throws an exception if unable to do so.</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;* @return computed result</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;* @throws Exception if unable to compute a result</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;V call()&#xA0;throws&#xA0;Exception;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x63A5;&#x53E3;&#xFF0C;call()&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x7C7B;&#x578B;&#x5C31;&#x662F;&#x4F20;&#x9012;&#x8FDB;&#x6765;&#x7684;V&#x7C7B;&#x578B;&#x3002;&#x90A3;&#x4E48;&#x600E;&#x4E48;&#x4F7F;&#x7528;Callable&#x5462;&#xFF1F;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x914D;&#x5408;ExecutorService&#x6765;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x5728;ExecutorService&#x63A5;&#x53E3;&#x4E2D;&#x58F0;&#x660E;&#x4E86;&#x82E5;&#x5E72;&#x4E2A;submit&#x65B9;&#x6CD5;&#x7684;&#x91CD;&#x8F7D;&#x7248;&#x672C;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task);</span><br><span class="line">&lt;T&gt; Future&lt;T&gt; submit(Runnable task, T result);</span><br><span class="line">    Future&lt;?&gt; submit(Runnable task);</span><br></pre></td></tr></table></figure></p>
-<p>&#x7B2C;&#x4E00;&#x4E2A;submit&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x5C31;&#x662F;Callable&#x3002;&#x6682;&#x65F6;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;Callable&#x4E00;&#x822C;&#x662F;&#x548C;ExecutorService&#x914D;&#x5408;&#x6765;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x8BB2;&#x5728;&#x540E;&#x9762;&#x8BB2;&#x8FF0;&#x3002;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;submit&#x65B9;&#x6CD5;&#x548C;&#x7B2C;&#x4E09;&#x4E2A;submit&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;submit&#x65B9;&#x6CD5;&#x5F88;&#x5C11;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x7B2C;&#x4E00;&#x4E2A;submit&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x5C31;&#x662F;Callable&#x3002;&#x6682;&#x65F6;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;Callable&#x4E00;&#x822C;&#x662F;&#x548C;ExecutorService&#x914D;&#x5408;&#x6765;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x8BB2;&#x5728;&#x540E;&#x9762;&#x8BB2;&#x8FF0;&#x3002;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;submit&#x65B9;&#x6CD5;&#x548C;&#x7B2C;&#x4E09;&#x4E2A;submit&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;submit&#x65B9;&#x6CD5;&#x5F88;&#x5C11;&#x4F7F;&#x7528;&#x3002;&#x6B64;&#x5916;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;Callable&#x63A5;&#x53E3;&#x662F;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4F20;&#x9012;&#x7ED9;Thread&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x50CF;Runnable&#x4E00;&#x6837;&#x4F20;&#x9012;&#x7ED9;Thread&#x4F7F;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x7528;FutureTask&#x5305;&#x88F9;Callable&#xFF0C;&#x7136;&#x540E;&#x518D;&#x4F20;&#x9012;&#x7ED9;Thread&#x4F7F;&#x7528;&#xFF0C;&#x5173;&#x4E8E;FutureTask&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x8FDB;&#x884C;&#x8BE6;&#x7EC6;&#x7684;&#x8BB2;&#x89E3;&#x3002;</p>
 <h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>Future&#x5C31;&#x662F;&#x5BF9;&#x4E8E;&#x5177;&#x4F53;&#x7684;Runnable&#x6216;&#x8005;Callable&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x53D6;&#x6D88;&#x3001;&#x67E5;&#x8BE2;&#x662F;&#x5426;&#x5B8C;&#x6210;&#x3001;&#x83B7;&#x53D6;&#x7ED3;&#x679C;&#x3002;&#x5FC5;&#x8981;&#x65F6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;get&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x963B;&#x585E;&#x76F4;&#x5230;&#x4EFB;&#x52A1;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x3002;<br>Future&#x7C7B;&#x4F4D;&#x4E8E;java.util.concurrent&#x5305;&#x4E0B;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public&#xA0;interface&#xA0;Future&lt;V&gt; {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;boolean&#xA0;cancel(boolean&#xA0;mayInterruptIfRunning);</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;boolean&#xA0;isCancelled();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;boolean&#xA0;isDone();</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;V get()&#xA0;throws&#xA0;InterruptedException, ExecutionException;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;V get(long&#xA0;timeout, TimeUnit unit)</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throws&#xA0;InterruptedException, ExecutionException, TimeoutException;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <p>&#x5728;Future&#x63A5;&#x53E3;&#x4E2D;&#x58F0;&#x660E;&#x4E86;5&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x4F9D;&#x6B21;&#x89E3;&#x91CA;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#xFF1A;</p>
 <blockquote>

@@ -1,0 +1,824 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>ShapeDrawable | 一天进步一点</title>
+    <meta name="author" content="张岩">
+    
+    <meta name="description" content="记录生活点滴">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="ShapeDrawable"/>
+    <meta property="og:site_name" content="张岩的博客"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="张岩的博客" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="brown darken-1">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">张岩的博客</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav brown darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://ww2.sinaimg.cn/small/74990035jw1f1rjkd681bj20rs0rsdhg.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">张岩</p>
+                        <p class="desc">Android/单片机(曾经)/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav brown darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术/">
+                    技术 <span class="right">85 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Android/">
+                    Android <span class="right">36 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/多线程/">
+                    多线程 <span class="right">12 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/多进程/">
+                    多进程 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/内存泄露/">
+                    内存泄露 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/源码分析/">
+                    源码分析 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图/">
+                    绘图 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/绘图机制/">
+                    绘图机制 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Android/性能优化/">
+                    性能优化 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/Java/">
+                    Java <span class="right">13 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-2" collapse-level="2">
+                <a class="no-padding" href="/categories/技术/Java/多线程/">
+                    多线程 <span class="right">8 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/设计模式/">
+                    设计模式 <span class="right">22 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/JVM/">
+                    JVM <span class="right">9 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/框架/">
+                    框架 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术/算法与数据结构/">
+                    算法与数据结构 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper brown darken-1">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/Android/">Android</a><a class="breadcrumb" href="/categories/技术/Android/绘图/">绘图</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card"> 
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>ShapeDrawable</h1>
+    
+
+
+            </div>
+            <time class="light-green-link-context" datetime="2017-10-25T13:18:22.000Z"><a href="/2017/10/25/ShapeDrawable/">2017-10-25</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Android/" class="chip light-green">Android</a>
+        
+            <a href="/tags/绘图/" class="chip light-green">绘图</a>
+        
+    </div>
+
+
+            <div class="toc light-green-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#corners（角）"><span class="section table-of-contents-text">corners（角）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Padding"><span class="section table-of-contents-text">Padding</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#Gradient-渐变"><span class="section table-of-contents-text">Gradient(渐变)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#stroke描边"><span class="section table-of-contents-text">stroke描边</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#ring"><span class="section table-of-contents-text">ring</span></a></li></ol>
+</div>
+
+
+            <div class="entry light-green-link-context">
+                <p><strong>ShapeDrawble&#x6240;&#x652F;&#x6301;&#x7684;&#x53C2;&#x6570;</strong></p>
+<p><img src="http://ogts8rw5s.bkt.clouddn.com/shapedrawable.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"></p>
+<h2 id="corners&#xFF08;&#x89D2;&#xFF09;"><a href="#corners&#xFF08;&#x89D2;&#xFF09;" class="headerlink" title="corners&#xFF08;&#x89D2;&#xFF09;"></a>corners&#xFF08;&#x89D2;&#xFF09;</h2><p><corners>&#x8868;&#x793A;&#x7684;&#x662F;&#x77E9;&#x5F62;&#x7684;&#x56DB;&#x4E2A;&#x89D2;&#xFF0C;&#x53EA;&#x80FD;&#x7528;&#x5728;android:shape = &#x201C;rectangle&#x201D; &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x5C31;&#x662F;&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x5706;&#x89D2;&#x77E9;&#x5F62;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5B83;&#x53EA;&#x6709;5&#x4E2A;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;corners</span><br><span class="line">        android:radius=&quot;integer&quot;                   //&#x8BBE;&#x7F6E;&#x5168;&#x90E8;&#x89D2;</span><br><span class="line">        android:topLeftRadius=&quot;integer&quot;            //&#x8BBE;&#x7F6E;&#x5DE6;&#x4E0A;&#x89D2;</span><br><span class="line">        android:topRightRadius=&quot;integer&quot;           // &#x8BBE;&#x7F6E;&#x53F3;&#x4E0A;&#x89D2;</span><br><span class="line">        android:bottomLeftRadius=&quot;integer&quot;         //&#x8BBE;&#x7F6E;&#x53F3;&#x4E0B;&#x89D2;  &#x6CA1;&#x9519;&#x786E;&#x5B9E;&#x662F;&#x8FD9;&#x6837;  </span><br><span class="line">        android:bottomRightRadius=&quot;integer&quot; /&gt;     // &#x8BBE;&#x7F6E;&#x5DE6;&#x4E0B;&#x89D2;&#x6CA1;&#x9519;&#x786E;&#x5B9E;&#x662F;&#x8FD9;&#x6837;</span><br></pre></td></tr></table></figure></corners></p>
+<p>&#x5982;&#x679C;&#x540C;&#x65F6;&#x8BBE;&#x7F6E;&#x4E86;radius&#x8DDF;topLeftRadius&#xFF0C;&#x5219;&#x5DE6;&#x4E0A;&#x89D2;&#x663E;&#x793A;&#x51FA;&#x7684;&#x5C06;&#x4F1A;&#x662F;topLeftRadius&#x8BBE;&#x7F6E;&#x7684;&#x503C;</p>
+<p>&#x4E00;&#x822C;&#x662F;&#x600E;&#x4E48;&#x5E94;&#x7528;&#x7684;&#x5462;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;<br>1&#xFF09;&#x521B;&#x5EFA;shape&#x6587;&#x4EF6;&#xFF0C;&#x5982; res / drawable/ corners.xml&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; </span><br><span class="line">    android:shape=&quot;rectangle&quot;&gt;    </span><br><span class="line">    &lt;corners android:radius=&quot;15dp&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2&#xFF09;&#x5728;xml&#x4E2D;&#x5B9A;&#x4E49;&#x6309;&#x94AE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C06;&#x5176;android:background&#x8BBE;&#x7F6E;&#x6210;&#x4E0A;&#x9762;&#x7684;corners&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; android:layout_margin=&quot;5dp&quot;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; android:layout_width=&quot;200dp&quot;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; android:layout_height=&quot;50dp&quot;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; android:background=&quot;@drawable/corners&quot;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; android:text=&quot;Corner&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>3&#xFF09;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x8FD9;&#x91CC;&#x591A;&#x5B9A;&#x4E49;&#x4E86;&#x51E0;&#x4E2A;&#x6837;&#x5F0F;&#x7684;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x770B;&#x7740;&#xFF0C;&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;&#xFF0C;&#x6548;&#x679C;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;<br><img src="http://ogts8rw5s.bkt.clouddn.com/corner.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"></p>
+<h2 id="Padding"><a href="#Padding" class="headerlink" title="Padding"></a>Padding</h2><p>Padding&#x652F;&#x6301;&#x56DB;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x5206;&#x522B;&#x662F;left,right,top &#x548C; bottom<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml&#xA0;version=&quot;1.0&quot;&#xA0;encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;rectangle&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;corners&#xA0;android:topLeftRadius=&quot;15dp&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;solid&#xA0;android:color=&quot;#716283&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;padding&#xA0;android:left=&quot;30dp&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x539F;&#x6765;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x518D;&#x52A0;&#x4E0A;padding&#x6548;&#x679C;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x5427;<br><img src="http://ogts8rw5s.bkt.clouddn.com/padding.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"><br>&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x6309;&#x94AE;&#x4E0A;&#x7684;&#x6587;&#x5B57;&#x660E;&#x663E;&#x6BD4;&#x5176;&#x4ED6;&#x6CA1;&#x8BBE;&#x7F6E;padding&#x6309;&#x94AE;&#x591A;&#x4E86;&#x4E00;&#x4E9B;&#x7A7A;&#x95F4;&#x7684;&#x51FA;&#x6765;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x8DDF;&#x6211;&#x4EEC;&#x5E73;&#x5E38;&#x8BA4;&#x8BC6;&#x7684;padding&#x4E00;&#x6837;&#x6548;&#x679C;&#x4E86;</p>
+<h2 id="Gradient-&#x6E10;&#x53D8;"><a href="#Gradient-&#x6E10;&#x53D8;" class="headerlink" title="Gradient(&#x6E10;&#x53D8;)"></a>Gradient(&#x6E10;&#x53D8;)</h2><p>&#x6211;&#x4EEC;&#x5728; res / drawable/ &#x4E2D; &#x521B;&#x5EFA;&#x4E00;&#x4E2A;xml&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml&#xA0;version=&quot;1.0&quot;&#xA0;encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;rectangle&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;corners&#xA0;android:radius=&quot;15dip&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;solid&#xA0;android:color=&quot;#0000FF&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;gradient&#xA0;android:startColor=&quot;#FF0000&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:endColor=&quot;#00FF00&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:type=&quot;linear&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&#x7531;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B9A;&#x4E49;&#x4E86;&#x5706;&#x89D2;&#xFF0C;&#x5B9E;&#x5FC3;&#x586B;&#x5145;&#x84DD;&#x8272;&#x548C;&#x4ECE;&#x7EA2;&#x5230;&#x7EFF;&#x7684;&#x7EBF;&#x6027;&#x6E10;&#x53D8;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;&#x6E10;&#x53D8;&#x662F;&#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6765;&#x6539;&#x53D8;&#x6E10;&#x53D8;&#x7684;&#x65B9;&#x5411;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml&#xA0;version=&quot;1.0&quot;&#xA0;encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;rectangle&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;corners&#xA0;android:radius=&quot;15dip&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;gradient&#xA0;android:startColor=&quot;#FF0000&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:endColor=&quot;#00FF00&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:angle=&quot;90&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:type=&quot;linear&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x5730;&#x6765;&#x5BF9;&#x6BD4;&#x770B;&#x4E00;&#x4E0B;&#x5404;&#x79CD;&#x989C;&#x8272;&#x7684;&#x53D8;&#x6362;&#xFF0C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x6E10;&#x53D8;&#x989C;&#x8272;&#x6765;&#x770B;&#x770B;&#x6548;&#x679C;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A; </p>
+<p><img src="http://ogts8rw5s.bkt.clouddn.com/gradient1.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4ECE;0&#x5230;360&#xFF0C;&#x8FD9;&#x4E2A;&#x6E10;&#x53D8;&#x7684;&#x989C;&#x8272;&#x4F1A;&#x6162;&#x6162;&#x968F;&#x7740;&#x9006;&#x65F6;&#x9488;&#x7684;&#x65B9;&#x5411;&#x6765;&#x4ECE;&#x6C34;&#x5E73;&#x53D8;&#x6210;&#x5782;&#x76F4;&#x518D;&#x53D8;&#x6210;&#x6C34;&#x5E73;&#x3002;&#x800C;&#x8FD9;&#x4E2A;&#x89D2;&#x5EA6;&#x7684;&#x503C;&#x5FC5;&#x987B;&#x662F;45&#x7684;&#x500D;&#x6570;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x62A5;&#x9519;&#x7684;&#x3002;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x4ED4;&#x7EC6;&#x770B;&#x4E00;&#x4E0B;&#xFF0C;&#x597D;&#x50CF;45&#x5EA6;&#x8DDF;0&#x5EA6;&#x4E5F;&#x6CA1;&#x5565;&#x4E0D;&#x540C;&#xFF0C;135&#x5EA6;&#x4E5F;&#x597D;&#x50CF;&#x5C31;&#x662F;&#x4ECE;&#x53F3;&#x5230;&#x5DE6;&#x800C;&#x5DF2;&#xFF0C;&#x8FD8;&#x4E0D;&#x6E05;&#x695A;&#x4E3A;&#x4EC0;&#x4E48;&#x3002;</p>
+<p>&#x76EE;&#x524D;&#x7684;&#x6E10;&#x53D8;&#x53EA;&#x662F;&#x4E24;&#x79CD;&#x989C;&#x8272;&#x7684;&#x6E10;&#x53D8;&#xFF0C;&#x800C;Android&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x4E2D;&#x95F4;&#x7684;&#x989C;&#x8272;&#x7684;&#x8FC7;&#x6E21;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;gradient </span><br><span class="line">        android:startColor=&quot;#FF0000&quot;</span><br><span class="line"> &#xA0; &#xA0; &#xA0; &#xA0;android:centerColor=&quot;#0000FF&quot;</span><br><span class="line"> &#xA0; &#xA0; &#xA0; &#xA0;android:centerY=&quot;0.1&quot;</span><br><span class="line"> &#xA0; &#xA0; &#xA0; &#xA0;android:endColor=&quot;#00FF00&quot;</span><br><span class="line"> &#xA0; &#xA0; &#xA0; &#xA0;android:angle=&quot;90&quot;</span><br><span class="line"> &#xA0; &#xA0; &#xA0; &#xA0;android:type=&quot;linear&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>&#x5BF9;&#x5E94;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6309;&#x94AE;</p>
+<p>android:centerColor &#x5C31;&#x63D0;&#x4F9B;&#x4E86;&#x8FD9;&#x6837;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53E6;&#x5916;centerX/Y&#x5219;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x8FD9;&#x4E2A;&#x4E2D;&#x95F4;&#x7684;&#x989C;&#x8272;&#x76F8;&#x5BF9;&#x7684;&#x4F4D;&#x7F6E;&#xFF08;&#x5F53;&#x7136;&#xFF0C;X&#x5C31;&#x53EA;&#x5BF9;&#x5DE6;&#x53F3;&#x7684;&#x6E10;&#x53D8;&#x6709;&#x7528;&#xFF0C;&#x800C;Y&#x53EA;&#x5BF9;&#x4E0A;&#x4E0B;&#x7684;&#x6E10;&#x53D8;&#x6709;&#x7528;&#xFF09;&#xFF0C;&#x6548;&#x679C;&#x5982;&#x4E0B;</p>
+<p><img src="http://ogts8rw5s.bkt.clouddn.com/gradient2.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"></p>
+<p>centerX/Y&#x7684;&#x503C;&#x53EA;&#x80FD;&#x662F;&#x4ECE;0&#x5230;1.0&#x7684;&#xFF0C;&#x4ECE;&#x5F00;&#x59CB;&#x989C;&#x8272;&#x5F00;&#x59CB;&#xFF08;&#x662F;&#x5F00;&#x59CB;&#x989C;&#x8272;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7684;angle&#x53D8;&#x6210;180&#xFF0C;&#x5373;&#x4ECE;&#x53F3;&#x5230;&#x5750;&#xFF0C;0.1&#x7684;&#x503C;&#xFF0C;&#x8FD8;&#x662F;&#x4ECE;&#x7EA2;&#x8272;&#x5F00;&#x59CB;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x5730;&#x8BA4;&#x4E3A;&#x7EA2;&#x8272;&#x5C31;&#x53D8;&#x6210;&#x53EA;&#x6709;0.1&#x4E86;&#xFF09;</p>
+<p>&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x7684;&#x90FD;&#x662F;&#x7EBF;&#x6027;&#x7684;&#xFF0C;&#x800C;Android&#x4E2D;&#x5173;&#x4E8E;gradient&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x53E6;&#x5916;&#x4E24;&#x79CD;&#xFF1A;radial &#x548C; sweep</p>
+<p>1&#xFF09;Radial  &#x653E;&#x5C04;</p>
+<p>&#x5173;&#x4E8E;Radial&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6709;&#x5982;&#x4E0B;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml&#xA0;version=&quot;1.0&quot;&#xA0;encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;oval&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;corners&#xA0;android:radius=&quot;15dip&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;gradient&#xA0;android:startColor=&quot;#FF0000&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:endColor=&quot;#00FF00&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:gradientRadius=&quot;100&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:type=&quot;radial&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure>
+<p>&#x5BF9;&#x5E94;&#x7B2C;&#x4E8C;&#x4E2A;<br>&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x70B9;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x5F53;android:type=&#x201D;raidal&#x201D;&#x7684;&#x65F6;&#x5019;&#xFF0C;gradientRadius&#x7684;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x5B9A;&#x8981;&#x8BBE;&#x7F6E;&#x7684;&#xFF0C;&#x5B83;&#x8BBE;&#x7F6E;&#x4E86;&#x8FD9;&#x4E2A;&#x653E;&#x5C04;&#x7684;&#x534A;&#x5F84;&#xFF0C;&#x5177;&#x4F53;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x6548;&#x679C;&#x5427;<br><img src="http://ogts8rw5s.bkt.clouddn.com/gradient3.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"></p>
+<p>2&#xFF09;Sweep<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml&#xA0;version=&quot;1.0&quot;&#xA0;encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;rectangle&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;corners&#xA0;android:radius=&quot;15dip&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;gradient&#xA0;android:startColor=&quot;#FF0000&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:centerColor=&quot;#0000FF&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:centerX=&quot;0.1&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:endColor=&quot;#00FF00&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:type=&quot;sweep&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&#x5BF9;&#x5E94;&#x7B2C;&#x4E8C;&#x4E2A;<br>&#x5728;type=&#x201D;sweep&#x201D;&#x4E2D;&#xFF0C;angle&#x7684;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x70B9;&#x7528;&#x6CA1;&#x6709;&#x7684;&#xFF0C;&#x800C;centerX/Y&#x8DDF;radial&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x662F;&#x9488;&#x5BF9;&#x5F00;&#x59CB;&#x989C;&#x8272;&#x7684;&#x6BD4;&#x4F8B;&#x6765;&#x8BBE;&#x7F6E;&#x7684;&#xFF0C;x&#x662F;&#x9488;&#x5BF9;&#x5F00;&#x59CB;&#x989C;&#x8272;&#x5728;X&#x8F74;&#x4E0A;&#x9762;&#x7684;&#x6BD4;&#x4F8B;&#xFF0C;&#x800C;y&#x5219;&#x662F;&#x9488;&#x5BF9;&#x5728;Y&#x8F74;&#x4E0A;&#x9762;&#x7684;&#x6BD4;&#x4F8B;&#xFF0C;&#x5177;&#x4F53;&#x770B;&#x4E0B;&#x9762;&#x6548;&#x679C;&#x56FE;&#xFF1A;</p>
+<p><img src="http://ogts8rw5s.bkt.clouddn.com/gradient4.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"></p>
+<h2 id="stroke&#x63CF;&#x8FB9;"><a href="#stroke&#x63CF;&#x8FB9;" class="headerlink" title="stroke&#x63CF;&#x8FB9;"></a>stroke&#x63CF;&#x8FB9;</h2><p>&#x5B83;&#x53EA;&#x6709;&#x56DB;&#x4E2A;&#x5C5E;&#x6027;&#xFF1A;<br>1&#xFF09;android:width&#xFF0C;&#x8868;&#x793A;&#x7684;&#x662F;&#x7EBF;&#x7684;&#x7C97;&#x7EC6;&#x3002;<br>2&#xFF09;android:color&#xFF0C;&#x8868;&#x793A;&#x7684;&#x662F;&#x7EBF;&#x7684;&#x989C;&#x8272;&#x3002;<br>3&#xFF09;android:dashGap&#xFF0C;&#x8868;&#x793A;&#x7684;&#x662F;&#x4E00;&#x6761;&#x865A;&#x7EBF;&#xFF0C;gap&#x8868;&#x660E;&#x662F;&#x865A;&#x7EBF;&#x4E2D;&#x7EBF;&#x4E0E;&#x7EBF;&#x95F4;&#x7684;&#x7684;&#x7A7A;&#x9699;&#x3002;<br>4&#xFF09;android:dashWidth&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x8868;&#x793A;&#x7684;&#x662F;&#x865A;&#x7EBF;&#x4E2D;&#x7EBF;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x53EA;&#x6709;&#x8BBE;&#x7F6E;&#x4E86;dashGap&#x6765;&#x753B;&#x4E00;&#x6761;&#x865A;&#x7EBF;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x503C;&#x624D;&#x80FD;&#x8D77;&#x4F5C;&#x7528;&#x3002;</p>
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml&#xA0;version=&quot;1.0&quot;&#xA0;encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;rectangle&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;solid&#xA0;android:color=&quot;#CCCCCC&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;stroke&#xA0;android:width=&quot;1dp&quot;&#xA0;android:color=&quot;#FF0000&quot;&#xA0;android:dashWidth=&quot;10dp&quot;&#xA0;android:dashGap=&quot;2dp&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x6548;&#x679C;&#xFF1A;</p>
+<p><img src="http://ogts8rw5s.bkt.clouddn.com/gradient5.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"></p>
+<p>&#x6700;&#x4E0B;&#x9762;&#x7684;&#x6309;&#x94AE;&#x662F;&#x628A;&#x5F62;&#x72B6;&#x6001;&#x53D8;&#x6210;&#x4E86;line&#x7684;&#x683C;&#x5F0F;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml&#xA0;version=&quot;1.0&quot;&#xA0;encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;line&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;solid&#xA0;android:color=&quot;#CCCCCC&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;stroke&#xA0;android:width=&quot;1dp&quot;&#xA0;android:color=&quot;#FF0000&quot;&#xA0;android:dashWidth=&quot;10dp&quot;&#xA0;android:dashGap=&quot;2dp&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&#x5173;&#x4E8E;stroke&#x7684;&#x5C5E;&#x6027;&#x5176;&#x5B9E;&#x5C31;&#x8FD9;&#x4E48;&#x4E00;&#x70B9;&#x70B9;&#xFF0C;&#x6CA1;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x8BB2;&#x5230;shape=&#x201D;line&#x201C;&#xFF0C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x505A;&#x7684;&#x4F8B;&#x5B50;&#x90FD;&#x662F;rectangle&#xFF08;&#x77E9;&#x5F62;&#xFF09;&#xFF0C;oval&#xFF08;&#x692D;&#x5706;&#xFF09;&#xFF0C;&#x800C;line&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x6761;&#x7EBF;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x865A;&#x7EBF;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x76F4;&#x7EBF;&#xFF0C;&#x90FD;&#x662F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x3002;</p>
+<p>&#x6CE8;&#xFF1A;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x6B64;&#x7ED9;&#x6309;&#x94AE;&#x6DFB;&#x52A0;&#x8FB9;&#x6846;&#xFF0C;&#x5C31;&#x50CF;&#x4E0A;&#x9762;&#x56FE;&#x7247;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;&#x6309;&#x94AE;</p>
+<h2 id="ring"><a href="#ring" class="headerlink" title="ring"></a>ring</h2><p>Android&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x56DB;&#x79CD;&#x5F62;&#x72B6;&#xFF0C;rectangle&#xFF08;&#x77E9;&#x5F62;&#xFF09;&#xFF0C;oval&#xFF08;&#x692D;&#x5706;&#xFF09;&#xFF0C;line&#xFF08;&#x76F4;&#x7EBF;&#xFF09;&#x548C; ring&#xFF08;&#x73AF;&#xFF09;&#xFF0C;&#x524D;&#x9762;&#x51E0;&#x79CD;&#x6211;&#x4EEC;&#x5176;&#x5B9E;&#x5DF2;&#x7ECF;&#x57FA;&#x672C;&#x8BF4;&#x5230;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x5C31;&#x8BF4;&#x8BF4;&#x6700;&#x540E;&#x7684;ring&#xFF08;&#x73AF;&#xFF09;&#x5427;&#x3002;</p>
+<p>&#x5148;&#x770B;&#x770B;xml&#x4E2D;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x6211;&#x5B9A;&#x4E49;&#x4E86;&#x4E09;&#x4E2A;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x4E0B;&#x533A;&#x522B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml&#xA0;version=&quot;1.0&quot;&#xA0;encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;ring&quot;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:useLevel=&quot;false&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;gradient&#xA0;android:startColor=&quot;#FF0000&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:endColor=&quot;#00FF00&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;android:type=&quot;linear&quot;/&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&lt;stroke&#xA0;android:width=&quot;1dp&quot;&#xA0;android:color=&quot;#0000FF&quot;/&gt;</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--&#xA0;Ring1&#xA0;--&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;ring&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:innerRadiusRatio=&quot;3&quot;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:thicknessRatio=&quot;9&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:useLevel=&quot;false&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;...</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--&#xA0;Ring2&#xA0;--&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;ring&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:innerRadiusRatio=&quot;2&quot;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:thicknessRatio=&quot;2&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:useLevel=&quot;false&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;...</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--&#xA0;Ring3&#xA0;--&gt;</span><br><span class="line">&lt;shape&#xA0;xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:shape=&quot;ring&quot;&#xA0;&#xA0;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:innerRadiusRatio=&quot;2&quot;&#xA0;&#xA0;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:innerRadius=&quot;30dp&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:thicknessRatio=&quot;2&quot;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;android:useLevel=&quot;false&quot;&gt;</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;...</span><br><span class="line">&lt;/shape&gt;</span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x5F62;&#x72B6;&#x662F;&#x201D;ring&#x201D;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x628A;android:useLevel&#x8BBE;&#x4E3A;false&#xFF0C;&#x4E0D;&#x7136;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E2A;&#x73AF;&#x662F;&#x663E;&#x793A;&#x4E0D;&#x51FA;&#x6765;&#x7684;&#x3002;</p>
+<p>&#x5173;&#x4E8E;Ring&#x8FD8;&#x6709;&#x51E0;&#x4E2A;&#x5176;&#x7279;&#x6709;&#x7684;&#x5C5E;&#x6027;&#xFF1A;<br>1&#xFF09;innerRadius&#xFF0C;&#x8BBE;&#x7F6E;&#x73AF;&#x5185;&#x5706;&#x7684;&#x534A;&#x5F84;&#x3002;<br>2&#xFF09;innerRadiusRatio&#xFF0C;&#x8BBE;&#x7F6E;&#x7684;&#x662F;&#x5185;&#x5706;&#x534A;&#x5F84;&#x7684;&#x6BD4;&#x4F8B;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;3&#xFF0C;&#x8868;&#x660E;&#x662F;&#x6574;&#x4E2A;&#x73AF;&#x7684;&#x5BBD;&#x5EA6;&#x7684;1/3&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x4E86;innerRadius&#xFF0C;&#x5373;&#x5177;&#x4F53;&#x7684;&#x5BBD;&#x5EA6;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x662F;&#x4F1A;&#x88AB;&#x8986;&#x76D6;&#x7684;&#x3002;<br>3&#xFF09;thickness&#xFF0C;&#x8BBE;&#x7F6E;&#x73AF;&#x7684;&#x539A;&#x5EA6;&#x3002;<br>4&#xFF09;thincknessRatio&#xFF0C;&#x8BBE;&#x7F6E;&#x73AF;&#x7684;&#x539A;&#x5EA6;&#x7684;&#x6BD4;&#x8F83;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;9&#xFF0C;&#x8868;&#x660E;&#x662F;&#x6574;&#x4E2A;&#x73AF;&#x7684;&#x5BBD;&#x5EA6;&#x7684;1/9&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;thickness&#xFF0C;&#x540C;&#x6837;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x4E5F;&#x4F1A;&#x88AB;&#x8986;&#x76D6;&#x7684;&#x3002;</p>
+<p>2,4 &#x5C5E;&#x6027;&#x672A;&#x5F04;&#x61C2;</p>
+<p>&#xFF08;&#x6211;&#x89C9;&#x5F97;&#x5B98;&#x6587;&#x6587;&#x6863;&#x90A3;&#x91CC;&#x5E94;&#x8BE5;&#x662F;&#x8BF4;&#x53CD;&#x4E86;&#xFF09;<br>&#x4E0B;&#x9762;&#x662F;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;4&#x4E2A;&#x73AF;&#x7684;&#x6548;&#x679C;&#x56FE;&#xFF1A;<br><img src="http://ogts8rw5s.bkt.clouddn.com/gradient6.png" alt="&#x6B64;&#x5904;&#x8F93;&#x5165;&#x56FE;&#x7247;&#x7684;&#x63CF;&#x8FF0;"><br>&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x8BBE;&#x7F6E;&#x4E86;useLevel=false&#xFF0C;&#x5176;&#x5B83;&#x90FD;&#x662F;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x7B2C;&#x4E8C;&#x4E2A;&#x5C31;&#x8BBE;&#x7F6E;&#x5176;innerradiusratio = 3 &#x548C;thicknessratio = 9&#x4E86;&#x3002;<br>&#x518D;&#x4ECE;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x73AF;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x8BBE;&#x7F6E;&#x5185;&#x5F84;&#x548C;&#x73AF;&#x7684;&#x539A;&#x5EA6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5148;&#x8BBE;&#x7F6E;&#x5185;&#x5F84;&#x7684;&#x533A;&#x57DF;&#xFF0C;&#x800C;&#x73AF;&#x7684;&#x539A;&#x5EA6;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x63A7;&#x4EF6;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x4E5F;&#x5C31;&#x4E0D;&#x663E;&#x793A;&#x4E86;&#x3002;<br>&#x5173;&#x4E8E;shape&#x7684;&#x57FA;&#x7840;&#x7528;&#x6CD5;&#x57FA;&#x672C;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#xFF0C;&#x5728;&#x66F4;&#x591A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x662F;&#x7ED3;&#x5408;&#x4E86;layer&#x548C;shape&#x6765;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x6BD4;&#x5982;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x8FDB;&#x5EA6;&#x6761;&#xFF0C;&#x5728;&#x4EE5;&#x540E;&#x7684;&#x7BC7;&#x7AE0;&#x4E2D;&#xFF0C;&#x518D;&#x6765;&#x6162;&#x6162;&#x8BF4;&#x5427;&#x3002;</p>
+
+                
+
+
+<p class="light-green-link-context">
+    <a href="/2017/09/22/代理（张孝祥Java视频笔记）/" rel="next" title="代理（张孝祥Java视频笔记）">
+    下一篇：代理（张孝祥Java视频笔记）
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+<!-- Donate Module -->
+<div id="donate_module">
+    <style type="text/css">
+        .hidden {
+            display: none;
+        }
+        .donate_bar a.btn_donate {
+            display: inline-block;
+            width: 82px;
+            height: 82px;
+            background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+            _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+
+            -webkit-transition: background 0s;
+            -moz-transition: background 0s;
+            -o-transition: background 0s;
+            -ms-transition: background 0s;
+            transition: background 0s;
+        }
+        .donate_bar a.btn_donate:hover {
+            background-position: 0 -82px;
+        }
+        .donate_bar .donate_txt {
+            display: block;
+            color: #9d9d9d;
+            font: 14px/2 "Microsoft Yahei";
+        }
+        .bold {
+            font-weight: bold;
+        }
+
+        img.qrcode {
+            width: 90%;
+            margin-bottom: 10px;
+        }
+        @media only screen and (min-width: 1025px) {
+            img.qrcode {
+                width: 40%;
+                margin-right: 10px;
+            }
+        }
+
+    </style>
+
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">能看到这的都是真爱，打个赏呗=。=</span>
+    </div>
+    <!-- /btn_donate & tips -->
+
+    <!-- donate guide -->
+    <div id="donate_guide" class="donate_bar center hidden">
+        
+        <img class="qrcode" src="http://ogts8rw5s.bkt.clouddn.com/weixinzhifu.png" title="打赏"/>
+        
+        <img class="qrcode" src="http://ogts8rw5s.bkt.clouddn.com/zhifubaozhifu2.jpg" title="打赏"/>
+        
+    </div>
+    <!-- /donate guide -->
+
+    <!-- donate script -->
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+            $('#donate_board').addClass('hidden');
+            $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web() {
+            $('#donate').submit();
+        }
+    </script>
+    <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+
+
+
+
+    <section id="comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDQ0My82OTk3">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+    </section>
+
+
+    
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large light-green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect red" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse purple"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer brown darken-1 darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/2072044771/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/thinkerzhangyan" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright light-green-link-context">
+        <div class="container">
+            © 2016 example.com, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('light-green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge light-green"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword light-green lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

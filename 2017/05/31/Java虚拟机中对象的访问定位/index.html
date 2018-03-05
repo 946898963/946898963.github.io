@@ -7,7 +7,7 @@
 
     
 
-    <title>模板方法模式 | 一天进步一点</title>
+    <title>Java虚拟机中对象的访问定位 | 一天进步一点</title>
     <meta name="author" content="张岩">
     
     <meta name="description" content="记录生活点滴">
@@ -15,7 +15,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="模板方法模式"/>
+    <meta property="og:title" content="Java虚拟机中对象的访问定位"/>
     <meta property="og:site_name" content="张岩的博客"/>
 
     
@@ -320,7 +320,7 @@
             
     
     
-    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/设计模式/">设计模式</a>
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/JVM/">JVM</a>
 
 
         
@@ -337,12 +337,12 @@
             <div class="article-title">
                 
     
-        <h1>模板方法模式</h1>
+        <h1>Java虚拟机中对象的访问定位</h1>
     
 
 
             </div>
-            <time class="light-green-link-context" datetime="2016-06-15T12:22:12.000Z"><a href="/2016/06/15/模板方法模式/">2016-06-15</a></time>
+            <time class="light-green-link-context" datetime="2017-05-31T10:48:23.000Z"><a href="/2017/05/31/Java虚拟机中对象的访问定位/">2017-05-31</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -352,55 +352,44 @@
             
     <div class="tags-row">
         
-            <a href="/tags/设计模式/" class="chip light-green">设计模式</a>
+            <a href="/tags/JVM/" class="chip light-green">JVM</a>
         
     </div>
 
 
             <div class="toc light-green-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#介绍"><span class="section table-of-contents-text">介绍</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#使用场景"><span class="section table-of-contents-text">使用场景</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#简单实现"><span class="section table-of-contents-text">简单实现</span></a></li></ol>
+    
 </div>
 
 
             <div class="entry light-green-link-context">
-                <h2 id="&#x4ECB;&#x7ECD;"><a href="#&#x4ECB;&#x7ECD;" class="headerlink" title="&#x4ECB;&#x7ECD;"></a>&#x4ECB;&#x7ECD;</h2><p>&#x5728;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x7684;&#x6240;&#x9700;&#x8981;&#x7684;&#x5173;&#x952E;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x5E76;&#x4E14;&#x786E;&#x5B9A;&#x4E86;&#x8FD9;&#x4E9B;&#x6B65;&#x9AA4;&#x7684;&#x6267;&#x884C;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x4F46;&#x662F;&#x67D0;&#x4E9B;&#x6B65;&#x9AA4;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x662F;&#x672A;&#x77E5;&#x7684;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x67D0;&#x4E9B;&#x6B65;&#x9AA4;&#x7684;&#x5B9E;&#x73B0;&#x4F1A;&#x968F;&#x7740;&#x73AF;&#x5883;&#x7684;&#x53D8;&#x5316;&#x800C;&#x53D8;&#x5316;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+                <p>java&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x901A;&#x8FC7;java&#x865A;&#x62DF;&#x673A;&#x6808;&#x4E0A;&#x7684;reference&#x6570;&#x636E;&#x6765;&#x64CD;&#x4F5C;&#x5806;&#x4E0A;&#x7684;&#x5177;&#x4F53;&#x5BF9;&#x8C61;&#x3002;&#x7A76;&#x7ADF;&#x5982;&#x4F55;&#x901A;&#x8FC7;reference&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x53D6;&#x51B3;&#x4E8E;java&#x865A;&#x62DF;&#x673A;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x76EE;&#x524D;&#x4E3B;&#x6D41;&#x7684;&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;&#x6709;&#x4E24;&#x79CD;:</p>
 <blockquote>
 <ul>
-<li>&#x68C0;&#x67E5;&#x4EE3;&#x7801;&#x7684;&#x6B63;&#x786E;&#x6027;</li>
-<li>&#x94FE;&#x63A5;&#x76F8;&#x5173;&#x7684;&#x7C7B;&#x5E93;</li>
-<li>&#x7F16;&#x8BD1;&#x76F8;&#x5173;&#x7684;&#x4EE3;&#x7801;</li>
-<li>&#x6267;&#x884C;&#x7A0B;&#x5E8F;</li>
+<li>&#x4F7F;&#x7528;&#x53E5;&#x67C4;</li>
+<li>&#x76F4;&#x63A5;&#x6307;&#x9488;</li>
 </ul>
 </blockquote>
-<p>&#x5BF9;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x7A0B;&#x5E8F;&#x800C;&#x8A00;&#x4E0A;&#x8FF0;&#x7684;&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4ED6;&#x4EEC;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x53EF;&#x4EE5;&#x7528;&#x6A21;&#x677F;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x6765;&#x89E3;&#x51B3;&#x3002;</p>
-<p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x4E2D;&#x7684;&#x7B97;&#x6CD5;&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x800C;&#x5C06;&#x4E00;&#x4E9B;&#x6B65;&#x9AA4;&#x5EF6;&#x8FDF;&#x5230;&#x5B50;&#x7C7B;&#x4E2D;&#xFF0C;&#x4F7F;&#x5F97;&#x5B50;&#x7C7B;&#x53EF;&#x4EE5;&#x4E0D;&#x6539;&#x53D8;&#x7B97;&#x6CD5;&#x7684;&#x7ED3;&#x6784;&#x5373;&#x53EF;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x8BE5;&#x7B97;&#x6CD5;&#x7684;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x6B65;&#x9AA4;&#x3002;</p>
-<h2 id="&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>&#x4F7F;&#x7528;&#x573A;&#x666F;</h2><blockquote>
-<ul>
-<li>&#x591A;&#x4E2A;&#x5B50;&#x7C7B;&#x6709;&#x516C;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x903B;&#x8F91;&#x57FA;&#x672C;&#x76F8;&#x540C;&#x7684;&#x65F6;&#x5019;&#x3002;</li>
-<li>&#x91CD;&#x8981;&#x590D;&#x6742;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x6838;&#x5FC3;&#x7684;&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x6210;&#x6A21;&#x677F;&#x65B9;&#x6CD5;&#xFF0C;&#x5468;&#x8FB9;&#x7684;&#x76F8;&#x5173;&#x7EC6;&#x8282;&#x529F;&#x80FD;&#xFF0C;&#x5219;&#x6709;&#x5404;&#x4E2A;&#x5B50;&#x7C7B;&#x53BB;&#x5B9E;&#x73B0;&#x3002;</li>
-<li>&#x91CD;&#x6784;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6A21;&#x677F;&#x65B9;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x628A;&#x76F8;&#x540C;&#x7684;&#x4EE3;&#x7801;&#x62BD;&#x53D6;&#x5230;&#x7236;&#x7C7B;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x7EA6;&#x675F;&#x5176;&#x884C;&#x4E3A;&#x3002;</li>
-</ul>
-</blockquote>
-<h2 id="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"><a href="#&#x7B80;&#x5355;&#x5B9E;&#x73B0;" class="headerlink" title="&#x7B80;&#x5355;&#x5B9E;&#x73B0;"></a>&#x7B80;&#x5355;&#x5B9E;&#x73B0;</h2><p>&#x6A21;&#x677F;&#x65B9;&#x6CD5;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5C01;&#x88C5;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x5C31;&#x50CF;&#x662F;&#x6267;&#x884C;&#x4E00;&#x5957;&#x6A21;&#x677F;&#x4E00;&#x6837;&#xFF0C;&#x7B2C;&#x4E00;&#x6B65;&#x8BE5;&#x505A;&#x4EC0;&#x4E48;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B65;&#x8BE5;&#x505A;&#x4EC0;&#x4E48;&#x90FD;&#x5DF2;&#x7ECF;&#x5728;&#x62BD;&#x8C61;&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x597D;&#x4E86;&#x3002;&#x800C;&#x5B50;&#x7C7B;&#x53EF;&#x4EE5;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;&#x6846;&#x67B6;&#x4E0D;&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5B9E;&#x73B0;&#x67D0;&#x4E9B;&#x6B65;&#x9AA4;&#x7684;&#x7B97;&#x6CD5;&#x66FF;&#x6362;&#x3002;</p>
-<p>&#x4EE5;&#x6253;&#x5F00;&#x8BA1;&#x7B97;&#x673A;&#x4E3A;&#x4F8B;&#xFF0C;&#x6765;&#x6F14;&#x793A;&#x4E00;&#x4E0B;&#x6A21;&#x677F;&#x65B9;&#x6CD5;&#x3002;&#x6253;&#x5F00;&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x542F;&#x52A8;&#x7535;&#x6E90;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x68C0;&#x6D4B;&#x81EA;&#x8EAB;&#x72B6;&#x6001;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x5165;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x5BF9;&#x7528;&#x6237;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#x4E4B;&#x540E;&#x5373;&#x53EF;&#x767B;&#x5F55;&#x8BA1;&#x7B97;&#x673A;&#x3002;</p>
-<p>&#x62BD;&#x8C61;&#x7684;&#x7535;&#x8111;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AbstractComputer {</span><br><span class="line">    </span><br><span class="line">    protected void powerOn(){</span><br><span class="line">        System.out.println(&quot;&#x5F00;&#x542F;&#x7535;&#x6E90;&quot;);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    protected void checkHardware(){</span><br><span class="line">        System.out.println(&quot;&#x786C;&#x4EF6;&#x68C0;&#x67E5;&quot;);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    protected void loadOs(){</span><br><span class="line">        System.out.println(&quot;&#x8F7D;&#x5165;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&quot;);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    protected void login(){</span><br><span class="line">        System.out.println(&quot;&#x5C0F;&#x767D;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x65E0;&#x9A8C;&#x8BC1;&#xFF0C;&#x76F4;&#x63A5;&#x8FDB;&#x5165;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&quot;);</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    public final void startUp(){</span><br><span class="line">        System.out.println(&quot;----&#x5173;&#x673A;start----&quot;);</span><br><span class="line">        powerOn();</span><br><span class="line">        checkHardware();</span><br><span class="line">        loadOs();</span><br><span class="line">        login();</span><br><span class="line">        System.out.println(&quot;----&#x5173;&#x673A;end----&quot;);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x8BA1;&#x7B97;&#x673A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class CoderComputer extends AbstractComputer{</span><br><span class="line">    @Override</span><br><span class="line">    protected void login() {</span><br><span class="line">        System.out.println(&quot;&#x7A0B;&#x5E8F;&#x5458;&#x53EA;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7528;&#x6237;&#x8DDF;&#x5BC6;&#x7801;&#x9A8C;&#x8BC1;&#x5C31;&#x597D;&#x4E86;&#x3002;&quot;);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x519B;&#x7528;&#x8BA1;&#x7B97;&#x673A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class MilitrayComputer extends AbstractComputer{</span><br><span class="line">    @Override</span><br><span class="line">    protected void checkHardware() {</span><br><span class="line">        super.checkHardware();</span><br><span class="line">        System.out.println(&quot;&#x68C0;&#x67E5;&#x786C;&#x4EF6;&#x9632;&#x706B;&#x5899;&#x3002;&quot;);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void login() {</span><br><span class="line">       System.out.println(&quot;&#x8FDB;&#x884C;&#x6307;&#x7EB9;&#x8BC6;&#x522B;&#x7B49;&#x590D;&#x6742;&#x7684;&#x7528;&#x6237;&#x9A8C;&#x8BC1;&#x3002;&quot;);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) {</span><br><span class="line">		</span><br><span class="line">	AbstractComputer comp = new CoderComputer();</span><br><span class="line">	comp.startUp();</span><br><span class="line">		</span><br><span class="line">	comp = new MilitrayComputer();</span><br><span class="line">	comp.startUp();</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>&#x5728;startUp&#x4E2D;&#x6709;&#x4E00;&#x4E9B;&#x56FA;&#x5B9A;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x8FD9;&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x5F00;&#x542F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x662F;&#x56FA;&#x5B9A;&#x4E0D;&#x53D8;&#x7684;&#x3002;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x7528;&#x6237;&#x7684;&#x8FD9;&#x51E0;&#x4E2A;&#x6B65;&#x9AA4;&#x7684;&#x5B9E;&#x73B0;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x5B50;&#x7C7B;&#x9700;&#x8981;&#x590D;&#x5199;&#x54CD;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;startUp&#x4E3A;final&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4FDD;&#x8BC1;&#x4E86;&#x903B;&#x8F91;&#x6D41;&#x7A0B;&#x4E0D;&#x4F1A;&#x88AB;&#x5B50;&#x7C7B;&#x4FEE;&#x6539;&#xFF0C;&#x5B50;&#x7C7B;&#x53EA;&#x80FD;&#x591F;&#x6539;&#x7248;&#x67D0;&#x4E00;&#x6B65;&#x9AA4;&#x7684;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4FDD;&#x8BC1;&#x4E86;&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#x6D41;&#x7A0B;&#x7684;&#x7A33;&#x5B9A;&#x6027;&#x3002;startUp&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x8FD9;&#x51E0;&#x4E2A;&#x7B97;&#x6CD5;&#x6B65;&#x9AA4;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x79F0;&#x4E4B;&#x4E3A;&#x4E00;&#x4E2A;&#x5957;&#x8DEF;&#xFF0C;&#x4E5F;&#x79F0;&#x4E3A;&#x6A21;&#x677F;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x53E5;&#x67C4;&#x8BBF;&#x95EE;&#x7684;&#x8BDD;&#xFF0C;&#x9700;&#x8981;&#x5728;java&#x5806;&#x4E2D;&#x5212;&#x5206;&#x51FA;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x6765;&#x4F5C;&#x4E3A;&#x53E5;&#x67C4;&#x6C60;&#xFF0C;reference&#x4E2D;&#x5B58;&#x50A8;&#x7684;&#x5C31;&#x662F;&#x5BF9;&#x8C61;&#x7684;&#x53E5;&#x67C4;&#x6C60;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x53E5;&#x67C4;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;&#x6570;&#x636E;&#x8DDF;&#x7C7B;&#x578B;&#x6570;&#x636E;&#x5404;&#x81EA;&#x7684;&#x5177;&#x4F53;&#x5730;&#x5740;&#x4FE1;&#x606F;&#x3002;</p>
+<p><img src="/2017/05/31/Java&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x8BBF;&#x95EE;&#x5B9A;&#x4F4D;/jubing.jpg" alt="&#x53E5;&#x67C4;"></p>
+<p>&#x4F7F;&#x7528;&#x76F4;&#x63A5;&#x6307;&#x9488;&#x7684;&#x8BDD;&#xFF0C;reference&#x4E2D;&#x5B58;&#x50A8;&#x7684;&#x5C31;&#x662F;&#x5BF9;&#x8C61;&#x7684;&#x76F4;&#x63A5;&#x5730;&#x5740;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x5E03;&#x5C40;&#x4E2D;&#x5C31;&#x5FC5;&#x987B;&#x8003;&#x8651;&#x5982;&#x4F55;&#x653E;&#x7F6E;&#x8BBF;&#x95EE;&#x7C7B;&#x578B;&#x6570;&#x636E;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x3002;</p>
+<p><img src="/2017/05/31/Java&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x8BBF;&#x95EE;&#x5B9A;&#x4F4D;/zhizhen.jpg" alt="&#x6307;&#x9488;"></p>
+<p>&#x53E5;&#x67C4;&#x8BBF;&#x95EE;&#x7684;&#x4F18;&#x52BF;&#xFF1A;reference&#x4E2D;&#x5B58;&#x50A8;&#x7684;&#x662F;&#x5BF9;&#x8C61;&#x7684;&#x53E5;&#x67C4;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5F53;&#x5BF9;&#x8C61;&#x7684;&#x88AB;&#x79FB;&#x52A8;&#xFF08;&#x5783;&#x573E;&#x6536;&#x96C6;&#x65F6;&#x5BF9;&#x8C61;&#x88AB;&#x79FB;&#x52A8;&#x662F;&#x5F88;&#x5E38;&#x89C1;&#x7684;&#x4E8B;&#x60C5;&#xFF09;&#x65F6;&#x53EA;&#x4F1A;&#x6539;&#x53D8;&#x53E5;&#x67C4;&#x4E2D;&#x7684;&#x5B9E;&#x4F8B;&#x6570;&#x636E;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x800C;reference&#x6570;&#x636E;&#x672C;&#x8EAB;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#x76F4;&#x63A5;&#x6307;&#x9488;&#x65B9;&#x5F0F;&#x7684;&#x4F18;&#x52BF;&#xFF1A;&#x901F;&#x5EA6;&#x5FEB;&#xFF0C;&#x8282;&#x7701;&#x4E86;&#x4E00;&#x6B21;&#x6307;&#x9488;&#x5B9A;&#x4F4D;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x7531;&#x4E8E;&#x5BF9;&#x8C61;&#x7684;&#x8BBF;&#x95EE;&#x5728;java&#x4E2D;&#x662F;&#x975E;&#x5E38;&#x9891;&#x7E41;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x7C7B;&#x5F00;&#x9500;&#x79EF;&#x5C11;&#x6210;&#x591A;&#x540E;&#xFF0C;&#x4E5F;&#x662F;&#x4E00;&#x7B14;&#x975E;&#x5E38;&#x53EF;&#x89C2;&#x7684;&#x6267;&#x884C;&#x6210;&#x672C;&#x3002;</p>
+<p>&#x5728;Sun HotSpot&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x76F4;&#x63A5;&#x6307;&#x9488;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x7684;&#x3002;</p>
 
                 
 <p class="light-green-link-context">
-    <a href="/2016/06/16/备忘录模式/" rel="next" title="备忘录模式">
-    上一篇：备忘录模式
+    <a href="/2017/05/31/ja-va虚拟机的垃圾回收器怎么判断对象“已死”/" rel="next" title="java虚拟机的垃圾回收器怎么判断对象“已死” ">
+    上一篇：java虚拟机的垃圾回收器怎么判断对象“已死” 
   </a>
 </p>
 
 
 
 <p class="light-green-link-context">
-    <a href="/2016/06/15/代理模式/" rel="next" title="代理模式">
-    下一篇：代理模式
+    <a href="/2017/05/31/Java虚拟机中对象的内存布局/" rel="next" title="Java虚拟机中对象的内存布局">
+    下一篇：Java虚拟机中对象的内存布局
   </a>
 </p>
 

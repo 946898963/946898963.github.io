@@ -172,7 +172,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术/">
-                    技术 <span class="right">104 篇</span></a>
+                    技术 <span class="right">105 篇</span></a>
                 </a>
             </li>
 
@@ -268,7 +268,7 @@
 
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术/JVM/">
-                    JVM <span class="right">16 篇</span></a>
+                    JVM <span class="right">17 篇</span></a>
                 </a>
             </li>
 
@@ -382,7 +382,7 @@
 <p>J.U.C&#x539F;&#x5B50;&#x7C7B;&#xFF0C;comapreAndSet(),getAndIncrement()&#x8C03;&#x7528;&#x4E86;Unsafe&#x7C7B;&#x7684;CAS&#x64CD;&#x4F5C;&#x3002;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public final int incrementAndGet() {</span><br><span class="line">   /* for(;;) {</span><br><span class="line">        int current = get();</span><br><span class="line">        int next = current + 1;</span><br><span class="line">        //&#x8FD9;&#x91CC;&#x8C03;&#x7528;&#x4E86;CAS</span><br><span class="line">        if (compareAndSet(current, next)) {</span><br><span class="line">            return next;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">   */</span><br><span class="line">//Java 8</span><br><span class="line">    return unsafe.getAndAddInt(this, valueOffset, 1);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>CAS&#x7684;&#x903B;&#x8F91;&#x6F0F;&#x6D1E;&#x2014;&#x2014;ABA&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;V&#x521D;&#x6B21;&#x8BFB;&#x53D6;&#x7684;&#x65F6;&#x5019;&#x662F;A&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x51C6;&#x5907;&#x8D4B;&#x503C;&#x7684;&#x65F6;&#x5019;&#x68C0;&#x67E5;&#x5230;&#x5B83;&#x4ECD;&#x7136;&#x4E3A;A&#x503C;&#xFF0C;&#x6B64;&#x65F6;&#x5E76;&#x4E0D;&#x80FD;&#x8BF4;&#x5B83;&#x7684;&#x503C;&#x6CA1;&#x6709;&#x88AB;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x4FEE;&#x6539;&#x8FC7;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5728;&#x8FD9;&#x671F;&#x95F4;&#x5B83;&#x7684;&#x503C;&#x5148;&#x88AB;&#x6539;&#x6210;&#x4E86;B&#xFF0C;&#x540E;&#x53C8;&#x88AB;&#x6539;&#x4E3A;&#x4E86;A&#xFF0C;&#x800C;CAS&#x64CD;&#x4F5C;&#x5C31;&#x4F1A;&#x8BA4;&#x4E3A;&#x5B83;&#x4ECE;&#x6765;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x8FC7;&#x3002;&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x4E0B;ABA&#x60C5;&#x51B5;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x7A0B;&#x5E8F;&#x5E76;&#x53D1;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x89E3;&#x51B3;ABA&#x95EE;&#x9898;&#xFF08;JDK&#x901A;&#x8FC7;&#x5F15;&#x5165;AtomicStampedReference&#x6765;&#x4FDD;&#x8BC1;CAS&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF09;&#xFF0C;&#x6539;&#x7528;&#x4F20;&#x7EDF;&#x7684;&#x4E92;&#x65A5;&#x624B;&#x6BB5;&#x53EF;&#x80FD;&#x4F1A;&#x6BD4;&#x539F;&#x5B50;&#x7C7B;&#x66F4;&#x9AD8;&#x6548;&#x3002;</p>
-<h2 id="&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;"><a href="#&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;" class="headerlink" title="&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;"></a>&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;</h2><p>&#x540C;&#x6B65;&#x53EA;&#x662F;&#x4FDD;&#x8BC1;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x4E89;&#x7528;&#x65F6;&#x7684;&#x6B63;&#x786E;&#x6027;&#x7684;&#x624B;&#x6BB5;&#xFF0C;&#x81F3;&#x4E8E;&#x7B2C;&#x4E09;&#x79CD;&#x300C;&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;&#x300D;&#x7684;&#x610F;&#x601D;&#x5C31;&#x662F;&#x4E0D;&#x6D89;&#x53CA;&#x5171;&#x4EAB;&#x6570;&#x636E;&#xFF0C;&#x81EA;&#x7136;&#x800C;&#x7136;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x540C;&#x6B65;&#x7684;&#x63AA;&#x65BD;&#x53BB;&#x4FDD;&#x8BC1;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x4E9B;&#x4EE3;&#x7801;&#x5929;&#x751F;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x53EF;&#x91CD;&#x5165;&#x4EE3;&#x7801;&#x548C;&#x7EBF;&#x7A0B;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x3002;</p>
+<h2 id="&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;"><a href="#&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;" class="headerlink" title="&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;"></a>&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;</h2><p>&#x540C;&#x6B65;&#x63AA;&#x65BD;&#x53EA;&#x662F;&#x4FDD;&#x8BC1;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x4E89;&#x7528;&#x65F6;&#x7684;&#x6B63;&#x786E;&#x6027;&#x7684;&#x624B;&#x6BB5;&#xFF0C;&#x81F3;&#x4E8E;&#x7B2C;&#x4E09;&#x79CD;&#x300C;&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;&#x300D;&#x7684;&#x610F;&#x601D;&#x5C31;&#x662F;&#x4E0D;&#x6D89;&#x53CA;&#x5171;&#x4EAB;&#x6570;&#x636E;&#xFF0C;&#x81EA;&#x7136;&#x800C;&#x7136;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x540C;&#x6B65;&#x7684;&#x63AA;&#x65BD;&#x53BB;&#x4FDD;&#x8BC1;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x4E9B;&#x4EE3;&#x7801;&#x5929;&#x751F;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x53EF;&#x91CD;&#x5165;&#x4EE3;&#x7801;&#x548C;&#x7EBF;&#x7A0B;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x3002;</p>
 
                 
 <p class="light-green-link-context">
@@ -394,8 +394,8 @@
 
 
 <p class="light-green-link-context">
-    <a href="/2017/07/12/volatile型变量的特殊访问规则/" rel="next" title="volatile型变量的特殊访问规则">
-    下一篇：volatile型变量的特殊访问规则
+    <a href="/2017/07/12/原子性，可见性与有序性/" rel="next" title="原子性，可见性与有序性">
+    下一篇：原子性，可见性与有序性
   </a>
 </p>
 

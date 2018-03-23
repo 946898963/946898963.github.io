@@ -373,6 +373,7 @@
 <p>&#x9996;&#x5148;&#x662F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;&#x4EE5;&#x6700;&#x7B80;&#x5355;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E3A;&#x4F8B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public ThreadPoolExecutor( int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue workQueue)</span><br></pre></td></tr></table></figure></p>
 <p>&#x770B;&#x8D77;&#x6765;&#x633A;&#x590D;&#x6742;&#x7684;&#x3002;&#x8FD9;&#x91CC;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x3002;</p>
 <p><strong>corePoolSize &#x6307;&#x7684;&#x662F;&#x4FDD;&#x7559;&#x7684;&#x7EBF;&#x7A0B;&#x6C60;&#x5927;&#x5C0F;&#x3002;</strong><br><strong>maximumPoolSize &#x6307;&#x7684;&#x662F;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x6700;&#x5927;&#x5927;&#x5C0F;&#x3002;</strong><br><strong>keepAliveTime &#x6307;&#x7684;&#x662F;&#x7A7A;&#x95F2;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;</strong><br><strong>unit &#x662F;&#x4E00;&#x4E2A;&#x679A;&#x4E3E;&#xFF0C;&#x8868;&#x793A; keepAliveTime &#x7684;&#x5355;&#x4F4D;&#x3002;</strong><br><strong>workQueue &#x8868;&#x793A;&#x5B58;&#x653E;&#x4EFB;&#x52A1;&#x7684;&#x961F;&#x5217;&#x3002;</strong></p>
+<p>&#x5173;&#x4E8E;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;keepAliveTime &#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x5927;&#x4E8E;corePoolSize&#x65F6;&#xFF0C;keepAliveTime&#x624D;&#x4F1A;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E0D;&#x5927;&#x4E8E;corePoolSize&#xFF0C;&#x5373;&#x5F53;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x5927;&#x4E8E;corePoolSize&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x7A7A;&#x95F2;&#x7684;&#x65F6;&#x95F4;&#x8FBE;&#x5230;keepAliveTime&#xFF0C;&#x5219;&#x4F1A;&#x7EC8;&#x6B62;&#xFF0C;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E0D;&#x8D85;&#x8FC7;corePoolSize&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8C03;&#x7528;&#x4E86;allowCoreThreadTimeOut(boolean)&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E0D;&#x5927;&#x4E8E;corePoolSize&#x65F6;&#xFF0C;keepAliveTime&#x53C2;&#x6570;&#x4E5F;&#x4F1A;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x4E3A;0&#x3002;&#x5EFA;&#x8BAE;&#x9605;&#x8BFB;&#xFF1A;<a href="https://www.cnblogs.com/dolphin0520/p/3932921.html" target="_blank" rel="external">Java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#xFF1A;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x4F7F;&#x7528;</a>&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E86;&#x89E3;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x7684;&#x610F;&#x4E49;&#x3002;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
 <blockquote>
 <ul>
@@ -403,8 +404,8 @@
 
                 
 <p class="light-green-link-context">
-    <a href="/2017/08/31/AsyncTask的源码分析/" rel="next" title="AsyncTask的源码分析">
-    上一篇：AsyncTask的源码分析
+    <a href="/2017/08/31/AsyncTask源码分析/" rel="next" title="AsyncTask源码分析">
+    上一篇：AsyncTask源码分析
   </a>
 </p>
 
